@@ -4,11 +4,12 @@ entregas/*
 !entregas/ejemplo-*/
 !entregas/LEEME.md
 
-# Videos de prueba de los ganchos 2 a 5 (se sacan con node scripts/video.js --gancho N)
-video/salida/*-gancho-*
+# Modelo de voz (unos 145 MB): se arma con scripts/voz/armar-modelo.sh
+scripts/voz/modelo/
 
 # Dependencias y temporales
 node_modules/
+__pycache__/
 _site/
 .DS_Store
 *.log
