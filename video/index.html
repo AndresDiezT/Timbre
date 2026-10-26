@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Video de Timbre</title>
+  <meta name="description" content="En 37 segundos: así le llegan a su WhatsApp los pedidos y las reservas, completos y sin comisiones.">
+  <meta name="theme-color" content="#FFC933">
+  <meta property="og:title" content="Timbre · Nadie se queda sin respuesta">
+  <meta property="og:description" content="Así le llegan a su WhatsApp los pedidos y las reservas, completos y sin comisiones.">
+  <meta property="og:image" content="https://timbre-demo.netlify.app/video/salida/timbre-reel-portada.jpg">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/timbre.css">
+  <style>
+    .video-pagina { display: grid; gap: 28px; align-items: start; }
+    .video-marco { width: min(88%, 380px); margin-inline: auto; border: var(--linea) solid var(--tinta); border-radius: 22px; overflow: hidden; background: var(--tinta); box-shadow: var(--sombra); }
+    .video-marco video { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; }
+    .video-texto h1 { margin: 12px 0 14px; }
+    .video-texto .botones { margin: 22px 0 18px; }
+    .video-texto details { margin-top: 18px; }
+    .video-texto summary { cursor: pointer; font-weight: 700; }
+    .video-texto ol { margin: 10px 0 0; padding-left: 1.2em; }
+    @media (min-width: 860px) { .video-pagina { grid-template-columns: 380px 1fr; gap: 56px; } .video-marco { width: 100%; margin: 0; } }
+  </style>
+</head>
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+  <header class="barra">
+    <div class="contenedor barra__fila">
+      <a class="logo" href="../" data-propagar aria-label="Timbre, inicio"><img class="logo__campana" src="../assets/img/campana.svg" alt="" width="38" height="38">Timbre</a>
+      <div class="barra__acciones">
+        <button class="icono-boton" type="button" data-tema aria-label="Cambiar entre modo claro y oscuro">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido" class="contenedor seccion video-pagina">
+    <div class="video-marco">
+      <video controls playsinline preload="metadata" poster="salida/timbre-reel-portada.jpg" aria-describedby="que-muestra">
+        <source src="salida/timbre-reel.mp4" type="video/mp4">
+        Su navegador no puede reproducir el video. <a href="salida/timbre-reel.mp4">Descárguelo aquí</a>.
+      </video>
+    </div>
+
+    <div class="video-texto">
+      <span class="pildora">Video · 37 segundos</span>
+      <h1>Así le llegan los pedidos y las reservas</h1>
+      <p class="entradilla">Su cliente arma el pedido o elige la hora desde el celular, y a su WhatsApp le llega todo completo, con el total. Sin comisiones por pedido y sin apps que instalar.</p>
+      <div class="botones">
+        <a class="boton boton--primario js-whatsapp" href="https://wa.me/573143319442">Escribir por WhatsApp</a>
+        <a class="boton" href="../#probar" data-propagar>Probar un pedido usted mismo</a>
+      </div>
+      <p class="pequeno"><a href="../#planes" data-propagar>Ver planes y precios</a> · <a href="salida/timbre-reel.mp4" download>Descargar el video</a></p>
+      <details id="que-muestra">
+        <summary>Qué muestra el video</summary>
+        <ol>
+          <li>Un pedido de $90.000 que llega a las 9:47 p. m., con el negocio cerrado.</li>
+          <li>Sin Timbre: el cliente pregunta y nadie le responde.</li>
+          <li>Con Timbre: el cliente arma el pedido en la página del negocio y le llega completo al WhatsApp, con el total y sin comisiones.</li>
+          <li>El WhatsApp le responde al instante, aunque el negocio ya haya cerrado.</li>
+          <li>En una barbería, el cliente elige servicio, día y hora, y el dueño confirma con una respuesta rápida.</li>
+          <li>Precio: Pedidos o Reservas, $450.000 de instalación y $59.000 al mes. Listo en 5 días hábiles; el saldo se paga cuando lo vea funcionando.</li>
+        </ol>
+      </details>
+      <p class="pequeno suave" style="margin-top:18px">Demostración de Timbre con negocios ficticios. Timbre no está afiliado a WhatsApp, Meta ni Google.</p>
+    </div>
+  </main>
+
+  <script src="../assets/js/timbre.js" data-raiz="../"></script>
+  <script>
+  (async function () {
+    'use strict';
+    const T = window.Timbre;
+    const { marca } = await T.cargar({ idioma: 'es' });
+    const url = T.enlaceWhatsapp(marca, { texto: 'Hola, vi el video de Timbre y quiero saber más.', asesora: T.asesora(marca) });
+    document.querySelectorAll('.js-whatsapp').forEach((a) => { a.href = url; });
+  })();
+  </script>
+</body>
+</html>
