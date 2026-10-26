@@ -8,7 +8,7 @@ All three use fictional businesses and say so. Capture screenshots at 1280 px wi
 
 **Title:** Web form lead gets a text back in under 60 seconds
 
-**Link:** [URL DE GITHUB PAGES]/demo/en.html (and /en/)
+**Link:** https://timbre-demo.netlify.app/demo/en.html (and https://timbre-demo.netlify.app/en/)
 
 **Description:**
 
@@ -30,7 +30,7 @@ A working simulation of the speed-to-lead system I install for home service busi
 
 **Title:** "No customer goes unanswered": WhatsApp Business demo for small businesses
 
-**Link:** [URL DE GITHUB PAGES]/demo/ and the landing page /
+**Link:** https://timbre-demo.netlify.app/demo/ and the landing page https://timbre-demo.netlify.app/
 
 **Description:**
 
@@ -51,7 +51,7 @@ A sales demo for Timbre, my WhatsApp and Google Maps setup service in Latin Amer
 
 **Title:** From one JSON file to a full client delivery: texts, images, QR codes, website and n8n workflows
 
-**Link:** [URL DE GITHUB PAGES]/entregas/ejemplo-barberia-el-parche/pagina/ · [URL]/constructor/
+**Link:** https://timbre-demo.netlify.app/entregas/ejemplo-barberia-el-parche/pagina/ · https://timbre-demo.netlify.app/constructor/ · https://github.com/AndresDiezT/Timbre/tree/main/automatizaciones/n8n
 
 **Description:**
 

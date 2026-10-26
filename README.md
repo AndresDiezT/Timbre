@@ -15,7 +15,7 @@ Todas las rutas son relativas, así que el sitio funciona en cualquier direcció
 - **Netlify** (`netlify.toml`): en app.netlify.com → *Add new site → Import an existing project → GitHub → AndresDiezT/Timbre*. Netlify lee la configuración solo; no hay que llenar nada. Publica de nuevo en cada push a `main`.
 - **GitHub Pages** (`.github/workflows/pages.yml`): *Settings → Pages → Source: GitHub Actions*. Requiere que GitHub Actions esté habilitado en la cuenta.
 
-Base: `https://[SITIO].netlify.app/` o `https://andresdiezt.github.io/Timbre/` (las rutas de abajo se suman a la base).
+**Sitio publicado: https://timbre-demo.netlify.app/** (las rutas de abajo se suman a esa dirección; por ejemplo https://timbre-demo.netlify.app/visita/?asesora=SOFIA).
 
 | Página | URL | Para qué sirve |
 |---|---|---|

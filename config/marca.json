@@ -33,8 +33,8 @@
     "asesoraEn": "I was referred by {nombre} (code {codigo})."
   },
   "sitio": {
-    "url": "https://andresdiezt.github.io/Timbre/",
-    "nota": "Cambiar por la URL real de GitHub Pages cuando esté publicada."
+    "url": "https://timbre-demo.netlify.app/",
+    "nota": "Sitio publicado en Netlify. Cambiar si se usa un dominio propio."
   },
   "video": "[ENLACE VIDEO]",
   "testimonios": []
