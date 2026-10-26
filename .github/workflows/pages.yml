@@ -1,11 +1,10 @@
-# Publica el sitio de Timbre en GitHub Pages en cada push a main.
-# Todas las rutas del sitio son relativas, así que funciona en
-# https://<usuario>.github.io/<repositorio>/ sin configuración extra.
+# Publica el sitio de Timbre en GitHub Pages.
+# El sitio principal está en Netlify (netlify.toml); este workflow queda como
+# alternativa y solo corre a mano (Actions → Publicar en GitHub Pages → Run).
+# Para que vuelva a correr en cada push, agregue:  push: { branches: [main] }
 name: Publicar en GitHub Pages
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:

@@ -11,7 +11,7 @@ Hi [NAME],
 
 You want every form lead to get a text right away so they don't call the next company. That's exactly what I build.
 
-Here's a live demo with a fictional cleaning company: [URL]/demo/en.html. Submit the form and watch the timer: the text lands in seconds, the lead goes into a Google Sheet and the owner gets an alert.
+Here's a live demo with a fictional cleaning company: https://timbre-demo.netlify.app/demo/en.html. Submit the form and watch the timer: the text lands in seconds, the lead goes into a Google Sheet and the owner gets an alert.
 
 For [COMPANY] I'd connect your [FORM TOOL] to your texting number and your sheet or CRM, using accounts you own. You approve every message, and each text includes STOP to opt out.
 
@@ -31,7 +31,7 @@ Hi [NAME],
 
 I can set this up so each submission lands in your Google Sheet, the person gets a confirmation email within seconds, and you get an alert with all the details.
 
-I already have this workflow built and documented node by node for n8n, plus a Make version, so it's fast to adapt: [URL] (portfolio piece 3). It validates the consent checkbox, cleans the phone number and keeps going even if a lead leaves the email blank.
+I already have this workflow built and documented node by node for n8n, plus a Make version, so it's fast to adapt: https://github.com/AndresDiezT/Timbre/tree/main/automatizaciones/n8n It validates the consent checkbox, cleans the phone number and keeps going even if a lead leaves the email blank.
 
 I'll build it in your own n8n or Make account, test it with you on a call and hand over a short guide. Typical delivery: [2–3] days.
 
@@ -40,14 +40,14 @@ Quick questions: n8n or Make? Which form tool? Should alerts go to email, WhatsA
 Andres
 ```
 
-(122 words)
+(119 words)
 
 ## 3. "WhatsApp Business auto-replies / simple chatbot"
 
 ```
 Hi [NAME],
 
-You want customers who message on WhatsApp to get an answer right away, even after hours. Here's a demo of how that looks: [URL]/demo/.
+You want customers who message on WhatsApp to get an answer right away, even after hours. Here's a demo of how that looks: https://timbre-demo.netlify.app/demo/.
 
 Depending on your volume there are two routes:
 • WhatsApp Business app: greeting, away message, catalog and quick replies. Simple and nearly free to run.

@@ -34,7 +34,7 @@ Nadie se queda sin respuesta. Escríbanos y compruébelo.
 
 **Correo:** [CORREO DE CONTACTO]
 
-**Sitio web:** https://andresdiezt.github.io/Timbre/ (cambiar si hay dominio propio)
+**Sitio web:** https://timbre-demo.netlify.app/ (cambiar si hay dominio propio)
 
 ---
 
@@ -47,7 +47,7 @@ Hola, gracias por escribir a Timbre.
 
 Este mensaje le llegó solo, al instante: así respondería el WhatsApp de su negocio.
 
-Vea los planes y la demostración aquí: https://andresdiezt.github.io/Timbre/
+Vea los planes y la demostración aquí: https://timbre-demo.netlify.app/
 Video de 1 minuto: [ENLACE VIDEO]
 
 Si una asesora lo visitó, escriba su código (por ejemplo SOFIA o YARIMAR). Cuéntenos qué negocio tiene y le respondemos en un momento.
@@ -62,7 +62,7 @@ Horario: «Fuera del horario comercial». Destinatarios: todos.
 ```
 Hola, gracias por escribir a Timbre. En este momento estamos fuera de horario, pero este mensaje le llegó al instante: así respondería el WhatsApp de su negocio aunque usted esté descansando.
 
-Mientras tanto, vea los planes y la demostración: https://andresdiezt.github.io/Timbre/
+Mientras tanto, vea los planes y la demostración: https://timbre-demo.netlify.app/
 
 Déjenos el nombre y el tipo de su negocio, y le escribimos a primera hora.
 ```
@@ -92,7 +92,7 @@ También están en el catálogo de este WhatsApp. ¿Qué negocio tiene?
 ```
 Aquí puede ver en un minuto cómo queda el WhatsApp de un negocio con Timbre: [ENLACE VIDEO]
 
-Y aquí puede probar la demostración usted mismo, moviendo la hora del día: https://andresdiezt.github.io/Timbre/
+Y aquí puede probar la demostración usted mismo, moviendo la hora del día: https://timbre-demo.netlify.app/
 ```
 
 **/pago**

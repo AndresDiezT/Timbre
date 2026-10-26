@@ -19,9 +19,9 @@ Datos que faltan o decisiones por confirmar. En los archivos aparecen como `[AS�
 ## Publicación
 
 - [x] Repositorio público (no contiene datos de clientes: `negocios/privado/` está ignorado).
-- [ ] **Netlify (recomendado mientras GitHub Actions esté bloqueado por facturación):** app.netlify.com → *Add new site → Import an existing project → GitHub* → elegir `AndresDiezT/Timbre` → *Deploy*. La configuración ya está en `netlify.toml`. Luego, en *Site configuration → Change site name*, poner por ejemplo `timbre` para quedar en `timbre.netlify.app`.
-- [ ] GitHub Pages (alternativa): resolver la facturación de la cuenta y activar *Settings → Pages → Source: GitHub Actions*.
-- [ ] Confirmar la URL final y actualizar `config/marca.json → sitio.url`, `timbre-whatsapp/LEEME.md` y el portafolio de `upwork/` (hoy apuntan a `andresdiezt.github.io/Timbre`).
+- [x] Publicado en Netlify: https://timbre-demo.netlify.app/ (configuración en `netlify.toml`). Si se subió a mano y no conectado al repositorio, conectarlo en *Site configuration → Build & deploy → Link repository* para que cada cambio en `main` se publique solo.
+- [ ] GitHub Pages queda como alternativa manual (el workflow ya no corre en cada push). Para usarlo: resolver la facturación de GitHub, activar *Settings → Pages → Source: GitHub Actions* y ejecutar el workflow a mano.
+- [x] Dirección actualizada en `config/marca.json`, `timbre-whatsapp/LEEME.md`, `upwork/` y README.
 - [ ] Opcional: dominio propio (por ejemplo `timbre.co`), configurado en *Settings → Pages → Custom domain*.
 
 ## WhatsApp de Timbre
@@ -47,7 +47,7 @@ Datos que faltan o decisiones por confirmar. En los archivos aparecen como `[AS�
 
 - [ ] `entrega/cuenta-de-cobro.md`: completar cédula, llave Bre-B y cuenta bancaria, y confirmar con un contador la declaración tributaria (IVA, factura electrónica).
 - [ ] `entrega/acuerdo-encargo-datos.md`: plantilla; revisar con un abogado antes del primer cliente con automatizaciones.
-- [ ] `upwork/perfil.md`: definir `[TARIFA POR HORA]` y reemplazar `[URL DE GITHUB PAGES]` en el portafolio cuando el sitio esté publicado.
+- [ ] `upwork/perfil.md`: definir `[TARIFA POR HORA]`.
 - [ ] Capturas y video del portafolio de Upwork (lista de tomas en `upwork/portafolio.md`).
 
 ## Contenido

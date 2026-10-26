@@ -7,7 +7,7 @@ const fs = require('fs');
 const path = require('path');
 
 const RAIZ = path.resolve(__dirname, '..');
-const IGNORAR = new Set(['.git', 'node_modules', 'entregas', 'privado']);
+const IGNORAR = new Set(['.git', 'node_modules', 'entregas', 'privado', '_site', '.netlify']);
 const DIAS = ['lun', 'mar', 'mie', 'jue', 'vie', 'sab', 'dom'];
 const errores = [];
 let total = 0;
