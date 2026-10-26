@@ -62,8 +62,9 @@ Datos que faltan o decisiones por confirmar. En los archivos aparecen como `[AS�
 
 ## Códigos de asesora
 
-- [ ] Los códigos cambiaron a **T101** (Sofía) y **T102** (Yarimar). Avisarles y que guarden de nuevo su herramienta de visita: https://timbre-demo.netlify.app/visita/?asesora=T101 y ?asesora=T102.
-- [ ] Cambiar las etiquetas del WhatsApp de Timbre de «SOFIA» y «YARIMAR» a «Asesora T101» y «Asesora T102».
+- [ ] El código de Sofía cambió a **T101**. Avisarle y que guarde de nuevo su herramienta de visita: https://timbre-demo.netlify.app/visita/?asesora=T101.
+- [ ] Yarimar (T102) está inactiva por ahora (`config/marca.json → asesorasInactivas`): sus enlaces ya no agregan su código. Para reactivarla, moverla a `asesoras` e imprimir su material desde `ventas/`.
+- [ ] Cambiar la etiqueta del WhatsApp de Timbre «SOFIA» por «Asesora T101» y borrar la de «YARIMAR».
 - [ ] Cuando ya nadie use los enlaces viejos, quitar los `alias` de `config/marca.json`.
 
 ## Contenido
