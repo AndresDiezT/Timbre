@@ -28,209 +28,197 @@
   {
    "escena": "problema",
    "inicio": 4.458,
-   "fin": 7.843,
+   "fin": 7.879,
    "subtitulos": [
     {
-     "texto": "Sin Timbre,",
+     "texto": "Muchas veces,",
      "resalte": "",
      "inicio": 4.458,
-     "fin": 5.068
+     "fin": 5.198
     },
     {
      "texto": "el cliente pregunta…",
      "resalte": "",
-     "inicio": 5.068,
-     "fin": 6.493
+     "inicio": 5.198,
+     "fin": 6.523
     },
     {
      "texto": "y nadie le responde",
      "resalte": "nadie",
-     "inicio": 6.493,
-     "fin": 7.843
+     "inicio": 6.523,
+     "fin": 7.879
     }
    ]
   },
   {
    "escena": "giro",
-   "inicio": 8.163,
-   "fin": 10.258,
+   "inicio": 8.199,
+   "fin": 10.107,
    "subtitulos": [
     {
-     "texto": "Con Timbre,",
-     "resalte": "Timbre",
-     "inicio": 8.163,
-     "fin": 8.633
+     "texto": "Ahora,",
+     "resalte": "",
+     "inicio": 8.199,
+     "fin": 8.649
     },
     {
      "texto": "nadie se queda sin respuesta",
      "resalte": "sin respuesta",
-     "inicio": 8.633,
-     "fin": 10.258
+     "inicio": 8.649,
+     "fin": 10.107
     }
    ]
   },
   {
    "escena": "pedido",
-   "inicio": 10.578,
-   "fin": 16.636,
+   "inicio": 10.427,
+   "fin": 16.485,
    "subtitulos": [
     {
      "texto": "Su cliente arma el pedido",
      "resalte": "arma el pedido",
-     "inicio": 10.578,
-     "fin": 12.038
+     "inicio": 10.427,
+     "fin": 11.887
     },
     {
      "texto": "desde el celular",
      "resalte": "",
-     "inicio": 12.038,
-     "fin": 13.113
+     "inicio": 11.887,
+     "fin": 12.962
     },
     {
      "texto": "y a usted le llega completo",
      "resalte": "completo",
-     "inicio": 13.113,
-     "fin": 14.938
+     "inicio": 12.962,
+     "fin": 14.787
     },
     {
      "texto": "a su WhatsApp,",
      "resalte": "",
-     "inicio": 14.938,
-     "fin": 15.583
+     "inicio": 14.787,
+     "fin": 15.432
     },
     {
      "texto": "con el total",
      "resalte": "total",
-     "inicio": 15.583,
-     "fin": 16.636
+     "inicio": 15.432,
+     "fin": 16.485
     }
    ]
   },
   {
    "escena": "comisiones",
-   "inicio": 16.956,
-   "fin": 18.447,
+   "inicio": 16.805,
+   "fin": 18.296,
    "subtitulos": [
     {
      "texto": "Sin comisiones",
      "resalte": "Sin comisiones",
-     "inicio": 16.956,
-     "fin": 17.806
+     "inicio": 16.805,
+     "fin": 17.655
     },
     {
      "texto": "por pedido",
      "resalte": "",
-     "inicio": 17.806,
-     "fin": 18.447
+     "inicio": 17.655,
+     "fin": 18.296
     }
    ]
   },
   {
    "escena": "automatico",
-   "inicio": 18.767,
-   "fin": 21.662,
+   "inicio": 18.616,
+   "fin": 21.511,
    "subtitulos": [
     {
      "texto": "Y si ya cerró,",
      "resalte": "",
-     "inicio": 18.767,
-     "fin": 19.657
+     "inicio": 18.616,
+     "fin": 19.506
     },
     {
      "texto": "su WhatsApp contesta al instante",
      "resalte": "al instante",
-     "inicio": 19.657,
-     "fin": 21.662
+     "inicio": 19.506,
+     "fin": 21.511
     }
    ]
   },
   {
    "escena": "citas",
-   "inicio": 21.982,
-   "fin": 27.49,
+   "inicio": 21.831,
+   "fin": 27.339,
    "subtitulos": [
     {
      "texto": "¿Trabaja con citas?",
      "resalte": "citas",
-     "inicio": 21.982,
-     "fin": 23.307
+     "inicio": 21.831,
+     "fin": 23.156
     },
     {
      "texto": "Eligen servicio, día y hora",
      "resalte": "",
-     "inicio": 23.307,
-     "fin": 25.782
+     "inicio": 23.156,
+     "fin": 25.631
     },
     {
      "texto": "y usted confirma",
      "resalte": "",
-     "inicio": 25.782,
-     "fin": 26.662
+     "inicio": 25.631,
+     "fin": 26.511
     },
     {
      "texto": "con un toque",
      "resalte": "un toque",
-     "inicio": 26.662,
-     "fin": 27.49
+     "inicio": 26.511,
+     "fin": 27.339
     }
    ]
   },
   {
-   "escena": "precio",
-   "inicio": 27.81,
-   "fin": 35.173,
+   "escena": "cierre",
+   "inicio": 27.659,
+   "fin": 33.684,
    "subtitulos": [
     {
-     "texto": "$450.000 de instalación",
-     "resalte": "$450.000",
-     "inicio": 27.81,
-     "fin": 30.56
+     "texto": "Listo en 5 días hábiles",
+     "resalte": "5 días hábiles",
+     "inicio": 27.659,
+     "fin": 30.489
     },
     {
-     "texto": "$59.000 al mes",
-     "resalte": "$59.000",
-     "inicio": 30.56,
-     "fin": 32.545
+     "texto": "En su propio WhatsApp",
+     "resalte": "su propio WhatsApp",
+     "inicio": 30.489,
+     "fin": 31.549
     },
     {
-     "texto": "y el saldo lo paga",
-     "resalte": "",
-     "inicio": 32.545,
-     "fin": 33.62
-    },
-    {
-     "texto": "cuando lo vea funcionando",
-     "resalte": "funcionando",
-     "inicio": 33.62,
-     "fin": 35.173
+     "texto": "Y le enseñamos a usarlo",
+     "resalte": "le enseñamos",
+     "inicio": 31.549,
+     "fin": 33.684
     }
    ]
   },
   {
    "escena": "llamado",
-   "inicio": 35.493,
-   "fin": 39.655,
+   "inicio": 34.004,
+   "fin": 38.033,
    "subtitulos": [
     {
-     "texto": "Toque el timbre:",
-     "resalte": "el timbre",
-     "inicio": 35.493,
-     "fin": 36.453
+     "texto": "Escríbanos por WhatsApp",
+     "resalte": "WhatsApp",
+     "inicio": 34.004,
+     "fin": 35.369
     },
     {
-     "texto": "escríbanos por WhatsApp",
-     "resalte": "",
-     "inicio": 36.453,
-     "fin": 37.753
-    },
-    {
-     "texto": "y pruebe un pedido usted mismo",
-     "resalte": "pruebe un pedido",
-     "inicio": 37.753,
-     "fin": 39.655
+     "texto": "y le mostramos cómo quedaría en su negocio",
+     "resalte": "su negocio",
+     "inicio": 35.369,
+     "fin": 38.033
     }
    ]
   }
  ],
- "duracion": 42.055
+ "duracion": 40.433
 }
