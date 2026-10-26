@@ -27,7 +27,8 @@ Que nadie se quede sin respuesta: sus clientes piden o reservan desde el celular
 
 | Concepto | Valor |
 |---|---|
-| [PLAN]: instalación (pago único) | [$390.000 / $790.000 / $200.000 / VALOR] |
+| [PLAN]: instalación (pago único) | [$450.000 / $790.000 / $200.000 / VALOR] |
+| Descuento acordado (si aplica) | [−$VALOR] |
 | Mensualidad (sin permanencia; no aplica al Arranque) | [$59.000 / $149.000 al mes] |
 | **Para empezar (50% de la instalación)** | **[VALOR]** |
 

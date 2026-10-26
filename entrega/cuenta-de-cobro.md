@@ -18,8 +18,9 @@ WhatsApp +57 314 331 9442 · [CORREO DE CONTACTO]
 
 | Concepto | Valor |
 |---|---|
-| [Plan Pedidos · 50% anticipo de la instalación] | $[195.000] |
-| **Total a pagar** | **$[195.000]** |
+| [Plan Pedidos · 50% anticipo de la instalación] | $[225.000] |
+| [Descuento acordado, si aplica, repartido en los dos pagos] | −$[VALOR] |
+| **Total a pagar** | **$[225.000]** |
 
 **Forma de pago:**
 
