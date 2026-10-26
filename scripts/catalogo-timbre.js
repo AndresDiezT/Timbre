@@ -30,9 +30,16 @@ function imagen(m, p, i) {
   const tamTitulo = titulo.length > 1 ? 110 : 150;
   const yTitulo = titulo.length > 1 ? 250 : 300;
   const yPrecio = yTitulo + (titulo.length - 1) * (tamTitulo + 4) + 150;
-  const incluye = p.incluye.slice(0, mensual ? 4 : 6).flatMap((t) => partir(t, 860, 34, 0.5, 2).map((l, j) => ({ l, primera: j === 0 })));
+  // Se agregan puntos completos mientras quepan antes de la línea del pie (y = 930).
+  const lineasPorPunto = p.incluye.map((t) => partir(t, 860, 34, 0.5, 2).map((l, j) => ({ l, primera: j === 0 })));
   const yLista = yPrecio + (mensual ? 168 : 120);
-  const lista = incluye.slice(0, 9).map((x, k) => `
+  const maxLineas = Math.floor((925 - yLista) / 46) + 1;
+  const incluye = [];
+  for (const lineas of lineasPorPunto) {
+    if (incluye.length + lineas.length > maxLineas) break;
+    incluye.push(...lineas);
+  }
+  const lista = incluye.map((x, k) => `
     ${x.primera ? `<rect x="90" y="${yLista + k * 46 - 24}" width="22" height="22" rx="4" fill="${PAPEL}" stroke="${TINTA}" stroke-width="4"/>` : ''}
     <text x="132" y="${yLista + k * 46}" font-family="Figtree" font-weight="700" font-size="34" fill="${TINTA}">${xml(x.l)}</text>`).join('');
   return `<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1080" viewBox="0 0 1080 1080">

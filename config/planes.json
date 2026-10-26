@@ -73,18 +73,20 @@
           "id": "medida",
           "nombre": "Desarrollo a la medida",
           "tipo": "medida",
-          "paraQuien": "Necesidades especiales",
+          "paraQuien": "Cualquier idea o proceso de su negocio",
           "precio": null,
           "mensual": null,
-          "entrega": "Se cotiza tras un diagnóstico sin costo",
-          "resumen": "Tiendas en línea, apps de pedidos e inventario, conexión entre los programas que ya usa.",
+          "entrega": "Propuesta con precio y tiempos, por etapas",
+          "resumen": "Si su negocio necesita algo que no está en los planes, lo diseñamos y lo construimos con usted.",
           "incluye": [
-            "Tiendas en línea",
-            "Apps de pedidos e inventario",
-            "Conexión entre los programas que ya usa",
-            "Automatizaciones con Google Sheets y WhatsApp"
+            "Páginas web, tiendas en línea y catálogos",
+            "Apps y sistemas web: inventario, pedidos, citas, clientes, cotizaciones",
+            "Asistentes virtuales con IA y chatbots",
+            "Automatizaciones entre los programas que ya usa: WhatsApp, Excel, facturación, contabilidad",
+            "Reportes y tableros con los datos de su negocio",
+            "Cualquier otra idea: cuéntenos y le decimos cómo hacerla"
           ],
-          "boton": "Pedir diagnóstico sin costo"
+          "boton": "Contar mi idea"
         },
         {
           "id": "arranque",
@@ -166,11 +168,13 @@
           "periodo": null,
           "entrega": "Quoted after a free discovery call",
           "incluye": [
-            "Booking and scheduling flows",
-            "AI virtual assistants",
-            "Connecting the tools you already use"
+            "Websites, online stores and booking flows",
+            "Web apps and internal tools: quotes, scheduling, inventory, CRM",
+            "AI virtual assistants that only answer from your own information",
+            "Automations connecting the tools you already use",
+            "Dashboards and reports with your business data"
           ],
-          "boton": "Book a free discovery call"
+          "boton": "Tell me about your project"
         }
       ],
       "cambioAdicional": 20,
