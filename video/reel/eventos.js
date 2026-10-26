@@ -39,15 +39,9 @@
       llegaCita: s('citas', 2),
       toqueConfirmar: s('citas', 3) - 0.3,
       confirmada: s('citas', 3),
-      cierre: L.cierre.inicio - 0.15,
-      lista1: s('cierre', 0) + 0.2,
-      lista2: s('cierre', 1),
-      lista3: s('cierre', 2),
-      extra: s('cierre', 2) + 0.8,
       llamado: L.llamado.inicio - 0.1,
-      numero: s('llamado', 0) + 0.25,
-      muestra: s('llamado', 1),
-      nota: s('llamado', 1) + 1.0
+      numero: L.llamado.fin - 0.4,
+      nota: L.llamado.fin + 0.3
     };
     return e;
   };

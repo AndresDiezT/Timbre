@@ -176,49 +176,18 @@
    ]
   },
   {
-   "escena": "cierre",
-   "inicio": 27.659,
-   "fin": 33.684,
-   "subtitulos": [
-    {
-     "texto": "Listo en 5 días hábiles",
-     "resalte": "5 días hábiles",
-     "inicio": 27.659,
-     "fin": 30.489
-    },
-    {
-     "texto": "En su propio WhatsApp",
-     "resalte": "su propio WhatsApp",
-     "inicio": 30.489,
-     "fin": 31.549
-    },
-    {
-     "texto": "Y le enseñamos a usarlo",
-     "resalte": "le enseñamos",
-     "inicio": 31.549,
-     "fin": 33.684
-    }
-   ]
-  },
-  {
    "escena": "llamado",
-   "inicio": 34.004,
-   "fin": 38.033,
+   "inicio": 27.659,
+   "fin": 28.801,
    "subtitulos": [
     {
-     "texto": "Escríbanos por WhatsApp",
-     "resalte": "WhatsApp",
-     "inicio": 34.004,
-     "fin": 35.369
-    },
-    {
-     "texto": "y le mostramos cómo quedaría en su negocio",
+     "texto": "¿Quiere esto en su negocio?",
      "resalte": "su negocio",
-     "inicio": 35.369,
-     "fin": 38.033
+     "inicio": 27.659,
+     "fin": 28.801
     }
    ]
   }
  ],
- "duracion": 40.433
+ "duracion": 31.801
 }

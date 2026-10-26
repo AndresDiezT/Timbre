@@ -111,15 +111,8 @@
     #sello b { display: block; font-family: "Anton"; font-weight: 400; font-size: 120px; line-height: 1; text-transform: uppercase; }
     #sello span { font-size: 40px; font-weight: 800; }
 
-    /* Cierre: lo que incluye el servicio */
     .centro { left: 0; right: 0; text-align: center; }
     .pildora { display: inline-block; background: var(--amarillo); color: var(--tinta); border-radius: 999px; padding: 12px 36px; font-weight: 900; font-size: 40px; letter-spacing: .05em; text-transform: uppercase; }
-    #k-titulo { top: 380px; font-family: "Anton"; font-size: 150px; line-height: .95; text-transform: uppercase; }
-    #k-titulo em { font-style: normal; color: var(--amarillo); }
-    .lista { left: 120px; right: 80px; display: flex; gap: 28px; align-items: center; font-size: 58px; font-weight: 900; line-height: 1.1; }
-    .lista i { flex: none; width: 72px; height: 72px; border-radius: 18px; background: var(--amarillo); display: grid; place-items: center; }
-    #k-extra { top: 1330px; }
-    #k-extra span { font-size: 38px; }
 
     /* Llamado */
     #f-campana { left: 410px; top: 420px; }
@@ -127,8 +120,7 @@
     #f-titulo em { font-style: normal; color: var(--amarillo); }
     #f-numero { top: 1100px; }
     #f-numero .pildora { font-size: 60px; padding: 18px 48px; letter-spacing: .02em; }
-    #f-web { top: 1260px; font-size: 46px; font-weight: 700; line-height: 1.3; color: rgba(255, 255, 255, .92); }
-    #f-nota { top: 1460px; font-size: 26px; font-weight: 700; color: rgba(255, 255, 255, .55); }
+    #f-nota { top: 1300px; font-size: 26px; font-weight: 700; color: rgba(255, 255, 255, .55); }
   </style>
 </head>
 <body>
@@ -236,18 +228,10 @@
 
   <div id="sello" class="abs"><b>Sin comisiones</b><span>por pedido</span></div>
 
-  <!-- Cierre -->
-  <p id="k-titulo" class="abs centro">Se lo dejamos<br><em>funcionando</em></p>
-  <p id="k-l1" class="abs lista" style="top:800px"><i><svg viewBox="0 0 24 24" width="46" height="46"><path fill="none" stroke="#16202A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/></svg></i>Listo en 5 días hábiles</p>
-  <p id="k-l2" class="abs lista" style="top:960px"><i><svg viewBox="0 0 24 24" width="46" height="46"><path fill="none" stroke="#16202A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/></svg></i>En su propio WhatsApp</p>
-  <p id="k-l3" class="abs lista" style="top:1120px"><i><svg viewBox="0 0 24 24" width="46" height="46"><path fill="none" stroke="#16202A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/></svg></i>Capacitación gratuita</p>
-  <p id="k-extra" class="abs centro"><span class="pildora">Sin comisiones · sin apps que instalar</span></p>
-
   <!-- Llamado -->
   <div id="f-campana" class="abs campana"><span class="onda"></span><span class="onda"></span><span class="onda"></span><svg viewBox="16 13 32 38"><path fill="#16202A" d="M32 14c-1.7 0-3 1.3-3 3v1.2c-6 1.4-9.5 6.6-9.5 12.8v7.5L16 43v2h32v-2l-3.5-4.5V31c0-6.2-3.5-11.4-9.5-12.8V17c0-1.7-1.3-3-3-3z"/><path fill="#16202A" d="M27 47.5a5 5 0 0 0 10 0z"/></svg></div>
-  <p id="f-titulo" class="abs centro">¿Lo quiere en<br><em>su negocio?</em></p>
+  <p id="f-titulo" class="abs centro">¿Quiere esto en<br><em>su negocio?</em></p>
   <p id="f-numero" class="abs centro"><span class="pildora">WhatsApp 314 331 9442</span></p>
-  <p id="f-web" class="abs centro">Escríbanos y le mostramos<br>cómo quedaría</p>
   <p id="f-nota" class="abs centro">Demostración con negocios ficticios · Voz generada con IA</p>
 
   <div id="subs" class="abs"></div>
@@ -303,7 +287,7 @@
 
   let EV = null, SUB_ACTUAL = null, TAPS = [];
   const SUBS = [];
-  const SIN_SUBTITULOS = ['cierre', 'llamado'];
+  const SIN_SUBTITULOS = ['llamado'];
 
   function prepararSubtitulos(tiempos) {
     tiempos.lineas.forEach((l) => {
@@ -390,10 +374,10 @@
     const luzFinal = 1 - prog(t, ev.duracion - 0.6, ev.duracion);
     poner('luz', { o: (0.9 - 0.75 * apagada + 0.5 * destello) * luzFinal, s: 1 + 0.25 * destello + 0.03 * Math.sin(t * 1.3) });
 
-    /* Teléfono: presente salvo en el giro, en el cierre y en el llamado. */
+    /* Teléfono: presente salvo en el giro y en el llamado. */
     const sale1 = E.inOut(prog(t, ev.giro - 0.1, ev.giro + 0.35));
     const entra2 = E.out(prog(t, ev.pedido - 0.15, ev.pedido + 0.4));
-    const sale2 = E.inOut(prog(t, ev.cierre - 0.15, ev.cierre + 0.3));
+    const sale2 = E.inOut(prog(t, ev.llamado - 0.15, ev.llamado + 0.3));
     let ty, visible;
     if (t < ev.pedido - 0.15) { ty = sale1 * 1300; visible = 1 - sale1; }
     else { ty = (1 - entra2) * 1300 + sale2 * 1300; visible = entra2 * (1 - sale2); }
@@ -447,26 +431,17 @@
     $('r-hora').classList.toggle('sel', t >= ev.toqueHora);
     $('r-enviar').style.filter = t >= ev.toqueEnviarCita - 0.05 && t < ev.toqueEnviarCita + 0.25 ? 'brightness(1.3)' : 'none';
     aparece('c3-pedido', t, ev.llegaCita, { escala: 0.7 });
-    aparece('c3-rapidas', t, ev.llegaCita + 0.3, { dy: 30, escala: 0.9 });
+    aparece('c3-rapidas', t, ev.llegaCita + 0.05, { dy: 30, escala: 0.9 });
     $('c3-confirmar').style.background = t >= ev.toqueConfirmar && t < ev.confirmada + 0.3 ? 'var(--amarillo)' : '';
     aparece('c3-ok', t, ev.confirmada, { escala: 0.75 });
     toques(t);
 
-    /* 8. Cierre: lo que incluye */
-    const fin8 = ev.llamado;
-    ventana('k-titulo', t, ev.cierre, fin8, { escala: true });
-    ventana('k-l1', t, ev.lista1, fin8, { dy: 40 });
-    ventana('k-l2', t, ev.lista2, fin8, { dy: 40 });
-    ventana('k-l3', t, ev.lista3, fin8, { dy: 40 });
-    ventana('k-extra', t, ev.extra, fin8, { escala: true });
-
-    /* 9. Llamado */
+    /* 8. Llamado */
     const fk = E.back(prog(t, ev.llamado, ev.llamado + 0.4));
     poner('f-campana', { o: t >= ev.llamado ? clamp(fk) : 0, s: 0.4 + 0.6 * fk });
     campana('f-campana', t, ev.llamado + 0.05);
     ventana('f-titulo', t, ev.llamado + 0.15, ev.duracion + 1, { escala: true });
     ventana('f-numero', t, ev.numero, ev.duracion + 1, { escala: true });
-    ventana('f-web', t, ev.muestra, ev.duracion + 1, { dy: 30 });
     ventana('f-nota', t, ev.nota, ev.duracion + 1, { dy: 20 });
 
     pintarSubtitulo(t);

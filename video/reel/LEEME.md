@@ -1,4 +1,4 @@
-# Reel con voz (9:16, 40 segundos)
+# Reel con voz (9:16, 32 segundos)
 
 Video vertical para Instagram Reels, TikTok, YouTube Shorts y los Estados de WhatsApp. Estilo oscuro con un teléfono en 3D, voz en off y subtítulos grandes que aparecen palabra por palabra al ritmo de la voz (se entiende también con el sonido apagado).
 
@@ -23,12 +23,11 @@ Página para compartir: **https://timbre-demo.netlify.app/video/** (el video, el
 | 17–18 | «Sin comisiones por pedido.» | Sello «Sin comisiones por pedido». |
 | 19–22 | «Y si ya cerró, su WhatsApp contesta al instante.» | La respuesta automática. |
 | 22–27 | «¿Trabaja con citas? Sus clientes eligen servicio, día y hora, y usted confirma con un toque.» | Barbería: reserva y confirmación con una respuesta rápida. |
-| 28–34 | «Se lo dejamos funcionando en cinco días hábiles, en su propio WhatsApp, y le enseñamos a usarlo.» | «Listo en 5 días hábiles», «En su propio WhatsApp», «Capacitación gratuita», «Sin comisiones · sin apps que instalar». |
-| 34–40 | «Escríbanos por WhatsApp y le mostramos cómo quedaría en su negocio.» | «¿Lo quiere en su negocio?» y WhatsApp 314 331 9442. |
+| 28–32 | «¿Quiere esto en su negocio?» | La misma pregunta y WhatsApp 314 331 9442. |
 
 Todo lo que muestra el video lo hace el servicio. No promete más ventas ni muestra cifras de resultados, y los negocios son ficticios («Demostración»).
 
-**A propósito, el video no dice precios ni el nombre «Timbre»**: presenta el servicio (lo dejamos funcionando en su propio WhatsApp), no un programa. Los precios se dan en la conversación.
+**A propósito, el video no dice precios, ni el nombre «Timbre», ni promete plazos o tareas**: muestra lo que hace el servicio y deja el número. Precios y condiciones se dan en la conversación.
 
 ## La voz
 
@@ -82,4 +81,3 @@ Demostración con negocios ficticios. Voz generada con IA.
 
    Tarda alrededor de un minuto. Sale a 1080 × 1920, 30 cuadros por segundo, H.264 y audio AAC a −14 LUFS, el volumen que usan Instagram, TikTok y YouTube. La música queda unos 13 dB por debajo de la voz y baja un poco cada vez que la voz habla.
 
-Si cambia el tiempo de entrega en `config/planes.json`, cámbielo también en `guion.json` y en la escena de cierre de `reel.html`, y vuelva a generar la voz y el video.
