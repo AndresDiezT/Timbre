@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guía de vendedoras Timbre</title>
+  <meta name="description" content="Guía de visita para las asesoras de Timbre.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Figtree:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/impresion.css">
+  <style>
+    .hoja { font-size: 10pt; gap: 12px; }
+    .dos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .frase { font-family: var(--t-titulo); text-transform: uppercase; font-size: 22pt; line-height: 1; }
+    .pasos { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; counter-reset: p; }
+    .pasos li { display: grid; grid-template-columns: 34px 1fr; gap: 10px; align-items: start; margin: 0; }
+    .pasos li::before { counter-increment: p; content: counter(p); width: 30px; height: 30px; border-radius: 50%; background: var(--amarillo); border: 2px solid var(--tinta); display: grid; place-items: center; font-family: var(--t-titulo); font-size: 13pt; }
+    .pasos b { display: block; }
+    .di { font-style: italic; }
+    .si-no { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .si-no h3 { margin-bottom: 6px; }
+    .obj td:first-child { font-weight: 800; width: 28%; }
+    .registro td { height: 30px; }
+    .registro th, .registro td { border: 1.5px solid var(--tinta); font-size: 8.5pt; }
+    .enlaces { display: flex; gap: 14px; align-items: center; }
+    @media screen and (max-width: 760px) { .dos, .si-no { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="barra-acciones no-imprimir">
+    <label class="solo-lector" for="asesora">Asesora</label>
+    <select id="asesora"><option value="">Sin código de asesora</option></select>
+    <button type="button" onclick="window.print()">Imprimir o guardar PDF</button>
+  </div>
+
+  <!-- Página 1 -->
+  <section class="hoja">
+    <header class="cabecera">
+      <div class="marca"><img src="../assets/img/campana.svg" alt="" width="40" height="40"><div><p class="marca__nombre">Timbre</p><p class="marca__frase">Guía de vendedoras</p></div></div>
+      <span class="pildora">Uso interno · Colombia</span>
+    </header>
+
+    <div class="tarjeta tarjeta--amarilla">
+      <p class="pildora pildora--tinta">Lo que vendemos, en una frase</p>
+      <p class="frase" style="margin-top:8px">Sus clientes piden o reservan desde el celular y al dueño le llega todo completo al WhatsApp. Sin comisiones.</p>
+      <p style="margin-top:6px;font-weight:700">La promesa de la marca es «Nadie se queda sin respuesta». Nunca prometemos más ventas ni más clientes.</p>
+    </div>
+
+    <h2>Qué plan ofrecer</h2>
+    <table>
+      <thead><tr><th>Si el negocio es…</th><th>Ofrezca</th><th>Por qué</th></tr></thead>
+      <tbody>
+        <tr><td>Restaurante, comidas rápidas, panadería, pastelería, tienda de ropa, ferretería</td><td><b>Pedidos</b></td><td>El cliente arma el pedido y le llega completo, con el total. Sin comisiones de apps.</td></tr>
+        <tr><td>Barbería, peluquería, taller, gimnasio, técnicos del hogar, estética</td><td><b>Reservas</b></td><td>El cliente elige servicio, día y hora; el dueño confirma con un toque y envía recordatorios.</td></tr>
+        <tr><td>Negocio con muchísimos mensajes todo el día</td><td><b>Asistente</b></td><td>Responde con IA usando solo la información del negocio y avisa cuando piden una persona.</td></tr>
+        <tr><td>Quiere algo distinto: tienda en línea, app, inventario, reportes</td><td><b>A la medida</b></td><td>Diagnóstico sin costo; Andres envía la propuesta.</td></tr>
+        <tr><td>Solo quiere lo básico o no le alcanza</td><td><b>Arranque</b></td><td>WhatsApp Business, Google Maps y QR. Ofrézcalo de último, no de primero.</td></tr>
+      </tbody>
+    </table>
+    <p class="suave">Ofrezca <b>un solo plan</b>: el que corresponde a su gremio. Los precios están en la hoja de planes; siempre se ofrece el precio de lista.</p>
+
+    <div class="si-no">
+      <div class="tarjeta">
+        <h3>Sí decimos</h3>
+        <ul class="check">
+          <li>«Nadie se queda sin respuesta.»</li>
+          <li>«El pedido le llega completo, con el total.»</li>
+          <li>«No le cobramos comisión por pedido.»</li>
+          <li>«El saldo lo paga cuando lo vea funcionando.»</li>
+          <li>«La mensualidad es sin permanencia.»</li>
+        </ul>
+      </div>
+      <div class="tarjeta">
+        <h3>Nunca decimos ni hacemos</h3>
+        <ul class="check">
+          <li>Prometer más ventas, más clientes o cifras de resultados.</li>
+          <li>Pedir contraseñas o códigos de verificación.</li>
+          <li>Recibir pagos: los pagos van a la cuenta que envía Andres en la cuenta de cobro.</li>
+          <li>Tomar fotos de los chats o anotar números de los clientes del negocio.</li>
+          <li>Inventar testimonios o decir que otro negocio ya lo tiene si no es cierto.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Página 2 -->
+  <section class="hoja">
+    <h2>La visita en 6 pasos</h2>
+    <ol class="pasos">
+      <li><div><b>Antes de salir</b>Abra en su celular la herramienta de visita con su código (enlace y QR al final de esta guía). Lleve la hoja de planes impresa y sus tarjetas.</div></li>
+      <li><div><b>Saludo y una pregunta</b>Menos de 30 segundos. <span class="di">«Buenas, soy [nombre], de Timbre. ¿A usted le escriben clientes por WhatsApp de noche o cuando está ocupado?»</span></div></li>
+      <li><div><b>La demostración con su nombre</b>En la herramienta, escriba el nombre del negocio y elija el gremio. Muéstrele el celular: <span class="di">«Mire, así le respondería su WhatsApp, con el nombre de su negocio.»</span></div></li>
+      <li><div><b>Que lo pruebe él</b>Que escanee el QR de la herramienta con su celular. Para Pedidos o Reservas, abra también timbre-demo.netlify.app/#probar y déjelo armar un pedido o pedir una cita: <span class="di">«Así le llega el pedido, completo y con el total.»</span></div></li>
+      <li><div><b>El precio</b>Saque la hoja de planes y muestre <b>solo</b> el plan de su gremio. Diga el precio completo, con la instalación y la mensualidad, y la garantía: <span class="di">«La mitad para empezar y el resto cuando lo vea funcionando.»</span></div></li>
+      <li><div><b>El cierre</b><span class="di">«¿Se lo dejamos listo?»</span> Si dice que sí, toque <b>«Lo quiero»</b> en la herramienta: se abre el WhatsApp de Timbre con el nombre del negocio y su código. Andres le escribe al dueño y le envía la cuenta de cobro. Si dice que no, déjele una tarjeta y anote cuándo volver a escribirle.</div></li>
+    </ol>
+
+    <div class="dos">
+      <div class="tarjeta">
+        <h3>Preguntas para descubrir</h3>
+        <ul class="check" style="margin-top:6px">
+          <li>¿Cómo le llegan hoy los pedidos o las citas?</li>
+          <li>¿Cuántos mensajes le llegan al día? ¿Alcanza a contestarlos todos?</li>
+          <li>¿Qué pasa con los mensajes que llegan de noche?</li>
+          <li>¿Paga comisión por algún pedido? (apps de domicilios)</li>
+          <li>¿Qué es lo que más le preguntan los clientes?</li>
+          <li>Reservas: ¿le pasa que los clientes no llegan a la cita?</li>
+        </ul>
+      </div>
+      <div class="tarjeta">
+        <h3>Qué necesita Andres para empezar</h3>
+        <ul class="check" style="margin-top:6px">
+          <li>Nombre exacto del negocio, dirección y horario.</li>
+          <li>Número de WhatsApp del negocio.</li>
+          <li>Productos o servicios con precio (6 a 10 para empezar).</li>
+          <li>Logo y unas 5 fotos (fachada, interior, productos).</li>
+          <li>Medios de pago y, si hace domicilios, cuánto cobra.</li>
+        </ul>
+        <p class="pequeno suave" style="margin-top:6px">Si el dueño ya los tiene, que se los envíe a Andres por WhatsApp. Usted no tiene que guardarlos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Página 3 -->
+  <section class="hoja">
+    <h2>Objeciones y cómo responder</h2>
+    <table class="obj">
+      <thead><tr><th>El dueño dice</th><th>Usted responde</th></tr></thead>
+      <tbody>
+        <tr><td>«Está caro.»</td><td>«Compárelo con lo que cobra una app por cada pedido. Aquí paga una instalación y una mensualidad fija, sin porcentajes. Y el saldo lo paga cuando lo vea funcionando.» Si insiste, revise la hoja interna de condiciones antes de ofrecer algo.</td></tr>
+        <tr><td>«Eso lo hago yo» o «me lo hace mi sobrino».</td><td>«Lo de WhatsApp sí, claro. Lo que no es fácil es la página donde el cliente arma el pedido y le llega ordenado, y tenerla al día cada mes. Además le enseñamos a manejar todo.»</td></tr>
+        <tr><td>«Ya tengo WhatsApp Business.»</td><td>«Perfecto, partimos de ahí y no pierde sus chats. Lo que agregamos es que el pedido o la cita le llegue completo, sin tanta pregunta.»</td></tr>
+        <tr><td>«Ya estoy en Rappi» (o en otra app).</td><td>«No tiene que salirse. Esto es para sus clientes de siempre, para que le pidan directo y usted no pague comisión por esos pedidos.»</td></tr>
+        <tr><td>«No tengo tiempo.»</td><td>«Le toma un rato enviarnos fotos y precios. Nosotros hacemos el resto en 5 días hábiles y se lo dejamos funcionando.»</td></tr>
+        <tr><td>«¿Y si no funciona?»</td><td>«Paga la mitad para empezar y el resto cuando le llegue el primer pedido de prueba. Y la mensualidad la puede cancelar cuando quiera.»</td></tr>
+        <tr><td>«¿Por qué una mensualidad?»</td><td>«Incluye mantener sus precios y productos al día, la página publicada, una publicación al mes en Google Maps y soporte. Si un mes no la quiere, la cancela.»</td></tr>
+        <tr><td>«¿Me van a pedir claves?»</td><td>«No. Todo se configura con usted, en su celular, y usted queda como dueño de sus cuentas.»</td></tr>
+        <tr><td>«Déjeme pensarlo.»</td><td>«Claro. Le queda la demostración con su nombre en el celular y la hoja de planes. ¿Le parece si le escribo el [día]?» Anótelo en el registro.</td></tr>
+        <tr><td>«Me gustaría algo diferente.»</td><td>«También lo hacemos: tiendas en línea, apps, inventario, asistentes con IA. Andres le hace un diagnóstico sin costo.» Toque «Lo quiero» y escriba la idea en el mensaje.</td></tr>
+      </tbody>
+    </table>
+    <div class="tarjeta tarjeta--amarilla">
+      <h3>Tres reglas de oro</h3>
+      <ul class="check" style="margin-top:6px">
+        <li>Muestre la demostración antes de hablar de precio.</li>
+        <li>Ofrezca un solo plan, el de su gremio, a precio de lista.</li>
+        <li>Toda visita se anota, compre o no compre.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Página 4 -->
+  <section class="hoja">
+    <h2>Después de la visita</h2>
+    <ul class="check">
+      <li>Anote la visita en el registro (abajo, o en la hoja de Google que comparte Andres).</li>
+      <li>Si el dueño dijo «Lo quiero», confirme que el mensaje llegó al WhatsApp de Timbre con su código.</li>
+      <li>Si quedó pensándolo, escríbale el día acordado. Un solo seguimiento; si no responde, se deja así.</li>
+      <li>Su comisión se calcula sobre el precio final que pague el cliente, según el acuerdo con Andres.</li>
+    </ul>
+
+    <h2>Registro de visitas</h2>
+    <table class="registro">
+      <thead><tr><th>Fecha</th><th>Negocio</th><th>Gremio</th><th>¿Vio la demo?</th><th>Plan ofrecido</th><th>Precio final</th><th>Resultado</th><th>Objeción</th><th>Volver a escribir</th></tr></thead>
+      <tbody>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+    <p class="pequeno suave">Resultado: compró · lo quiere (pendiente de pago) · lo va a pensar · no le interesa. No anote datos personales de los clientes del negocio.</p>
+
+    <footer class="pie-hoja">
+      <div class="enlaces">
+        <div class="qr" id="qr-visita"></div>
+        <div>
+          <p>Su herramienta de visita:</p>
+          <p id="enlace-visita">timbre-demo.netlify.app/visita/</p>
+          <p class="suave" id="linea-asesora">Agregue ?asesora=SU CÓDIGO al final del enlace.</p>
+        </div>
+      </div>
+      <div style="text-align:right">
+        <p>Demo de pedidos: timbre-demo.netlify.app/#probar</p>
+        <p>WhatsApp de Timbre: <span id="numero">+57 314 331 9442</span></p>
+      </div>
+    </footer>
+  </section>
+
+  <script src="../assets/vendor/qrcode.js"></script>
+  <script src="../assets/js/timbre.js" data-raiz="../"></script>
+  <script>
+  (async function () {
+    'use strict';
+    const T = window.Timbre;
+    const $ = (s) => document.querySelector(s);
+    const { marca } = await T.cargar({ idioma: 'es' });
+    const base = (marca.sitio.url || 'https://timbre-demo.netlify.app/').replace(/\/?$/, '/');
+    $('#numero').textContent = marca.contacto.whatsapp;
+    const sel = $('#asesora');
+    sel.innerHTML += marca.asesoras.map((a) => `<option value="${a.codigo}">${T.esc(a.nombre)} (${a.codigo})</option>`).join('');
+    const inicial = T.asesora(marca);
+    if (inicial) sel.value = inicial.codigo;
+    function pintar() {
+      const a = T.asesora(marca, sel.value);
+      const url = base + 'visita/' + (a ? '?asesora=' + a.codigo : '');
+      $('#qr-visita').innerHTML = T.qrSVG(url, { etiqueta: 'Código QR de la herramienta de visita' });
+      $('#enlace-visita').textContent = url.replace(/^https:\/\//, '');
+      $('#linea-asesora').textContent = a ? `${a.nombre} · código ${a.codigo}. Guárdelo en la pantalla de inicio.` : 'Agregue ?asesora=SU CÓDIGO al final del enlace.';
+      const u = new URL(location.href);
+      if (a) u.searchParams.set('asesora', a.codigo); else u.searchParams.delete('asesora');
+      history.replaceState(null, '', u);
+    }
+    sel.addEventListener('change', pintar);
+    pintar();
+    document.body.dataset.listo = '1';
+  })();
+  </script>
+</body>
+</html>

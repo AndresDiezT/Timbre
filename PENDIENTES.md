@@ -57,7 +57,8 @@ Datos que faltan o decisiones por confirmar. En los archivos aparecen como `[AS�
 - [ ] Precio de lista de Pedidos y Reservas: $450.000. La escala de descuentos va en la guía de vendedoras, **no en este repositorio ni en el sitio** (los dos son públicos). Anotar cada descuento que se dé y el motivo.
 - [ ] Definir la comisión de las asesoras en la guía de vendedoras (calculada sobre el precio final, después del descuento).
 - [ ] Medir el costo real del plan Asistente con el primer cliente (IA, servidor de automatización y mensajes de Meta) antes de dejar fijo el precio.
-- [ ] Hojas de planes impresas: actualizarlas con los precios nuevos (no están en este repositorio).
+- [x] Material de vendedoras rehecho en `ventas/` (hoja de planes, guía, tarjetas y registro), con PDF por asesora en `ventas/pdf/`. Las páginas leen `config/planes.json`: si cambia un precio, ábralas y toque «Imprimir o guardar PDF».
+- [ ] La hoja de condiciones (escala de descuentos y comisión) es privada: se entregó aparte y vive en `negocios/privado/`, que no se sube. Completar la comisión `[DEFINIR CON ANDRES]` y entregársela a cada asesora en persona.
 
 ## Contenido
 

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tarjetas Timbre</title>
+  <meta name="description" content="Tarjetas de presentación de las asesoras de Timbre, 10 por hoja carta.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Figtree:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/impresion.css">
+  <style>
+    /* 10 tarjetas de 3,5 × 2 pulgadas (tamaño estándar) por hoja carta, con líneas de corte. */
+    .hoja--tarjetas { padding: 0.5in 0.75in; display: grid; grid-template-columns: repeat(2, 3.5in); grid-auto-rows: 2in; gap: 0; align-content: start; }
+    .tarjeta-p { border: 1px dashed #9AA3AD; padding: 0.16in 0.18in; display: grid; grid-template-columns: 1fr 0.95in; gap: 0.1in; background: var(--papel); }
+    .tarjeta-p__marca { display: flex; align-items: center; gap: 6px; }
+    .tarjeta-p__marca img { width: 26px; height: 26px; }
+    .tarjeta-p__nombre { font-family: var(--t-titulo); text-transform: uppercase; font-size: 17pt; line-height: 1; }
+    .tarjeta-p__frase { font-family: var(--t-titulo); text-transform: uppercase; font-size: 11pt; line-height: 1.05; margin-top: 6px; }
+    .tarjeta-p__texto { font-size: 7.5pt; line-height: 1.3; margin-top: 4px; }
+    .tarjeta-p__asesora { font-size: 7.5pt; font-weight: 800; margin-top: 5px; background: var(--amarillo); border: 1.5px solid var(--tinta); border-radius: 999px; padding: 1px 7px; display: inline-block; }
+    .tarjeta-p__lado { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-align: center; }
+    .tarjeta-p__qr { width: 0.92in; height: 0.92in; background: #fff; }
+    .tarjeta-p__qr svg { width: 100%; height: 100%; }
+    .tarjeta-p__tel { font-size: 7pt; font-weight: 800; line-height: 1.2; }
+    @media screen and (max-width: 760px) { .hoja--tarjetas { grid-template-columns: 1fr; grid-auto-rows: auto; padding: 12px; } .tarjeta-p { min-height: 2in; } }
+  </style>
+</head>
+<body>
+  <div class="barra-acciones no-imprimir">
+    <label class="solo-lector" for="asesora">Asesora</label>
+    <select id="asesora"><option value="">Sin código de asesora</option></select>
+    <button type="button" onclick="window.print()">Imprimir o guardar PDF</button>
+  </div>
+  <main class="hoja hoja--tarjetas" id="tarjetas" aria-label="Hoja de 10 tarjetas"></main>
+
+  <script src="../assets/vendor/qrcode.js"></script>
+  <script src="../assets/js/timbre.js" data-raiz="../"></script>
+  <script>
+  (async function () {
+    'use strict';
+    const T = window.Timbre;
+    const $ = (s) => document.querySelector(s);
+    const { marca } = await T.cargar({ idioma: 'es' });
+    const sel = $('#asesora');
+    sel.innerHTML += marca.asesoras.map((a) => `<option value="${a.codigo}">${T.esc(a.nombre)} (${a.codigo})</option>`).join('');
+    const inicial = T.asesora(marca);
+    if (inicial) sel.value = inicial.codigo;
+    function pintar() {
+      const a = T.asesora(marca, sel.value);
+      const url = T.enlaceWhatsapp(marca, { texto: 'Hola, tengo una tarjeta de Timbre.', asesora: a });
+      const qr = T.qrSVG(url, { etiqueta: 'Código QR para escribir a Timbre por WhatsApp' });
+      const una = `
+        <article class="tarjeta-p">
+          <div>
+            <div class="tarjeta-p__marca"><img src="../assets/img/campana.svg" alt="" width="26" height="26"><span class="tarjeta-p__nombre">Timbre</span></div>
+            <p class="tarjeta-p__frase">Nadie se queda sin respuesta</p>
+            <p class="tarjeta-p__texto">Pedidos y reservas que llegan completos a su WhatsApp. Sin comisiones.</p>
+            ${a ? `<p class="tarjeta-p__asesora">Asesora: ${T.esc(a.nombre)} · ${a.codigo}</p>` : ''}
+          </div>
+          <div class="tarjeta-p__lado">
+            <div class="tarjeta-p__qr">${qr}</div>
+            <p class="tarjeta-p__tel">${T.esc(marca.contacto.whatsapp)}</p>
+          </div>
+        </article>`;
+      $('#tarjetas').innerHTML = una.repeat(10);
+      const u = new URL(location.href);
+      if (a) u.searchParams.set('asesora', a.codigo); else u.searchParams.delete('asesora');
+      history.replaceState(null, '', u);
+    }
+    sel.addEventListener('change', pintar);
+    pintar();
+    document.body.dataset.listo = '1';
+  })();
+  </script>
+</body>
+</html>

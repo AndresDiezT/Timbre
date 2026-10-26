@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Planes Timbre</title>
+  <meta name="description" content="Hoja de planes de Timbre para mostrar e imprimir.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Figtree:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/impresion.css">
+  <style>
+    .lema { font-family: var(--t-titulo); text-transform: uppercase; font-size: 27pt; line-height: .95; }
+    .lema span { box-shadow: inset 0 -.3em 0 var(--amarillo); }
+    .entrada { font-size: 11pt; font-weight: 500; max-width: 64ch; }
+    .estrellas { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 4px; }
+    .hoja { gap: 10px; padding: 0.42in 0.5in; font-size: 10pt; }
+    .plan { display: flex; flex-direction: column; gap: 4px; position: relative; padding: 11px 14px; }
+    .plan--estrella { box-shadow: 5px 5px 0 var(--amarillo); border-width: 3px; }
+    .plan h2 { font-size: 22pt; }
+    .plan__para { font-size: 9.5pt; font-weight: 700; color: var(--suave); }
+    .plan__precio { font-family: var(--t-titulo); font-size: 26pt; line-height: 1; margin-top: 2px; }
+    .plan__precio small { font-family: var(--t-texto); font-size: 10pt; font-weight: 800; display: block; margin-top: 3px; }
+    .plan__entrega { font-size: 9.5pt; font-weight: 800; }
+    .plan .check { font-size: 9.5pt; margin-top: 2px; }
+    .plan__cinta { position: absolute; top: -12px; right: 12px; }
+    .otros { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .otros .plan h2 { font-size: 16pt; }
+    .otros .plan__precio { font-size: 18pt; }
+    .entrada-plan { display: flex; justify-content: space-between; align-items: center; gap: 12px; border: 2px dashed var(--tinta); border-radius: 12px; padding: 8px 14px; font-size: 10pt; }
+    .franja { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; font-size: 9pt; line-height: 1.35; }
+    .franja b { display: block; font-family: var(--t-titulo); font-weight: 400; text-transform: uppercase; font-size: 12pt; }
+    .contacto { display: flex; align-items: center; gap: 12px; }
+    @media screen and (max-width: 760px) { .estrellas, .otros, .franja { grid-template-columns: 1fr; } .lema { font-size: 26pt; } }
+  </style>
+</head>
+<body>
+  <div class="barra-acciones no-imprimir">
+    <label class="solo-lector" for="asesora" style="color:#fff;align-self:center;font-weight:800">Asesora</label>
+    <select id="asesora"><option value="">Sin código de asesora</option></select>
+    <button type="button" onclick="window.print()">Imprimir o guardar PDF</button>
+  </div>
+
+  <main class="hoja" id="hoja">
+    <header class="cabecera">
+      <div class="marca"><img src="../assets/img/campana.svg" alt="" width="40" height="40"><div><p class="marca__nombre">Timbre</p><p class="marca__frase">Nadie se queda sin respuesta</p></div></div>
+      <span class="pildora" id="etiqueta-mercado">Planes · Colombia</span>
+    </header>
+
+    <div>
+      <p class="lema">Pedidos y reservas que llegan <span>completos</span> a su WhatsApp</p>
+      <p class="entrada" style="margin-top:8px">Sus clientes piden o reservan desde el celular y a usted le llega todo ordenado, con el total. Sin comisiones por pedido y sin apps que instalar.</p>
+    </div>
+
+    <section class="estrellas" id="estrellas" aria-label="Planes principales"></section>
+    <section class="otros" id="otros" aria-label="Otros planes"></section>
+    <p class="entrada-plan" id="entrada-plan"></p>
+
+    <div class="franja">
+      <div><b>Todos incluyen</b>WhatsApp Business completo, su negocio en Google Maps, códigos QR y capacitación gratuita.</div>
+      <div><b>Cómo se paga</b><span id="pago"></span></div>
+      <div><b>Garantía</b><span id="garantia"></span></div>
+    </div>
+
+    <footer class="pie-hoja">
+      <div class="contacto">
+        <div class="qr" id="qr"></div>
+        <div>
+          <p>Escríbanos: WhatsApp <span id="numero">+57 314 331 9442</span></p>
+          <p>Pruebe un pedido: timbre-demo.netlify.app</p>
+          <p id="linea-asesora" class="suave"></p>
+        </div>
+      </div>
+      <p class="suave pequeno" style="text-align:right;max-width:24ch">Precios en pesos colombianos. Sin permanencia en la mensualidad.</p>
+    </footer>
+  </main>
+
+  <script src="../assets/vendor/qrcode.js"></script>
+  <script src="../assets/js/timbre.js" data-raiz="../"></script>
+  <script>
+  (async function () {
+    'use strict';
+    const T = window.Timbre;
+    const $ = (s) => document.querySelector(s);
+    const { marca, planes } = await T.cargar({ idioma: 'es' });
+    const m = planes.mercados.co;
+    const d = (v) => T.dinero(v, 'COP', 'es');
+
+    const tarjeta = (p, clase) => `
+      <article class="tarjeta plan ${clase}">
+        ${p.destacado ? '<span class="pildora plan__cinta">Sin comisiones</span>' : ''}
+        <h2>${T.esc(p.nombre)}</h2>
+        <p class="plan__para">${T.esc(p.paraQuien)}</p>
+        ${p.precio != null
+          ? `<p class="plan__precio">${d(p.precio)}<small>instalación${p.mensual ? ` + ${d(p.mensual)} al mes` : ''}</small></p>`
+          : '<p class="plan__precio">Diagnóstico sin costo</p>'}
+        <p class="plan__entrega">${T.esc(p.entrega)}</p>
+        <ul class="check">${p.incluye.slice(0, clase.includes('estrella') ? 3 : 2).map((i) => `<li>${T.esc(i)}</li>`).join('')}</ul>
+      </article>`;
+    $('#estrellas').innerHTML = m.planes.filter((p) => p.tipo === 'estrella').map((p) => tarjeta(p, 'plan--estrella')).join('');
+    $('#otros').innerHTML = m.planes.filter((p) => p.tipo === 'premium' || p.tipo === 'medida').map((p) => tarjeta(p, '')).join('');
+    const entrada = m.planes.find((p) => p.tipo === 'entrada');
+    $('#entrada-plan').innerHTML = entrada ? `<span><b>¿Solo lo básico?</b> ${T.esc(entrada.nombre)}: ${T.esc(entrada.resumen)}</span><b>${d(entrada.precio)}</b>` : '';
+    $('#pago').textContent = m.pago;
+    $('#garantia').textContent = m.garantia;
+    $('#numero').textContent = marca.contacto.whatsapp;
+
+    const sel = $('#asesora');
+    sel.innerHTML += marca.asesoras.map((a) => `<option value="${a.codigo}">${T.esc(a.nombre)} (${a.codigo})</option>`).join('');
+    const inicial = T.asesora(marca);
+    if (inicial) sel.value = inicial.codigo;
+    function pintarAsesora() {
+      const a = T.asesora(marca, sel.value);
+      const url = T.enlaceWhatsapp(marca, { texto: 'Hola, vi la hoja de planes de Timbre y quiero saber más.', asesora: a });
+      $('#qr').innerHTML = T.qrSVG(url, { etiqueta: 'Código QR para escribir a Timbre por WhatsApp' });
+      $('#linea-asesora').textContent = a ? `Su asesora: ${a.nombre} · código ${a.codigo}` : '';
+      const u = new URL(location.href);
+      if (a) u.searchParams.set('asesora', a.codigo); else u.searchParams.delete('asesora');
+      history.replaceState(null, '', u);
+    }
+    sel.addEventListener('change', pintarAsesora);
+    pintarAsesora();
+    document.body.dataset.listo = '1';
+  })();
+  </script>
+</body>
+</html>

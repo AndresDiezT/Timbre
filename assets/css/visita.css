@@ -21,3 +21,5 @@
 .visita__mensaje { margin: 10px 0 0; color: #3A4552; font-style: italic; }
 .visita__vista { display: grid; justify-items: center; gap: 14px; }
 .visita__vista .telefono { width: min(100% - 24px, 340px); }
+.visita__material { margin-top: -6px; font-weight: 700; }
+.visita__material a { margin: 0 2px; }
