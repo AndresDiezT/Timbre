@@ -153,3 +153,48 @@
 .perfil-mapa__acciones { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px; }
 .perfil-mapa__acciones span { display: grid; place-items: center; gap: 4px; min-height: 58px; border: var(--linea) solid var(--borde); border-radius: 12px; font-size: .8rem; font-weight: 800; text-align: center; padding: 6px; }
 .perfil-mapa__acciones span.destacado { background: var(--amarillo); color: var(--tinta); border-color: var(--tinta); }
+
+/* Pruébelo: mini página del negocio que envía al celular */
+.probar__pestanas { display: flex; gap: 8px; margin-bottom: 18px; flex-wrap: wrap; }
+.probar__fila { display: grid; gap: 28px; align-items: start; }
+@media (min-width: 900px) { .probar__fila { grid-template-columns: minmax(0, 560px) 340px; justify-content: space-between; gap: 48px; } }
+.probar__fila .telefono { width: min(100% - 24px, 330px); }
+.tienda {
+  --acento: #C2410C; --sobre-acento: #fff;
+  background: var(--tarjeta); border: var(--linea) solid var(--borde); border-radius: var(--radio);
+  overflow: hidden; display: grid; gap: 12px; padding-bottom: 18px; box-shadow: 8px 8px 0 var(--amarillo);
+  max-width: 560px;
+}
+.tienda > *:not(.tienda__barra) { margin-inline: 18px; }
+.tienda__barra { display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: var(--acento); color: var(--sobre-acento); }
+.tienda__logo { width: 32px; height: 32px; border-radius: 8px; display: grid; place-items: center; background: var(--sobre-acento); color: var(--acento); font-family: var(--t-titulo); flex: none; }
+.tienda__nombre { font-weight: 800; flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tienda__demo { font-size: .66rem; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; background: var(--amarillo); color: var(--tinta); border: 1.5px solid var(--tinta); border-radius: 999px; padding: 1px 8px; }
+.tienda__titulo { font-family: var(--t-titulo); text-transform: uppercase; font-size: 1.5rem; margin: 4px 18px 0; }
+.tienda__lista { list-style: none; padding: 0; display: grid; gap: 8px; margin: 0; }
+.tienda__item { display: grid; grid-template-columns: 44px 1fr auto; gap: 10px; align-items: center; padding: 8px; border: 1.5px solid var(--borde); border-radius: 12px; }
+.tienda__foto { width: 44px; height: 44px; border-radius: 10px; display: grid; place-items: center; background: var(--acento); color: var(--sobre-acento); font-family: var(--t-titulo); font-size: 1.2rem; }
+.tienda__info { display: grid; line-height: 1.25; font-size: .92rem; min-width: 0; }
+.tienda__info b { overflow-wrap: anywhere; }
+.tienda__info span { color: var(--suave); font-weight: 700; }
+.tienda__cantidad { display: inline-flex; align-items: center; gap: 6px; }
+.tienda__cantidad button { width: 36px; height: 36px; border-radius: 50%; border: var(--linea) solid var(--borde); background: var(--tarjeta); color: var(--texto); font-size: 1.2rem; font-weight: 800; cursor: pointer; line-height: 1; }
+.tienda__cantidad button:hover { background: var(--amarillo); color: var(--tinta); }
+.tienda__cantidad output { min-width: 1.4em; text-align: center; font-weight: 800; }
+.tienda label { display: grid; gap: 4px; font-weight: 700; font-size: .9rem; }
+.tienda select, .tienda input { min-height: 44px; padding: 8px 10px; border: var(--linea) solid var(--borde); border-radius: 10px; background: var(--tarjeta); font: inherit; font-weight: 500; width: 100%; }
+.tienda__fila { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.tienda__total { margin: 0 18px; font-size: 1.15rem; }
+.tienda__total b { font-family: var(--t-titulo); font-size: 1.6rem; font-weight: 400; }
+.tienda__nota { margin: 0 18px; font-size: .85rem; color: var(--suave); }
+.tienda__error { margin: 0 18px; color: var(--alerta); font-weight: 700; }
+.tienda__enviar { min-height: 52px; border-radius: 12px; border: var(--linea) solid var(--tinta); background: var(--acento); color: var(--sobre-acento); font: inherit; font-weight: 800; font-size: 1.02rem; cursor: pointer; }
+.tienda__enviar:hover { filter: brightness(1.08); }
+
+/* Planes: para quién y plan de entrada discreto */
+.plan__para { margin: -4px 0 0; font-size: .9rem; color: var(--suave); font-weight: 600; }
+.plan-entrada { margin-top: 16px; display: grid; gap: 12px; align-items: center; padding: 14px 18px; border-style: dashed; }
+@media (min-width: 760px) { .plan-entrada { grid-template-columns: 1fr auto; } }
+.plan-entrada p { margin: 0; }
+.plan-entrada__titulo { font-size: 1rem; }
+.plan-entrada__texto { font-size: .9rem; color: var(--suave); }

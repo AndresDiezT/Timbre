@@ -95,3 +95,41 @@ p { margin: 0 0 1em; }
 
 .flotante { position: fixed; right: 16px; bottom: 16px; z-index: 30; width: 58px; height: 58px; display: grid; place-items: center; border-radius: 50%; background: var(--acento); color: var(--sobre-acento); border: 2px solid var(--sobre-acento); box-shadow: 0 6px 18px rgba(0, 0, 0, .18); }
 .flotante svg { width: 26px; height: 26px; }
+
+/* Pedidos: cantidades, resumen y barra fija */
+.cantidad { display: inline-flex; align-items: center; gap: 6px; }
+.cantidad button { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--texto); background: var(--tarjeta); color: var(--texto); font: inherit; font-size: 1.25rem; font-weight: 800; line-height: 1; cursor: pointer; }
+.cantidad button:hover { background: var(--acento); color: var(--sobre-acento); border-color: var(--acento); }
+.cantidad output { min-width: 1.5em; text-align: center; font-weight: 800; }
+.pedido { background: var(--tarjeta); border: var(--borde-tarjeta); border-radius: var(--radio); padding: 16px; }
+.pedido__vacio { margin: 0; color: var(--suave); }
+.pedido__tabla { width: 100%; border-collapse: collapse; }
+.pedido__tabla td { padding: 8px 4px; border-bottom: var(--borde-fino); vertical-align: top; }
+.pedido__tabla td:last-child { text-align: right; white-space: nowrap; font-weight: 700; }
+.pedido__total td { font-weight: 800; font-size: 1.15rem; border-bottom: 0; }
+.pedido__nota { color: var(--suave); font-size: .92rem; margin-top: 12px; }
+.barra-pedido { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 35; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 10px 10px 16px; background: var(--texto); color: var(--fondo); border-radius: var(--radio-boton); box-shadow: 0 8px 24px rgba(0, 0, 0, .2); font-weight: 800; max-width: 640px; margin-inline: auto; }
+.barra-pedido .boton { min-height: 42px; padding: 6px 16px; }
+body.con-barra .flotante { bottom: 86px; }
+body.con-barra .pie { padding-bottom: 170px; }
+
+/* Formularios de pedido y reserva */
+.formulario select { font: inherit; color: inherit; width: 100%; min-height: 48px; padding: 10px 14px; background: var(--tarjeta); border: var(--borde-campo); border-radius: var(--radio-campo); }
+.opciones { border: 0; padding: 0; margin: 0 0 6px; display: flex; flex-wrap: wrap; gap: 8px; }
+.opciones legend { font-weight: 700; font-size: .95rem; margin-bottom: 6px; width: 100%; }
+.formulario .opcion { display: inline-flex; align-items: center; gap: 8px; margin: 0; padding: 10px 14px; border: var(--borde-campo); border-radius: var(--radio-campo); background: var(--tarjeta); font-weight: 600; cursor: pointer; }
+.opcion input { width: 20px; height: 20px; min-height: 0; accent-color: var(--acento); }
+.fila-dos { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.fila-dos > div { display: grid; gap: 6px; }
+.fila-dos label { margin-top: 8px; }
+
+/* En celular, catálogo compacto para pedir o reservar rápido */
+@media (max-width: 639px) {
+  .catalogo--compacto { gap: 10px; }
+  .catalogo--compacto .producto { display: grid; grid-template-columns: 76px 1fr; align-items: stretch; }
+  .catalogo--compacto .producto__foto { aspect-ratio: auto; min-height: 100%; font-size: 1.5rem; margin: 0; border-radius: 0; }
+  .catalogo--compacto .producto__cuerpo { padding: 12px; gap: 4px; }
+  .catalogo--compacto .producto__cuerpo p { font-size: .88rem; }
+  .catalogo--compacto .producto__pie { padding-top: 6px; }
+}
+@media (max-width: 479px) { .fila-dos { grid-template-columns: 1fr; gap: 0; } }

@@ -1,0 +1,9 @@
+numero,nombre,precio,precio_texto,descripcion,codigo
+1,"Pollo asado entero",42000,"$42.000","Con papa salada, arepa y ají de la casa.",ASADER-01
+2,"Medio pollo",24000,"$24.000","Con papa salada, arepa y ají.",ASADER-02
+3,"Picada para dos",48000,"$48.000","Chorizo, chicharrón, carne, pollo, papa criolla y maduro.",ASADER-03
+4,"Hamburguesa de la casa",22000,"$22.000","Carne de 150 g, queso, tocineta y papas.",ASADER-04
+5,"Salchipapa especial",19000,"$19.000","Papa, salchicha, pollo desmechado, queso y salsas.",ASADER-05
+6,"Almuerzo del día",16000,"$16.000","Sopa, seco, jugo. De martes a viernes al mediodía.",ASADER-06
+7,"Jugo natural en agua",6000,"$6.000","Mora, lulo, maracuyá o mango.",ASADER-07
+8,"Gaseosa 1,5 litros",7000,"$7.000","Varios sabores.",ASADER-08

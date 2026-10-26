@@ -7,56 +7,190 @@
   "ficticio": true,
   "acento": "#0E7480",
   "moneda": "COP",
+  "modulo": "reservas",
   "horario": {
-    "lun": ["07:00", "19:00"], "mar": ["07:00", "19:00"], "mie": ["07:00", "19:00"],
-    "jue": ["07:00", "19:00"], "vie": ["07:00", "19:00"], "sab": ["08:00", "16:00"], "dom": null
+    "lun": [
+      "07:00",
+      "19:00"
+    ],
+    "mar": [
+      "07:00",
+      "19:00"
+    ],
+    "mie": [
+      "07:00",
+      "19:00"
+    ],
+    "jue": [
+      "07:00",
+      "19:00"
+    ],
+    "vie": [
+      "07:00",
+      "19:00"
+    ],
+    "sab": [
+      "08:00",
+      "16:00"
+    ],
+    "dom": null
   },
   "horarioTexto": "lunes a viernes de 7:00 a. m. a 7:00 p. m. y sábados de 8:00 a. m. a 4:00 p. m. Urgencias de plomería, todos los días.",
-  "ubicacion": { "direccion": "Atendemos a domicilio", "barrio": "Toda la ciudad", "ciudad": "Ibagué", "referencia": "Oficina: Calle 37 # 4-18" },
+  "ubicacion": {
+    "direccion": "Atendemos a domicilio",
+    "barrio": "Toda la ciudad",
+    "ciudad": "Ibagué",
+    "referencia": "Oficina: Calle 37 # 4-18"
+  },
   "catalogo": [
-    { "nombre": "Visita técnica y diagnóstico", "descripcion": "Se descuenta si hace el arreglo con nosotros.", "precio": 50000, "precioUSD": 45 },
-    { "nombre": "Destape de cañería", "descripcion": "Lavaplatos, lavamanos o sifón de baño.", "precio": 90000, "precioUSD": 95 },
-    { "nombre": "Mantenimiento de lavadora", "descripcion": "Limpieza interna y revisión general.", "precio": 120000, "precioUSD": 85 },
-    { "nombre": "Instalación de calentador", "descripcion": "Mano de obra, calentador de paso a gas.", "precio": 150000, "precioUSD": 140 },
-    { "nombre": "Arreglo de fuga", "descripcion": "Llaves, tubería expuesta o sanitario.", "precio": 80000, "precioUSD": 90 },
-    { "nombre": "Punto eléctrico nuevo", "descripcion": "Toma o interruptor con materiales básicos.", "precio": 70000, "precioUSD": 75 },
-    { "nombre": "Mantenimiento de nevera", "descripcion": "Limpieza de condensador y revisión de gas.", "precio": 110000, "precioUSD": 95 },
-    { "nombre": "Instalación de lámparas", "descripcion": "Hasta tres lámparas.", "precio": 60000, "precioUSD": 70 }
+    {
+      "nombre": "Visita técnica y diagnóstico",
+      "descripcion": "Se descuenta si hace el arreglo con nosotros.",
+      "precio": 50000
+    },
+    {
+      "nombre": "Destape de cañería",
+      "descripcion": "Lavaplatos, lavamanos o sifón de baño.",
+      "precio": 90000
+    },
+    {
+      "nombre": "Mantenimiento de lavadora",
+      "descripcion": "Limpieza interna y revisión general.",
+      "precio": 120000
+    },
+    {
+      "nombre": "Instalación de calentador",
+      "descripcion": "Mano de obra, calentador de paso a gas.",
+      "precio": 150000
+    },
+    {
+      "nombre": "Arreglo de fuga",
+      "descripcion": "Llaves, tubería expuesta o sanitario.",
+      "precio": 80000
+    },
+    {
+      "nombre": "Punto eléctrico nuevo",
+      "descripcion": "Toma o interruptor con materiales básicos.",
+      "precio": 70000
+    },
+    {
+      "nombre": "Mantenimiento de nevera",
+      "descripcion": "Limpieza de condensador y revisión de gas.",
+      "precio": 110000
+    },
+    {
+      "nombre": "Instalación de lámparas",
+      "descripcion": "Hasta tres lámparas.",
+      "precio": 60000
+    }
   ],
   "faq": [
-    { "pregunta": "¿Cuánto cobran la visita?", "respuesta": "La visita con diagnóstico vale $50.000 y se descuenta si hace el arreglo con nosotros." },
-    { "pregunta": "¿Atienden urgencias?", "respuesta": "Sí, urgencias de plomería todos los días. Escriba \"urgencia\" y su dirección." },
-    { "pregunta": "¿En qué barrios trabajan?", "respuesta": "En toda Ibagué. Para municipios cercanos, consúltenos." },
-    { "pregunta": "¿Los técnicos están certificados?", "respuesta": "Sí. Nuestros técnicos tienen certificación para trabajo con gas y electricidad." },
-    { "pregunta": "¿Dan garantía?", "respuesta": "Sí, tres meses sobre la mano de obra." },
-    { "pregunta": "¿Qué medios de pago reciben?", "respuesta": "Efectivo, Nequi, Bre-B y transferencia al terminar el trabajo." },
-    { "pregunta": "¿Traen los materiales?", "respuesta": "Llevamos lo básico. Si se necesita un repuesto, se lo cotizamos antes de comprarlo." },
-    { "pregunta": "¿Cuándo pueden venir?", "respuesta": "Normalmente el mismo día o al día siguiente. Díganos su dirección y el horario que le sirve." }
+    {
+      "pregunta": "¿Cuánto cobran la visita?",
+      "respuesta": "La visita con diagnóstico vale $50.000 y se descuenta si hace el arreglo con nosotros."
+    },
+    {
+      "pregunta": "¿Atienden urgencias?",
+      "respuesta": "Sí, urgencias de plomería todos los días. Escriba \"urgencia\" y su dirección."
+    },
+    {
+      "pregunta": "¿En qué barrios trabajan?",
+      "respuesta": "En toda Ibagué. Para municipios cercanos, consúltenos."
+    },
+    {
+      "pregunta": "¿Los técnicos están certificados?",
+      "respuesta": "Sí. Nuestros técnicos tienen certificación para trabajo con gas y electricidad."
+    },
+    {
+      "pregunta": "¿Dan garantía?",
+      "respuesta": "Sí, tres meses sobre la mano de obra."
+    },
+    {
+      "pregunta": "¿Qué medios de pago reciben?",
+      "respuesta": "Efectivo, Nequi, Bre-B y transferencia al terminar el trabajo."
+    },
+    {
+      "pregunta": "¿Traen los materiales?",
+      "respuesta": "Llevamos lo básico. Si se necesita un repuesto, se lo cotizamos antes de comprarlo."
+    },
+    {
+      "pregunta": "¿Cuándo pueden venir?",
+      "respuesta": "Normalmente el mismo día o al día siguiente. Díganos su dirección y el horario que le sirve."
+    }
   ],
   "mensajes": {
     "bienvenida": "Hola, gracias por escribir a {negocio}. En un momento le atendemos. Para agendar más rápido, envíenos su dirección, qué necesita arreglar y, si puede, una foto. Aquí están los servicios con precios.",
     "fueraDeHorario": "Hola, gracias por escribir a {negocio}. En este momento estamos fuera de horario. Nuestro horario es {horario}. Déjenos su dirección, qué necesita y una foto, y le confirmamos la visita a primera hora. Si es una urgencia de plomería, escriba la palabra URGENCIA.",
     "respuestasRapidas": [
-      { "atajo": "visita", "texto": "La visita con diagnóstico vale $50.000 y se descuenta si hace el arreglo con nosotros. ¿Qué día le sirve?" },
-      { "atajo": "datos", "texto": "Para agendar necesitamos su nombre, dirección con barrio, qué necesita y una foto si es posible." },
-      { "atajo": "confirmada", "texto": "Su visita quedó agendada. El técnico le escribe 30 minutos antes de llegar." },
-      { "atajo": "encamino", "texto": "El técnico ya va para su casa. Llega en unos 30 minutos." },
-      { "atajo": "pago", "texto": "Puede pagar en efectivo, Nequi, Bre-B o transferencia al terminar el trabajo." },
-      { "atajo": "gracias", "texto": "Gracias por confiar en nosotros. Si quedó contento, nos ayuda mucho con una reseña en Google." }
+      {
+        "atajo": "visita",
+        "texto": "La visita con diagnóstico vale $50.000 y se descuenta si hace el arreglo con nosotros. ¿Qué día le sirve?"
+      },
+      {
+        "atajo": "datos",
+        "texto": "Para agendar necesitamos su nombre, dirección con barrio, qué necesita y una foto si es posible."
+      },
+      {
+        "atajo": "confirmada",
+        "texto": "Su visita quedó agendada. El técnico le escribe 30 minutos antes de llegar."
+      },
+      {
+        "atajo": "encamino",
+        "texto": "El técnico ya va para su casa. Llega en unos 30 minutos."
+      },
+      {
+        "atajo": "pago",
+        "texto": "Puede pagar en efectivo, Nequi, Bre-B o transferencia al terminar el trabajo."
+      },
+      {
+        "atajo": "gracias",
+        "texto": "Gracias por confiar en nosotros. Si quedó contento, nos ayuda mucho con una reseña en Google."
+      }
     ]
   },
-  "etiquetas": ["Nuevo cliente", "Urgencia", "Visita agendada", "Cotización enviada", "Trabajo hecho", "Pagó"],
+  "etiquetas": [
+    "Nuevo cliente",
+    "Urgencia",
+    "Visita agendada",
+    "Cotización enviada",
+    "Trabajo hecho",
+    "Pagó"
+  ],
   "maps": {
     "categoriaPrincipal": "Servicio de reparación de electrodomésticos",
-    "categoriasAdicionales": ["Fontanero", "Electricista", "Servicio de mantenimiento del hogar"],
+    "categoriasAdicionales": [
+      "Fontanero",
+      "Electricista",
+      "Servicio de mantenimiento del hogar"
+    ],
     "descripcion": "Técnicos a domicilio en Ibagué: plomería, electricidad, lavadoras, neveras y calentadores. Visita con diagnóstico que se descuenta del arreglo, garantía de tres meses y urgencias de plomería todos los días. Escríbanos por WhatsApp con una foto y agendamos."
   },
   "conversacion": [
-    { "cliente": "Buenas noches, se me tapó el lavaplatos y está saliendo agua. ¿Pueden venir mañana?", "responde": "catalogo" },
-    { "cliente": "¿Cuánto cobran la visita?", "responde": "faq:0" },
-    { "cliente": "¿A qué hora empiezan?", "responde": "horario" },
-    { "cliente": "¿Dan garantía?", "responde": "faq:4" },
-    { "cliente": "Es urgente, ¿me puede llamar alguien?", "responde": "persona" }
+    {
+      "cliente": "Buenas noches, se me tapó el lavaplatos y está saliendo agua. ¿Pueden venir mañana?",
+      "responde": "catalogo"
+    },
+    {
+      "cliente": "¿Cuánto cobran la visita?",
+      "responde": "faq:0"
+    },
+    {
+      "cliente": "¿A qué hora empiezan?",
+      "responde": "horario"
+    },
+    {
+      "cliente": "¿Dan garantía?",
+      "responde": "faq:4"
+    },
+    {
+      "cliente": "Es urgente, ¿me puede llamar alguien?",
+      "responde": "persona"
+    }
   ],
-  "clientesDemo": ["Gloria P.", "Edwin H.", "Sandra V.", "Fabio N."]
+  "clientesDemo": [
+    "Gloria P.",
+    "Edwin H.",
+    "Sandra V.",
+    "Fabio N."
+  ]
 }

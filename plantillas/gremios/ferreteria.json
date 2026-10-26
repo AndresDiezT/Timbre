@@ -7,57 +7,198 @@
   "ficticio": true,
   "acento": "#B45309",
   "moneda": "COP",
+  "modulo": "pedidos",
   "horario": {
-    "lun": ["07:00", "18:30"], "mar": ["07:00", "18:30"], "mie": ["07:00", "18:30"],
-    "jue": ["07:00", "18:30"], "vie": ["07:00", "18:30"], "sab": ["07:00", "17:00"], "dom": ["08:00", "12:00"]
+    "lun": [
+      "07:00",
+      "18:30"
+    ],
+    "mar": [
+      "07:00",
+      "18:30"
+    ],
+    "mie": [
+      "07:00",
+      "18:30"
+    ],
+    "jue": [
+      "07:00",
+      "18:30"
+    ],
+    "vie": [
+      "07:00",
+      "18:30"
+    ],
+    "sab": [
+      "07:00",
+      "17:00"
+    ],
+    "dom": [
+      "08:00",
+      "12:00"
+    ]
   },
   "horarioTexto": "lunes a viernes de 7:00 a. m. a 6:30 p. m.; sábados de 7:00 a. m. a 5:00 p. m. y domingos de 8:00 a. m. a 12:00 m.",
-  "ubicacion": { "direccion": "Avenida 5 # 14-60", "barrio": "Barrio La Libertad", "ciudad": "Cúcuta", "referencia": "Frente al colegio" },
+  "ubicacion": {
+    "direccion": "Avenida 5 # 14-60",
+    "barrio": "Barrio La Libertad",
+    "ciudad": "Cúcuta",
+    "referencia": "Frente al colegio"
+  },
   "catalogo": [
-    { "nombre": "Cemento gris 50 kg", "descripcion": "Uso general.", "precio": 34000, "precioUSD": 14 },
-    { "nombre": "Pintura vinilo blanco (galón)", "descripcion": "Tipo 1, interior y exterior.", "precio": 68000, "precioUSD": 28 },
-    { "nombre": "Taladro percutor 650 W", "descripcion": "Con estuche y juego de brocas.", "precio": 189000, "precioUSD": 75 },
-    { "nombre": "Tubo PVC sanitario 2\" (3 m)", "descripcion": "Para desagües.", "precio": 32000, "precioUSD": 13 },
-    { "nombre": "Cable eléctrico N.º 12 (metro)", "descripcion": "Cobre, varios colores.", "precio": 3800, "precioUSD": 2 },
-    { "nombre": "Llave de lavamanos cromada", "descripcion": "Con garantía de un año.", "precio": 45000, "precioUSD": 18 },
-    { "nombre": "Juego de destornilladores x 6", "descripcion": "Pala y estrella, mango antideslizante.", "precio": 28000, "precioUSD": 12 },
-    { "nombre": "Candado de seguridad 50 mm", "descripcion": "Con tres llaves.", "precio": 32000, "precioUSD": 13 },
-    { "nombre": "Bombillo LED 12 W", "descripcion": "Luz blanca, caja x 4.", "precio": 22000, "precioUSD": 9 }
+    {
+      "nombre": "Cemento gris 50 kg",
+      "descripcion": "Uso general.",
+      "precio": 34000
+    },
+    {
+      "nombre": "Pintura vinilo blanco (galón)",
+      "descripcion": "Tipo 1, interior y exterior.",
+      "precio": 68000
+    },
+    {
+      "nombre": "Taladro percutor 650 W",
+      "descripcion": "Con estuche y juego de brocas.",
+      "precio": 189000
+    },
+    {
+      "nombre": "Tubo PVC sanitario 2\" (3 m)",
+      "descripcion": "Para desagües.",
+      "precio": 32000
+    },
+    {
+      "nombre": "Cable eléctrico N.º 12 (metro)",
+      "descripcion": "Cobre, varios colores.",
+      "precio": 3800
+    },
+    {
+      "nombre": "Llave de lavamanos cromada",
+      "descripcion": "Con garantía de un año.",
+      "precio": 45000
+    },
+    {
+      "nombre": "Juego de destornilladores x 6",
+      "descripcion": "Pala y estrella, mango antideslizante.",
+      "precio": 28000
+    },
+    {
+      "nombre": "Candado de seguridad 50 mm",
+      "descripcion": "Con tres llaves.",
+      "precio": 32000
+    },
+    {
+      "nombre": "Bombillo LED 12 W",
+      "descripcion": "Luz blanca, caja x 4.",
+      "precio": 22000
+    }
   ],
   "faq": [
-    { "pregunta": "¿Hacen domicilios?", "respuesta": "Sí, en Cúcuta y Villa del Rosario. Gratis en compras desde $150.000 dentro del área urbana." },
-    { "pregunta": "¿Tienen este producto?", "respuesta": "Envíenos la foto o la referencia y le confirmamos disponibilidad y precio." },
-    { "pregunta": "¿Venden por metro?", "respuesta": "Sí: cable, manguera, cadena y malla se venden por metro." },
-    { "pregunta": "¿Hacen cotizaciones para obras?", "respuesta": "Sí. Envíenos la lista de materiales y le respondemos con la cotización el mismo día." },
-    { "pregunta": "¿Qué medios de pago reciben?", "respuesta": "Efectivo, tarjeta, Nequi, Bre-B y transferencia. A empresas, crédito con estudio." },
-    { "pregunta": "¿Mezclan pintura?", "respuesta": "Sí, preparamos el color que necesite en vinilo y esmalte." },
-    { "pregunta": "¿Cortan vidrio o láminas?", "respuesta": "Cortamos lámina de MDF y tubo PVC a la medida. Vidrio no." },
-    { "pregunta": "¿Tienen garantía las herramientas?", "respuesta": "Sí, la garantía del fabricante. Guarde la factura." }
+    {
+      "pregunta": "¿Hacen domicilios?",
+      "respuesta": "Sí, en Cúcuta y Villa del Rosario. Gratis en compras desde $150.000 dentro del área urbana."
+    },
+    {
+      "pregunta": "¿Tienen este producto?",
+      "respuesta": "Envíenos la foto o la referencia y le confirmamos disponibilidad y precio."
+    },
+    {
+      "pregunta": "¿Venden por metro?",
+      "respuesta": "Sí: cable, manguera, cadena y malla se venden por metro."
+    },
+    {
+      "pregunta": "¿Hacen cotizaciones para obras?",
+      "respuesta": "Sí. Envíenos la lista de materiales y le respondemos con la cotización el mismo día."
+    },
+    {
+      "pregunta": "¿Qué medios de pago reciben?",
+      "respuesta": "Efectivo, tarjeta, Nequi, Bre-B y transferencia. A empresas, crédito con estudio."
+    },
+    {
+      "pregunta": "¿Mezclan pintura?",
+      "respuesta": "Sí, preparamos el color que necesite en vinilo y esmalte."
+    },
+    {
+      "pregunta": "¿Cortan vidrio o láminas?",
+      "respuesta": "Cortamos lámina de MDF y tubo PVC a la medida. Vidrio no."
+    },
+    {
+      "pregunta": "¿Tienen garantía las herramientas?",
+      "respuesta": "Sí, la garantía del fabricante. Guarde la factura."
+    }
   ],
   "mensajes": {
     "bienvenida": "Hola, gracias por escribir a {negocio}. En un momento le atendemos. Si busca un producto, envíenos la foto o la referencia. Para obras, mándenos la lista de materiales y se la cotizamos.",
     "fueraDeHorario": "Hola, gracias por escribir a {negocio}. En este momento estamos cerrados. Nuestro horario es {horario}. Le respondemos a primera hora. Déjenos la lista de materiales o la foto del producto y le tenemos la cotización lista.",
     "respuestasRapidas": [
-      { "atajo": "cotizar", "texto": "Con gusto le cotizamos. Envíenos la lista de materiales con cantidades y se la respondemos hoy mismo." },
-      { "atajo": "domicilio", "texto": "Hacemos domicilios en Cúcuta y Villa del Rosario. Gratis desde $150.000 en el área urbana." },
-      { "atajo": "pago", "texto": "Recibimos efectivo, tarjeta, Nequi, Bre-B y transferencia." },
-      { "atajo": "disponible", "texto": "Sí lo tenemos disponible. ¿Se lo apartamos o se lo enviamos?" },
-      { "atajo": "encamino", "texto": "Su pedido ya salió. Llega en la próxima hora." },
-      { "atajo": "gracias", "texto": "Gracias por su compra. Si quedó contento, nos ayuda mucho con una reseña en Google." }
+      {
+        "atajo": "cotizar",
+        "texto": "Con gusto le cotizamos. Envíenos la lista de materiales con cantidades y se la respondemos hoy mismo."
+      },
+      {
+        "atajo": "domicilio",
+        "texto": "Hacemos domicilios en Cúcuta y Villa del Rosario. Gratis desde $150.000 en el área urbana."
+      },
+      {
+        "atajo": "pago",
+        "texto": "Recibimos efectivo, tarjeta, Nequi, Bre-B y transferencia."
+      },
+      {
+        "atajo": "disponible",
+        "texto": "Sí lo tenemos disponible. ¿Se lo apartamos o se lo enviamos?"
+      },
+      {
+        "atajo": "encamino",
+        "texto": "Su pedido ya salió. Llega en la próxima hora."
+      },
+      {
+        "atajo": "gracias",
+        "texto": "Gracias por su compra. Si quedó contento, nos ayuda mucho con una reseña en Google."
+      }
     ]
   },
-  "etiquetas": ["Nuevo cliente", "Cotizar", "Cotización enviada", "Obra", "Domicilio", "Pagó"],
+  "etiquetas": [
+    "Nuevo cliente",
+    "Cotizar",
+    "Cotización enviada",
+    "Obra",
+    "Domicilio",
+    "Pagó"
+  ],
   "maps": {
     "categoriaPrincipal": "Ferretería",
-    "categoriasAdicionales": ["Tienda de materiales de construcción", "Tienda de pinturas", "Tienda de herramientas"],
+    "categoriasAdicionales": [
+      "Tienda de materiales de construcción",
+      "Tienda de pinturas",
+      "Tienda de herramientas"
+    ],
     "descripcion": "Ferretería de barrio en La Libertad con materiales de construcción, pintura, herramientas, plomería y electricidad. Mezclamos pintura, cortamos tubo y MDF a la medida y cotizamos obras el mismo día. Domicilios en Cúcuta y Villa del Rosario. Pida por WhatsApp."
   },
   "conversacion": [
-    { "cliente": "Buenas, ¿tienen cemento y pintura blanca? Necesito para mañana temprano.", "responde": "catalogo" },
-    { "cliente": "¿Hacen domicilio?", "responde": "faq:0" },
-    { "cliente": "¿A qué hora abren?", "responde": "horario" },
-    { "cliente": "¿Dónde quedan?", "responde": "ubicacion" },
-    { "cliente": "Tengo una lista grande, ¿me atiende alguien?", "responde": "persona" }
+    {
+      "cliente": "Buenas, ¿tienen cemento y pintura blanca? Necesito para mañana temprano.",
+      "responde": "catalogo"
+    },
+    {
+      "cliente": "¿Hacen domicilio?",
+      "responde": "faq:0"
+    },
+    {
+      "cliente": "¿A qué hora abren?",
+      "responde": "horario"
+    },
+    {
+      "cliente": "¿Dónde quedan?",
+      "responde": "ubicacion"
+    },
+    {
+      "cliente": "Tengo una lista grande, ¿me atiende alguien?",
+      "responde": "persona"
+    }
   ],
-  "clientesDemo": ["Don Álvaro", "Wilmer C.", "Constructora Ejemplo", "Rosa E."]
+  "clientesDemo": [
+    "Don Álvaro",
+    "Wilmer C.",
+    "Constructora Ejemplo",
+    "Rosa E."
+  ]
 }

@@ -11,7 +11,8 @@
      imagenes/catalogo/*.png          una imagen de 1080×1080 por producto
      qr/qr-whatsapp.svg|png           QR que abre WhatsApp con el mensaje ya escrito
      qr/qr-resenas.svg|png            QR para pedir reseñas en Google (si hay enlace)
-     pagina/index.html                página web del plan Pro, autónoma
+     pagina/index.html                página del negocio con pedidos o reservas, autónoma
+     pagina/recordatorios.html        herramienta del dueño para recordatorios (Reservas)
      lista-de-verificacion.md         pasos de la entrega
 */
 'use strict';
@@ -120,9 +121,9 @@ function main() {
     creados.push('qr/qr-resenas.svg', 'qr/qr-resenas.png');
   }
 
-  // Página web (plan Pro)
-  const plan = n.negocio.plan || 'esencial';
-  if (plan === 'pro' || a.pagina) {
+  // Página del negocio (Pedidos, Reservas y Asistente)
+  const plan = n.negocio.plan || 'arranque';
+  if (plan !== 'arranque' || a.pagina) {
     const estilo = a.estilo || n.negocio.estiloPagina || 'sobrio';
     const dirEstilos = path.join(RAIZ, 'plantillas/pagina-negocio/estilos');
     const css = fs.readFileSync(path.join(dirEstilos, 'base.css'), 'utf8') + '\n' + fs.readFileSync(path.join(dirEstilos, `${Pagina.ESTILOS[estilo] ? estilo : 'sobrio'}.css`), 'utf8');
@@ -130,7 +131,12 @@ function main() {
     const imagenes = {};
     n.catalogo.forEach((item, i) => { if (item.imagen) imagenes[i] = path.basename(item.imagen); });
     escribir('pagina/index.html', Pagina.render(n, { estilo, css, qrResenas, imagenes }));
-    creados.push(`pagina/index.html (estilo ${estilo})`);
+    const modulo = Pagina.moduloDe(n);
+    creados.push(`pagina/index.html (estilo ${estilo}${modulo ? `, con ${modulo}` : ''})`);
+    if (modulo === 'reservas') {
+      escribir('pagina/recordatorios.html', Pagina.renderRecordatorios(n, { estilo, css }));
+      creados.push('pagina/recordatorios.html');
+    }
   } else {
     fs.rmSync(path.join(destino, 'pagina'), { recursive: true, force: true });
   }

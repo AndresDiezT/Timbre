@@ -19,7 +19,7 @@ Textos listos para copiar en la app de WhatsApp Business → *Herramientas para 
 **Descripción** (≤ 512 caracteres):
 
 ```
-Dejamos el WhatsApp y su negocio en Google Maps listos para responder solos, de día y de noche. Perfil completo, catálogo con fotos y precios, bienvenida, mensaje fuera de horario, respuestas rápidas, etiquetas, código QR y capacitación gratuita. También hacemos automatizaciones y desarrollos a la medida: citas, tiendas en línea, pedidos y asistentes virtuales con IA. Nadie se queda sin respuesta.
+Sus clientes piden o reservan desde el celular y todo le llega completo al WhatsApp, sin comisiones. Dejamos lista la página de pedidos o reservas de su negocio, su WhatsApp Business y su negocio en Google Maps, con capacitación gratuita. También hacemos asistentes virtuales con IA y desarrollos a la medida. Nadie se queda sin respuesta.
 ```
 
 **Info / Acerca de** (≤ 139):
@@ -74,17 +74,21 @@ Se usan escribiendo «/» en el chat.
 **/planes**
 
 ```
-Estos son nuestros planes, con pago único:
+Estos son nuestros planes:
 
-Esencial · $600.000 · entrega en 5 días hábiles
-WhatsApp Business con perfil completo y catálogo con fotos y precios, bienvenida y mensaje fuera de horario, respuestas rápidas y etiquetas, su negocio en Google Maps, código QR y capacitación gratuita.
+Pedidos · $390.000 de instalación + $59.000 al mes
+Para restaurantes, panaderías, tiendas y ferreterías. Una página de su negocio con catálogo y carrito: el cliente arma su pedido y a usted le llega completo al WhatsApp, con el total. Sin comisiones.
 
-Pro · $900.000 · entrega en 7 a 10 días hábiles
-Todo lo del Esencial, más una página web sencilla con botón de WhatsApp y formulario, y un QR para pedir reseñas en Google. El dominio se paga aparte.
+Reservas · $390.000 de instalación + $59.000 al mes
+Para barberías, talleres, gimnasios y técnicos. El cliente elige servicio, día y hora, y la solicitud le llega lista para confirmar. Recordatorios con un toque.
 
-Mantenimiento opcional: $80.000 al mes, hasta 5 cambios, sin permanencia.
+Los dos incluyen WhatsApp Business completo, su negocio en Google Maps, códigos QR y capacitación gratuita. Listos en 5 días hábiles. La mensualidad es sin permanencia.
 
-También están en el catálogo de este WhatsApp. ¿Qué negocio tiene?
+Asistente con IA · $790.000 + $149.000 al mes, para negocios con muchos mensajes.
+¿Solo lo básico? Arranque · $200.000, pago único.
+
+Pruébelo aquí: https://timbre-demo.netlify.app/#probar
+¿Qué negocio tiene?
 ```
 
 **/video**
@@ -92,13 +96,13 @@ También están en el catálogo de este WhatsApp. ¿Qué negocio tiene?
 ```
 Aquí puede ver en un minuto cómo queda el WhatsApp de un negocio con Timbre: [ENLACE VIDEO]
 
-Y aquí puede probar la demostración usted mismo, moviendo la hora del día: https://timbre-demo.netlify.app/
+Y aquí puede armar un pedido de prueba usted mismo y ver cómo le llega al negocio: https://timbre-demo.netlify.app/#probar
 ```
 
 **/pago**
 
 ```
-Se paga 50% al empezar y 50% al entregar, por Bre-B o transferencia.
+La instalación se paga 50% al empezar y 50% al entregar, por Bre-B o transferencia. La mensualidad se paga por adelantado cada mes y puede cancelarla cuando quiera.
 
 Nuestra garantía: el saldo lo paga cuando lo vea funcionando. Si algo no queda como acordamos, lo corregimos antes de que pague el resto.
 ```
@@ -111,7 +115,6 @@ Para desarrollos a la medida (citas y reservas, tienda en línea, pedidos e inve
 Es una llamada corta: usted nos cuenta cómo trabaja hoy y qué le quita más tiempo, y le enviamos una propuesta con precio. ¿Qué día y a qué hora le queda bien?
 ```
 
-> Para clientes de Puerto Rico y EE. UU. en español, cambie los precios de /planes a US$300 (Esencial), US$450 (Pro) y US$40 al mes (Mantenimiento), y en /pago use «por transferencia o tarjeta».
 
 ## 5. Etiquetas
 
@@ -132,10 +135,11 @@ Herramientas para la empresa → Catálogo → Agregar artículo. Un artículo p
 
 | Imagen | Nombre | Precio | Descripción |
 |---|---|---|---|
-| `catalogo/co/01-esencial.png` | Plan Esencial | $600.000 | Pago único. WhatsApp Business completo, su negocio en Google Maps, QR y capacitación gratuita. Entrega en 5 días hábiles. |
-| `catalogo/co/02-pro.png` | Plan Pro | $900.000 | Pago único. Todo lo del Esencial, más página web con botón de WhatsApp y formulario, y QR de reseñas. Entrega en 7 a 10 días hábiles. Dominio aparte. |
-| `catalogo/co/03-mantenimiento.png` | Mantenimiento | $80.000 | Al mes. Hasta 5 cambios pequeños, revisión mensual y soporte. Sin permanencia. Cambio adicional $15.000. |
-| `catalogo/co/04-medida.png` | Desarrollo a la medida | (sin precio) | Citas, tiendas en línea, pedidos e inventario, asistentes virtuales con IA. Se cotiza tras un diagnóstico sin costo. |
+| `catalogo/co/01-pedidos.png` | Pedidos | $390.000 | Instalación + $59.000 al mes, sin permanencia. Página con catálogo y carrito: el pedido llega completo al WhatsApp, sin comisiones. Incluye WhatsApp Business, Google Maps, QR y capacitación. Listo en 5 días hábiles. |
+| `catalogo/co/02-reservas.png` | Reservas | $390.000 | Instalación + $59.000 al mes, sin permanencia. El cliente elige servicio, día y hora; la solicitud llega lista para confirmar. Recordatorios con un toque. Incluye WhatsApp Business, Google Maps, QR y capacitación. |
+| `catalogo/co/03-asistente.png` | Asistente con IA | $790.000 | Instalación + $149.000 al mes. Todo lo de Pedidos o Reservas, más un asistente virtual que responde con la información del negocio. |
+| `catalogo/co/04-medida.png` | Desarrollo a la medida | (sin precio) | Tiendas en línea, pedidos e inventario, conexión entre programas. Diagnóstico sin costo. |
+| `catalogo/co/05-arranque.png` | Arranque | $200.000 | Pago único. WhatsApp Business completo, su negocio en Google Maps, QR y capacitación. Listo en 3 días hábiles. |
 
 Las imágenes salen de `config/planes.json`. Si cambia un precio, regenérelas con:
 
@@ -143,4 +147,4 @@ Las imágenes salen de `config/planes.json`. Si cambia un precio, regenérelas c
 node scripts/catalogo-timbre.js
 ```
 
-También se generan las versiones `catalogo/usd/` (Puerto Rico y EE. UU. en español) y `catalogo/en/` (inglés).
+También se genera la versión `catalogo/en/` (inglés). Puerto Rico y EE. UU. en español están desactivados (`config/planes.json → mercadosDesactivados`).

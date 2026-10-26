@@ -7,56 +7,193 @@
   "ficticio": true,
   "acento": "#9A5B13",
   "moneda": "COP",
+  "modulo": "pedidos",
   "horario": {
-    "lun": ["06:00", "20:00"], "mar": ["06:00", "20:00"], "mie": ["06:00", "20:00"],
-    "jue": ["06:00", "20:00"], "vie": ["06:00", "20:00"], "sab": ["06:00", "20:00"], "dom": ["06:30", "13:00"]
+    "lun": [
+      "06:00",
+      "20:00"
+    ],
+    "mar": [
+      "06:00",
+      "20:00"
+    ],
+    "mie": [
+      "06:00",
+      "20:00"
+    ],
+    "jue": [
+      "06:00",
+      "20:00"
+    ],
+    "vie": [
+      "06:00",
+      "20:00"
+    ],
+    "sab": [
+      "06:00",
+      "20:00"
+    ],
+    "dom": [
+      "06:30",
+      "13:00"
+    ]
   },
   "horarioTexto": "lunes a sábado de 6:00 a. m. a 8:00 p. m. y domingos de 6:30 a. m. a 1:00 p. m.",
-  "ubicacion": { "direccion": "Calle 10 # 7-22", "barrio": "Barrio Centro", "ciudad": "Pereira", "referencia": "Frente a la iglesia" },
+  "ubicacion": {
+    "direccion": "Calle 10 # 7-22",
+    "barrio": "Barrio Centro",
+    "ciudad": "Pereira",
+    "referencia": "Frente a la iglesia"
+  },
   "catalogo": [
-    { "nombre": "Torta de cumpleaños (libra)", "descripcion": "Vainilla, chocolate o tres leches. Personalizada con nombre.", "precio": 45000, "precioUSD": 25 },
-    { "nombre": "Torta de cumpleaños (dos libras)", "descripcion": "Para 20 personas. Decoración a elección.", "precio": 85000, "precioUSD": 45 },
-    { "nombre": "Pan de bono x 10", "descripcion": "Recién horneado, con queso costeño.", "precio": 12000, "precioUSD": 7 },
-    { "nombre": "Almojábanas x 10", "descripcion": "Suaves, de cuajada.", "precio": 13000, "precioUSD": 7 },
-    { "nombre": "Pan tajado integral", "descripcion": "Masa madre, 600 g.", "precio": 9000, "precioUSD": 5 },
-    { "nombre": "Ponqué casero", "descripcion": "Ponqué de naranja o marmoleado, 1 libra.", "precio": 18000, "precioUSD": 10 },
-    { "nombre": "Desayuno sorpresa", "descripcion": "Caja con fruta, jugo, sándwich, postre y tarjeta. Domicilio incluido.", "precio": 65000, "precioUSD": 35 },
-    { "nombre": "Cupcakes x 6", "descripcion": "Decorados con el tema que quiera.", "precio": 30000, "precioUSD": 16 }
+    {
+      "nombre": "Torta de cumpleaños (libra)",
+      "descripcion": "Vainilla, chocolate o tres leches. Personalizada con nombre.",
+      "precio": 45000
+    },
+    {
+      "nombre": "Torta de cumpleaños (dos libras)",
+      "descripcion": "Para 20 personas. Decoración a elección.",
+      "precio": 85000
+    },
+    {
+      "nombre": "Pan de bono x 10",
+      "descripcion": "Recién horneado, con queso costeño.",
+      "precio": 12000
+    },
+    {
+      "nombre": "Almojábanas x 10",
+      "descripcion": "Suaves, de cuajada.",
+      "precio": 13000
+    },
+    {
+      "nombre": "Pan tajado integral",
+      "descripcion": "Masa madre, 600 g.",
+      "precio": 9000
+    },
+    {
+      "nombre": "Ponqué casero",
+      "descripcion": "Ponqué de naranja o marmoleado, 1 libra.",
+      "precio": 18000
+    },
+    {
+      "nombre": "Desayuno sorpresa",
+      "descripcion": "Caja con fruta, jugo, sándwich, postre y tarjeta. Domicilio incluido.",
+      "precio": 65000
+    },
+    {
+      "nombre": "Cupcakes x 6",
+      "descripcion": "Decorados con el tema que quiera.",
+      "precio": 30000
+    }
   ],
   "faq": [
-    { "pregunta": "¿Con cuánto tiempo encargo una torta?", "respuesta": "Con dos días de anticipación. Para tortas de tres pisos o temáticas, con una semana." },
-    { "pregunta": "¿Cuánto vale una torta de cumpleaños?", "respuesta": "La de una libra vale $45.000 y la de dos libras $85.000. El precio incluye el nombre y una decoración sencilla." },
-    { "pregunta": "¿Hacen domicilios?", "respuesta": "Sí, en Pereira y Dosquebradas. El valor depende del barrio; desde $5.000." },
-    { "pregunta": "¿Cómo pago el encargo?", "respuesta": "Con el 50% al encargar por Nequi, Bre-B o transferencia, y el resto al recoger." },
-    { "pregunta": "¿Tienen productos sin azúcar?", "respuesta": "Sí, pan integral y torta de zanahoria endulzada con stevia, por encargo." },
-    { "pregunta": "¿A qué hora sale el pan caliente?", "respuesta": "A las 6:00 a. m. y otra vez a las 4:00 p. m." },
-    { "pregunta": "¿Hacen desayunos sorpresa?", "respuesta": "Sí, con un día de anticipación. Incluye domicilio y tarjeta con su mensaje." },
-    { "pregunta": "¿Puedo enviar una foto de la torta que quiero?", "respuesta": "Claro, envíenos la foto y le decimos el precio y si alcanzamos para la fecha." }
+    {
+      "pregunta": "¿Con cuánto tiempo encargo una torta?",
+      "respuesta": "Con dos días de anticipación. Para tortas de tres pisos o temáticas, con una semana."
+    },
+    {
+      "pregunta": "¿Cuánto vale una torta de cumpleaños?",
+      "respuesta": "La de una libra vale $45.000 y la de dos libras $85.000. El precio incluye el nombre y una decoración sencilla."
+    },
+    {
+      "pregunta": "¿Hacen domicilios?",
+      "respuesta": "Sí, en Pereira y Dosquebradas. El valor depende del barrio; desde $5.000."
+    },
+    {
+      "pregunta": "¿Cómo pago el encargo?",
+      "respuesta": "Con el 50% al encargar por Nequi, Bre-B o transferencia, y el resto al recoger."
+    },
+    {
+      "pregunta": "¿Tienen productos sin azúcar?",
+      "respuesta": "Sí, pan integral y torta de zanahoria endulzada con stevia, por encargo."
+    },
+    {
+      "pregunta": "¿A qué hora sale el pan caliente?",
+      "respuesta": "A las 6:00 a. m. y otra vez a las 4:00 p. m."
+    },
+    {
+      "pregunta": "¿Hacen desayunos sorpresa?",
+      "respuesta": "Sí, con un día de anticipación. Incluye domicilio y tarjeta con su mensaje."
+    },
+    {
+      "pregunta": "¿Puedo enviar una foto de la torta que quiero?",
+      "respuesta": "Claro, envíenos la foto y le decimos el precio y si alcanzamos para la fecha."
+    }
   ],
   "mensajes": {
     "bienvenida": "Hola, gracias por escribir a {negocio}. En un momento le atendemos. Aquí puede ver tortas, panes y desayunos sorpresa con precios. Para encargos, díganos la fecha, el sabor y para cuántas personas.",
     "fueraDeHorario": "Hola, gracias por escribir a {negocio}. En este momento estamos cerrados. Nuestro horario es {horario}. Le respondemos a primera hora. Mientras tanto, aquí está el catálogo; si es un encargo, déjenos la fecha, el sabor y para cuántas personas.",
     "respuestasRapidas": [
-      { "atajo": "tortas", "texto": "Torta de una libra $45.000 · Dos libras $85.000. Sabores: vainilla, chocolate y tres leches. Encargos con dos días de anticipación." },
-      { "atajo": "encargo", "texto": "Para separar su encargo necesitamos: fecha, sabor, número de personas y el nombre que lleva. Se separa con el 50%." },
-      { "atajo": "pago", "texto": "Puede pagar por Nequi, Bre-B o transferencia. Le enviamos los datos por aquí." },
-      { "atajo": "domicilio", "texto": "Hacemos domicilios en Pereira y Dosquebradas desde $5.000. ¿A qué barrio sería?" },
-      { "atajo": "listo", "texto": "Su pedido ya está listo para recoger. Lo esperamos." },
-      { "atajo": "gracias", "texto": "Gracias por su compra. Si le gustó, nos ayuda mucho con una reseña en Google." }
+      {
+        "atajo": "tortas",
+        "texto": "Torta de una libra $45.000 · Dos libras $85.000. Sabores: vainilla, chocolate y tres leches. Encargos con dos días de anticipación."
+      },
+      {
+        "atajo": "encargo",
+        "texto": "Para separar su encargo necesitamos: fecha, sabor, número de personas y el nombre que lleva. Se separa con el 50%."
+      },
+      {
+        "atajo": "pago",
+        "texto": "Puede pagar por Nequi, Bre-B o transferencia. Le enviamos los datos por aquí."
+      },
+      {
+        "atajo": "domicilio",
+        "texto": "Hacemos domicilios en Pereira y Dosquebradas desde $5.000. ¿A qué barrio sería?"
+      },
+      {
+        "atajo": "listo",
+        "texto": "Su pedido ya está listo para recoger. Lo esperamos."
+      },
+      {
+        "atajo": "gracias",
+        "texto": "Gracias por su compra. Si le gustó, nos ayuda mucho con una reseña en Google."
+      }
     ]
   },
-  "etiquetas": ["Nuevo cliente", "Encargo", "Abonó 50%", "Pagó", "Domicilio", "Cliente frecuente"],
+  "etiquetas": [
+    "Nuevo cliente",
+    "Encargo",
+    "Abonó 50%",
+    "Pagó",
+    "Domicilio",
+    "Cliente frecuente"
+  ],
   "maps": {
     "categoriaPrincipal": "Panadería",
-    "categoriasAdicionales": ["Pastelería", "Tienda de tortas", "Cafetería"],
+    "categoriasAdicionales": [
+      "Pastelería",
+      "Tienda de tortas",
+      "Cafetería"
+    ],
     "descripcion": "Panadería y pastelería del centro de Pereira. Pan caliente a las 6:00 a. m. y a las 4:00 p. m., tortas de cumpleaños personalizadas, cupcakes y desayunos sorpresa con domicilio. Encargue por WhatsApp y vea el catálogo con precios."
   },
   "conversacion": [
-    { "cliente": "Hola, ¿me pueden hacer una torta para el sábado? Para unas 15 personas.", "responde": "catalogo" },
-    { "cliente": "¿Con cuánto tiempo tengo que encargarla?", "responde": "faq:0" },
-    { "cliente": "¿A qué hora abren?", "responde": "horario" },
-    { "cliente": "¿Cómo pago?", "responde": "faq:3" },
-    { "cliente": "¿Puedo hablar con alguien para mandarle una foto?", "responde": "persona" }
+    {
+      "cliente": "Hola, ¿me pueden hacer una torta para el sábado? Para unas 15 personas.",
+      "responde": "catalogo"
+    },
+    {
+      "cliente": "¿Con cuánto tiempo tengo que encargarla?",
+      "responde": "faq:0"
+    },
+    {
+      "cliente": "¿A qué hora abren?",
+      "responde": "horario"
+    },
+    {
+      "cliente": "¿Cómo pago?",
+      "responde": "faq:3"
+    },
+    {
+      "cliente": "¿Puedo hablar con alguien para mandarle una foto?",
+      "responde": "persona"
+    }
   ],
-  "clientesDemo": ["Marcela O.", "Paula H.", "Jorge E.", "Natalia S."]
+  "clientesDemo": [
+    "Marcela O.",
+    "Paula H.",
+    "Jorge E.",
+    "Natalia S."
+  ]
 }

@@ -4,9 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Timbre · Nadie se queda sin respuesta</title>
-  <meta name="description" content="Dejamos el WhatsApp y su negocio en Google Maps listos para responder solos, a cualquier hora. Configuración, catálogo, mensajes automáticos y capacitación gratuita.">
+  <meta name="description" content="Sus clientes piden o reservan desde el celular y todo le llega completo al WhatsApp, sin comisiones. WhatsApp Business, Google Maps y respuesta a cualquier hora.">
   <meta property="og:title" content="Timbre · Nadie se queda sin respuesta">
-  <meta property="og:description" content="Su WhatsApp y su negocio en Google Maps, listos para responder solos.">
+  <meta property="og:description" content="Pedidos y reservas que llegan completos a su WhatsApp, sin comisiones.">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#FFC933">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
@@ -25,7 +25,7 @@
         <img class="logo__campana" src="assets/img/campana.svg" alt="" width="38" height="38">Timbre
       </a>
       <nav class="barra__nav" aria-label="Principal">
-        <a href="#demo">Demostración</a>
+        <a href="#probar">Pruébelo</a>
         <a href="#gremios">Gremios</a>
         <a href="#calculadora">Calculadora</a>
         <a href="#planes">Planes</a>
@@ -35,7 +35,6 @@
         <label class="solo-lector" for="mercado">País y moneda</label>
         <select id="mercado" class="selector">
           <option value="co">Colombia</option>
-          <option value="usd">PR y EE. UU.</option>
           <option value="en">English</option>
         </select>
         <button class="icono-boton" type="button" data-tema aria-label="Cambiar entre modo claro y oscuro">
@@ -50,19 +49,19 @@
     <section class="portada" id="demo" aria-labelledby="titulo-portada">
       <div class="contenedor portada__fila">
         <div class="portada__texto">
-          <span class="pildora">WhatsApp + Google Maps</span>
+          <span class="pildora">Pedidos y reservas por WhatsApp</span>
           <h1 id="titulo-portada">Nadie se queda <span class="subrayado">sin respuesta</span></h1>
-          <p class="entradilla">Dejamos el WhatsApp y su negocio en Google Maps listos para responder solos, de día y de noche. Usted atiende cuando pueda: su cliente ya recibió respuesta.</p>
+          <p class="entradilla">Sus clientes le escriben, piden o reservan desde el celular, y todo le llega completo y ordenado al WhatsApp, a cualquier hora. Sin comisiones por pedido.</p>
           <div class="botones">
             <a class="boton boton--primario js-whatsapp" href="https://wa.me/573143319442">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-5 4v-4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>
               Escribir por WhatsApp
             </a>
-            <a class="boton" href="#planes">Ver planes y precios</a>
+            <a class="boton" href="#probar">Probar un pedido</a>
           </div>
           <ul class="portada__puntos">
-            <li>Entrega en 5 días hábiles</li>
-            <li>Capacitación gratuita</li>
+            <li>Sin comisiones por pedido</li>
+            <li>Listo en 5 días hábiles, con capacitación gratuita</li>
             <li>El saldo lo paga cuando lo vea funcionando</li>
           </ul>
         </div>
@@ -91,8 +90,28 @@
       </div>
     </section>
 
+    <!-- Pruébelo: pedido o reserva que llega al WhatsApp -->
+    <section class="seccion seccion--alterna" id="probar" aria-labelledby="titulo-probar">
+      <div class="contenedor">
+        <div class="seccion__cabeza">
+          <span class="pildora">Pruébelo usted</span>
+          <h2 id="titulo-probar">Así le llega un pedido</h2>
+          <p class="entradilla">Arme un pedido como si fuera su cliente y mire cómo llega al WhatsApp del negocio: completo, con el total y sin comisiones.</p>
+        </div>
+        <div class="probar__pestanas" role="group" aria-label="Elegir demostración">
+          <button type="button" class="boton boton--chico" data-probar="pedidos" aria-pressed="true">Pedidos · restaurante</button>
+          <button type="button" class="boton boton--chico" data-probar="reservas" aria-pressed="false">Reservas · barbería</button>
+        </div>
+        <div class="probar__fila">
+          <div id="tienda-demo"></div>
+          <div id="telefono-probar"></div>
+        </div>
+        <p class="pequeno suave">Demostración de Timbre con negocios ficticios. No se envía nada: todo pasa en su pantalla.</p>
+      </div>
+    </section>
+
     <!-- Antes y después -->
-    <section class="seccion seccion--alterna" aria-labelledby="titulo-antes">
+    <section class="seccion" aria-labelledby="titulo-antes">
       <div class="contenedor">
         <div class="seccion__cabeza">
           <span class="pildora">Antes y después</span>
@@ -115,7 +134,7 @@
     </section>
 
     <!-- Su negocio en Google Maps -->
-    <section class="seccion" aria-labelledby="titulo-mapa">
+    <section class="seccion seccion--alterna" aria-labelledby="titulo-mapa">
       <div class="contenedor mapa-seccion">
         <div>
           <span class="pildora">Google Maps</span>
@@ -137,23 +156,23 @@
         <div class="rejilla rejilla--4">
           <article class="tarjeta servicio">
             <span class="servicio__num">01</span>
-            <h3>WhatsApp Business completo</h3>
-            <p>Perfil, catálogo con fotos y precios, bienvenida, mensaje fuera de horario, respuestas rápidas y etiquetas para organizar a sus clientes.</p>
+            <h3>Pedidos sin comisiones</h3>
+            <p>Una página de su negocio con catálogo y carrito. El cliente arma su pedido y a usted le llega completo al WhatsApp, con el total.</p>
           </article>
           <article class="tarjeta servicio">
             <span class="servicio__num">02</span>
-            <h3>Su negocio en Google Maps</h3>
-            <p>Que lo encuentren cuando buscan cerca: con horario, fotos, dirección y un botón para escribirle por WhatsApp.</p>
+            <h3>Reservas con recordatorios</h3>
+            <p>El cliente elige servicio, día y hora. Usted confirma con un toque y el día anterior le envía el recordatorio, también con un toque.</p>
           </article>
           <article class="tarjeta servicio">
             <span class="servicio__num">03</span>
-            <h3>Códigos QR</h3>
-            <p>Un QR para la vitrina y para Instagram que abre su WhatsApp con el mensaje ya escrito. En el plan Pro, otro para pedir reseñas.</p>
+            <h3>WhatsApp y Google Maps</h3>
+            <p>Perfil, catálogo, bienvenida, mensaje fuera de horario, respuestas rápidas y etiquetas. Y su negocio en Google Maps con botón de WhatsApp.</p>
           </article>
           <article class="tarjeta servicio">
             <span class="servicio__num">04</span>
-            <h3>Automatizaciones a la medida</h3>
-            <p>Citas y reservas, tiendas en línea, pedidos e inventario y asistentes virtuales con IA. Se cotiza tras un diagnóstico sin costo.</p>
+            <h3>Asistente con IA</h3>
+            <p>Para negocios con muchos mensajes: responde por WhatsApp con la información de su negocio y le avisa cuando alguien pide una persona.</p>
           </article>
         </div>
       </div>
@@ -223,9 +242,10 @@
         <div class="seccion__cabeza">
           <span class="pildora" id="planes-mercado">Colombia · COP</span>
           <h2 id="titulo-planes">Planes y precios</h2>
-          <p class="entradilla">Pago único, sin mensualidad obligatoria. <span id="planes-modalidad"></span></p>
+          <p class="entradilla">Una instalación y una mensualidad pequeña, sin permanencia. <span id="planes-modalidad"></span></p>
         </div>
         <div class="planes" id="lista-planes"></div>
+        <div class="plan-entrada tarjeta" id="plan-entrada" hidden></div>
         <div class="rejilla rejilla--2 planes__extra">
           <div class="tarjeta">
             <h3>Cómo se paga</h3>
@@ -258,12 +278,12 @@
           <li class="tarjeta">
             <span class="pasos__num">2</span>
             <h3>Lo configuramos</h3>
-            <p>Con el 50% empezamos. En 5 días hábiles dejamos su WhatsApp y su negocio en Google Maps listos, junto con usted y en su celular.</p>
+            <p>Con el 50% empezamos. En 5 días hábiles dejamos lista la página de pedidos o reservas, su WhatsApp y su negocio en Google Maps, junto con usted.</p>
           </li>
           <li class="tarjeta">
             <span class="pasos__num">3</span>
             <h3>Lo ve funcionando</h3>
-            <p>Le enseñamos a manejarlo con la capacitación gratuita y paga el saldo cuando compruebe que responde solo.</p>
+            <p>Le enseñamos a manejarlo con la capacitación gratuita y paga el saldo cuando le llegue el primer pedido o reserva de prueba.</p>
           </li>
         </ol>
       </div>
@@ -337,6 +357,7 @@
 
   <script src="assets/js/timbre.js" data-raiz="./"></script>
   <script src="assets/js/telefono.js"></script>
+  <script src="assets/js/tienda-demo.js"></script>
   <script src="assets/js/inicio.js"></script>
 </body>
 </html>

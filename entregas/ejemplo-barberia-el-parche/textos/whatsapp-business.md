@@ -50,7 +50,7 @@ Hola, gracias por escribir a Barbería El Parche. Ya recibimos su mensaje y en u
 Herramientas para la empresa → Mensaje de ausencia → Activar → Horario: «Fuera del horario comercial».
 
 ```
-Hola, gracias por escribir a Barbería El Parche. En este momento estamos cerrados. Nuestro horario es lunes a jueves de 9:00 a. m. a 8:00 p. m.; viernes de 9:00 a. m. a 9:00 p. m.; sábados de 8:00 a. m. a 9:00 p. m. y domingos de 10:00 a. m. a 3:00 p. m.. Le respondemos apenas abramos. Mientras tanto, aquí está el catálogo con precios; si quiere cita, déjenos el día y la hora y se la confirmamos.
+Hola, gracias por escribir a Barbería El Parche. En este momento estamos cerrados. Nuestro horario es lunes a jueves de 9:00 a. m. a 8:00 p. m.; viernes de 9:00 a. m. a 9:00 p. m.; sábados de 8:00 a. m. a 9:00 p. m. y domingos de 10:00 a. m. a 3:00 p. m. Le respondemos apenas abramos. Mientras tanto, aquí está el catálogo con precios; si quiere cita, déjenos el día y la hora y se la confirmamos.
 ```
 
 ## 4. Respuestas rápidas

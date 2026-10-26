@@ -7,6 +7,7 @@
   "ficticio": true,
   "acento": "#0F4C81",
   "moneda": "COP",
+  "modulo": "reservas",
   "horario": {
     "lun": [
       "09:00",
@@ -48,50 +49,42 @@
     {
       "nombre": "Corte clásico",
       "descripcion": "Corte a tijera o máquina, lavado y peinado.",
-      "precio": 25000,
-      "precioUSD": 15
+      "precio": 25000
     },
     {
       "nombre": "Corte y barba",
       "descripcion": "Corte completo más arreglo de barba con toalla caliente.",
-      "precio": 38000,
-      "precioUSD": 22
+      "precio": 38000
     },
     {
       "nombre": "Arreglo de barba",
       "descripcion": "Perfilado, rebajado y aceite para barba.",
-      "precio": 18000,
-      "precioUSD": 12
+      "precio": 18000
     },
     {
       "nombre": "Corte infantil",
       "descripcion": "Para niños hasta 12 años.",
-      "precio": 20000,
-      "precioUSD": 12
+      "precio": 20000
     },
     {
       "nombre": "Cejas con navaja",
       "descripcion": "Perfilado de cejas.",
-      "precio": 8000,
-      "precioUSD": 6
+      "precio": 8000
     },
     {
       "nombre": "Mascarilla negra",
       "descripcion": "Limpieza facial de puntos negros, 20 minutos.",
-      "precio": 15000,
-      "precioUSD": 10
+      "precio": 15000
     },
     {
       "nombre": "Tinte para barba",
       "descripcion": "Cubre canas, color natural.",
-      "precio": 30000,
-      "precioUSD": 18
+      "precio": 30000
     },
     {
       "nombre": "Plan novio",
       "descripcion": "Corte, barba, cejas y mascarilla el día del matrimonio.",
-      "precio": 70000,
-      "precioUSD": 45
+      "precio": 70000
     }
   ],
   "faq": [
@@ -205,7 +198,7 @@
   "negocio": {
     "dueno": "Jhon Fredy Ríos (ficticio)",
     "mercado": "co",
-    "plan": "pro",
+    "plan": "reservas",
     "estiloPagina": "moderno",
     "direccion": "Carrera 70 # 44-21, local 102",
     "barrio": "Laureles",
@@ -241,6 +234,7 @@
     "enlaceResenas": "https://example.com/resenas-ficticias/barberia-el-parche",
     "mensajeQR": "Hola, vi su código QR y quiero apartar un turno.",
     "descripcionWhatsapp": "",
-    "info": "Cortes y barba con cita. Respondemos al instante."
+    "info": "Cortes y barba con cita. Respondemos al instante.",
+    "intervaloReservas": 30
   }
 }

@@ -33,7 +33,9 @@ Datos que faltan o decisiones por confirmar. En los archivos aparecen como `[AS�
 - [ ] Los ejemplos usan números ficticios (`+57 300 000 0000`, `+1 787 555 0123`) y enlaces de reseñas de `example.com`. En clientes reales, el generador avisa si falta el enlace de reseñas y no crea ese QR.
 - [ ] La categoría del perfil de WhatsApp Business se elige de una lista cerrada en la app: el generador pone el nombre del gremio como guía; escoja la más parecida.
 - [ ] La verificación del negocio en Google Maps la hace Google y puede tardar varios días: no depende de Timbre. Avisarle al dueño.
-- [ ] El formulario de la página Pro no usa servidor: abre WhatsApp con el mensaje ya escrito y exige la autorización de datos. Si un cliente quiere recibir los formularios por correo o en una hoja, eso es la automatización E1 (Fase 3).
+- [ ] La página del negocio no usa servidor: el pedido, la reserva y el formulario abren WhatsApp con el mensaje ya escrito y exigen la autorización de datos. Si un cliente quiere además recibirlos en una hoja o por correo, eso es la automatización E1.
+- [ ] Las reservas son **solicitudes**: la página muestra las horas en que el negocio abre, pero no sabe qué horas ya están ocupadas. El dueño confirma cada una por WhatsApp. Si un cliente necesita agenda con disponibilidad real, es desarrollo a la medida.
+- [ ] La página de recordatorios guarda las citas solo en el navegador del celular del dueño. Si cambia de celular o borra los datos, se pierden: explicárselo en la capacitación.
 
 ## Automatizaciones
 
@@ -50,6 +52,13 @@ Datos que faltan o decisiones por confirmar. En los archivos aparecen como `[AS�
 - [ ] `upwork/perfil.md`: definir `[TARIFA POR HORA]`.
 - [ ] Capturas y video del portafolio de Upwork (lista de tomas en `upwork/portafolio.md`).
 
+## Nueva oferta (validar en 3 semanas)
+
+- [ ] Validar precios con las asesoras: una ofrece Pedidos o Reservas a $390.000 y otra a $450.000, anotando cada visita (ver `estudio/nueva-oferta.md`, sección 7).
+- [ ] Definir la comisión de las asesoras. Sugerida: 20% de la instalación y $10.000 por cada uno de los primeros 3 meses de mensualidad pagada.
+- [ ] Medir el costo real del plan Asistente con el primer cliente (IA, servidor de automatización y mensajes de Meta) antes de dejar fijo el precio.
+- [ ] Hojas de planes impresas: actualizarlas con los precios nuevos (no están en este repositorio).
+
 ## Contenido
 
 - [ ] Testimonios reales con permiso escrito del dueño → `config/marca.json → testimonios`. Mientras esté vacío, la sección queda oculta.
@@ -61,5 +70,7 @@ Datos que faltan o decisiones por confirmar. En los archivos aparecen como `[AS�
 - La calculadora pide un cuarto dato, «de cada 10 que preguntan, ¿cuántos compran?» (3 por defecto), para que la estimación no suponga que cada mensaje sin responder es una venta perdida. Usa 30 días al mes.
 - En la demo de la página principal el negocio es la panadería ficticia, porque a las 9:47 p. m. está cerrada y se ve el mensaje fuera de horario.
 - El modo interactivo del simulador aclara que responder cualquier pregunta es un asistente virtual con IA (desarrollo a la medida); el modo automático muestra solo lo que incluye el plan Esencial (bienvenida, fuera de horario, catálogo y respuestas rápidas que el dueño envía).
-- Para el mercado USD en español se usan los mismos gremios con un precio de referencia en dólares (`precioUSD`).
+- Puerto Rico y EE. UU. en español quedaron desactivados (guardados en `config/planes.json → mercadosDesactivados`). Se quitaron los precios en dólares de los gremios en español y el ejemplo de Puerto Rico.
+- La mensualidad de Pedidos y Reservas incluye hasta 5 cambios al mes; cada cambio adicional cuesta $15.000 (el valor del antiguo mantenimiento).
+- En la demo de la portada, el negocio es una panadería (Pedidos); en «Así le llega un pedido», un asadero (Pedidos) y una barbería (Reservas).
 - El tema claro/oscuro sigue al sistema; el botón de la luna lo cambia y se recuerda en el navegador. El sonido nunca se recuerda: siempre empieza apagado.

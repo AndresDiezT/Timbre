@@ -7,57 +7,198 @@
   "ficticio": true,
   "acento": "#A3246F",
   "moneda": "COP",
+  "modulo": "pedidos",
   "horario": {
-    "lun": ["09:00", "19:00"], "mar": ["09:00", "19:00"], "mie": ["09:00", "19:00"],
-    "jue": ["09:00", "19:00"], "vie": ["09:00", "20:00"], "sab": ["09:00", "20:00"], "dom": ["10:00", "14:00"]
+    "lun": [
+      "09:00",
+      "19:00"
+    ],
+    "mar": [
+      "09:00",
+      "19:00"
+    ],
+    "mie": [
+      "09:00",
+      "19:00"
+    ],
+    "jue": [
+      "09:00",
+      "19:00"
+    ],
+    "vie": [
+      "09:00",
+      "20:00"
+    ],
+    "sab": [
+      "09:00",
+      "20:00"
+    ],
+    "dom": [
+      "10:00",
+      "14:00"
+    ]
   },
   "horarioTexto": "lunes a jueves de 9:00 a. m. a 7:00 p. m.; viernes y sábados hasta las 8:00 p. m.; domingos de 10:00 a. m. a 2:00 p. m.",
-  "ubicacion": { "direccion": "Calle 19 # 5-48, local 110", "barrio": "Centro Comercial El Puente", "ciudad": "Cali", "referencia": "Primer piso, junto a las escaleras eléctricas" },
+  "ubicacion": {
+    "direccion": "Calle 19 # 5-48, local 110",
+    "barrio": "Centro Comercial El Puente",
+    "ciudad": "Cali",
+    "referencia": "Primer piso, junto a las escaleras eléctricas"
+  },
   "catalogo": [
-    { "nombre": "Jean dama tiro alto", "descripcion": "Tallas 6 a 16. Azul clásico y negro.", "precio": 89000, "precioUSD": 35 },
-    { "nombre": "Blusa de lino", "descripcion": "Fresca, tallas S a XL. Cinco colores.", "precio": 59000, "precioUSD": 24 },
-    { "nombre": "Vestido midi estampado", "descripcion": "Tallas S a L. Ideal para eventos de día.", "precio": 119000, "precioUSD": 45 },
-    { "nombre": "Conjunto deportivo", "descripcion": "Licra y top, tallas S a XL.", "precio": 95000, "precioUSD": 38 },
-    { "nombre": "Camisa hombre manga larga", "descripcion": "Algodón, tallas S a XXL.", "precio": 79000, "precioUSD": 30 },
-    { "nombre": "Chaqueta de jean", "descripcion": "Unisex, tallas S a XL.", "precio": 135000, "precioUSD": 52 },
-    { "nombre": "Pijama de algodón", "descripcion": "Short y blusa, tallas S a XL.", "precio": 55000, "precioUSD": 22 },
-    { "nombre": "Bolso de mano", "descripcion": "Cuero sintético, tres colores.", "precio": 75000, "precioUSD": 30 },
-    { "nombre": "Tarjeta de regalo", "descripcion": "Desde $50.000, válida por seis meses.", "precio": 50000, "precioUSD": 20 }
+    {
+      "nombre": "Jean dama tiro alto",
+      "descripcion": "Tallas 6 a 16. Azul clásico y negro.",
+      "precio": 89000
+    },
+    {
+      "nombre": "Blusa de lino",
+      "descripcion": "Fresca, tallas S a XL. Cinco colores.",
+      "precio": 59000
+    },
+    {
+      "nombre": "Vestido midi estampado",
+      "descripcion": "Tallas S a L. Ideal para eventos de día.",
+      "precio": 119000
+    },
+    {
+      "nombre": "Conjunto deportivo",
+      "descripcion": "Licra y top, tallas S a XL.",
+      "precio": 95000
+    },
+    {
+      "nombre": "Camisa hombre manga larga",
+      "descripcion": "Algodón, tallas S a XXL.",
+      "precio": 79000
+    },
+    {
+      "nombre": "Chaqueta de jean",
+      "descripcion": "Unisex, tallas S a XL.",
+      "precio": 135000
+    },
+    {
+      "nombre": "Pijama de algodón",
+      "descripcion": "Short y blusa, tallas S a XL.",
+      "precio": 55000
+    },
+    {
+      "nombre": "Bolso de mano",
+      "descripcion": "Cuero sintético, tres colores.",
+      "precio": 75000
+    },
+    {
+      "nombre": "Tarjeta de regalo",
+      "descripcion": "Desde $50.000, válida por seis meses.",
+      "precio": 50000
+    }
   ],
   "faq": [
-    { "pregunta": "¿Hacen envíos?", "respuesta": "Sí, a todo el país. En Cali llega el mismo día o al siguiente; a otras ciudades en 2 a 4 días hábiles." },
-    { "pregunta": "¿Cuánto vale el envío?", "respuesta": "En Cali $8.000 y a otras ciudades desde $14.000. Compras desde $250.000 tienen envío gratis." },
-    { "pregunta": "¿Tienen esta prenda en mi talla?", "respuesta": "Envíenos la foto o el nombre de la prenda y su talla, y le confirmamos la disponibilidad." },
-    { "pregunta": "¿Puedo cambiar una prenda?", "respuesta": "Sí, dentro de los 15 días siguientes, sin uso y con etiqueta. Los cambios son por talla, color u otra prenda." },
-    { "pregunta": "¿Qué medios de pago reciben?", "respuesta": "Efectivo, tarjeta, Nequi, Daviplata, Bre-B y pago contra entrega en Cali." },
-    { "pregunta": "¿Venden al por mayor?", "respuesta": "Sí, desde 12 prendas surtidas. Pida la lista de precios al por mayor." },
-    { "pregunta": "¿Cada cuánto llega mercancía nueva?", "respuesta": "Cada quince días. La publicamos primero en el estado de WhatsApp y en Instagram." },
-    { "pregunta": "¿Me apartan una prenda?", "respuesta": "Sí, se la apartamos hasta por 48 horas sin costo." }
+    {
+      "pregunta": "¿Hacen envíos?",
+      "respuesta": "Sí, a todo el país. En Cali llega el mismo día o al siguiente; a otras ciudades en 2 a 4 días hábiles."
+    },
+    {
+      "pregunta": "¿Cuánto vale el envío?",
+      "respuesta": "En Cali $8.000 y a otras ciudades desde $14.000. Compras desde $250.000 tienen envío gratis."
+    },
+    {
+      "pregunta": "¿Tienen esta prenda en mi talla?",
+      "respuesta": "Envíenos la foto o el nombre de la prenda y su talla, y le confirmamos la disponibilidad."
+    },
+    {
+      "pregunta": "¿Puedo cambiar una prenda?",
+      "respuesta": "Sí, dentro de los 15 días siguientes, sin uso y con etiqueta. Los cambios son por talla, color u otra prenda."
+    },
+    {
+      "pregunta": "¿Qué medios de pago reciben?",
+      "respuesta": "Efectivo, tarjeta, Nequi, Daviplata, Bre-B y pago contra entrega en Cali."
+    },
+    {
+      "pregunta": "¿Venden al por mayor?",
+      "respuesta": "Sí, desde 12 prendas surtidas. Pida la lista de precios al por mayor."
+    },
+    {
+      "pregunta": "¿Cada cuánto llega mercancía nueva?",
+      "respuesta": "Cada quince días. La publicamos primero en el estado de WhatsApp y en Instagram."
+    },
+    {
+      "pregunta": "¿Me apartan una prenda?",
+      "respuesta": "Sí, se la apartamos hasta por 48 horas sin costo."
+    }
   ],
   "mensajes": {
     "bienvenida": "Hola, gracias por escribir a {negocio}. En un momento le atendemos. Aquí puede ver las prendas con precios. Si busca algo en especial, envíenos la foto y su talla.",
     "fueraDeHorario": "Hola, gracias por escribir a {negocio}. En este momento estamos cerrados. Nuestro horario es {horario}. Le respondemos apenas abramos. Mientras tanto, mire el catálogo con precios y déjenos la foto de la prenda y su talla.",
     "respuestasRapidas": [
-      { "atajo": "tallas", "texto": "Manejamos tallas S a XL en blusas y 6 a 16 en jeans. ¿Qué talla usa normalmente?" },
-      { "atajo": "envio", "texto": "Enviamos a todo el país. Cali $8.000; otras ciudades desde $14.000. Gratis en compras desde $250.000." },
-      { "atajo": "pago", "texto": "Puede pagar con tarjeta, Nequi, Daviplata, Bre-B o contra entrega en Cali." },
-      { "atajo": "cambios", "texto": "Tiene 15 días para cambios, sin uso y con etiqueta." },
-      { "atajo": "apartado", "texto": "Listo, se la apartamos por 48 horas. Puede pasar por ella o pedirla por envío." },
-      { "atajo": "gracias", "texto": "Gracias por su compra. Si le gustó, nos ayuda mucho con una reseña en Google." }
+      {
+        "atajo": "tallas",
+        "texto": "Manejamos tallas S a XL en blusas y 6 a 16 en jeans. ¿Qué talla usa normalmente?"
+      },
+      {
+        "atajo": "envio",
+        "texto": "Enviamos a todo el país. Cali $8.000; otras ciudades desde $14.000. Gratis en compras desde $250.000."
+      },
+      {
+        "atajo": "pago",
+        "texto": "Puede pagar con tarjeta, Nequi, Daviplata, Bre-B o contra entrega en Cali."
+      },
+      {
+        "atajo": "cambios",
+        "texto": "Tiene 15 días para cambios, sin uso y con etiqueta."
+      },
+      {
+        "atajo": "apartado",
+        "texto": "Listo, se la apartamos por 48 horas. Puede pasar por ella o pedirla por envío."
+      },
+      {
+        "atajo": "gracias",
+        "texto": "Gracias por su compra. Si le gustó, nos ayuda mucho con una reseña en Google."
+      }
     ]
   },
-  "etiquetas": ["Nuevo cliente", "Preguntó talla", "Apartado", "Envío pendiente", "Pagó", "Mayorista"],
+  "etiquetas": [
+    "Nuevo cliente",
+    "Preguntó talla",
+    "Apartado",
+    "Envío pendiente",
+    "Pagó",
+    "Mayorista"
+  ],
   "maps": {
     "categoriaPrincipal": "Tienda de ropa",
-    "categoriasAdicionales": ["Tienda de ropa para mujer", "Boutique", "Tienda de jeans"],
+    "categoriasAdicionales": [
+      "Tienda de ropa para mujer",
+      "Boutique",
+      "Tienda de jeans"
+    ],
     "descripcion": "Almacén de ropa para dama y caballero en el Centro Comercial El Puente. Jeans, blusas, vestidos, ropa deportiva y accesorios con mercancía nueva cada quince días. Envíos a todo el país, apartados y cambios fáciles. Escríbanos por WhatsApp para ver tallas y precios."
   },
   "conversacion": [
-    { "cliente": "Hola, ¿el jean tiro alto lo tienen en talla 10? ¿Hacen envíos a Palmira?", "responde": "catalogo" },
-    { "cliente": "¿Cuánto vale el envío?", "responde": "faq:1" },
-    { "cliente": "¿A qué hora abren?", "responde": "horario" },
-    { "cliente": "¿Puedo cambiarlo si no me queda?", "responde": "faq:3" },
-    { "cliente": "Quiero hablar con una asesora.", "responde": "persona" }
+    {
+      "cliente": "Hola, ¿el jean tiro alto lo tienen en talla 10? ¿Hacen envíos a Palmira?",
+      "responde": "catalogo"
+    },
+    {
+      "cliente": "¿Cuánto vale el envío?",
+      "responde": "faq:1"
+    },
+    {
+      "cliente": "¿A qué hora abren?",
+      "responde": "horario"
+    },
+    {
+      "cliente": "¿Puedo cambiarlo si no me queda?",
+      "responde": "faq:3"
+    },
+    {
+      "cliente": "Quiero hablar con una asesora.",
+      "responde": "persona"
+    }
   ],
-  "clientesDemo": ["Valentina A.", "Yuliana P.", "Carolina M.", "Mónica R."]
+  "clientesDemo": [
+    "Valentina A.",
+    "Yuliana P.",
+    "Carolina M.",
+    "Mónica R."
+  ]
 }

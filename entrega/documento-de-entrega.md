@@ -1,6 +1,6 @@
 # Documento de entrega · [NOMBRE DEL NEGOCIO]
 
-**Fecha:** [FECHA] · **Plan:** [ESENCIAL / PRO] · **Recibe:** [NOMBRE DEL DUEÑO] · **Entrega:** Andres Diez, Timbre
+**Fecha:** [FECHA] · **Plan:** [PEDIDOS / RESERVAS / ASISTENTE / ARRANQUE] · **Recibe:** [NOMBRE DEL DUEÑO] · **Entrega:** Andres Diez, Timbre
 
 ## Lo que quedó funcionando
 
@@ -23,11 +23,13 @@
 ### Códigos QR
 
 - [x] QR de WhatsApp con mensaje ya escrito (archivo `qr-whatsapp.png`), probado.
-- [ ] Plan Pro: QR de reseñas (archivo `qr-resenas.png`), probado.
+- [ ] QR de reseñas (archivo `qr-resenas.png`), probado.
 
-### Plan Pro
+### Página del negocio (Pedidos, Reservas o Asistente)
 
-- [ ] Página web publicada en: [URL].
+- [ ] Página publicada en: [URL].
+- [ ] Pedidos: pedido de prueba recibido completo en el WhatsApp.
+- [ ] Reservas: reserva de prueba recibida y página de recordatorios guardada en el celular del dueño.
 - [ ] Formulario con autorización de datos, probado.
 - [ ] Dominio [DOMINIO] a nombre de [TITULAR], vence el [FECHA].
 
@@ -42,7 +44,7 @@ Todas las cuentas están a nombre del negocio. El dueño tiene el control total.
 | Cuenta | Titular | Acceso de Timbre |
 |---|---|---|
 | WhatsApp Business | [NÚMERO] | Ninguno |
-| Perfil de Google | [CORREO] | [Retirado / Administrador mientras dure el mantenimiento] |
+| Perfil de Google | [CORREO] | [Retirado / Administrador mientras pague la mensualidad] |
 | Página web / hosting | [CUENTA] | [Retirado / Colaborador] |
 | n8n o Make | [CUENTA] | [Retirado / Colaborador] |
 
@@ -53,7 +55,8 @@ Realizada el [FECHA], [EN PERSONA / POR VIDEOLLAMADA]. Temas: respuestas rápida
 ## Garantía y soporte
 
 - Si algo de lo entregado deja de funcionar por la configuración, lo corregimos sin costo durante [30] días.
-- Cambios nuevos: plan de mantenimiento ([$80.000 / US$40] al mes, hasta 5 cambios, sin permanencia) o [$15.000 / US$10] por cambio.
+- Mensualidad: [$59.000 / $149.000] al mes, sin permanencia. Incluye hasta 5 cambios al mes; cada cambio adicional cuesta $15.000.
+- Si deja de pagar la mensualidad, todo sigue funcionando a su nombre, pero sin actualizaciones.
 
 ## Pagos
 

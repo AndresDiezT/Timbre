@@ -48,7 +48,7 @@ Detalle: [QUÉ DEBE PASAR, PASO A PASO, DESDE QUE LLEGA EL CLIENTE HASTA QUE TER
 
 - Problema principal en una frase: [ ]
 - Solución propuesta: [ ]
-- ¿Encaja en un plan existente (Esencial, Pro o automatizaciones E1–E5)? [ ]
+- ¿Encaja en un plan existente (Pedidos, Reservas, Asistente o automatizaciones E1–E5)? [ ]
 - Esfuerzo estimado: [HORAS O DÍAS]
 - Riesgos o dudas: [ ]
 - Propuesta enviada el: [FECHA]

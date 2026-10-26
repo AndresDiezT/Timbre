@@ -17,7 +17,7 @@
   }
   const { marca, planes, gremios } = datos;
   const asesora = T.asesora(marca);
-  const mercado = T.mercado(planes, ['co', 'usd']);
+  const mercado = 'co';
   const moneda = planes.mercados[mercado].moneda;
 
   const estado = {
@@ -148,13 +148,23 @@
         { tipo: 'negocio', texto: g.mensajes.fueraDeHorario, auto: true, espera: 0 },
         { tipo: 'catalogo', espera: 1400 }
       ] },
-      { sub: 'También el horario, para que sepa cuándo lo atienden.', pasos: [
-        { tipo: 'horario', espera: 600 }
-      ] },
+      g.modulo === 'reservas'
+        ? { sub: 'Desde la página del negocio pide su cita: servicio, día y hora. Llega lista para confirmar.', pasos: [
+          { tipo: 'reserva', datos: TimbreTelefono.reservaDemo(g, { dia: 'mar' }), espera: 900 },
+          panelPaso(() => { Panel.contacto('c1', { texto: 'Solicitud de reserva', hora: hN, etiqueta: et[1] }); })
+        ] }
+        : g.modulo === 'pedidos'
+          ? { sub: 'Desde la página del negocio arma su pedido. Llega completo, con el total y sin comisiones.', pasos: [
+            { tipo: 'pedido', datos: TimbreTelefono.pedidoDemo(g), espera: 900 },
+            panelPaso(() => { Panel.contacto('c1', { texto: 'Pedido desde la página', hora: hN, etiqueta: et[1] }); })
+          ] }
+          : { sub: 'También el horario, para que sepa cuándo lo atienden.', pasos: [
+            { tipo: 'horario', espera: 600 }
+          ] },
       { sub: `${hM} El dueño abre el celular y encuentra todo organizado con etiquetas.`, pasos: [
         { tipo: 'reloj', minutos: manana, dia: 'mie', espera: 300 },
         { tipo: 'fecha', texto: 'Al día siguiente', espera: 300 },
-        panelPaso(() => { Panel.contacto('c1', { hora: hM, etiqueta: et[1] }); Panel.alerta(`${c1} escribió anoche y ya recibió respuesta.`); })
+        panelPaso(() => { Panel.contacto('c1', { hora: hM }); Panel.alerta(`${c1} escribió anoche, ya recibió respuesta y su ${g.modulo === 'reservas' ? 'solicitud' : 'pedido'} está completo.`); })
       ] },
       { sub: 'Con una respuesta rápida, contesta en segundos.', pasos: [
         { tipo: 'negocio', texto: rapida.texto, rapida: rapida.atajo, espera: 1200 }
@@ -273,8 +283,8 @@
     $('#d-play').hidden = estado.modo !== 'auto';
     $('#d-reiniciar').hidden = estado.modo !== 'auto';
     $('#nota-modo').textContent = estado.modo === 'interactivo'
-      ? 'Modo interactivo: responder a cualquier pregunta así es lo que hace un asistente virtual con IA (desarrollo a la medida). Los planes Esencial y Pro incluyen la bienvenida, el mensaje fuera de horario, el catálogo y las respuestas rápidas.'
-      : 'Modo automático: muestra lo que incluye el plan Esencial. La bienvenida y el mensaje fuera de horario se envían solos; el dueño contesta lo demás con respuestas rápidas.';
+      ? 'Modo interactivo: responder a cualquier pregunta así es lo que hace el plan Asistente, con un asistente virtual con IA. Pedidos y Reservas incluyen la bienvenida, el mensaje fuera de horario, las respuestas rápidas y la página donde el cliente arma su pedido o pide su cita.'
+      : 'Modo automático: muestra lo que incluyen Pedidos y Reservas. La bienvenida y el mensaje fuera de horario se envían solos, el pedido o la cita llegan completos desde la página del negocio y el dueño contesta lo demás con respuestas rápidas.';
   }
 
   function arrancar() {

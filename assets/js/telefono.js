@@ -27,6 +27,21 @@
       horarioRespuesta: (h) => `Nuestro horario es ${h}`,
       ubicacionRespuesta: (u) => `Estamos en ${u}.`,
       respondido: 'Respondido al instante, sin que nadie estuviera pendiente',
+      avisoPedido: 'Pedido completo, con el total. Sin comisiones.',
+      avisoReserva: 'Reserva lista para confirmar con un toque.',
+      pedirPagina: 'Pedir desde la página',
+      pedido: 'Pedido desde la página',
+      reserva: 'Solicitud de reserva',
+      total: 'Total',
+      entrega: 'Entrega',
+      pago: 'Pago',
+      servicio: 'Servicio',
+      dia: 'Día',
+      hora: 'Hora',
+      nombre: 'A nombre de',
+      domicilio: 'Domicilio',
+      manana: 'Mañana',
+      confirmar: '¿Me confirman, por favor?',
       hoyFecha: 'Hoy',
       acciones: 'Pregunte como cliente',
       botones: { catalogo: 'Ver catálogo', horario: 'Horario', precios: 'Precios', ubicacion: 'Ubicación', persona: 'Hablar con una persona' },
@@ -50,6 +65,21 @@
       horarioRespuesta: (h) => `Our hours: ${h}`,
       ubicacionRespuesta: (u) => `We're at ${u}.`,
       respondido: 'Answered instantly, with nobody watching the phone',
+      avisoPedido: 'Complete order with the total. No commissions.',
+      avisoReserva: 'Booking request ready to confirm in one tap.',
+      pedirPagina: 'Order from the website',
+      pedido: 'Order from the website',
+      reserva: 'Booking request',
+      total: 'Total',
+      entrega: 'Delivery',
+      pago: 'Payment',
+      servicio: 'Service',
+      dia: 'Day',
+      hora: 'Time',
+      nombre: 'Name',
+      domicilio: 'Delivery',
+      manana: 'Tomorrow',
+      confirmar: 'Can you confirm, please?',
       hoyFecha: 'Today',
       acciones: 'Ask like a customer',
       botones: { catalogo: 'See services', horario: 'Hours', precios: 'Prices', ubicacion: 'Location', persona: 'Talk to a person' },
@@ -136,7 +166,8 @@
     async esperarPausa() { while (this.pausa) await this.pausa; }
 
     vars() {
-      return { negocio: this.negocio.nombre, horario: this.negocio.horarioTexto };
+      // El horario va seguido de punto en las plantillas: se quita el punto final para no duplicarlo.
+      return { negocio: this.negocio.nombre, horario: String(this.negocio.horarioTexto || '').replace(/\.\s*$/, '') };
     }
 
     horaTexto() { return T.hora(Math.floor(this.minutos / 60), this.minutos % 60, this.o.idioma); }
@@ -179,7 +210,7 @@
         </div>`).join('');
       this.agregar(`<div class="msj__titulo">${tx.catalogo} · ${T.esc(neg.nombre)}</div>
         <div class="catalogo-mini">${items}</div>
-        <div class="msj__boton">${T.esc(tx.productos(neg.catalogo.length))}</div>${this.pie(`<span class="msj__auto">${tx.auto}</span>`)}`, 'msj msj--negocio msj--tarjeta');
+        <div class="msj__boton">${T.esc(neg.modulo === 'pedidos' ? tx.pedirPagina : tx.productos(neg.catalogo.length))}</div>${this.pie(`<span class="msj__auto">${tx.auto}</span>`)}`, 'msj msj--negocio msj--tarjeta');
     }
 
     precio(p) {
@@ -198,6 +229,28 @@
       this.agregar(`<div class="msj__titulo">${this.tx.ubicacion}</div><div class="mapa-mini" aria-hidden="true"><span></span></div>
         <p><b>${T.esc(u.direccion || '')}</b><br>${T.esc([u.barrio, u.ciudad].filter(Boolean).join(', '))}${u.referencia ? `<br><small>${T.esc(u.referencia)}</small>` : ''}</p>
         <div class="msj__boton">${this.tx.abrirMapa}</div>${this.pie(`<span class="msj__auto">${this.tx.auto}</span>`)}`, 'msj msj--negocio msj--tarjeta');
+    }
+
+    /** Pedido armado en la página del negocio: llega como un solo mensaje ordenado. */
+    pedido(d) {
+      const tx = this.tx;
+      const moneda = this.o.moneda || this.negocio.moneda;
+      const lineas = d.items.map((it) => `<tr><td>${it.cantidad} × ${T.esc(it.nombre)}</td><td>${T.esc(T.dinero(it.precio * it.cantidad, moneda, this.o.idioma))}</td></tr>`).join('');
+      this.agregar(`<div class="msj__titulo">${tx.pedido}</div>
+        <table class="pedido-mini"><tbody>${lineas}<tr class="pedido-mini__total"><td>${tx.total}</td><td>${T.esc(T.dinero(d.total, moneda, this.o.idioma))}</td></tr></tbody></table>
+        <p class="pedido-mini__datos">${tx.entrega}: ${T.esc(d.entrega)} · ${tx.pago}: ${T.esc(d.pago)}<br>${tx.nombre}: ${T.esc(d.nombre)}</p>${this.pie()}`, 'msj msj--cliente msj--tarjeta');
+      if (this.campana) T.sonar(this.campana);
+      this.emitir('mensaje', { texto: `${tx.pedido}: ${d.items.length} productos · ${T.dinero(d.total, moneda, this.o.idioma)}`, tipo: 'pedido' });
+    }
+
+    /** Solicitud de reserva hecha en la página del negocio. */
+    reserva(d) {
+      const tx = this.tx;
+      this.agregar(`<div class="msj__titulo">${tx.reserva}</div>
+        <p class="pedido-mini__datos">${tx.servicio}: <b>${T.esc(d.servicio)}</b><br>${tx.dia}: ${T.esc(d.dia)}<br>${tx.hora}: ${T.esc(d.hora)}<br>${tx.nombre}: ${T.esc(d.nombre)}</p>
+        <p class="pedido-mini__datos">${tx.confirmar}</p>${this.pie()}`, 'msj msj--cliente msj--tarjeta');
+      if (this.campana) T.sonar(this.campana);
+      this.emitir('mensaje', { texto: `${tx.reserva}: ${d.servicio} · ${d.dia} ${d.hora}`, tipo: 'reserva' });
     }
 
     precios() {
@@ -236,6 +289,8 @@
           case 'horario': this.horario(); break;
           case 'ubicacion': this.ubicacion(); break;
           case 'precios': this.precios(); break;
+          case 'pedido': this.pedido(paso.datos); break;
+          case 'reserva': this.reserva(paso.datos); break;
           case 'aviso': this.aviso(paso.texto); break;
           case 'fecha': this.fecha(paso.texto); break;
           case 'reloj': this.setReloj(paso.minutos, paso.dia); break;
@@ -252,16 +307,65 @@
     static guionLlegada(negocio, { minutos = 21 * 60 + 47, dia = 'mar', idioma = 'es', moneda = null } = {}) {
       const tx = TEXTOS[idioma] || TEXTOS.es;
       const abierto = T.abierto(negocio, dia, minutos);
-      return [
+      const inicio = [
         { tipo: 'reloj', minutos, dia, espera: 0 },
         { tipo: 'fecha', espera: 0 },
         { tipo: 'cliente', texto: negocio.conversacion[0].cliente, espera: 500 },
         { tipo: 'escribiendo', ms: 700 },
-        { tipo: 'negocio', texto: abierto ? negocio.mensajes.bienvenida : negocio.mensajes.fueraDeHorario, auto: true, espera: 0 },
+        { tipo: 'negocio', texto: abierto ? negocio.mensajes.bienvenida : negocio.mensajes.fueraDeHorario, auto: true, espera: 0 }
+      ];
+      if (negocio.modulo === 'pedidos') {
+        return inicio.concat(
+          { tipo: 'catalogo', espera: 450 },
+          { tipo: 'pedido', datos: TimbreTelefono.pedidoDemo(negocio, { idioma }), espera: 1500 },
+          { tipo: 'aviso', texto: tx.avisoPedido, espera: 500 }
+        );
+      }
+      if (negocio.modulo === 'reservas') {
+        return inicio.concat(
+          { tipo: 'horario', espera: 450 },
+          { tipo: 'reserva', datos: TimbreTelefono.reservaDemo(negocio, { dia, idioma }), espera: 1500 },
+          { tipo: 'aviso', texto: tx.avisoReserva, espera: 500 }
+        );
+      }
+      return inicio.concat(
         { tipo: 'catalogo', espera: 450 },
         { tipo: 'horario', espera: 450 },
         { tipo: 'aviso', texto: tx.respondido, espera: 500 }
-      ];
+      );
+    }
+
+    /** Pedido de ejemplo con los primeros productos del catálogo. */
+    static pedidoDemo(negocio, { idioma = 'es' } = {}) {
+      const tx = TEXTOS[idioma] || TEXTOS.es;
+      const conPrecio = negocio.catalogo.filter((p) => p.precio > 0).slice(0, 2);
+      const items = conPrecio.map((p, i) => ({ nombre: p.nombre, precio: p.precio, cantidad: i === 0 ? 1 : 2 }));
+      const pagos = (negocio.negocio && negocio.negocio.mediosPago) || [];
+      return {
+        items,
+        total: items.reduce((t, it) => t + it.precio * it.cantidad, 0),
+        entrega: tx.domicilio,
+        pago: pagos[1] || pagos[0] || (idioma === 'en' ? 'Card' : 'Transferencia'),
+        nombre: (negocio.clientesDemo || ['Laura M.'])[0]
+      };
+    }
+
+    /** Reserva de ejemplo: primer servicio, al día siguiente, una hora después de abrir. */
+    static reservaDemo(negocio, { dia = 'mar', idioma = 'es' } = {}) {
+      const tx = TEXTOS[idioma] || TEXTOS.es;
+      const orden = ['lun', 'mar', 'mie', 'jue', 'vie', 'sab', 'dom'];
+      let i = orden.indexOf(dia);
+      let siguiente = null;
+      for (let k = 1; k <= 7 && !siguiente; k++) { const d = orden[(i + k) % 7]; if (negocio.horario[d]) siguiente = { d, k }; }
+      const r = siguiente ? negocio.horario[siguiente.d] : ['09:00', '18:00'];
+      const [h, m] = r[0].split(':').map(Number);
+      const nombreDia = T.NOMBRE_DIA[idioma === 'en' ? 'en' : 'es'][siguiente ? siguiente.d : 'mie'];
+      return {
+        servicio: negocio.catalogo[0].nombre,
+        dia: siguiente && siguiente.k === 1 ? `${tx.manana}, ${nombreDia.toLowerCase()}` : nombreDia,
+        hora: T.hora(h + 1, m, idioma),
+        nombre: (negocio.clientesDemo || ['Julián R.'])[0]
+      };
     }
 
     /** Pasos de respuesta para un tipo de pregunta (catalogo, horario, precios, ubicacion, persona, faq:N). */

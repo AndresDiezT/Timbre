@@ -110,6 +110,44 @@ p { margin: 0 0 1em; }
 .flotante { position: fixed; right: 16px; bottom: 16px; z-index: 30; width: 58px; height: 58px; display: grid; place-items: center; border-radius: 50%; background: var(--acento); color: var(--sobre-acento); border: 2px solid var(--sobre-acento); box-shadow: 0 6px 18px rgba(0, 0, 0, .18); }
 .flotante svg { width: 26px; height: 26px; }
 
+/* Pedidos: cantidades, resumen y barra fija */
+.cantidad { display: inline-flex; align-items: center; gap: 6px; }
+.cantidad button { width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--texto); background: var(--tarjeta); color: var(--texto); font: inherit; font-size: 1.25rem; font-weight: 800; line-height: 1; cursor: pointer; }
+.cantidad button:hover { background: var(--acento); color: var(--sobre-acento); border-color: var(--acento); }
+.cantidad output { min-width: 1.5em; text-align: center; font-weight: 800; }
+.pedido { background: var(--tarjeta); border: var(--borde-tarjeta); border-radius: var(--radio); padding: 16px; }
+.pedido__vacio { margin: 0; color: var(--suave); }
+.pedido__tabla { width: 100%; border-collapse: collapse; }
+.pedido__tabla td { padding: 8px 4px; border-bottom: var(--borde-fino); vertical-align: top; }
+.pedido__tabla td:last-child { text-align: right; white-space: nowrap; font-weight: 700; }
+.pedido__total td { font-weight: 800; font-size: 1.15rem; border-bottom: 0; }
+.pedido__nota { color: var(--suave); font-size: .92rem; margin-top: 12px; }
+.barra-pedido { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 35; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 10px 10px 16px; background: var(--texto); color: var(--fondo); border-radius: var(--radio-boton); box-shadow: 0 8px 24px rgba(0, 0, 0, .2); font-weight: 800; max-width: 640px; margin-inline: auto; }
+.barra-pedido .boton { min-height: 42px; padding: 6px 16px; }
+body.con-barra .flotante { bottom: 86px; }
+body.con-barra .pie { padding-bottom: 170px; }
+
+/* Formularios de pedido y reserva */
+.formulario select { font: inherit; color: inherit; width: 100%; min-height: 48px; padding: 10px 14px; background: var(--tarjeta); border: var(--borde-campo); border-radius: var(--radio-campo); }
+.opciones { border: 0; padding: 0; margin: 0 0 6px; display: flex; flex-wrap: wrap; gap: 8px; }
+.opciones legend { font-weight: 700; font-size: .95rem; margin-bottom: 6px; width: 100%; }
+.formulario .opcion { display: inline-flex; align-items: center; gap: 8px; margin: 0; padding: 10px 14px; border: var(--borde-campo); border-radius: var(--radio-campo); background: var(--tarjeta); font-weight: 600; cursor: pointer; }
+.opcion input { width: 20px; height: 20px; min-height: 0; accent-color: var(--acento); }
+.fila-dos { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.fila-dos > div { display: grid; gap: 6px; }
+.fila-dos label { margin-top: 8px; }
+
+/* En celular, catálogo compacto para pedir o reservar rápido */
+@media (max-width: 639px) {
+  .catalogo--compacto { gap: 10px; }
+  .catalogo--compacto .producto { display: grid; grid-template-columns: 76px 1fr; align-items: stretch; }
+  .catalogo--compacto .producto__foto { aspect-ratio: auto; min-height: 100%; font-size: 1.5rem; margin: 0; border-radius: 0; }
+  .catalogo--compacto .producto__cuerpo { padding: 12px; gap: 4px; }
+  .catalogo--compacto .producto__cuerpo p { font-size: .88rem; }
+  .catalogo--compacto .producto__pie { padding-top: 6px; }
+}
+@media (max-width: 479px) { .fila-dos { grid-template-columns: 1fr; gap: 0; } }
+
 /* Estilo moderno: bloques de color, bordes gruesos, Space Grotesk. */
 .estilo-moderno {
   --fondo: #F7F7F2; --fondo-2: #ECECE4; --tarjeta: #FFFFFF; --texto: #111418; --suave: #3F4650;
@@ -140,7 +178,7 @@ p { margin: 0 0 1em; }
     <div class="envoltura cab__fila">
       <a class="marca" href="#principal"><span class="marca__logo" aria-hidden="true">BP</span><span class="marca__nombre">Barbería El Parche</span></a>
       <nav class="cab__nav" aria-label="Principal">
-        <a href="#catalogo">Catálogo</a><a href="#horario">Horario</a><a href="#contacto">Contacto</a>
+        <a href="#catalogo">Catálogo</a><a href="#reservar">Reservar cita</a><a href="#horario">Horario</a><a href="#contacto">Contacto</a>
       </nav>
       <a class="boton boton--acento cab__wa" href="https://wa.me/573000000000" target="_blank" rel="noopener">WhatsApp</a>
     </div>
@@ -154,8 +192,8 @@ p { margin: 0 0 1em; }
           <h1>Barbería El Parche</h1>
           <p class="portada__texto">Barbería en Laureles con cortes clásicos y modernos, arreglo de barba con toalla caliente, cejas y cortes para niños. Trabajamos con cita para que no espere, y también por orden de llegada. Escríbanos por WhatsApp para apartar su turno y ver los precios.</p>
           <div class="botones">
-            <a class="boton boton--acento" href="https://wa.me/573000000000" target="_blank" rel="noopener">Escribir por WhatsApp</a>
-            <a class="boton boton--borde" href="#catalogo">Ver catálogo</a>
+            <a class="boton boton--acento" href="#reservar">Reservar cita</a>
+            <a class="boton boton--borde" href="https://wa.me/573000000000" target="_blank" rel="noopener">Escribir por WhatsApp</a>
           </div>
           <p class="estado" id="estado" hidden></p>
         </div>
@@ -166,7 +204,7 @@ p { margin: 0 0 1em; }
     <section class="seccion" id="catalogo" aria-labelledby="t-catalogo">
       <div class="envoltura">
         <h2 id="t-catalogo">Catálogo</h2>
-        <div class="catalogo">
+        <div class="catalogo catalogo--compacto">
         <article class="producto">
           <div class="producto__foto" aria-hidden="true"><span>CC</span></div>
           <div class="producto__cuerpo">
@@ -174,7 +212,7 @@ p { margin: 0 0 1em; }
             <p>Corte a tijera o máquina, lavado y peinado.</p>
             <div class="producto__pie">
               <span class="producto__precio">$25.000</span>
-              <a class="enlace-pedir" href="https://wa.me/573000000000?text=Hola%2C%20me%20interesa%20Corte%20cl%C3%A1sico." target="_blank" rel="noopener">Pedir por WhatsApp<span class="oculto"> Corte clásico</span></a>
+              <a class="enlace-pedir" href="#reservar" data-servicio="0">Reservar cita<span class="oculto">: Corte clásico</span></a>
             </div>
           </div>
         </article>
@@ -185,7 +223,7 @@ p { margin: 0 0 1em; }
             <p>Corte completo más arreglo de barba con toalla caliente.</p>
             <div class="producto__pie">
               <span class="producto__precio">$38.000</span>
-              <a class="enlace-pedir" href="https://wa.me/573000000000?text=Hola%2C%20me%20interesa%20Corte%20y%20barba." target="_blank" rel="noopener">Pedir por WhatsApp<span class="oculto"> Corte y barba</span></a>
+              <a class="enlace-pedir" href="#reservar" data-servicio="1">Reservar cita<span class="oculto">: Corte y barba</span></a>
             </div>
           </div>
         </article>
@@ -196,7 +234,7 @@ p { margin: 0 0 1em; }
             <p>Perfilado, rebajado y aceite para barba.</p>
             <div class="producto__pie">
               <span class="producto__precio">$18.000</span>
-              <a class="enlace-pedir" href="https://wa.me/573000000000?text=Hola%2C%20me%20interesa%20Arreglo%20de%20barba." target="_blank" rel="noopener">Pedir por WhatsApp<span class="oculto"> Arreglo de barba</span></a>
+              <a class="enlace-pedir" href="#reservar" data-servicio="2">Reservar cita<span class="oculto">: Arreglo de barba</span></a>
             </div>
           </div>
         </article>
@@ -207,7 +245,7 @@ p { margin: 0 0 1em; }
             <p>Para niños hasta 12 años.</p>
             <div class="producto__pie">
               <span class="producto__precio">$20.000</span>
-              <a class="enlace-pedir" href="https://wa.me/573000000000?text=Hola%2C%20me%20interesa%20Corte%20infantil." target="_blank" rel="noopener">Pedir por WhatsApp<span class="oculto"> Corte infantil</span></a>
+              <a class="enlace-pedir" href="#reservar" data-servicio="3">Reservar cita<span class="oculto">: Corte infantil</span></a>
             </div>
           </div>
         </article>
@@ -218,7 +256,7 @@ p { margin: 0 0 1em; }
             <p>Perfilado de cejas.</p>
             <div class="producto__pie">
               <span class="producto__precio">$8.000</span>
-              <a class="enlace-pedir" href="https://wa.me/573000000000?text=Hola%2C%20me%20interesa%20Cejas%20con%20navaja." target="_blank" rel="noopener">Pedir por WhatsApp<span class="oculto"> Cejas con navaja</span></a>
+              <a class="enlace-pedir" href="#reservar" data-servicio="4">Reservar cita<span class="oculto">: Cejas con navaja</span></a>
             </div>
           </div>
         </article>
@@ -229,7 +267,7 @@ p { margin: 0 0 1em; }
             <p>Limpieza facial de puntos negros, 20 minutos.</p>
             <div class="producto__pie">
               <span class="producto__precio">$15.000</span>
-              <a class="enlace-pedir" href="https://wa.me/573000000000?text=Hola%2C%20me%20interesa%20Mascarilla%20negra." target="_blank" rel="noopener">Pedir por WhatsApp<span class="oculto"> Mascarilla negra</span></a>
+              <a class="enlace-pedir" href="#reservar" data-servicio="5">Reservar cita<span class="oculto">: Mascarilla negra</span></a>
             </div>
           </div>
         </article>
@@ -240,7 +278,7 @@ p { margin: 0 0 1em; }
             <p>Cubre canas, color natural.</p>
             <div class="producto__pie">
               <span class="producto__precio">$30.000</span>
-              <a class="enlace-pedir" href="https://wa.me/573000000000?text=Hola%2C%20me%20interesa%20Tinte%20para%20barba." target="_blank" rel="noopener">Pedir por WhatsApp<span class="oculto"> Tinte para barba</span></a>
+              <a class="enlace-pedir" href="#reservar" data-servicio="6">Reservar cita<span class="oculto">: Tinte para barba</span></a>
             </div>
           </div>
         </article>
@@ -251,10 +289,35 @@ p { margin: 0 0 1em; }
             <p>Corte, barba, cejas y mascarilla el día del matrimonio.</p>
             <div class="producto__pie">
               <span class="producto__precio">$70.000</span>
-              <a class="enlace-pedir" href="https://wa.me/573000000000?text=Hola%2C%20me%20interesa%20Plan%20novio." target="_blank" rel="noopener">Pedir por WhatsApp<span class="oculto"> Plan novio</span></a>
+              <a class="enlace-pedir" href="#reservar" data-servicio="7">Reservar cita<span class="oculto">: Plan novio</span></a>
             </div>
           </div>
         </article></div>
+      </div>
+    </section>
+
+    <section class="seccion seccion--suave" id="reservar" aria-labelledby="t-reservar">
+      <div class="envoltura dos">
+        <div>
+          <h2 id="t-reservar">Reserve su cita</h2>
+          <p>Elija el servicio, el día y la hora. Le confirmamos por WhatsApp.</p>
+          <p class="pedido__nota">La hora queda reservada cuando se la confirmemos por WhatsApp.</p>
+        </div>
+        <form class="formulario" id="form-reserva" novalidate>
+          <label for="r-servicio">Servicio</label>
+          <select id="r-servicio" name="servicio"><option value="0">Corte clásico · $25.000</option><option value="1">Corte y barba · $38.000</option><option value="2">Arreglo de barba · $18.000</option><option value="3">Corte infantil · $20.000</option><option value="4">Cejas con navaja · $8.000</option><option value="5">Mascarilla negra · $15.000</option><option value="6">Tinte para barba · $30.000</option><option value="7">Plan novio · $70.000</option></select>
+          <div class="fila-dos">
+            <div><label for="r-dia">Día</label><select id="r-dia" name="dia"></select></div>
+            <div><label for="r-hora">Hora</label><select id="r-hora" name="hora"></select></div>
+          </div>
+          <label for="r-nombre">Su nombre</label>
+          <input id="r-nombre" name="nombre" autocomplete="name" required>
+          <label for="r-notas">Notas (opcional)</label>
+          <textarea id="r-notas" name="notas" rows="2"></textarea>
+          <label class="casilla"><input type="checkbox" name="autorizo" required> <span>Autorizo a Barbería El Parche a usar mis datos solo para responder esta solicitud, según la Ley 1581 de 2012. Puedo pedir que los borren cuando quiera.</span></label>
+          <p class="error" id="r-error" role="alert" hidden></p>
+          <button class="boton boton--acento" type="submit">Enviar solicitud por WhatsApp</button>
+        </form>
       </div>
     </section>
 
@@ -321,6 +384,7 @@ p { margin: 0 0 1em; }
     </div>
   </footer>
 
+  
   <a class="flotante" href="https://wa.me/573000000000" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-5 4v-4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>
   </a>
@@ -328,6 +392,15 @@ p { margin: 0 0 1em; }
   <script>
   (function () {
     var horario = {"lun":["09:00","20:00"],"mar":["09:00","20:00"],"mie":["09:00","20:00"],"jue":["09:00","20:00"],"vie":["09:00","21:00"],"sab":["08:00","21:00"],"dom":["10:00","15:00"]};
+    var MODULO = "reservas";
+    var NEGOCIO = "Barbería El Parche";
+    var WA = "573000000000";
+    var MONEDA = "COP";
+    var IDIOMA = "es";
+    var TX = {"catalogo":"Catálogo","horario":"Horario","ubicacion":"Ubicación","contacto":"Contacto","preguntas":"Preguntas frecuentes","escribir":"Escribir por WhatsApp","verCatalogo":"Ver catálogo","pedir":"Pedir por WhatsApp","meInteresa":"Hola, me interesa","abiertoHoy":"Hoy","abierto":"Abierto ahora","cerrado":"Cerrado ahora","abrirMapa":"Abrir en Google Maps","formTitulo":"Escríbanos","formTexto":"Déjenos su mensaje y le respondemos por WhatsApp.","nombre":"Su nombre","telefono":"Su teléfono","mensaje":"¿En qué le podemos ayudar?","enviar":"Enviar por WhatsApp","errorAutorizo":"Para enviar, marque la autorización de datos.","errorNombre":"Escriba su nombre.","soy":"Hola, soy","miTel":"Mi teléfono:","pago":"Medios de pago","resenas":"¿Ya nos visitó?","resenasTexto":"Su opinión nos ayuda mucho. Escanee el código o toque el botón para dejarnos una reseña en Google.","dejarResena":"Dejar una reseña","politicas":"Políticas","privacidad":"Privacidad: los datos que nos envía se usan solo para responderle. Para consultarlos o borrarlos, escríbanos.","hecha":"Página hecha con Timbre","qrResenas":"Código QR para dejar una reseña en Google","redes":"Redes","agregar":"Agregar","quitar":"Quitar uno de","sumar":"Agregar uno de","cantidadDe":"Cantidad de","hacerPedido":"Hacer un pedido","suPedido":"Su pedido","verPedido":"Ver pedido","pedidoVacio":"Todavía no ha agregado productos. Use los botones + del catálogo.","subtotal":"Subtotal","domicilio":"Domicilio","total":"Total","entrega":"¿Cómo lo quiere?","aDomicilio":"A domicilio","recoger":"Recoger en el local","direccion":"Dirección de entrega","pagoCampo":"Medio de pago","notas":"Notas (opcional)","enviarPedido":"Enviar pedido por WhatsApp","errorVacio":"Agregue al menos un producto.","errorDireccion":"Escriba la dirección de entrega.","domicilioConfirmar":"El valor del domicilio se lo confirmamos por WhatsApp.","msjEntrega":"Entrega","msjDireccion":"Dirección","msjPago":"Pago","msjNombre":"A nombre de","msjNotas":"Notas","reservar":"Reservar cita","reservarTitulo":"Reserve su cita","reservarTexto":"Elija el servicio, el día y la hora. Le confirmamos por WhatsApp.","servicio":"Servicio","dia":"Día","hora":"Hora","enviarReserva":"Enviar solicitud por WhatsApp","reservaNota":"La hora queda reservada cuando se la confirmemos por WhatsApp.","sinHoras":"No hay horas disponibles ese día.","msjConfirmen":"¿Me confirman, por favor?","manana":"Mañana","hoyDia":"Hoy","meses":["enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre"],"diasSemana":["domingo","lunes","martes","miércoles","jueves","viernes","sábado"],"msjPedido":"Hola, quiero hacer un pedido en {negocio}:","msjReserva":"Hola, quiero reservar en {negocio}:","uno":"1 producto","varios":"{n} productos"};
+    var CATALOGO = [{"nombre":"Corte clásico","precio":25000},{"nombre":"Corte y barba","precio":38000},{"nombre":"Arreglo de barba","precio":18000},{"nombre":"Corte infantil","precio":20000},{"nombre":"Cejas con navaja","precio":8000},{"nombre":"Mascarilla negra","precio":15000},{"nombre":"Tinte para barba","precio":30000},{"nombre":"Plan novio","precio":70000}];
+    var COSTO_DOMICILIO = null;
+    var INTERVALO = 30;
     var dias = ['dom', 'lun', 'mar', 'mie', 'jue', 'vie', 'sab'];
     var ahora = new Date(), hoy = dias[ahora.getDay()], r = horario[hoy];
     var min = ahora.getHours() * 60 + ahora.getMinutes();
@@ -351,6 +424,135 @@ p { margin: 0 0 1em; }
       var texto = "Hola, soy" + ' ' + nombre + '. ' + form.mensaje.value.trim() + (form.telefono.value.trim() ? ' ' + "Mi teléfono:" + ' ' + form.telefono.value.trim() : '');
       window.open('https://wa.me/573000000000?text=' + encodeURIComponent(texto), '_blank', 'noopener');
     });
+
+    
+    var fmt = function (v) {
+      var n = String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g, MONEDA === 'COP' ? '.' : ',');
+      return MONEDA === 'COP' ? '$' + n : (IDIOMA === 'en' ? '$' + n : 'US$' + n);
+    };
+    var abrirWa = function (texto) { window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(texto), '_blank', 'noopener'); };
+    var mostrarError = function (el, msj, foco) { el.textContent = msj; el.hidden = false; if (foco) foco.focus(); };
+
+    if (MODULO === 'pedidos') {
+      var cant = {};
+      var lista = document.getElementById('pedido-lista');
+      var barra = document.getElementById('barra-pedido');
+      var formP = document.getElementById('form-pedido');
+      var errP = document.getElementById('p-error');
+      try { cant = JSON.parse(sessionStorage.getItem('pedido-' + WA) || '{}'); } catch (e) { cant = {}; }
+      var items = function () {
+        var out = [];
+        CATALOGO.forEach(function (c, i) { if (cant[i] > 0) out.push({ nombre: c.nombre, precio: c.precio, cantidad: cant[i] }); });
+        return out;
+      };
+      var domicilio = function () { return formP.entrega.value === 'domicilio'; };
+      var pintar = function () {
+        var its = items(), sub = 0, unidades = 0;
+        CATALOGO.forEach(function (c, i) { var o = document.querySelector('[data-cant="' + i + '"]'); if (o) o.textContent = cant[i] || 0; });
+        its.forEach(function (it) { sub += it.precio * it.cantidad; unidades += it.cantidad; });
+        var envio = domicilio() && COSTO_DOMICILIO ? COSTO_DOMICILIO : 0;
+        if (!its.length) {
+          lista.innerHTML = '<p class="pedido__vacio">' + TX.pedidoVacio + '</p>';
+        } else {
+          var filas = its.map(function (it) {
+            return '<tr><td>' + it.cantidad + ' × ' + it.nombre.replace(/</g, '&lt;') + '</td><td>' + fmt(it.precio * it.cantidad) + '</td></tr>';
+          }).join('');
+          if (envio) filas += '<tr><td>' + TX.domicilio + '</td><td>' + fmt(envio) + '</td></tr>';
+          lista.innerHTML = '<table class="pedido__tabla"><tbody>' + filas + '<tr class="pedido__total"><td>' + TX.total + '</td><td>' + fmt(sub + envio) + '</td></tr></tbody></table>';
+        }
+        barra.hidden = !unidades;
+        document.body.classList.toggle('con-barra', !!unidades);
+        document.getElementById('barra-texto').textContent = (unidades === 1 ? TX.uno : TX.varios.replace('{n}', unidades)) + ' · ' + fmt(sub + envio);
+        try { sessionStorage.setItem('pedido-' + WA, JSON.stringify(cant)); } catch (e) {}
+        return { its: its, sub: sub, envio: envio };
+      };
+      document.addEventListener('click', function (e) {
+        var mas = e.target.closest('[data-mas]'), menos = e.target.closest('[data-menos]');
+        if (mas) { var i = mas.getAttribute('data-mas'); cant[i] = Math.min(50, (cant[i] || 0) + 1); pintar(); }
+        if (menos) { var j = menos.getAttribute('data-menos'); cant[j] = Math.max(0, (cant[j] || 0) - 1); pintar(); }
+      });
+      formP.addEventListener('input', function () { errP.hidden = true; });
+      formP.addEventListener('change', function () {
+        document.getElementById('campo-direccion').hidden = !domicilio();
+        pintar();
+      });
+      formP.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var r = pintar();
+        if (!r.its.length) return mostrarError(errP, TX.errorVacio, document.getElementById('catalogo'));
+        if (domicilio() && !formP.direccion.value.trim()) return mostrarError(errP, TX.errorDireccion, formP.direccion);
+        if (!formP.nombre.value.trim()) return mostrarError(errP, TX.errorNombre, formP.nombre);
+        if (!formP.autorizo.checked) return mostrarError(errP, TX.errorAutorizo, formP.autorizo);
+        errP.hidden = true;
+        var l = [TX.msjPedido.replace('{negocio}', NEGOCIO)];
+        r.its.forEach(function (it) { l.push('• ' + it.cantidad + ' × ' + it.nombre + ': ' + fmt(it.precio * it.cantidad)); });
+        if (r.envio) { l.push(TX.subtotal + ': ' + fmt(r.sub)); l.push(TX.domicilio + ': ' + fmt(r.envio)); }
+        l.push(TX.total + ': ' + fmt(r.sub + r.envio));
+        l.push(TX.msjEntrega + ': ' + (domicilio() ? TX.aDomicilio : TX.recoger));
+        if (domicilio()) l.push(TX.msjDireccion + ': ' + formP.direccion.value.trim());
+        l.push(TX.msjPago + ': ' + formP.pago.value);
+        l.push(TX.msjNombre + ': ' + formP.nombre.value.trim());
+        if (formP.notas.value.trim()) l.push(TX.msjNotas + ': ' + formP.notas.value.trim());
+        abrirWa(l.join('\n'));
+      });
+      pintar();
+    }
+
+    if (MODULO === 'reservas') {
+      var formR = document.getElementById('form-reserva');
+      var errR = document.getElementById('r-error');
+      var selDia = formR.dia, selHora = formR.hora;
+      var claves = ['dom', 'lun', 'mar', 'mie', 'jue', 'vie', 'sab'];
+      var horaTexto = function (m) {
+        var h = Math.floor(m / 60), mm = m % 60, h12 = h % 12 === 0 ? 12 : h % 12;
+        var t = h12 + ':' + (mm < 10 ? '0' : '') + mm;
+        if (IDIOMA === 'en') return t + (h < 12 ? ' AM' : ' PM');
+        return t + (h < 12 ? ' a. m.' : ' p. m.');
+      };
+      var dias = [];
+      var base = new Date();
+      for (var k = 0; k < 21 && dias.length < 14; k++) {
+        var f = new Date(base.getFullYear(), base.getMonth(), base.getDate() + k);
+        var r = horario[claves[f.getDay()]];
+        if (!r) continue;
+        var cierre = aMin(r[1]), inicio = aMin(r[0]);
+        if (k === 0) inicio = Math.max(inicio, Math.ceil((base.getHours() * 60 + base.getMinutes() + 60) / INTERVALO) * INTERVALO);
+        if (inicio + INTERVALO > cierre) continue;
+        var nombre = TX.diasSemana[f.getDay()];
+        var etiqueta = (k === 0 ? TX.hoyDia + ', ' : k === 1 ? TX.manana + ', ' : '') + nombre + ' ' + f.getDate() + (IDIOMA === 'en' ? ' ' + TX.meses[f.getMonth()] : ' de ' + TX.meses[f.getMonth()]);
+        dias.push({ etiqueta: etiqueta, inicio: inicio, cierre: cierre });
+      }
+      selDia.innerHTML = dias.map(function (d, i) { return '<option value="' + i + '">' + d.etiqueta + '</option>'; }).join('');
+      var pintarHoras = function () {
+        var d = dias[+selDia.value];
+        var horas = [];
+        if (d) for (var m = d.inicio; m + INTERVALO <= d.cierre; m += INTERVALO) horas.push(horaTexto(m));
+        selHora.innerHTML = horas.length ? horas.map(function (h) { return '<option>' + h + '</option>'; }).join('') : '<option value="">' + TX.sinHoras + '</option>';
+      };
+      selDia.addEventListener('change', pintarHoras);
+      pintarHoras();
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest('[data-servicio]');
+        if (a) formR.servicio.value = a.getAttribute('data-servicio');
+      });
+      formR.addEventListener('input', function () { errR.hidden = true; });
+      formR.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!formR.hora.value) return mostrarError(errR, TX.sinHoras, selDia);
+        if (!formR.nombre.value.trim()) return mostrarError(errR, TX.errorNombre, formR.nombre);
+        if (!formR.autorizo.checked) return mostrarError(errR, TX.errorAutorizo, formR.autorizo);
+        errR.hidden = true;
+        var l = [TX.msjReserva.replace('{negocio}', NEGOCIO)];
+        l.push(TX.servicio + ': ' + CATALOGO[+formR.servicio.value].nombre);
+        l.push(TX.dia + ': ' + dias[+selDia.value].etiqueta);
+        l.push(TX.hora + ': ' + formR.hora.value);
+        l.push(TX.msjNombre + ': ' + formR.nombre.value.trim());
+        if (formR.notas.value.trim()) l.push(TX.msjNotas + ': ' + formR.notas.value.trim());
+        l.push(TX.msjConfirmen);
+        abrirWa(l.join('\n'));
+      });
+    }
+
   })();
   </script>
 </body>
