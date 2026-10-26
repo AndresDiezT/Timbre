@@ -145,7 +145,8 @@
   T.asesora = function (marca, codigo) {
     const c = String(codigo || params.get('asesora') || '').trim().toUpperCase();
     if (!c) return null;
-    return marca.asesoras.find((a) => a.codigo === c) || null;
+    // Los alias permiten que sigan funcionando enlaces viejos después de cambiar un código.
+    return marca.asesoras.find((a) => a.codigo === c || (a.alias || []).includes(c)) || null;
   };
 
   T.mensajeWhatsapp = function (marca, { texto, idioma = 'es', asesora } = {}) {

@@ -60,6 +60,12 @@ Datos que faltan o decisiones por confirmar. En los archivos aparecen como `[AS�
 - [x] Material de vendedoras rehecho en `ventas/` (hoja de planes, guía, tarjetas y registro), con PDF por asesora en `ventas/pdf/`. Las páginas leen `config/planes.json`: si cambia un precio, ábralas y toque «Imprimir o guardar PDF».
 - [ ] La hoja de condiciones (escala de descuentos y comisión) es privada: se entregó aparte y vive en `negocios/privado/`, que no se sube. Completar la comisión `[DEFINIR CON ANDRES]` y entregársela a cada asesora en persona.
 
+## Códigos de asesora
+
+- [ ] Los códigos cambiaron a **T101** (Sofía) y **T102** (Yarimar). Avisarles y que guarden de nuevo su herramienta de visita: https://timbre-demo.netlify.app/visita/?asesora=T101 y ?asesora=T102.
+- [ ] Cambiar las etiquetas del WhatsApp de Timbre de «SOFIA» y «YARIMAR» a «Asesora T101» y «Asesora T102».
+- [ ] Cuando ya nadie use los enlaces viejos, quitar los `alias` de `config/marca.json`.
+
 ## Contenido
 
 - [ ] Testimonios reales con permiso escrito del dueño → `config/marca.json → testimonios`. Mientras esté vacío, la sección queda oculta.
