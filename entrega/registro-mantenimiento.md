@@ -1,12 +1,12 @@
-# Registro de mantenimiento · [NOMBRE DEL NEGOCIO]
+# Registro de la mensualidad · [NOMBRE DEL NEGOCIO]
 
-Plan de mantenimiento: **hasta 5 cambios pequeños al mes**, revisión mensual y soporte. Cambio adicional: **[$15.000 / US$10]**. Mes a mes, sin permanencia.
+Mensualidad de Pedidos, Reservas o Asistente: **hasta 5 cambios pequeños al mes**, página publicada, una publicación al mes en Google Maps, revisión mensual y soporte. Cambio adicional: **$15.000**. Mes a mes, sin permanencia.
 
 Un cambio pequeño es, por ejemplo: actualizar precios, agregar o quitar productos del catálogo, cambiar el horario o un mensaje, subir fotos, publicar en Google Maps o ajustar una respuesta rápida. Proyectos nuevos se cotizan aparte.
 
 ---
 
-## Mes: [MES AÑO] · Valor: [$80.000 / US$40] · Pagado: [SÍ / NO, FECHA]
+## Mes: [MES AÑO] · Valor: [$59.000 / $149.000] · Pagado: [SÍ / NO, FECHA]
 
 ### Contador
 
@@ -34,7 +34,8 @@ Regla: disponibles = 5 − usados. A partir del sexto cambio, cada uno es adicio
 - [ ] Google Maps: horario correcto (festivos del mes próximo cargados).
 - [ ] Google Maps: reseñas nuevas respondidas (las responde el dueño o, con su permiso, Timbre).
 - [ ] Google Maps: una publicación nueva en el mes.
-- [ ] Página web (Pro): abre bien, formulario probado, dominio vigente.
+- [ ] Página: abre bien, pedido o reserva de prueba llega completo, precios al día, dominio vigente (si tiene).
+- [ ] Google Maps: publicación del mes hecha.
 - [ ] Automatizaciones (si aplica): últimas ejecuciones sin errores.
 
 ### Notas

@@ -8,9 +8,9 @@
 
 ## Lo que vamos a hacer
 
-Que nadie se quede sin respuesta: dejamos su WhatsApp y su negocio en Google Maps listos para responder solos, a cualquier hora.
+Que nadie se quede sin respuesta: sus clientes piden o reservan desde el celular y todo le llega completo al WhatsApp, sin comisiones. Además dejamos su WhatsApp y su negocio en Google Maps listos para responder a cualquier hora.
 
-**Plan [ESENCIAL / PRO / A LA MEDIDA]**
+**Plan [PEDIDOS / RESERVAS / ASISTENTE / ARRANQUE / A LA MEDIDA]**
 
 - [ITEM 1, ej.: WhatsApp Business con perfil completo y catálogo con fotos y precios]
 - [ITEM 2, ej.: bienvenida y mensaje fuera de horario]
@@ -21,15 +21,15 @@ Que nadie se quede sin respuesta: dejamos su WhatsApp y su negocio en Google Map
 
 ## Entrega
 
-[5 DÍAS HÁBILES / 7 A 10 DÍAS HÁBILES / FECHA] desde que recibamos sus datos y fotos.
+[3 DÍAS HÁBILES / 5 DÍAS HÁBILES / 10 DÍAS HÁBILES / FECHA] desde que recibamos sus datos y fotos.
 
 ## Inversión
 
 | Concepto | Valor |
 |---|---|
-| [PLAN] (pago único) | [$600.000 / $900.000 / VALOR] |
-| Mantenimiento mensual (opcional, sin permanencia) | [$80.000 al mes] |
-| **Total para empezar** | **[VALOR]** |
+| [PLAN]: instalación (pago único) | [$390.000 / $790.000 / $200.000 / VALOR] |
+| Mensualidad (sin permanencia; no aplica al Arranque) | [$59.000 / $149.000 al mes] |
+| **Para empezar (50% de la instalación)** | **[VALOR]** |
 
 **Forma de pago:** 50% al empezar y 50% al entregar, por [Bre-B o transferencia / transferencia o tarjeta].
 
@@ -40,7 +40,8 @@ Que nadie se quede sin respuesta: dejamos su WhatsApp y su negocio en Google Map
 - Dominio (dirección .com o .co), que se paga aparte a nombre suyo.
 - Costos de terceros, si aplican: [WhatsApp API, planes de automatización, IA].
 - Fotografía profesional.
-- Cambios después de la entrega, salvo que tome el mantenimiento.
+- Más de 5 cambios al mes ($15.000 cada cambio adicional).
+- Comisiones: no cobramos ningún porcentaje por pedido o reserva.
 
 No prometemos más ventas: prometemos que cada cliente que le escriba reciba respuesta.
 

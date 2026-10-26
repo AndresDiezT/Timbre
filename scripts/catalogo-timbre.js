@@ -24,13 +24,14 @@ function dinero(v, moneda, idioma) {
 function imagen(m, p, i) {
   const en = m.idioma === 'en';
   const precio = dinero(p.precio, m.moneda, m.idioma);
-  const sufijo = p.periodo === 'mes' ? (en ? 'per month' : 'al mes') : (en ? 'one-time' : 'pago único');
+  const mensual = p.mensual ? dinero(p.mensual, m.moneda, m.idioma) : null;
+  const sufijo = p.periodo === 'mes' ? (en ? 'per month' : 'al mes') : mensual ? (en ? 'setup' : 'instalación') : (en ? 'one-time' : 'pago único');
   const titulo = partir(p.nombre.toUpperCase(), 900, 150, 0.46, 2);
   const tamTitulo = titulo.length > 1 ? 110 : 150;
   const yTitulo = titulo.length > 1 ? 250 : 300;
   const yPrecio = yTitulo + (titulo.length - 1) * (tamTitulo + 4) + 150;
-  const incluye = p.incluye.slice(0, 6).flatMap((t) => partir(t, 860, 34, 0.5, 2).map((l, j) => ({ l, primera: j === 0 })));
-  const yLista = yPrecio + 120;
+  const incluye = p.incluye.slice(0, mensual ? 4 : 6).flatMap((t) => partir(t, 860, 34, 0.5, 2).map((l, j) => ({ l, primera: j === 0 })));
+  const yLista = yPrecio + (mensual ? 168 : 120);
   const lista = incluye.slice(0, 9).map((x, k) => `
     ${x.primera ? `<rect x="90" y="${yLista + k * 46 - 24}" width="22" height="22" rx="4" fill="${PAPEL}" stroke="${TINTA}" stroke-width="4"/>` : ''}
     <text x="132" y="${yLista + k * 46}" font-family="Figtree" font-weight="700" font-size="34" fill="${TINTA}">${xml(x.l)}</text>`).join('');
@@ -45,7 +46,8 @@ function imagen(m, p, i) {
     ? `<text x="80" y="${yPrecio}" font-family="Anton" font-size="110" fill="${TINTA}">${xml(precio)}</text>
   <text x="${80 + precio.length * 52 + 30}" y="${yPrecio}" font-family="Figtree" font-weight="800" font-size="38" fill="${TINTA}">${xml(sufijo)}</text>`
     : `<text x="80" y="${yPrecio}" font-family="Anton" font-size="80" fill="${TINTA}">${xml(en ? 'FREE DISCOVERY CALL' : 'DIAGNÓSTICO SIN COSTO')}</text>`}
-  <text x="80" y="${yPrecio + 56}" font-family="Figtree" font-weight="700" font-size="32" fill="${TINTA}">${xml(p.entrega)}</text>
+  ${mensual ? `<text x="80" y="${yPrecio + 58}" font-family="Figtree" font-weight="800" font-size="40" fill="${TINTA}">${xml(`+ ${mensual} ${en ? 'per month' : 'al mes, sin permanencia'}`)}</text>` : ''}
+  <text x="80" y="${yPrecio + (mensual ? 106 : 56)}" font-family="Figtree" font-weight="700" font-size="32" fill="${TINTA}">${xml(p.entrega)}</text>
   ${lista}
   <line x1="80" y1="962" x2="1000" y2="962" stroke="${TINTA}" stroke-width="4"/>
   <text x="80" y="1010" font-family="Figtree" font-weight="800" font-size="30" fill="${TINTA}">${xml(en ? marca.fraseEn : marca.frase)}</text>

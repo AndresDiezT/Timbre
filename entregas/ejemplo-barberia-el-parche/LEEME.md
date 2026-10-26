@@ -21,7 +21,8 @@ Generada con `node scripts/generar.js negocios/ejemplo-barberia-el-parche.json`.
 - `qr/qr-whatsapp.png`
 - `qr/qr-resenas.svg`
 - `qr/qr-resenas.png`
-- `pagina/index.html (estilo moderno)`
+- `pagina/index.html (estilo moderno, con reservas)`
+- `pagina/recordatorios.html`
 - `lista-de-verificacion.md`
 
 ## Enlaces

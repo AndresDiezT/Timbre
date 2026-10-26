@@ -22,7 +22,8 @@
   }
   const { marca, planes, gremios } = datos;
   const asesora = T.asesora(marca);
-  let mercado = T.mercado(planes, ['co', 'usd']);
+  // Solo Colombia en español; ?m=en lleva a la versión en inglés.
+  const mercado = 'co';
 
   /* ---------- WhatsApp ---------- */
   function pintarWhatsapp() {
@@ -76,7 +77,7 @@
       msj('msj--cliente', 'Gracias, ya la encargué en otro lado.', '9:05 a. m.');
     $('#chat-despues').innerHTML =
       msj('msj--cliente', pregunta, '9:47 p. m.') +
-      msj('msj--negocio', T.plantilla(neg.mensajes.bienvenida, { negocio: neg.nombre, horario: neg.horarioTexto }), '9:47 p. m.', '<span class="msj__auto">Automático</span>') +
+      msj('msj--negocio', T.plantilla(neg.mensajes.bienvenida, { negocio: neg.nombre, horario: String(neg.horarioTexto).replace(/\.\s*$/, '') }), '9:47 p. m.', '<span class="msj__auto">Automático</span>') +
       msj('msj--cliente', 'Perfecto, se la encargo. Le mando el sabor y el nombre.', '9:48 p. m.');
     document.querySelectorAll('.chat-mini').forEach((c) => {
       c.style.setProperty('--acento', neg.acento);
@@ -159,9 +160,12 @@
 
   /* ---------- Planes ---------- */
   function precioPlan(p, m) {
+    const d = (v) => T.esc(T.dinero(v, m.moneda, 'es'));
     if (p.precio == null) return '<p class="plan__precio plan__precio--texto">Diagnóstico sin costo</p>';
-    const sufijo = p.periodo === 'mes' ? '<small>al mes</small>' : '<small>pago único</small>';
-    return `<p class="plan__precio">${T.esc(T.dinero(p.precio, m.moneda, 'es'))}${sufijo}</p>`;
+    return `<p class="plan__precio">${d(p.precio)}<small>instalación${p.mensual ? ` + ${d(p.mensual)} al mes` : ', pago único'}</small></p>`;
+  }
+  function enlacePlan(p) {
+    return T.esc(T.enlaceWhatsapp(marca, { texto: `Hola, me interesa el plan ${p.nombre} de Timbre.`, asesora }));
   }
   function pintarPlanes() {
     const m = planes.mercados[mercado];
@@ -169,34 +173,48 @@
     $('#planes-modalidad').textContent = m.modalidad;
     $('#planes-pago').textContent = m.pago;
     $('#planes-garantia').textContent = m.garantia;
-    $('#lista-planes').innerHTML = m.planes.map((p) => `
+    const principales = m.planes.filter((p) => p.tipo !== 'entrada');
+    $('#lista-planes').innerHTML = principales.map((p) => `
       <article class="tarjeta plan ${p.destacado ? 'plan--destacado' : ''}">
-        ${p.destacado ? '<span class="pildora plan__cinta">El más completo</span>' : ''}
+        ${p.destacado ? '<span class="pildora plan__cinta">El más pedido</span>' : ''}
         <h3>${T.esc(p.nombre)}</h3>
+        <p class="plan__para">${T.esc(p.paraQuien || '')}</p>
         ${precioPlan(p, m)}
         <p class="plan__entrega">${T.esc(p.entrega)}</p>
         <ul>${p.incluye.map((i) => `<li>${T.esc(i)}</li>`).join('')}</ul>
-        ${p.nota ? `<p class="plan__nota">${T.esc(T.plantilla(p.nota, { cambioAdicional: T.dinero(m.cambioAdicional, m.moneda, 'es') }))}</p>` : ''}
-        <a class="boton ${p.destacado ? 'boton--primario' : ''} boton--bloque" target="_blank" rel="noopener"
-           href="${T.esc(T.enlaceWhatsapp(marca, { texto: `Hola, me interesa el plan ${p.nombre} de Timbre.`, asesora }))}">${T.esc(p.boton || 'Me interesa')}</a>
+        ${p.mensualIncluye ? `<p class="plan__nota"><b>La mensualidad incluye:</b> ${T.esc(p.mensualIncluye)}</p>` : ''}
+        ${p.nota ? `<p class="plan__nota">${T.esc(p.nota)}</p>` : ''}
+        <a class="boton ${p.destacado ? 'boton--primario' : ''} boton--bloque" target="_blank" rel="noopener" href="${enlacePlan(p)}">${T.esc(p.boton || 'Me interesa')}</a>
       </article>`).join('');
+    // El plan de entrada se muestra aparte, discreto.
+    const entrada = m.planes.find((p) => p.tipo === 'entrada');
+    const caja = $('#plan-entrada');
+    caja.hidden = !entrada;
+    if (entrada) {
+      caja.innerHTML = `
+        <div>
+          <p class="plan-entrada__titulo">${T.esc(entrada.paraQuien)}: <b>${T.esc(entrada.nombre)}</b> · ${T.esc(T.dinero(entrada.precio, m.moneda, 'es'))}, pago único</p>
+          <p class="plan-entrada__texto">${T.esc(entrada.resumen)} ${T.esc(entrada.entrega)}.</p>
+        </div>
+        <a class="boton boton--chico" target="_blank" rel="noopener" href="${enlacePlan(entrada)}">${T.esc(entrada.boton)}</a>`;
+    }
   }
 
   /* ---------- Preguntas frecuentes ---------- */
   function pintarPreguntas() {
     const m = planes.mercados[mercado];
-    const plan = (id) => m.planes.find((p) => p.id === id);
+    const plan = (id) => m.planes.find((p) => p.id === id) || {};
     const d = (v) => T.dinero(v, m.moneda, 'es');
-    const distancia = mercado === 'co' ? 'en persona o por videollamada' : 'por videollamada';
+    const pe = plan('pedidos');
     const preguntas = [
-      ['¿Es caro?', `El plan Esencial cuesta ${d(plan('esencial').precio)} una sola vez, sin mensualidad obligatoria. Incluye el perfil, el catálogo, los mensajes automáticos, su negocio en Google Maps, el código QR y la capacitación. Y paga la mitad al empezar y la otra mitad cuando lo vea funcionando.`],
-      ['¿No lo puedo hacer yo mismo?', 'Claro que sí: todo se puede hacer con tiempo y paciencia. Lo que usted paga es que quede bien hecho, rápido y probado, sin quitarle horas a su negocio. Además le enseñamos a manejarlo para que no dependa de nadie.'],
-      ['Ya tengo WhatsApp Business, ¿me sirve?', 'Perfecto, partimos de ahí y no pierde sus chats. Completamos el perfil y el catálogo, escribimos la bienvenida, el mensaje fuera de horario y las respuestas rápidas, y organizamos a sus clientes con etiquetas.'],
-      ['¿Y si no funciona?', `${m.garantia} Usted paga el 50% para empezar y el resto cuando compruebe que todo responde como acordamos. Si algo no queda bien, lo corregimos antes.`],
-      ['¿Me van a pedir claves?', `No le pedimos contraseñas por mensaje. Hacemos la configuración con usted y en su celular, ${distancia}, y usted queda como único dueño de sus cuentas.`],
-      ['¿Hay que pagar todos los meses?', `No es obligatorio. Los planes Esencial y Pro se pagan una sola vez. Si quiere que le hagamos cambios cada mes, existe el mantenimiento por ${d(plan('mantenimiento').precio)} al mes, sin permanencia.`],
-      ['¿Cómo lo hacen a distancia?', 'Por WhatsApp y videollamada. Usted nos envía fotos, precios y horario; nosotros preparamos todo y lo configuramos juntos en una llamada. Al final le damos la capacitación gratuita.'],
-      ['¿Su WhatsApp contesta cualquier pregunta solo?', 'Con los planes Esencial y Pro, su WhatsApp responde solo con la bienvenida y el mensaje fuera de horario, que llevan su catálogo y su horario; usted contesta lo demás en segundos con las respuestas rápidas. Si quiere respuestas automáticas a cualquier pregunta, eso es un asistente virtual con IA, que hacemos como desarrollo a la medida.']
+      ['¿Cuánto cuesta?', `Pedidos o Reservas: ${d(pe.precio)} de instalación y ${d(pe.mensual)} al mes, sin permanencia. Incluye la página de su negocio, su WhatsApp Business, su negocio en Google Maps, los códigos QR y la capacitación. La instalación se paga la mitad al empezar y la otra mitad cuando lo vea funcionando.`],
+      ['¿Cobran comisión por cada pedido?', 'No. El pedido le llega directo a su WhatsApp y el cliente le paga a usted, como siempre. No hay intermediarios ni porcentajes por venta.'],
+      ['¿Mis clientes tienen que instalar algo?', 'No. Abren el enlace o escanean el QR, arman el pedido o eligen su cita, y el mensaje sale de su propio WhatsApp ya escrito.'],
+      ['¿Qué incluye la mensualidad?', `Mantenemos al día sus precios, productos y horarios (hasta 5 cambios al mes), la página publicada, una publicación al mes en Google Maps y soporte. Si un mes no la paga, todo sigue funcionando a su nombre, pero sin actualizaciones.`],
+      ['¿Y si no funciona?', `${m.garantia} Usted paga el 50% de la instalación para empezar y el resto cuando le llegue el primer pedido o reserva de prueba. Si algo no queda bien, lo corregimos antes.`],
+      ['¿Me van a pedir claves?', 'No le pedimos contraseñas por mensaje. Hacemos la configuración con usted, en persona o por videollamada, y usted queda como único dueño de sus cuentas.'],
+      ['Solo quiero lo básico, ¿se puede?', `Sí: el Arranque deja listo su WhatsApp Business, su negocio en Google Maps y un código QR por ${d(plan('arranque').precio)}, pago único. Después puede pasar a Pedidos o Reservas cuando quiera.`],
+      ['¿Su WhatsApp contesta cualquier pregunta solo?', 'Con Pedidos y Reservas, su WhatsApp responde solo con la bienvenida y el mensaje fuera de horario, y los pedidos y reservas le llegan completos. Si quiere que además conteste cualquier pregunta, eso es el plan Asistente, con un asistente virtual con IA que solo usa la información de su negocio.']
     ];
     $('#lista-preguntas').innerHTML = preguntas.map(([p, r]) => `
       <details class="pregunta"><summary>${T.esc(p)}</summary><p>${T.esc(r)}</p></details>`).join('');
@@ -209,34 +227,53 @@
     $('#testimonios').hidden = false;
   }
 
+  /* ---------- Pruébelo: pedido o reserva que llega al WhatsApp ---------- */
+  const telProbar = new TimbreTelefono($('#telefono-probar'), { negocio: gremios[0], idioma: 'es', anunciar: true });
+  const demosProbar = { pedidos: gremios.find((g) => g.id === 'restaurante'), reservas: gremios.find((g) => g.id === 'barberia') };
+  function mostrarProbar(modo) {
+    const neg = demosProbar[modo];
+    document.querySelectorAll('[data-probar]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.probar === modo)));
+    telProbar.setNegocio(neg);
+    telProbar.detener();
+    telProbar.limpiar();
+    const ahora = new Date();
+    telProbar.setReloj(ahora.getHours() * 60 + ahora.getMinutes(), T.DIAS[ahora.getDay()]);
+    telProbar.aviso(modo === 'pedidos' ? 'Arme el pedido y toque «Enviar»' : 'Elija servicio, día y hora y toque «Enviar»');
+    const caja = $('#tienda-demo');
+    const nueva = document.createElement('div');
+    caja.replaceWith(nueva);
+    nueva.id = 'tienda-demo';
+    new TimbreTienda(nueva, {
+      negocio: neg,
+      modo,
+      alEnviar: async (datos) => {
+        const ancho = window.matchMedia('(max-width: 899px)').matches;
+        if (ancho) $('#telefono-probar').scrollIntoView({ behavior: T.reducido() ? 'auto' : 'smooth', block: 'center' });
+        const min = (() => { const a = new Date(); return a.getHours() * 60 + a.getMinutes(); })();
+        const abierto = T.abierto(neg, T.DIAS[new Date().getDay()], min);
+        await telProbar.ejecutar([
+          { tipo: modo === 'pedidos' ? 'pedido' : 'reserva', datos, espera: 300 },
+          { tipo: 'escribiendo', ms: 700 },
+          { tipo: 'negocio', texto: abierto ? neg.mensajes.bienvenida : neg.mensajes.fueraDeHorario, auto: true, espera: 0 },
+          { tipo: 'aviso', texto: modo === 'pedidos' ? 'Pedido completo, con el total. Sin comisiones.' : 'Reserva lista para confirmar con un toque.', espera: 400 }
+        ], { limpiar: false });
+      }
+    });
+  }
+  document.querySelectorAll('[data-probar]').forEach((b) => b.addEventListener('click', () => mostrarProbar(b.dataset.probar)));
+  mostrarProbar('pedidos');
+
   /* ---------- Mercado ---------- */
   const selector = $('#mercado');
-  function cambiarMercado(nuevo, actualizarUrl) {
-    if (nuevo === 'en') { location.href = 'en/' + (asesora ? `?asesora=${asesora.codigo}` : ''); return; }
-    mercado = nuevo;
-    selector.value = mercado;
-    const valor = calc.valor;
-    if (actualizarUrl) valor.value = mercado === 'co' ? 40000 : 25;
-    valor.step = mercado === 'co' ? 1000 : 1;
-    $('.js-moneda-calc').textContent = `(${monedaActual()})`;
-    telPortada.o.moneda = monedaActual();
-    telGaleria.o.moneda = monedaActual();
-    if (actualizarUrl) {
-      const url = new URL(location.href);
-      url.searchParams.set('m', mercado);
-      history.replaceState(null, '', url);
-      if (galeriaVista) mostrarGremio(gremioActual);
-      actualizarHora(true);
-    }
-    pintarPlanes();
-    pintarPreguntas();
-    pintarWhatsapp();
-    calcular();
-  }
-  selector.addEventListener('change', () => cambiarMercado(selector.value, true));
+  selector.value = 'co';
+  selector.addEventListener('change', () => {
+    if (selector.value === 'en') location.href = 'en/' + (asesora ? `?asesora=${asesora.codigo}` : '');
+  });
+  pintarPlanes();
+  pintarPreguntas();
+  pintarWhatsapp();
+  $('.js-moneda-calc').textContent = '(COP)';
 
-  cambiarMercado(mercado, false);
-  if (mercado === 'usd') calc.valor.value = 25;
   calcular();
   pintarComparacion();
   pintarMapa(negocioPortada);

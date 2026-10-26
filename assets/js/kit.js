@@ -71,7 +71,8 @@
   }
 
   const datos = (n) => n.negocio || {};
-  const vars = (n) => ({ negocio: n.nombre, horario: n.horarioTexto });
+  // El horario va seguido de punto en las plantillas: se quita el punto final para no duplicarlo.
+  const vars = (n) => ({ negocio: n.nombre, horario: String(n.horarioTexto || '').replace(/\.\s*$/, '') });
 
   function direccionCompleta(n) {
     const d = datos(n);
@@ -292,18 +293,24 @@
   function listaVerificacion(n, { plan } = {}) {
     const d = datos(n);
     const w = whatsapp(n);
-    const pro = (plan || d.plan || 'esencial') === 'pro';
+    const p = plan || d.plan || 'arranque';
+    const NOMBRES = { arranque: 'Arranque', pedidos: 'Pedidos', reservas: 'Reservas', asistente: 'Asistente' };
+    const modulo = d.modulo || (p === 'pedidos' || p === 'reservas' ? p : (p === 'asistente' ? n.modulo : null));
+    const conPagina = p !== 'arranque';
     const c = (t) => `- [ ] ${t}`;
     const secciones = [
-      [`# Lista de verificación de entrega · ${n.nombre}`, '', `Plan: **${pro ? 'Pro' : 'Esencial'}** · Generada por Timbre`, ''].join('\n'),
-      ['## Antes de empezar', c('Recibido el 50% inicial.'), c('Datos confirmados con el dueño: nombre, dirección, horario, precios, medios de pago.'), c('Fotos recibidas: logo, fachada, interior y productos (mínimo 5).'), c('Autorización de tratamiento de datos firmada (acuerdo de encargo).')].join('\n'),
+      [`# Lista de verificación de entrega · ${n.nombre}`, '', `Plan: **${NOMBRES[p] || p}**${modulo && p === 'asistente' ? ` (con ${NOMBRES[modulo]})` : ''} · Generada por Timbre`, ''].join('\n'),
+      ['## Antes de empezar', c('Recibido el 50% de la instalación.'), c('Datos confirmados con el dueño: nombre, dirección, horario, precios, medios de pago.'), c('Fotos recibidas: logo, fachada, interior y productos (mínimo 5).'), c('Autorización de tratamiento de datos firmada (acuerdo de encargo).')].join('\n'),
       ['## WhatsApp Business', c('App de WhatsApp Business instalada en el celular del negocio (sin perder chats si migra desde WhatsApp).'), c('Perfil completo: nombre, categoría, descripción, dirección, horario, correo y sitio web.'), c(`Catálogo con ${w.catalogo.length} artículos, fotos y precios.`), c('Mensaje de bienvenida activado.'), c('Mensaje fuera de horario activado con «Fuera del horario comercial».'), c(`${w.respuestasRapidas.length} respuestas rápidas creadas.`), c(`${w.etiquetas.length} etiquetas creadas.`), c('Prueba desde otro número: llega la bienvenida (recuerde la regla de 14 días).'), c('Prueba fuera de horario: llega el mensaje de ausencia.')].join('\n'),
       ['## Google Maps', c('Perfil creado o reclamado con la cuenta de Google del dueño (el dueño es propietario; Timbre solo administrador si hace falta).'), c('Verificación iniciada (puede tardar varios días; anotar el método).'), c('Categoría principal y adicionales.'), c('Horario y horarios especiales.'), c('Fotos: logo, portada y al menos 3 más.'), c('Botón de WhatsApp o chat con el enlace directo.'), c('Descripción pegada.'), c('3 publicaciones iniciales hechas.'), c('Enlace para pedir reseñas copiado en negocio.enlaceResenas.')].join('\n'),
       ['## Códigos QR', c('QR de WhatsApp impreso para la vitrina (`qr/qr-whatsapp.png`).'), c('QR publicado en Instagram (historia destacada o publicación).'), c('Probado con la cámara de dos celulares distintos.')].join('\n')
     ];
-    if (pro) secciones.push(['## Plan Pro', c('Página web publicada (`pagina/index.html`).'), c('Dominio comprado por el cliente y conectado (se paga aparte).'), c('Formulario probado: abre WhatsApp con el mensaje y exige la autorización de datos.'), c('Enlace de la página agregado en WhatsApp Business y en Google Maps.'), c('QR de reseñas impreso (`qr/qr-resenas.png`).')].join('\n'));
-    secciones.push(['## Capacitación gratuita', c('Cómo usar respuestas rápidas escribiendo «/».'), c('Cómo etiquetar chats y revisar etiquetas.'), c('Cómo editar el catálogo y los precios.'), c('Cómo cambiar el horario y los mensajes en festivos o vacaciones.'), c('Cómo responder reseñas en Google.')].join('\n'));
-    secciones.push(['## Cierre', c('El dueño vio todo funcionando.'), c('Cobrado el 50% restante.'), c('Documento de entrega enviado.'), c('Ofrecido el plan de mantenimiento mensual.')].join('\n'));
+    if (conPagina) secciones.push(['## Página del negocio', c('Página publicada (`pagina/index.html`) en la cuenta de Netlify del cliente o en su hosting.'), c('Dominio propio conectado, si el cliente lo compró (lo paga el cliente).'), c('Enlace de la página en el perfil de WhatsApp Business, en Google Maps y en Instagram.'), c('Formulario de contacto probado: abre WhatsApp y exige la autorización de datos.'), c('QR de reseñas impreso (`qr/qr-resenas.png`).')].join('\n'));
+    if (modulo === 'pedidos') secciones.push(['## Pedidos', c('Pedido de prueba desde otro celular: llega completo al WhatsApp con productos, total, entrega y pago.'), c(typeof d.costoDomicilio === 'number' ? `Valor del domicilio (${dinero(d.costoDomicilio, n.moneda, n.idioma)}) revisado con el dueño.` : 'El dueño sabe que el valor del domicilio lo confirma por WhatsApp (no está configurado en la página).'), c('Respuesta rápida para confirmar pedidos creada (por ejemplo /confirmar o /encamino).'), c('Etiqueta «Pedido nuevo» o similar para organizar los pedidos.')].join('\n'));
+    if (modulo === 'reservas') secciones.push(['## Reservas', c('Reserva de prueba desde otro celular: llega con servicio, día, hora y nombre.'), c(`Intervalo entre citas revisado con el dueño (hoy: cada ${d.intervaloReservas || 30} minutos).`), c('Respuesta rápida /confirmar creada para confirmar con un toque.'), c('Página de recordatorios (`pagina/recordatorios.html`) guardada en la pantalla de inicio del celular del dueño.'), c('El dueño probó anotar una cita y enviar un recordatorio.')].join('\n'));
+    if (p === 'asistente') secciones.push(['## Asistente', c('Workflow E3 importado en la cuenta de automatización del cliente (ver automatizaciones/n8n/).'), c('Información del negocio para la IA revisada con el dueño.'), c('Prueba: preguntas de precios, horario, ubicación y «quiero hablar con una persona».'), c('Alerta al dueño probada.'), c('Método de pago del cliente registrado en Meta para los mensajes después de 1.000 al mes.')].join('\n'));
+    secciones.push(['## Capacitación gratuita', c('Cómo usar respuestas rápidas escribiendo «/».'), c('Cómo etiquetar chats y revisar etiquetas.'), c('Cómo editar el catálogo y los precios (o pedirlo dentro de la mensualidad).'), c('Cómo cambiar el horario y los mensajes en festivos o vacaciones.'), c('Cómo responder reseñas en Google.')].join('\n'));
+    secciones.push(['## Cierre', c('El dueño vio todo funcionando.'), c('Cobrado el 50% restante de la instalación.'), c(conPagina ? 'Primera mensualidad cobrada y fecha de cobro acordada.' : 'Ofrecido pasar a Pedidos o Reservas.'), c('Documento de entrega enviado.')].join('\n'));
     const av = avisos(n);
     if (av.length) secciones.push(['## Avisos del generador', ...av.map((x) => `- ${x}`)].join('\n'));
     return secciones.join('\n\n') + '\n';

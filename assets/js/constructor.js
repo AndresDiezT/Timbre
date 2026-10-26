@@ -26,8 +26,9 @@
     c.nombre = '[NOMBRE DEL NEGOCIO]';
     const u = c.ubicacion || {};
     c.negocio = {
-      mercado: c.moneda === 'COP' ? 'co' : (c.idioma === 'en' ? 'en' : 'usd'),
-      plan: 'esencial', estiloPagina: 'sobrio',
+      mercado: c.idioma === 'en' ? 'en' : 'co',
+      plan: c.modulo || 'pedidos', modulo: c.modulo || 'pedidos', estiloPagina: 'sobrio',
+      costoDomicilio: null, intervaloReservas: 30,
       direccion: '', barrio: '', ciudad: u.ciudad || '', pais: '',
       telefono: '', whatsapp: '', correo: '', sitioWeb: '',
       redes: { instagram: '', facebook: '', tiktok: '' },
@@ -53,7 +54,7 @@
   function pintarCampos() {
     document.querySelectorAll('[data-campo]').forEach((el) => {
       const v = leerRuta(n, el.dataset.campo);
-      el.value = el.dataset.tipo === 'lista' ? (v || []).join(', ') : (v == null ? '' : v);
+      el.value = el.dataset.tipo === 'lista' ? (v || []).join(', ') : (v == null ? '' : String(v));
     });
     pintarHorario();
     pintarCatalogo();
@@ -66,6 +67,9 @@
     el.addEventListener('input', () => {
       let v = el.value;
       if (el.dataset.tipo === 'lista') v = v.split(',').map((x) => x.trim()).filter(Boolean);
+      if (el.dataset.tipo === 'numero') v = v === '' ? null : Number(v);
+      // En Pedidos y Reservas el módulo de la página es el mismo plan.
+      if (el.dataset.campo === 'negocio.plan' && (v === 'pedidos' || v === 'reservas')) { n.negocio.modulo = v; document.getElementById('f-modulo').value = v; }
       ponerRuta(n, el.dataset.campo, v);
       // La dirección se refleja en la ubicación que usa el chat.
       if (['negocio.direccion', 'negocio.barrio', 'negocio.ciudad'].includes(el.dataset.campo)) ponerRuta(n, 'ubicacion.' + el.dataset.campo.split('.')[1], v);

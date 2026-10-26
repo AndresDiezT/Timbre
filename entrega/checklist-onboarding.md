@@ -1,6 +1,6 @@
 # Checklist de onboarding · [NOMBRE DEL NEGOCIO]
 
-Plan: [ESENCIAL / PRO] · Asesora: [CÓDIGO O «directo»] · Fecha de inicio: [FECHA]
+Plan: [PEDIDOS / RESERVAS / ASISTENTE / ARRANQUE] · Asesora: [CÓDIGO O «directo»] · Fecha de inicio: [FECHA]
 
 ## 1. Cierre de la venta
 
@@ -8,7 +8,8 @@ Plan: [ESENCIAL / PRO] · Asesora: [CÓDIGO O «directo»] · Fecha de inicio: [
 - [ ] Propuesta enviada (`propuesta.md`) si el cliente la pidió.
 - [ ] Cuenta de cobro del 50% enviada y **pago recibido**.
 - [ ] Etiqueta «Pagó» en el WhatsApp de Timbre y, si aplica, etiqueta de la asesora.
-- [ ] Fecha de entrega acordada: Esencial 5 días hábiles, Pro 7 a 10 días hábiles (cuentan desde que llegan todos los datos).
+- [ ] Fecha de entrega acordada: Arranque 3 días hábiles, Pedidos o Reservas 5, Asistente 10 (cuentan desde que llegan todos los datos).
+- [ ] Fecha de cobro de la mensualidad acordada (Pedidos, Reservas y Asistente), por adelantado cada mes.
 
 ## 2. Lo que el dueño debe enviar
 
@@ -22,7 +23,9 @@ Plan: [ESENCIAL / PRO] · Asesora: [CÓDIGO O «directo»] · Fecha de inicio: [
 - [ ] Redes sociales (Instagram, Facebook, TikTok).
 - [ ] Las preguntas que más le hacen sus clientes.
 - [ ] Políticas: domicilios, cambios, cancelaciones, garantía.
-- [ ] Plan Pro: si ya tiene dominio, o si lo va a comprar (lo paga el cliente).
+- [ ] Pedidos: si cobra domicilio y cuánto, zonas a las que entrega y medios de pago.
+- [ ] Reservas: duración de cada servicio y cada cuántos minutos puede recibir citas.
+- [ ] Si ya tiene dominio o si lo va a comprar (opcional; lo paga el cliente).
 
 ## 3. Cuentas (siempre a nombre del cliente)
 

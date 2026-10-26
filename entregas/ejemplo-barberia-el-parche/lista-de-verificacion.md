@@ -1,10 +1,10 @@
 # Lista de verificación de entrega · Barbería El Parche
 
-Plan: **Pro** · Generada por Timbre
+Plan: **Reservas** · Generada por Timbre
 
 
 ## Antes de empezar
-- [ ] Recibido el 50% inicial.
+- [ ] Recibido el 50% de la instalación.
 - [ ] Datos confirmados con el dueño: nombre, dirección, horario, precios, medios de pago.
 - [ ] Fotos recibidas: logo, fachada, interior y productos (mínimo 5).
 - [ ] Autorización de tratamiento de datos firmada (acuerdo de encargo).
@@ -36,22 +36,29 @@ Plan: **Pro** · Generada por Timbre
 - [ ] QR publicado en Instagram (historia destacada o publicación).
 - [ ] Probado con la cámara de dos celulares distintos.
 
-## Plan Pro
-- [ ] Página web publicada (`pagina/index.html`).
-- [ ] Dominio comprado por el cliente y conectado (se paga aparte).
-- [ ] Formulario probado: abre WhatsApp con el mensaje y exige la autorización de datos.
-- [ ] Enlace de la página agregado en WhatsApp Business y en Google Maps.
+## Página del negocio
+- [ ] Página publicada (`pagina/index.html`) en la cuenta de Netlify del cliente o en su hosting.
+- [ ] Dominio propio conectado, si el cliente lo compró (lo paga el cliente).
+- [ ] Enlace de la página en el perfil de WhatsApp Business, en Google Maps y en Instagram.
+- [ ] Formulario de contacto probado: abre WhatsApp y exige la autorización de datos.
 - [ ] QR de reseñas impreso (`qr/qr-resenas.png`).
+
+## Reservas
+- [ ] Reserva de prueba desde otro celular: llega con servicio, día, hora y nombre.
+- [ ] Intervalo entre citas revisado con el dueño (hoy: cada 30 minutos).
+- [ ] Respuesta rápida /confirmar creada para confirmar con un toque.
+- [ ] Página de recordatorios (`pagina/recordatorios.html`) guardada en la pantalla de inicio del celular del dueño.
+- [ ] El dueño probó anotar una cita y enviar un recordatorio.
 
 ## Capacitación gratuita
 - [ ] Cómo usar respuestas rápidas escribiendo «/».
 - [ ] Cómo etiquetar chats y revisar etiquetas.
-- [ ] Cómo editar el catálogo y los precios.
+- [ ] Cómo editar el catálogo y los precios (o pedirlo dentro de la mensualidad).
 - [ ] Cómo cambiar el horario y los mensajes en festivos o vacaciones.
 - [ ] Cómo responder reseñas en Google.
 
 ## Cierre
 - [ ] El dueño vio todo funcionando.
-- [ ] Cobrado el 50% restante.
+- [ ] Cobrado el 50% restante de la instalación.
+- [ ] Primera mensualidad cobrada y fecha de cobro acordada.
 - [ ] Documento de entrega enviado.
-- [ ] Ofrecido el plan de mantenimiento mensual.

@@ -1,65 +1,57 @@
 1
 00:00:00,000 --> 00:00:05,000
-Son las 9:47 de la noche. Su negocio cerró
-hace rato… y un cliente le escribe.
+Son las 9:47 de la noche. Su negocio ya cerró…
+y un cliente le escribe.
 
 2
-00:00:05,000 --> 00:00:09,500
-Con Timbre, ese cliente recibe
-respuesta al instante:
+00:00:05,000 --> 00:00:12,000
+Con Timbre, le responde al instante,
+con el catálogo y los precios.
 
 3
-00:00:09,500 --> 00:00:14,000
-su catálogo con precios y su horario.
+00:00:12,000 --> 00:00:17,000
+Y desde la página de su negocio,
+el cliente arma su pedido.
 
 4
-00:00:14,000 --> 00:00:22,000
-Aunque sean las tres de la mañana.
-Nadie se queda sin respuesta.
+00:00:17,000 --> 00:00:24,000
+A usted le llega completo al WhatsApp: productos,
+total, dirección y forma de pago. Sin comisiones.
 
 5
-00:00:22,000 --> 00:00:28,000
-Al otro día usted abre el celular y encuentra
-todo organizado con etiquetas,
+00:00:24,000 --> 00:00:34,000
+Si lo suyo son citas, el cliente elige servicio,
+día y hora, y usted confirma con un toque.
 
 6
-00:00:28,000 --> 00:00:34,000
-y contesta en segundos
-con respuestas rápidas.
+00:00:34,000 --> 00:00:42,000
+Al otro día encuentra todo organizado con etiquetas.
+Nadie se quedó sin respuesta.
 
 7
-00:00:34,000 --> 00:00:39,000
-También dejamos su negocio en Google Maps,
-con horario, fotos y botón de WhatsApp,
+00:00:42,000 --> 00:00:50,000
+También dejamos su negocio en Google Maps, con botón
+de WhatsApp, y códigos QR para su vitrina.
 
 8
-00:00:39,000 --> 00:00:44,000
-y un código QR para su vitrina.
+00:00:50,000 --> 00:00:56,000
+Pedidos o Reservas: 390.000 pesos de instalación
+y 59.000 al mes, sin permanencia.
 
 9
-00:00:44,000 --> 00:00:50,000
-El plan Esencial cuesta 600.000 pesos, pago único,
-y queda listo en 5 días hábiles.
+00:00:56,000 --> 00:01:02,000
+Queda listo en 5 días hábiles.
 
 10
-00:00:50,000 --> 00:00:56,000
-El Pro, 900.000,
-incluye una página web sencilla.
+00:01:02,000 --> 00:01:10,000
+Paga la mitad para empezar y el resto
+cuando le llegue el primer pedido de prueba.
 
 11
-00:00:56,000 --> 00:01:01,000
-Usted paga la mitad para empezar
-y el saldo cuando lo vea funcionando.
-
-12
-00:01:01,000 --> 00:01:06,000
-Y la capacitación es gratis.
-
-13
-00:01:06,000 --> 00:01:12,000
+00:01:10,000 --> 00:01:14,000
 Escríbanos al 314 331 9442.
 
-14
-00:01:12,000 --> 00:01:20,000
+12
+00:01:14,000 --> 00:01:18,000
 El mensaje que le va a llegar
 es la mejor demostración.

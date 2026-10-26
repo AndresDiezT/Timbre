@@ -9,71 +9,179 @@
       "locale": "es-CO",
       "planes": [
         {
-          "id": "esencial",
-          "nombre": "Esencial",
-          "precio": 600000,
-          "periodo": "unico",
-          "entrega": "Entrega en 5 días hábiles",
+          "id": "pedidos",
+          "nombre": "Pedidos",
+          "tipo": "estrella",
+          "destacado": true,
+          "paraQuien": "Restaurantes, panaderías, tiendas de ropa y ferreterías",
+          "precio": 390000,
+          "mensual": 59000,
+          "entrega": "Listo en 5 días hábiles",
+          "resumen": "Sus clientes arman el pedido desde el celular y a usted le llega completo al WhatsApp, con el total. Sin comisiones.",
           "incluye": [
-            "WhatsApp Business con perfil completo y catálogo con fotos y precios",
-            "Bienvenida y mensaje fuera de horario",
-            "Respuestas rápidas y etiquetas",
-            "Su negocio en Google Maps con horario, fotos y botón de WhatsApp",
-            "Código QR para vitrina e Instagram",
+            "Página de su negocio con catálogo y carrito de pedidos",
+            "El pedido llega completo al WhatsApp: productos, total, domicilio o recoger y medio de pago",
+            "Sin comisiones por pedido y sin apps que instalar",
+            "WhatsApp Business completo y su negocio en Google Maps",
+            "Códigos QR para vitrina, Instagram y reseñas",
             "Capacitación gratuita"
           ],
-          "boton": "Quiero el Esencial"
+          "mensualIncluye": "Precios y productos al día (hasta 5 cambios al mes), página publicada, una publicación al mes en Google Maps y soporte.",
+          "boton": "Quiero Pedidos"
         },
         {
-          "id": "pro",
-          "nombre": "Pro",
-          "precio": 900000,
-          "periodo": "unico",
-          "entrega": "Entrega en 7 a 10 días hábiles",
+          "id": "reservas",
+          "nombre": "Reservas",
+          "tipo": "estrella",
           "destacado": true,
+          "paraQuien": "Barberías, talleres, gimnasios y técnicos",
+          "precio": 390000,
+          "mensual": 59000,
+          "entrega": "Listo en 5 días hábiles",
+          "resumen": "Sus clientes eligen servicio, día y hora, y la solicitud le llega lista para confirmar con un toque.",
           "incluye": [
-            "Todo lo del plan Esencial",
-            "Página web sencilla con botón de WhatsApp y formulario",
-            "QR para pedir reseñas en Google"
+            "Página de su negocio con reservas: servicio, día y hora según su horario",
+            "La solicitud llega completa al WhatsApp, lista para confirmar con una respuesta rápida",
+            "Lista diaria para enviar los recordatorios de citas con un toque",
+            "WhatsApp Business completo y su negocio en Google Maps",
+            "Códigos QR para vitrina, Instagram y reseñas",
+            "Capacitación gratuita"
           ],
-          "nota": "El dominio (la dirección .com o .co) se paga aparte.",
-          "boton": "Quiero el Pro"
+          "mensualIncluye": "Servicios, precios y horarios al día (hasta 5 cambios al mes), página publicada, una publicación al mes en Google Maps y soporte.",
+          "boton": "Quiero Reservas"
         },
         {
-          "id": "mantenimiento",
-          "nombre": "Mantenimiento",
-          "precio": 80000,
-          "periodo": "mes",
-          "entrega": "Mes a mes, sin permanencia",
+          "id": "asistente",
+          "nombre": "Asistente",
+          "tipo": "premium",
+          "paraQuien": "Negocios que reciben muchos mensajes",
+          "precio": 790000,
+          "mensual": 149000,
+          "entrega": "Listo en 10 días hábiles",
+          "resumen": "Un asistente virtual con IA que responde por WhatsApp con la información de su negocio y le avisa cuando alguien pide una persona.",
           "incluye": [
-            "Hasta 5 cambios pequeños al mes",
-            "Revisión mensual",
-            "Soporte"
+            "Todo lo de Pedidos o Reservas",
+            "Asistente virtual con IA que responde solo con la información de su negocio",
+            "Registro de cada conversación en una hoja de Google",
+            "Aviso al dueño cuando un cliente pide hablar con una persona"
           ],
-          "nota": "Cambio adicional: {cambioAdicional}.",
-          "boton": "Quiero el mantenimiento"
+          "mensualIncluye": "Asistente funcionando, ajustes de respuestas, todo lo de la mensualidad de Pedidos o Reservas y soporte.",
+          "nota": "Usa la API de WhatsApp: Meta cobra aparte, a la tarjeta del negocio, después de 1.000 mensajes al mes.",
+          "boton": "Quiero el Asistente"
         },
         {
           "id": "medida",
           "nombre": "Desarrollo a la medida",
+          "tipo": "medida",
+          "paraQuien": "Necesidades especiales",
           "precio": null,
-          "periodo": null,
+          "mensual": null,
           "entrega": "Se cotiza tras un diagnóstico sin costo",
+          "resumen": "Tiendas en línea, apps de pedidos e inventario, conexión entre los programas que ya usa.",
           "incluye": [
-            "Citas y reservas",
             "Tiendas en línea",
             "Apps de pedidos e inventario",
-            "Asistentes virtuales con IA",
-            "Conexión entre los programas que ya usa"
+            "Conexión entre los programas que ya usa",
+            "Automatizaciones con Google Sheets y WhatsApp"
           ],
           "boton": "Pedir diagnóstico sin costo"
+        },
+        {
+          "id": "arranque",
+          "nombre": "Arranque",
+          "tipo": "entrada",
+          "paraQuien": "Si por ahora solo quiere lo básico",
+          "precio": 200000,
+          "mensual": null,
+          "entrega": "Listo en 3 días hábiles",
+          "resumen": "WhatsApp Business completo, su negocio en Google Maps, código QR y capacitación gratuita.",
+          "incluye": [
+            "WhatsApp Business con perfil, catálogo, bienvenida, mensaje fuera de horario, respuestas rápidas y etiquetas",
+            "Su negocio en Google Maps con horario, fotos y botón de WhatsApp",
+            "Código QR para vitrina e Instagram",
+            "Capacitación gratuita"
+          ],
+          "boton": "Quiero el Arranque"
         }
       ],
       "cambioAdicional": 15000,
-      "pago": "50% al empezar y 50% al entregar, por Bre-B o transferencia.",
+      "pago": "Instalación: 50% al empezar y 50% al entregar, por Bre-B o transferencia. La mensualidad se paga por adelantado cada mes.",
       "modalidad": "Configuración en persona o a distancia, con capacitación gratuita.",
-      "garantia": "El saldo lo paga cuando lo vea funcionando."
+      "garantia": "El saldo lo paga cuando lo vea funcionando.",
+      "comisionAsesoras": "Sugerida: 20% de la instalación y $10.000 por cada uno de los primeros 3 meses de mensualidad que pague el cliente."
     },
+    "en": {
+      "id": "en",
+      "etiqueta": "United States · English · USD",
+      "idioma": "en",
+      "moneda": "USD",
+      "locale": "en-US",
+      "publico": "Home service businesses",
+      "planes": [
+        {
+          "id": "starter",
+          "nombre": "Starter",
+          "precio": 250,
+          "periodo": "unico",
+          "entrega": "One-time setup",
+          "incluye": [
+            "Instant text and email reply to every web form lead",
+            "Every lead logged in Google Sheets or your CRM",
+            "Instant alert to the owner"
+          ],
+          "boton": "Get Starter"
+        },
+        {
+          "id": "pro",
+          "nombre": "Pro",
+          "precio": 400,
+          "periodo": "unico",
+          "entrega": "One-time setup",
+          "destacado": true,
+          "incluye": [
+            "Everything in Starter",
+            "Automatic text-back to missed calls",
+            "Two follow-ups for leads who go quiet",
+            "Review request after the job is done"
+          ],
+          "boton": "Get Pro"
+        },
+        {
+          "id": "care",
+          "nombre": "Care plan",
+          "precio": 100,
+          "periodo": "mes",
+          "entrega": "Month to month, cancel anytime",
+          "incluye": [
+            "Up to 5 changes a month",
+            "Monthly check-up",
+            "Support"
+          ],
+          "nota": "Extra changes: {cambioAdicional} each.",
+          "boton": "Add the Care plan"
+        },
+        {
+          "id": "custom",
+          "nombre": "Custom builds",
+          "precio": null,
+          "periodo": null,
+          "entrega": "Quoted after a free discovery call",
+          "incluye": [
+            "Booking and scheduling flows",
+            "AI virtual assistants",
+            "Connecting the tools you already use"
+          ],
+          "boton": "Book a free discovery call"
+        }
+      ],
+      "cambioAdicional": 20,
+      "pago": "50% to start, 50% when it's live. Bank transfer or card.",
+      "modalidad": "Set up remotely over video call. Tools run on your own accounts.",
+      "garantia": "You pay the balance once you see it working."
+    }
+  },
+  "mercadosDesactivados": {
+    "nota": "Mercados guardados pero desactivados: no aparecen en el sitio. Para reactivar uno, muévalo a \"mercados\" y actualice precios.",
     "usd": {
       "id": "usd",
       "etiqueta": "Puerto Rico y EE. UU. · Español · USD",
@@ -146,75 +254,6 @@
       "pago": "50% al empezar y 50% al entregar, por transferencia o tarjeta.",
       "modalidad": "Configuración y capacitación gratuita por videollamada.",
       "garantia": "El saldo lo paga cuando lo vea funcionando."
-    },
-    "en": {
-      "id": "en",
-      "etiqueta": "United States · English · USD",
-      "idioma": "en",
-      "moneda": "USD",
-      "locale": "en-US",
-      "publico": "Home service businesses",
-      "planes": [
-        {
-          "id": "starter",
-          "nombre": "Starter",
-          "precio": 250,
-          "periodo": "unico",
-          "entrega": "One-time setup",
-          "incluye": [
-            "Instant text and email reply to every web form lead",
-            "Every lead logged in Google Sheets or your CRM",
-            "Instant alert to the owner"
-          ],
-          "boton": "Get Starter"
-        },
-        {
-          "id": "pro",
-          "nombre": "Pro",
-          "precio": 400,
-          "periodo": "unico",
-          "entrega": "One-time setup",
-          "destacado": true,
-          "incluye": [
-            "Everything in Starter",
-            "Automatic text-back to missed calls",
-            "Two follow-ups for leads who go quiet",
-            "Review request after the job is done"
-          ],
-          "boton": "Get Pro"
-        },
-        {
-          "id": "care",
-          "nombre": "Care plan",
-          "precio": 100,
-          "periodo": "mes",
-          "entrega": "Month to month, cancel anytime",
-          "incluye": [
-            "Up to 5 changes a month",
-            "Monthly check-up",
-            "Support"
-          ],
-          "nota": "Extra changes: {cambioAdicional} each.",
-          "boton": "Add the Care plan"
-        },
-        {
-          "id": "custom",
-          "nombre": "Custom builds",
-          "precio": null,
-          "periodo": null,
-          "entrega": "Quoted after a free discovery call",
-          "incluye": [
-            "Booking and scheduling flows",
-            "AI virtual assistants",
-            "Connecting the tools you already use"
-          ],
-          "boton": "Book a free discovery call"
-        }
-      ],
-      "cambioAdicional": 20,
-      "pago": "50% to start, 50% when it's live. Bank transfer or card.",
-      "modalidad": "Set up remotely over video call. Tools run on your own accounts.",
-      "garantia": "You pay the balance once you see it working."
     }
   }
 }

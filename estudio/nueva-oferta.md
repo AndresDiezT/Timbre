@@ -1,6 +1,6 @@
 # Estudio · Nueva oferta de Timbre
 
-Octubre de 2026 · Propuesta para decidir. Los precios son hipótesis para validar con las asesoras, no datos de mercado.
+Octubre de 2026 · **Aprobada y aplicada** en el sitio y el kit, con un cambio: Puerto Rico y EE. UU. en español quedan desactivados (el inglés sigue igual). Los precios son hipótesis para validar con las asesoras, no datos de mercado.
 
 ## 1. Conclusión
 

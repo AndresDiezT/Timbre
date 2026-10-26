@@ -8,7 +8,18 @@ Contacto: Andres Diez · WhatsApp [+57 314 331 9442](https://wa.me/573143319442)
 
 ---
 
-## Páginas y sus URL en GitHub Pages
+## La oferta (Colombia)
+
+| Plan | Instalación | Mensual | Qué es |
+|---|---|---|---|
+| **Pedidos** | $390.000 | $59.000 | Página con catálogo y carrito: el pedido llega completo al WhatsApp, sin comisiones. |
+| **Reservas** | $390.000 | $59.000 | Página de reservas: servicio, día y hora llegan listos para confirmar; recordatorios con un toque. |
+| **Asistente** | $790.000 | $149.000 | Pedidos o Reservas + asistente con IA en WhatsApp. |
+| **Arranque** | $200.000 | — | Solo lo básico: WhatsApp Business, Google Maps y QR. Va como opción discreta. |
+
+Todos incluyen WhatsApp Business completo, su negocio en Google Maps, QR y capacitación gratuita. Los precios viven en `config/planes.json`; el porqué está en `estudio/nueva-oferta.md`. La versión en inglés (EE. UU.) sigue con Starter, Pro y Care plan.
+
+## Páginas y sus URL
 
 Todas las rutas son relativas, así que el sitio funciona en cualquier dirección. Hay dos formas de publicarlo; las dos usan `scripts/armar-sitio.js`, que arma `_site/` sin documentos internos ni datos de clientes reales (solo las entregas de ejemplo):
 
@@ -19,21 +30,21 @@ Todas las rutas son relativas, así que el sitio funciona en cualquier direcció
 
 | Página | URL | Para qué sirve |
 |---|---|---|
-| Principal | `/` · `/?m=co` · `/?m=usd` | Demo que vende: celular en vivo, hora del día, antes y después, gremios, calculadora, planes y preguntas. |
+| Principal | `/` | Demo que vende: celular en vivo, «Así le llega un pedido» (`/#probar`), hora del día, antes y después, gremios, calculadora, planes y preguntas. |
 | Simulador | `/demo/` | Celular grande + panel del dueño. Modo interactivo y automático, formatos 16:9 y 9:16 para grabar. |
 | Visita | `/visita/?asesora=SOFIA` | Herramienta de las asesoras: demo con el nombre del negocio, enlace, QR y botón «Lo quiero». |
 | English | `/en/` | Landing para servicios a domicilio en EE. UU. con la demo de respuesta en menos de 60 s. |
 | Simulador EN | `/demo/en.html` | Simulador en inglés con modo automático y formatos 16:9 y 9:16. |
 | Constructor | `/constructor/` | Para Andres: formulario por pasos, vista previa en vivo (chat, página y QR), copiar cada texto y descargar el JSON del cliente. |
-| Ejemplo Pro (moderno) | `/entregas/ejemplo-barberia-el-parche/pagina/` | Página web generada para la barbería ficticia. |
-| Ejemplo Pro (cálido) | `/entregas/ejemplo-reposteria-dulce-coqui/pagina/` | Página web generada para la repostería ficticia de Puerto Rico. |
+| Ejemplo Reservas (moderno) | `/entregas/ejemplo-barberia-el-parche/pagina/` · `/entregas/ejemplo-barberia-el-parche/pagina/recordatorios.html` | Página con reservas y la herramienta de recordatorios de la barbería ficticia. |
+| Ejemplo Pedidos (cálido) | `/entregas/ejemplo-asadero-la-brasa-dorada/pagina/` | Página con carrito de pedidos del asadero ficticio. |
 | Privacidad | `/privacidad.html` · `/en/privacy.html` | Plantillas legales (revisar con un abogado). |
 
 ### Parámetros de URL
 
 | Parámetro | Dónde | Valores | Efecto |
 |---|---|---|---|
-| `m` | todas | `co`, `usd`, `en` | Mercado: precios en COP o USD; `en` lleva a la versión en inglés. |
+| `m` | todas | `en` | `en` lleva a la versión en inglés. Puerto Rico y EE. UU. en español están desactivados. |
 | `asesora` | todas | `SOFIA`, `YARIMAR` | Agrega «Vengo de parte de [nombre] (código CODIGO)» a cada mensaje de WhatsApp y se conserva en los enlaces internos. |
 | `gremio` | demo, visita, demo/en | `barberia`, `restaurante`, `panaderia`, `taller`, `ropa`, `ferreteria`, `gimnasio`, `hogar` · `cleaning`, `hvac`, `plumbing` | Negocio que aparece en el celular. |
 | `nombre` | demo, visita | texto | Nombre del negocio del dueño en el chat. |
@@ -60,13 +71,13 @@ timbre/
 ├── en/privacy.html            Privacy policy (template)
 ├── config/
 │   ├── marca.json             Marca, contacto, asesoras, mensajes de WhatsApp, testimonios
-│   └── planes.json            Planes y precios de los 3 mercados (co, usd, en)
+│   └── planes.json            Planes y precios (co y en; usd guardado en mercadosDesactivados)
 ├── plantillas/gremios/        Un JSON por gremio + indice.json
 ├── constructor/index.html     Generador en el navegador (para Andres)
-├── plantillas/pagina-negocio/ Página web del plan Pro: pagina.js + estilos (sobrio, calido, moderno)
+├── plantillas/pagina-negocio/ Página del negocio con pedidos o reservas: pagina.js + estilos (sobrio, calido, moderno)
 ├── negocios/
-│   ├── ejemplo-barberia-el-parche.json        Cliente ficticio · Colombia · Pro · estilo moderno
-│   ├── ejemplo-reposteria-dulce-coqui.json    Cliente ficticio · Puerto Rico · Pro · estilo cálido
+│   ├── ejemplo-barberia-el-parche.json        Cliente ficticio · Reservas · estilo moderno
+│   ├── ejemplo-asadero-la-brasa-dorada.json   Cliente ficticio · Pedidos · estilo cálido
 │   └── privado/               Clientes reales: en .gitignore, nunca se publica
 ├── entregas/                  Salida del generador (solo se versionan las de ejemplo)
 ├── timbre-whatsapp/           Textos e imágenes de catálogo del WhatsApp de Timbre
@@ -123,7 +134,7 @@ Scripts:
 | Comando | Qué hace |
 |---|---|
 | `npm run validar` | Valida todos los JSON. `node scripts/validar.js archivo.json` valida uno. |
-| `npm run generar -- negocios/privado/cliente.json` | Genera la entrega de un cliente. Opciones: `--estilo sobrio\|calido\|moderno`, `--pagina` (forzar página aunque sea Esencial). |
+| `npm run generar -- negocios/privado/cliente.json` | Genera la entrega de un cliente. Opciones: `--estilo sobrio\|calido\|moderno`, `--pagina` (forzar página aunque sea Arranque). |
 | `npm run ejemplos` | Regenera las dos entregas de ejemplo. |
 | `npm run catalogo-timbre` | Regenera las imágenes de los planes desde `config/planes.json`. |
 
@@ -132,7 +143,7 @@ Scripts:
 ## Cómo crear un cliente nuevo en 5 pasos
 
 1. **Arme el JSON** en el constructor (`/constructor/`): elija el gremio, llene los pasos y descargue el archivo. O copie un ejemplo: `cp negocios/ejemplo-barberia-el-parche.json negocios/privado/barberia-juanito.json`. Los clientes reales siempre van en `negocios/privado/`.
-2. **Revise los datos**: nombre, color, horario, catálogo y precios, preguntas, mensajes y el bloque `negocio` (dirección, WhatsApp, redes, medios de pago, políticas, plan, estilo de página y enlace de reseñas). Si tiene fotos, agregue `"imagen": "fotos/corte.jpg"` a cada producto (ruta relativa al JSON).
+2. **Revise los datos**: nombre, color, horario, catálogo y precios, preguntas, mensajes y el bloque `negocio`: dirección, WhatsApp, redes, medios de pago, políticas, enlace de reseñas, `plan` (`pedidos`, `reservas`, `asistente` o `arranque`), `estiloPagina`, y según el caso `costoDomicilio` (Pedidos) o `intervaloReservas` (Reservas, en minutos). Si tiene fotos, agregue `"imagen": "fotos/corte.jpg"` a cada producto (ruta relativa al JSON).
 3. **Valide**: `node scripts/validar.js negocios/privado/barberia-juanito.json` (o sin argumento para todo el repositorio).
 4. **Genere la entrega**: `node scripts/generar.js negocios/privado/barberia-juanito.json` crea `entregas/barberia-juanito/` con textos para WhatsApp Business y Google Maps, imágenes del catálogo, códigos QR, página web y lista de verificación.
 5. **Entregue**: siga `entregas/<negocio>/lista-de-verificacion.md` con el dueño, firme `entrega/documento-de-entrega.md` y cobre el saldo con `entrega/cuenta-de-cobro.md` cuando lo vea funcionando.
@@ -151,6 +162,6 @@ Scripts:
 ## Estado por fases
 
 - [x] **Fase 1 — La demo que vende**: página principal, simulador, visita, versión en inglés, privacidad y publicación en GitHub Pages.
-- [x] **Fase 2 — Kit de entrega con plantillas**: generador, 2 clientes de ejemplo, página Pro en 3 estilos, constructor, WhatsApp de Timbre y guiones de video.
+- [x] **Fase 2 — Kit de entrega con plantillas**: generador, 2 clientes de ejemplo, página del negocio en 3 estilos, constructor, WhatsApp de Timbre y guiones de video.
 - [x] **Fase 3 — Automatizaciones reales**: 5 workflows de n8n, guía de Make con créditos y plantillas de WhatsApp para Meta.
 - [x] **Fase 4 — Ventas y entrega**: documentos de `entrega/` y material de `upwork/`.

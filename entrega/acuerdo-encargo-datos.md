@@ -12,7 +12,7 @@ Acuerdan:
 
 ## 1. Objeto
 
-EL ENCARGADO tratará datos personales por cuenta de EL RESPONSABLE, solo para prestar los servicios contratados: [configuración de WhatsApp Business, perfil en Google Maps, página web con formulario, automatizaciones E1 a E5, soporte y mantenimiento].
+EL ENCARGADO tratará datos personales por cuenta de EL RESPONSABLE, solo para prestar los servicios contratados: [configuración de WhatsApp Business, perfil en Google Maps, página de pedidos o reservas, asistente con IA o automatizaciones E1 a E5, soporte y mensualidad].
 
 ## 2. Datos y titulares
 

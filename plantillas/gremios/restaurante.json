@@ -7,56 +7,190 @@
   "ficticio": true,
   "acento": "#C2410C",
   "moneda": "COP",
+  "modulo": "pedidos",
   "horario": {
-    "lun": null, "mar": ["11:00", "22:00"], "mie": ["11:00", "22:00"],
-    "jue": ["11:00", "22:00"], "vie": ["11:00", "23:00"], "sab": ["11:00", "23:00"], "dom": ["11:00", "21:00"]
+    "lun": null,
+    "mar": [
+      "11:00",
+      "22:00"
+    ],
+    "mie": [
+      "11:00",
+      "22:00"
+    ],
+    "jue": [
+      "11:00",
+      "22:00"
+    ],
+    "vie": [
+      "11:00",
+      "23:00"
+    ],
+    "sab": [
+      "11:00",
+      "23:00"
+    ],
+    "dom": [
+      "11:00",
+      "21:00"
+    ]
   },
   "horarioTexto": "martes a jueves de 11:00 a. m. a 10:00 p. m.; viernes y sábados hasta las 11:00 p. m.; domingos de 11:00 a. m. a 9:00 p. m. Lunes cerrado.",
-  "ubicacion": { "direccion": "Carrera 15 # 32-40", "barrio": "Barrio San José", "ciudad": "Bucaramanga", "referencia": "Al lado de la droguería de la esquina" },
+  "ubicacion": {
+    "direccion": "Carrera 15 # 32-40",
+    "barrio": "Barrio San José",
+    "ciudad": "Bucaramanga",
+    "referencia": "Al lado de la droguería de la esquina"
+  },
   "catalogo": [
-    { "nombre": "Pollo asado entero", "descripcion": "Con papa salada, arepa y ají de la casa.", "precio": 42000, "precioUSD": 22 },
-    { "nombre": "Medio pollo", "descripcion": "Con papa salada, arepa y ají.", "precio": 24000, "precioUSD": 13 },
-    { "nombre": "Picada para dos", "descripcion": "Chorizo, chicharrón, carne, pollo, papa criolla y maduro.", "precio": 48000, "precioUSD": 25 },
-    { "nombre": "Hamburguesa de la casa", "descripcion": "Carne de 150 g, queso, tocineta y papas.", "precio": 22000, "precioUSD": 12 },
-    { "nombre": "Salchipapa especial", "descripcion": "Papa, salchicha, pollo desmechado, queso y salsas.", "precio": 19000, "precioUSD": 10 },
-    { "nombre": "Almuerzo del día", "descripcion": "Sopa, seco, jugo. De martes a viernes al mediodía.", "precio": 16000, "precioUSD": 9 },
-    { "nombre": "Jugo natural en agua", "descripcion": "Mora, lulo, maracuyá o mango.", "precio": 6000, "precioUSD": 3 },
-    { "nombre": "Gaseosa 1,5 litros", "descripcion": "Varios sabores.", "precio": 7000, "precioUSD": 3 }
+    {
+      "nombre": "Pollo asado entero",
+      "descripcion": "Con papa salada, arepa y ají de la casa.",
+      "precio": 42000
+    },
+    {
+      "nombre": "Medio pollo",
+      "descripcion": "Con papa salada, arepa y ají.",
+      "precio": 24000
+    },
+    {
+      "nombre": "Picada para dos",
+      "descripcion": "Chorizo, chicharrón, carne, pollo, papa criolla y maduro.",
+      "precio": 48000
+    },
+    {
+      "nombre": "Hamburguesa de la casa",
+      "descripcion": "Carne de 150 g, queso, tocineta y papas.",
+      "precio": 22000
+    },
+    {
+      "nombre": "Salchipapa especial",
+      "descripcion": "Papa, salchicha, pollo desmechado, queso y salsas.",
+      "precio": 19000
+    },
+    {
+      "nombre": "Almuerzo del día",
+      "descripcion": "Sopa, seco, jugo. De martes a viernes al mediodía.",
+      "precio": 16000
+    },
+    {
+      "nombre": "Jugo natural en agua",
+      "descripcion": "Mora, lulo, maracuyá o mango.",
+      "precio": 6000
+    },
+    {
+      "nombre": "Gaseosa 1,5 litros",
+      "descripcion": "Varios sabores.",
+      "precio": 7000
+    }
   ],
   "faq": [
-    { "pregunta": "¿Hacen domicilios?", "respuesta": "Sí. El domicilio vale $4.000 en el barrio y alrededores. Escríbanos su dirección y le confirmamos." },
-    { "pregunta": "¿Cuánto se demora el domicilio?", "respuesta": "Entre 30 y 45 minutos, según la hora y la distancia." },
-    { "pregunta": "¿Qué medios de pago reciben?", "respuesta": "Efectivo, Nequi, Daviplata, Bre-B y datáfono en el local y en el domicilio." },
-    { "pregunta": "¿Abren los lunes?", "respuesta": "Los lunes descansamos. De martes a domingo atendemos desde las 11:00 a. m." },
-    { "pregunta": "¿Tienen menú infantil?", "respuesta": "Sí, nuggets o cuarto de pollo con papas y jugo por $14.000." },
-    { "pregunta": "¿Puedo reservar mesa?", "respuesta": "Claro. Díganos el día, la hora y cuántas personas, y le apartamos la mesa." },
-    { "pregunta": "¿Hacen pedidos para eventos?", "respuesta": "Sí, desde 10 personas. Cuéntenos la fecha y le enviamos una cotización." },
-    { "pregunta": "¿Cuál es el almuerzo de hoy?", "respuesta": "El menú cambia cada día. A las 11:00 a. m. publicamos el almuerzo del día en el estado de WhatsApp." }
+    {
+      "pregunta": "¿Hacen domicilios?",
+      "respuesta": "Sí. El domicilio vale $4.000 en el barrio y alrededores. Escríbanos su dirección y le confirmamos."
+    },
+    {
+      "pregunta": "¿Cuánto se demora el domicilio?",
+      "respuesta": "Entre 30 y 45 minutos, según la hora y la distancia."
+    },
+    {
+      "pregunta": "¿Qué medios de pago reciben?",
+      "respuesta": "Efectivo, Nequi, Daviplata, Bre-B y datáfono en el local y en el domicilio."
+    },
+    {
+      "pregunta": "¿Abren los lunes?",
+      "respuesta": "Los lunes descansamos. De martes a domingo atendemos desde las 11:00 a. m."
+    },
+    {
+      "pregunta": "¿Tienen menú infantil?",
+      "respuesta": "Sí, nuggets o cuarto de pollo con papas y jugo por $14.000."
+    },
+    {
+      "pregunta": "¿Puedo reservar mesa?",
+      "respuesta": "Claro. Díganos el día, la hora y cuántas personas, y le apartamos la mesa."
+    },
+    {
+      "pregunta": "¿Hacen pedidos para eventos?",
+      "respuesta": "Sí, desde 10 personas. Cuéntenos la fecha y le enviamos una cotización."
+    },
+    {
+      "pregunta": "¿Cuál es el almuerzo de hoy?",
+      "respuesta": "El menú cambia cada día. A las 11:00 a. m. publicamos el almuerzo del día en el estado de WhatsApp."
+    }
   ],
   "mensajes": {
     "bienvenida": "Hola, gracias por escribir a {negocio}. Ya tomamos nota y en un momento le confirmamos. Aquí está el menú con precios. Para domicilio, envíenos su pedido, la dirección y el medio de pago.",
     "fueraDeHorario": "Hola, gracias por escribir a {negocio}. En este momento la cocina está cerrada. Nuestro horario es {horario}. Le respondemos apenas abramos. Mientras tanto, aquí está el menú con precios para que vaya escogiendo.",
     "respuestasRapidas": [
-      { "atajo": "menu", "texto": "Pollo entero $42.000 · Medio pollo $24.000 · Picada para dos $48.000 · Hamburguesa $22.000. El menú completo está en el catálogo." },
-      { "atajo": "domicilio", "texto": "Con gusto. Envíenos su dirección completa, el pedido y si paga en efectivo o transferencia. El domicilio vale $4.000." },
-      { "atajo": "pago", "texto": "Recibimos efectivo, Nequi, Daviplata, Bre-B y datáfono." },
-      { "atajo": "encamino", "texto": "Su pedido ya va en camino. Llega en unos 20 minutos." },
-      { "atajo": "reserva", "texto": "Listo, su mesa quedó apartada. Si se le hace tarde, avísenos por aquí." },
-      { "atajo": "gracias", "texto": "Gracias por su pedido. Si le gustó, nos ayuda mucho con una reseña en Google." }
+      {
+        "atajo": "menu",
+        "texto": "Pollo entero $42.000 · Medio pollo $24.000 · Picada para dos $48.000 · Hamburguesa $22.000. El menú completo está en el catálogo."
+      },
+      {
+        "atajo": "domicilio",
+        "texto": "Con gusto. Envíenos su dirección completa, el pedido y si paga en efectivo o transferencia. El domicilio vale $4.000."
+      },
+      {
+        "atajo": "pago",
+        "texto": "Recibimos efectivo, Nequi, Daviplata, Bre-B y datáfono."
+      },
+      {
+        "atajo": "encamino",
+        "texto": "Su pedido ya va en camino. Llega en unos 20 minutos."
+      },
+      {
+        "atajo": "reserva",
+        "texto": "Listo, su mesa quedó apartada. Si se le hace tarde, avísenos por aquí."
+      },
+      {
+        "atajo": "gracias",
+        "texto": "Gracias por su pedido. Si le gustó, nos ayuda mucho con una reseña en Google."
+      }
     ]
   },
-  "etiquetas": ["Nuevo cliente", "Pedido nuevo", "Domicilio en camino", "Pagó", "Cliente frecuente", "Evento"],
+  "etiquetas": [
+    "Nuevo cliente",
+    "Pedido nuevo",
+    "Domicilio en camino",
+    "Pagó",
+    "Cliente frecuente",
+    "Evento"
+  ],
   "maps": {
     "categoriaPrincipal": "Asadero de pollos",
-    "categoriasAdicionales": ["Restaurante de comida rápida", "Restaurante colombiano", "Servicio de entrega de comida"],
+    "categoriasAdicionales": [
+      "Restaurante de comida rápida",
+      "Restaurante colombiano",
+      "Servicio de entrega de comida"
+    ],
     "descripcion": "Asadero familiar en San José. Pollo asado al carbón, picadas, hamburguesas y almuerzos caseros de martes a viernes. Domicilios en el barrio y alrededores, reservas para grupos y pedidos para eventos. Pida por WhatsApp y vea el menú con precios."
   },
   "conversacion": [
-    { "cliente": "Hola, ¿todavía tienen domicilios? Quiero un pollo entero para la casa.", "responde": "catalogo" },
-    { "cliente": "¿Mañana a qué hora abren?", "responde": "horario" },
-    { "cliente": "¿Cuánto vale el domicilio?", "responde": "faq:0" },
-    { "cliente": "¿Dónde quedan?", "responde": "ubicacion" },
-    { "cliente": "Quiero hablar con alguien para un evento.", "responde": "persona" }
+    {
+      "cliente": "Hola, ¿todavía tienen domicilios? Quiero un pollo entero para la casa.",
+      "responde": "catalogo"
+    },
+    {
+      "cliente": "¿Mañana a qué hora abren?",
+      "responde": "horario"
+    },
+    {
+      "cliente": "¿Cuánto vale el domicilio?",
+      "responde": "faq:0"
+    },
+    {
+      "cliente": "¿Dónde quedan?",
+      "responde": "ubicacion"
+    },
+    {
+      "cliente": "Quiero hablar con alguien para un evento.",
+      "responde": "persona"
+    }
   ],
-  "clientesDemo": ["Diana C.", "Ferney G.", "Luz Marina T.", "Óscar V."]
+  "clientesDemo": [
+    "Diana C.",
+    "Ferney G.",
+    "Luz Marina T.",
+    "Óscar V."
+  ]
 }

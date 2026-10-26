@@ -16,7 +16,6 @@
   const inNombre = $('#v-nombre');
   const selGremio = $('#v-gremio');
   const selAsesora = $('#v-asesora');
-  const selMercado = $('#v-mercado');
 
   selGremio.innerHTML = gremios.map((g) => `<option value="${g.id}">${T.esc(g.gremio)}</option>`).join('');
   selAsesora.innerHTML += marca.asesoras.map((a) => `<option value="${a.codigo}">${T.esc(a.nombre)} (${a.codigo})</option>`).join('');
@@ -26,7 +25,6 @@
   if (gremios.some((g) => g.id === p.get('gremio'))) selGremio.value = p.get('gremio');
   const asesoraUrl = T.asesora(marca);
   if (asesoraUrl) selAsesora.value = asesoraUrl.codigo;
-  selMercado.value = T.mercado(planes, ['co', 'usd']);
 
   const tel = new TimbreTelefono($('#telefono-visita'), { negocio: gremios[0], idioma: 'es' });
 
@@ -36,8 +34,7 @@
       gremio,
       nombre: inNombre.value.trim().slice(0, 40),
       asesora: T.asesora(marca, selAsesora.value),
-      mercado: selMercado.value,
-      moneda: planes.mercados[selMercado.value].moneda
+      moneda: 'COP'
     };
   }
 
@@ -45,7 +42,6 @@
     const url = new URL('../demo/', location.href);
     url.searchParams.set('gremio', e.gremio.id);
     if (e.nombre) url.searchParams.set('nombre', e.nombre);
-    if (e.mercado !== 'co') url.searchParams.set('m', e.mercado);
     if (e.asesora) url.searchParams.set('asesora', e.asesora.codigo);
     url.searchParams.set('modo', 'auto');
     return url.href;
@@ -64,7 +60,8 @@
     $('#v-abrir').href = enlace;
     $('#qr').innerHTML = T.qrSVG(enlace, { etiqueta: `Código QR para abrir la demostración de ${e.nombre || e.gremio.nombre}` });
     const negocio = e.nombre || '[nombre del negocio]';
-    const texto = `Hola, quiero Timbre para ${negocio} (${e.gremio.gremioCorto.toLowerCase()}).`;
+    const plan = e.gremio.modulo === 'reservas' ? 'Reservas' : 'Pedidos';
+    const texto = `Hola, quiero Timbre ${plan} para ${negocio} (${e.gremio.gremioCorto.toLowerCase()}).`;
     const mensaje = T.mensajeWhatsapp(marca, { texto, asesora: e.asesora });
     $('#v-loquiero').href = `https://wa.me/${marca.contacto.whatsappDigitos}?text=${encodeURIComponent(mensaje)}`;
     $('#v-mensaje').textContent = `Mensaje: «${mensaje}»`;
@@ -74,13 +71,12 @@
     if (e.nombre) url.searchParams.set('nombre', e.nombre);
     url.searchParams.set('gremio', e.gremio.id);
     if (e.asesora) url.searchParams.set('asesora', e.asesora.codigo);
-    if (e.mercado !== 'co') url.searchParams.set('m', e.mercado);
     history.replaceState(null, '', url);
   }
 
   let t;
   inNombre.addEventListener('input', () => { actualizar(); clearTimeout(t); t = setTimeout(reproducir, 500); });
-  [selGremio, selMercado].forEach((s) => s.addEventListener('change', () => { actualizar(); reproducir(); }));
+  selGremio.addEventListener('change', () => { actualizar(); reproducir(); });
   selAsesora.addEventListener('change', actualizar);
   $('#form-visita').addEventListener('submit', (ev) => { ev.preventDefault(); inNombre.blur(); });
   $('#v-repetir').addEventListener('click', reproducir);

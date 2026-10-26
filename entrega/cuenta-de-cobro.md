@@ -14,12 +14,12 @@ WhatsApp +57 314 331 9442 · [CORREO DE CONTACTO]
 
 **LA SUMA DE:** [VALOR EN LETRAS] PESOS M/CTE (**$[VALOR EN NÚMEROS]**)
 
-**POR CONCEPTO DE:** [50% DE ANTICIPO / 50% DE SALDO] del plan [ESENCIAL / PRO] de Timbre: configuración de WhatsApp Business y del perfil del negocio en Google Maps[, página web sencilla y QR de reseñas], según propuesta del [FECHA].
+**POR CONCEPTO DE:** [50% DE ANTICIPO DE LA INSTALACIÓN / 50% DE SALDO DE LA INSTALACIÓN / MENSUALIDAD DE (MES)] del plan [PEDIDOS / RESERVAS / ASISTENTE / ARRANQUE] de Timbre, según propuesta del [FECHA].
 
 | Concepto | Valor |
 |---|---|
-| [Plan Esencial · 50% anticipo] | $[300.000] |
-| **Total a pagar** | **$[300.000]** |
+| [Plan Pedidos · 50% anticipo de la instalación] | $[195.000] |
+| **Total a pagar** | **$[195.000]** |
 
 **Forma de pago:**
 
@@ -38,7 +38,7 @@ C.C. [NÚMERO DE CÉDULA]
 
 ---
 
-## Invoice (USD) · Puerto Rico, EE. UU. y clientes en inglés
+## Invoice (USD) · clientes en inglés (EE. UU.)
 
 **Invoice #[0001]** · Date: [DATE]
 
@@ -48,7 +48,7 @@ C.C. [NÚMERO DE CÉDULA]
 
 | Description | Amount |
 |---|---|
-| [Starter / Pro / Esencial / Pro] setup · [50% deposit / 50% balance] | US$[AMOUNT] |
+| [Starter / Pro] setup · [50% deposit / 50% balance] or [Care plan · MONTH] | US$[AMOUNT] |
 | **Total due** | **US$[AMOUNT]** |
 
 **Payment:** [BANK TRANSFER DETAILS / CARD PAYMENT LINK]. Due on receipt.

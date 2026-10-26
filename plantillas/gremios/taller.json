@@ -7,56 +7,190 @@
   "ficticio": true,
   "acento": "#3F4C5A",
   "moneda": "COP",
+  "modulo": "reservas",
   "horario": {
-    "lun": ["07:30", "18:00"], "mar": ["07:30", "18:00"], "mie": ["07:30", "18:00"],
-    "jue": ["07:30", "18:00"], "vie": ["07:30", "18:00"], "sab": ["08:00", "14:00"], "dom": null
+    "lun": [
+      "07:30",
+      "18:00"
+    ],
+    "mar": [
+      "07:30",
+      "18:00"
+    ],
+    "mie": [
+      "07:30",
+      "18:00"
+    ],
+    "jue": [
+      "07:30",
+      "18:00"
+    ],
+    "vie": [
+      "07:30",
+      "18:00"
+    ],
+    "sab": [
+      "08:00",
+      "14:00"
+    ],
+    "dom": null
   },
   "horarioTexto": "lunes a viernes de 7:30 a. m. a 6:00 p. m. y sábados de 8:00 a. m. a 2:00 p. m. Domingos cerrado.",
-  "ubicacion": { "direccion": "Carrera 68 # 12-05", "barrio": "Barrio Américas", "ciudad": "Bogotá", "referencia": "Diagonal a la estación de gasolina" },
+  "ubicacion": {
+    "direccion": "Carrera 68 # 12-05",
+    "barrio": "Barrio Américas",
+    "ciudad": "Bogotá",
+    "referencia": "Diagonal a la estación de gasolina"
+  },
   "catalogo": [
-    { "nombre": "Cambio de aceite", "descripcion": "Aceite sintético, filtro y revisión de 20 puntos. Mano de obra incluida.", "precio": 180000, "precioUSD": 60 },
-    { "nombre": "Diagnóstico con escáner", "descripcion": "Lectura de códigos de falla y explicación clara.", "precio": 60000, "precioUSD": 30 },
-    { "nombre": "Pastillas de freno delanteras", "descripcion": "Repuesto y mano de obra para carro particular.", "precio": 220000, "precioUSD": 90 },
-    { "nombre": "Alineación y balanceo", "descripcion": "Cuatro llantas, carro particular.", "precio": 90000, "precioUSD": 50 },
-    { "nombre": "Sincronización", "descripcion": "Bujías, limpieza de inyectores y filtro de aire.", "precio": 280000, "precioUSD": 120 },
-    { "nombre": "Revisión precompra", "descripcion": "Revisión completa antes de comprar un carro usado.", "precio": 120000, "precioUSD": 60 },
-    { "nombre": "Cambio de batería", "descripcion": "Instalación y prueba del sistema de carga. Batería aparte.", "precio": 25000, "precioUSD": 15 },
-    { "nombre": "Revisión para la técnico-mecánica", "descripcion": "Dejamos el carro listo para pasar la revisión.", "precio": 70000, "precioUSD": 35 }
+    {
+      "nombre": "Cambio de aceite",
+      "descripcion": "Aceite sintético, filtro y revisión de 20 puntos. Mano de obra incluida.",
+      "precio": 180000
+    },
+    {
+      "nombre": "Diagnóstico con escáner",
+      "descripcion": "Lectura de códigos de falla y explicación clara.",
+      "precio": 60000
+    },
+    {
+      "nombre": "Pastillas de freno delanteras",
+      "descripcion": "Repuesto y mano de obra para carro particular.",
+      "precio": 220000
+    },
+    {
+      "nombre": "Alineación y balanceo",
+      "descripcion": "Cuatro llantas, carro particular.",
+      "precio": 90000
+    },
+    {
+      "nombre": "Sincronización",
+      "descripcion": "Bujías, limpieza de inyectores y filtro de aire.",
+      "precio": 280000
+    },
+    {
+      "nombre": "Revisión precompra",
+      "descripcion": "Revisión completa antes de comprar un carro usado.",
+      "precio": 120000
+    },
+    {
+      "nombre": "Cambio de batería",
+      "descripcion": "Instalación y prueba del sistema de carga. Batería aparte.",
+      "precio": 25000
+    },
+    {
+      "nombre": "Revisión para la técnico-mecánica",
+      "descripcion": "Dejamos el carro listo para pasar la revisión.",
+      "precio": 70000
+    }
   ],
   "faq": [
-    { "pregunta": "¿Cuánto vale el cambio de aceite?", "respuesta": "Desde $180.000 con aceite sintético, filtro y revisión de 20 puntos. El precio exacto depende del carro." },
-    { "pregunta": "¿Tengo que pedir cita?", "respuesta": "Para cambio de aceite y diagnóstico es mejor con cita y así no espera. Díganos el día y la marca del carro." },
-    { "pregunta": "¿Cuánto se demoran?", "respuesta": "Un cambio de aceite, una hora. Para reparaciones le damos el tiempo después del diagnóstico." },
-    { "pregunta": "¿Dan garantía?", "respuesta": "Sí. La mano de obra tiene garantía de tres meses y los repuestos, la del fabricante." },
-    { "pregunta": "¿Me cotizan antes de arreglar?", "respuesta": "Siempre. No hacemos ningún trabajo sin que usted apruebe la cotización." },
-    { "pregunta": "¿Qué medios de pago reciben?", "respuesta": "Efectivo, transferencia, Bre-B y tarjeta débito o crédito." },
-    { "pregunta": "¿Trabajan motos?", "respuesta": "Por ahora solo carros particulares y camionetas." },
-    { "pregunta": "¿Recogen el carro?", "respuesta": "Sí, con servicio de grúa aliado. El valor depende de la distancia." }
+    {
+      "pregunta": "¿Cuánto vale el cambio de aceite?",
+      "respuesta": "Desde $180.000 con aceite sintético, filtro y revisión de 20 puntos. El precio exacto depende del carro."
+    },
+    {
+      "pregunta": "¿Tengo que pedir cita?",
+      "respuesta": "Para cambio de aceite y diagnóstico es mejor con cita y así no espera. Díganos el día y la marca del carro."
+    },
+    {
+      "pregunta": "¿Cuánto se demoran?",
+      "respuesta": "Un cambio de aceite, una hora. Para reparaciones le damos el tiempo después del diagnóstico."
+    },
+    {
+      "pregunta": "¿Dan garantía?",
+      "respuesta": "Sí. La mano de obra tiene garantía de tres meses y los repuestos, la del fabricante."
+    },
+    {
+      "pregunta": "¿Me cotizan antes de arreglar?",
+      "respuesta": "Siempre. No hacemos ningún trabajo sin que usted apruebe la cotización."
+    },
+    {
+      "pregunta": "¿Qué medios de pago reciben?",
+      "respuesta": "Efectivo, transferencia, Bre-B y tarjeta débito o crédito."
+    },
+    {
+      "pregunta": "¿Trabajan motos?",
+      "respuesta": "Por ahora solo carros particulares y camionetas."
+    },
+    {
+      "pregunta": "¿Recogen el carro?",
+      "respuesta": "Sí, con servicio de grúa aliado. El valor depende de la distancia."
+    }
   ],
   "mensajes": {
     "bienvenida": "Hola, gracias por escribir a {negocio}. En un momento le atendemos. Para cotizarle más rápido, cuéntenos la marca, el modelo y el año del carro, y qué le está pasando. Aquí puede ver los servicios con precios.",
     "fueraDeHorario": "Hola, gracias por escribir a {negocio}. En este momento el taller está cerrado. Nuestro horario es {horario}. Le respondemos a primera hora. Déjenos la marca, el modelo y el año del carro y qué le pasa, y le tenemos la cotización lista.",
     "respuestasRapidas": [
-      { "atajo": "aceite", "texto": "El cambio de aceite sintético con filtro y revisión de 20 puntos está desde $180.000. ¿Qué carro tiene?" },
-      { "atajo": "cita", "texto": "Con gusto le damos cita. ¿Qué día le sirve? Tenemos turnos desde las 7:30 a. m." },
-      { "atajo": "cotizacion", "texto": "Le enviamos la cotización por aquí. No hacemos ningún trabajo sin su aprobación." },
-      { "atajo": "listo", "texto": "Su carro ya está listo. Puede recogerlo hasta las 6:00 p. m." },
-      { "atajo": "ubicacion", "texto": "Estamos en la Carrera 68 # 12-05, barrio Américas, diagonal a la estación de gasolina." },
-      { "atajo": "gracias", "texto": "Gracias por confiar en nosotros. Si quedó contento, nos ayuda mucho con una reseña en Google." }
+      {
+        "atajo": "aceite",
+        "texto": "El cambio de aceite sintético con filtro y revisión de 20 puntos está desde $180.000. ¿Qué carro tiene?"
+      },
+      {
+        "atajo": "cita",
+        "texto": "Con gusto le damos cita. ¿Qué día le sirve? Tenemos turnos desde las 7:30 a. m."
+      },
+      {
+        "atajo": "cotizacion",
+        "texto": "Le enviamos la cotización por aquí. No hacemos ningún trabajo sin su aprobación."
+      },
+      {
+        "atajo": "listo",
+        "texto": "Su carro ya está listo. Puede recogerlo hasta las 6:00 p. m."
+      },
+      {
+        "atajo": "ubicacion",
+        "texto": "Estamos en la Carrera 68 # 12-05, barrio Américas, diagonal a la estación de gasolina."
+      },
+      {
+        "atajo": "gracias",
+        "texto": "Gracias por confiar en nosotros. Si quedó contento, nos ayuda mucho con una reseña en Google."
+      }
     ]
   },
-  "etiquetas": ["Nuevo cliente", "Cotizar", "Cotización enviada", "Carro en taller", "Listo para entregar", "Pagó"],
+  "etiquetas": [
+    "Nuevo cliente",
+    "Cotizar",
+    "Cotización enviada",
+    "Carro en taller",
+    "Listo para entregar",
+    "Pagó"
+  ],
   "maps": {
     "categoriaPrincipal": "Taller de reparación de automóviles",
-    "categoriasAdicionales": ["Servicio de cambio de aceite", "Taller de frenos", "Servicio de alineación de ruedas"],
+    "categoriasAdicionales": [
+      "Servicio de cambio de aceite",
+      "Taller de frenos",
+      "Servicio de alineación de ruedas"
+    ],
     "descripcion": "Taller mecánico en Américas para carros particulares y camionetas. Cambio de aceite, frenos, diagnóstico con escáner, sincronización, alineación y revisión precompra. Siempre cotizamos antes de arreglar y damos garantía de mano de obra. Escríbanos por WhatsApp para pedir cita."
   },
   "conversacion": [
-    { "cliente": "Buenas, ¿cuánto me cobran un cambio de aceite para un Spark 2018? ¿Mañana pueden?", "responde": "catalogo" },
-    { "cliente": "¿Desde qué hora atienden?", "responde": "horario" },
-    { "cliente": "¿Dan garantía?", "responde": "faq:3" },
-    { "cliente": "¿Dónde quedan?", "responde": "ubicacion" },
-    { "cliente": "El carro no prende, necesito hablar con el mecánico.", "responde": "persona" }
+    {
+      "cliente": "Buenas, ¿cuánto me cobran un cambio de aceite para un Spark 2018? ¿Mañana pueden?",
+      "responde": "catalogo"
+    },
+    {
+      "cliente": "¿Desde qué hora atienden?",
+      "responde": "horario"
+    },
+    {
+      "cliente": "¿Dan garantía?",
+      "responde": "faq:3"
+    },
+    {
+      "cliente": "¿Dónde quedan?",
+      "responde": "ubicacion"
+    },
+    {
+      "cliente": "El carro no prende, necesito hablar con el mecánico.",
+      "responde": "persona"
+    }
   ],
-  "clientesDemo": ["Hernán Q.", "Lorena B.", "Mauricio D.", "Esteban R."]
+  "clientesDemo": [
+    "Hernán Q.",
+    "Lorena B.",
+    "Mauricio D.",
+    "Esteban R."
+  ]
 }

@@ -73,15 +73,24 @@
             <div class="campo"><label for="f-info">Info de WhatsApp (máx. 139)</label><input id="f-info" data-campo="negocio.info" maxlength="139"></div>
             <div class="campo">
               <label for="f-plan">Plan</label>
-              <select id="f-plan" data-campo="negocio.plan"><option value="esencial">Esencial</option><option value="pro">Pro</option></select>
+              <select id="f-plan" data-campo="negocio.plan"><option value="pedidos">Pedidos</option><option value="reservas">Reservas</option><option value="asistente">Asistente</option><option value="arranque">Arranque (sin página)</option></select>
             </div>
             <div class="campo">
-              <label for="f-estilo">Estilo de la página (Pro)</label>
+              <label for="f-estilo">Estilo de la página</label>
               <select id="f-estilo" data-campo="negocio.estiloPagina"><option value="sobrio">Sobrio</option><option value="calido">Cálido</option><option value="moderno">Moderno</option></select>
             </div>
             <div class="campo">
-              <label for="f-moneda">Moneda</label>
-              <select id="f-moneda" data-campo="moneda"><option value="COP">COP</option><option value="USD">USD</option></select>
+              <label for="f-modulo">Módulo de la página</label>
+              <select id="f-modulo" data-campo="negocio.modulo"><option value="pedidos">Pedidos (carrito)</option><option value="reservas">Reservas (citas)</option></select>
+              <span class="ayuda">Para el plan Asistente; en Pedidos y Reservas sale del plan.</span>
+            </div>
+            <div class="campo">
+              <label for="f-domicilio">Valor del domicilio (Pedidos, opcional)</label>
+              <input id="f-domicilio" data-campo="negocio.costoDomicilio" data-tipo="numero" type="number" min="0" step="500" inputmode="numeric" placeholder="Vacío: se confirma por WhatsApp">
+            </div>
+            <div class="campo">
+              <label for="f-intervalo">Minutos entre citas (Reservas)</label>
+              <select id="f-intervalo" data-campo="negocio.intervaloReservas" data-tipo="numero"><option value="15">15</option><option value="30">30</option><option value="45">45</option><option value="60">60</option><option value="90">90</option><option value="120">120</option></select>
             </div>
             <div class="campo"><label for="f-resenas">Enlace para pedir reseñas en Google</label><input id="f-resenas" data-campo="negocio.enlaceResenas" type="url" placeholder="https://g.page/r/…/review"></div>
           </div>
@@ -133,7 +142,7 @@
             <button type="button" class="boton" id="c-copiar-json" data-copiado="JSON copiado">Copiar JSON</button>
             <button type="button" class="boton" id="c-borrar">Borrar borrador</button>
           </div>
-          <p class="pequeno suave">Después: <code>node scripts/generar.js negocios/privado/&lt;archivo&gt;.json</code> crea las imágenes, los QR y la página.</p>
+          <p class="pequeno suave">Después: <code>node scripts/generar.js negocios/privado/&lt;archivo&gt;.json</code> crea las imágenes, los QR, la página y, en Reservas, la página de recordatorios.</p>
         </fieldset>
 
         <div class="constructor__nav">

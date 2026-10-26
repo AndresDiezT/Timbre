@@ -397,3 +397,10 @@ main, .pie { overflow-x: clip; }
 .tarjeta--amarilla .boton--tinta, .escenario__cierre .boton--tinta { background: var(--tinta); color: var(--papel); border-color: var(--tinta); }
 .tarjeta--amarilla .boton:not(.boton--tinta):not(.boton--primario) { color: var(--tinta); border-color: var(--tinta); }
 .tarjeta--amarilla a:not(.boton) { color: var(--tinta); }
+
+/* Tarjetas de pedido y reserva dentro del chat */
+.pedido-mini { width: 100%; border-collapse: collapse; font-size: .8rem; margin-bottom: 4px; }
+.pedido-mini td { padding: 3px 2px; border-top: 1px solid rgba(22, 32, 42, .18); vertical-align: top; }
+.pedido-mini td:last-child { text-align: right; white-space: nowrap; font-weight: 700; padding-left: 8px; }
+.pedido-mini__total td { font-weight: 800; border-top: 1.5px solid var(--tinta); font-size: .86rem; }
+.pedido-mini__datos { font-size: .78rem; margin: 4px 2px 0 !important; line-height: 1.4; }
