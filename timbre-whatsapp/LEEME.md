@@ -50,7 +50,7 @@ Este mensaje le llegó solo, al instante: así respondería el WhatsApp de su ne
 Vea los planes y la demostración aquí: https://timbre-demo.netlify.app/
 Video de 1 minuto: [ENLACE VIDEO]
 
-Si una asesora lo visitó, escriba su código (por ejemplo SOFIA o YARIMAR). Cuéntenos qué negocio tiene y le respondemos en un momento.
+Si una asesora lo visitó, escriba el código que aparece en su tarjeta. Cuéntenos qué negocio tiene y le respondemos en un momento.
 
 Andres Diez · Timbre
 ```
@@ -123,11 +123,11 @@ Nuevo
 Demo
 Cotizó
 Pagó
-SOFIA
-YARIMAR
+Asesora T101
+Asesora T102
 ```
 
-Cuando alguien escriba un código de asesora, póngale la etiqueta con ese código para saber de dónde llegó.
+Cuando alguien escriba un código de asesora (o llegue con el mensaje «Vengo de parte de…»), póngale la etiqueta de ese código para saber de dónde llegó. T101 es Sofía y T102 es Yarimar; la lista está en `config/marca.json`.
 
 ## 6. Catálogo
 

@@ -26,18 +26,18 @@ Todas las rutas son relativas, así que el sitio funciona en cualquier direcció
 - **Netlify** (`netlify.toml`): en app.netlify.com → *Add new site → Import an existing project → GitHub → AndresDiezT/Timbre*. Netlify lee la configuración solo; no hay que llenar nada. Publica de nuevo en cada push a `main`.
 - **GitHub Pages** (`.github/workflows/pages.yml`): *Settings → Pages → Source: GitHub Actions*. Requiere que GitHub Actions esté habilitado en la cuenta.
 
-**Sitio publicado: https://timbre-demo.netlify.app/** (las rutas de abajo se suman a esa dirección; por ejemplo https://timbre-demo.netlify.app/visita/?asesora=SOFIA).
+**Sitio publicado: https://timbre-demo.netlify.app/** (las rutas de abajo se suman a esa dirección; por ejemplo https://timbre-demo.netlify.app/visita/?asesora=T101).
 
 | Página | URL | Para qué sirve |
 |---|---|---|
 | Principal | `/` | Demo que vende: celular en vivo, «Así le llega un pedido» (`/#probar`), hora del día, antes y después, gremios, calculadora, planes y preguntas. |
 | Simulador | `/demo/` | Celular grande + panel del dueño. Modo interactivo y automático, formatos 16:9 y 9:16 para grabar. |
-| Visita | `/visita/?asesora=SOFIA` | Herramienta de las asesoras: demo con el nombre del negocio, enlace, QR y botón «Lo quiero». |
+| Visita | `/visita/?asesora=T101` | Herramienta de las asesoras: demo con el nombre del negocio, enlace, QR y botón «Lo quiero». |
 | English | `/en/` | Landing para servicios a domicilio en EE. UU. con la demo de respuesta en menos de 60 s. |
 | Simulador EN | `/demo/en.html` | Simulador en inglés con modo automático y formatos 16:9 y 9:16. |
-| Hoja de planes | `/ventas/hoja-de-planes.html?asesora=SOFIA` | Para mostrar e imprimir; el QR lleva el código de la asesora. PDF listos en `ventas/pdf/`. |
-| Guía de vendedoras | `/ventas/guia-vendedoras.html?asesora=SOFIA` | Visita en 6 pasos, objeciones y registro de visitas. |
-| Tarjetas | `/ventas/tarjetas.html?asesora=SOFIA` | 10 tarjetas por hoja carta con QR y código de la asesora. |
+| Hoja de planes | `/ventas/hoja-de-planes.html?asesora=T101` | Para mostrar e imprimir; el QR lleva el código de la asesora. PDF listos en `ventas/pdf/`. |
+| Guía de vendedoras | `/ventas/guia-vendedoras.html?asesora=T101` | Visita en 6 pasos, objeciones y registro de visitas. |
+| Tarjetas | `/ventas/tarjetas.html?asesora=T101` | 10 tarjetas por hoja carta con QR y código de la asesora. |
 | Constructor | `/constructor/` | Para Andres: formulario por pasos, vista previa en vivo (chat, página y QR), copiar cada texto y descargar el JSON del cliente. |
 | Ejemplo Reservas (moderno) | `/entregas/ejemplo-barberia-el-parche/pagina/` · `/entregas/ejemplo-barberia-el-parche/pagina/recordatorios.html` | Página con reservas y la herramienta de recordatorios de la barbería ficticia. |
 | Ejemplo Pedidos (cálido) | `/entregas/ejemplo-asadero-la-brasa-dorada/pagina/` | Página con carrito de pedidos del asadero ficticio. |
@@ -48,7 +48,7 @@ Todas las rutas son relativas, así que el sitio funciona en cualquier direcció
 | Parámetro | Dónde | Valores | Efecto |
 |---|---|---|---|
 | `m` | todas | `en` | `en` lleva a la versión en inglés. Puerto Rico y EE. UU. en español están desactivados. |
-| `asesora` | todas | `SOFIA`, `YARIMAR` | Agrega «Vengo de parte de [nombre] (código CODIGO)» a cada mensaje de WhatsApp y se conserva en los enlaces internos. |
+| `asesora` | todas | `T101`, `T102` | Agrega «Vengo de parte de [nombre] (código CODIGO)» a cada mensaje de WhatsApp y se conserva en los enlaces internos. |
 | `gremio` | demo, visita, demo/en | `barberia`, `restaurante`, `panaderia`, `taller`, `ropa`, `ferreteria`, `gimnasio`, `hogar` · `cleaning`, `hvac`, `plumbing` | Negocio que aparece en el celular. |
 | `nombre` | demo, visita | texto | Nombre del negocio del dueño en el chat. |
 | `color` | demo | `RRGGBB` (sin #) | Color de acento del negocio. |
@@ -57,7 +57,7 @@ Todas las rutas son relativas, así que el sitio funciona en cualquier direcció
 | `velocidad` | demo, demo/en | `0.6` a `2` | Velocidad del modo automático. |
 | `grabar` | demo, demo/en | `1` | Abre directo en modo grabación (sin controles; Esc para salir). |
 
-Ejemplo: `/demo/?gremio=panaderia&nombre=Panadería%20Doña%20Rosa&asesora=SOFIA&formato=916&grabar=1`
+Ejemplo: `/demo/?gremio=panaderia&nombre=Panadería%20Doña%20Rosa&asesora=T101&formato=916&grabar=1`
 
 ---
 
@@ -115,7 +115,7 @@ timbre/
 ### Cambiar precios, textos o asesoras sin tocar código
 
 - **Precios y planes**: `config/planes.json`. Cada mercado tiene sus planes, forma de pago, garantía y texto del botón.
-- **Asesoras**: `config/marca.json` → `asesoras`. Agregar `{ "codigo": "NUEVA", "nombre": "Nombre" }` y el código ya funciona en `?asesora=NUEVA`.
+- **Asesoras**: `config/marca.json` → `asesoras`. Agregar `{ "codigo": "T103", "nombre": "Nombre" }` y el código ya funciona en `?asesora=T103`. Los códigos no llevan el nombre de la asesora. Si se cambia un código, el anterior se pone en `alias` para que sigan funcionando los enlaces y tarjetas viejos.
 - **Testimonios**: `config/marca.json` → `testimonios`. La sección está oculta mientras la lista esté vacía. Solo testimonios reales, con permiso: `{ "texto": "...", "nombre": "...", "negocio": "..." }`.
 - **Gremios**: copiar un JSON de `plantillas/gremios/`, cambiarlo y agregar su id a `plantillas/gremios/indice.json`.
 
