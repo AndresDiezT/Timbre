@@ -35,6 +35,9 @@ Todas las rutas son relativas, así que el sitio funciona en cualquier direcció
 | Visita | `/visita/?asesora=SOFIA` | Herramienta de las asesoras: demo con el nombre del negocio, enlace, QR y botón «Lo quiero». |
 | English | `/en/` | Landing para servicios a domicilio en EE. UU. con la demo de respuesta en menos de 60 s. |
 | Simulador EN | `/demo/en.html` | Simulador en inglés con modo automático y formatos 16:9 y 9:16. |
+| Hoja de planes | `/ventas/hoja-de-planes.html?asesora=SOFIA` | Para mostrar e imprimir; el QR lleva el código de la asesora. PDF listos en `ventas/pdf/`. |
+| Guía de vendedoras | `/ventas/guia-vendedoras.html?asesora=SOFIA` | Visita en 6 pasos, objeciones y registro de visitas. |
+| Tarjetas | `/ventas/tarjetas.html?asesora=SOFIA` | 10 tarjetas por hoja carta con QR y código de la asesora. |
 | Constructor | `/constructor/` | Para Andres: formulario por pasos, vista previa en vivo (chat, página y QR), copiar cada texto y descargar el JSON del cliente. |
 | Ejemplo Reservas (moderno) | `/entregas/ejemplo-barberia-el-parche/pagina/` · `/entregas/ejemplo-barberia-el-parche/pagina/recordatorios.html` | Página con reservas y la herramienta de recordatorios de la barbería ficticia. |
 | Ejemplo Pedidos (cálido) | `/entregas/ejemplo-asadero-la-brasa-dorada/pagina/` | Página con carrito de pedidos del asadero ficticio. |
@@ -91,7 +94,8 @@ timbre/
 ├── entrega/                   Onboarding, diagnóstico, propuesta, cuenta de cobro, acuerdo de datos,
 │                              documento de entrega, registro de mantenimiento e informe mensual
 ├── upwork/                    Perfil, 3 piezas de portafolio y 3 propuestas (< 150 palabras)
-├── estudio/nueva-oferta.md    Propuesta de nueva oferta y precios (para decidir)
+├── estudio/nueva-oferta.md    Estudio de la oferta actual y sus precios
+├── ventas/                    Hoja de planes, guía de vendedoras, tarjetas, registro de visitas y PDF listos
 ├── assets/
 │   ├── css/                   timbre.css (sistema visual) + estilos por página
 │   ├── js/                    timbre.js (núcleo), telefono.js (chat), leads.js (demo EN), kit.js (textos de entrega) y uno por página

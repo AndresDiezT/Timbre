@@ -12,4 +12,4 @@ Plantillas para cada cliente. Copie el archivo, reemplace lo que está entre `[C
 | Al terminar | `documento-de-entrega.md` |
 | Cada mes (mensualidad de Pedidos, Reservas o Asistente) | `registro-mantenimiento.md` · `informe-mensual.md` |
 
-La guía de vendedoras y las hojas de planes impresas ya existen y no se repiten aquí. Para exportar a PDF: abra el `.md` en un editor que lo muestre (VS Code, Typora, Google Docs al pegarlo) e imprima a PDF.
+El material de las vendedoras (hoja de planes, guía de visita, tarjetas y registro de visitas) está en `ventas/`. Para exportar a PDF: abra el `.md` en un editor que lo muestre (VS Code, Typora, Google Docs al pegarlo) e imprima a PDF.
