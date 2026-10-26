@@ -5,7 +5,7 @@
     "velocidad": 1.1,
     "pausa": 0.32,
     "inicio": 0.25,
-    "final": 2.4
+    "final": 3.0
   },
   "lineas": [
     {
@@ -140,36 +140,11 @@
       ]
     },
     {
-      "escena": "cierre",
-      "subtitulos": [
-        {
-          "texto": "Listo en 5 días hábiles",
-          "dice": "Se lo dejamos funcionando en cinco días hábiles,",
-          "resalte": "5 días hábiles"
-        },
-        {
-          "texto": "En su propio WhatsApp",
-          "dice": "en su propio WhatsApp,",
-          "resalte": "su propio WhatsApp"
-        },
-        {
-          "texto": "Y le enseñamos a usarlo",
-          "dice": "y le enseñamos a usarlo.",
-          "resalte": "le enseñamos"
-        }
-      ]
-    },
-    {
       "escena": "llamado",
       "subtitulos": [
         {
-          "texto": "Escríbanos por WhatsApp",
-          "dice": "Escríbanos por WhatsApp",
-          "resalte": "WhatsApp"
-        },
-        {
-          "texto": "y le mostramos cómo quedaría en su negocio",
-          "dice": "y le mostramos cómo quedaría en su negocio.",
+          "texto": "¿Quiere esto en su negocio?",
+          "dice": "¿Quiere esto en su negocio?",
           "resalte": "su negocio"
         }
       ]

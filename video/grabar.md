@@ -1,6 +1,6 @@
 # Cómo grabar los videos con el simulador
 
-> **Ya hay un reel listo** (9:16, 40 segundos, con voz generada con IA): `video/salida/timbre-reel.mp4`, con su guía en `video/reel/LEEME.md`. Esta guía es para grabar otros videos con su propia voz usando el simulador.
+> **Ya hay un reel listo** (9:16, 32 segundos, con voz generada con IA): `video/salida/timbre-reel.mp4`, con su guía en `video/reel/LEEME.md`. Esta guía es para grabar otros videos con su propia voz usando el simulador.
 
 El simulador tiene un **modo grabación** que oculta los controles y centra el escenario en un formato fijo. No hace falta editar capturas: se graba la pantalla tal cual.
 

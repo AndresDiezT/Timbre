@@ -175,7 +175,7 @@ function efectos(tiempos) {
   /* Giros del teléfono y entradas o salidas */
   [e.problema - 0.25, e.giroTel, e.citas, e.giroCita].forEach((t) => poner(p, t, barrido(0.45, { desde: 900, hasta: 3500, vol: 0.35 })));
   poner(p, e.pedido - 0.2, barrido(0.5, { desde: 500, hasta: 2500, vol: 0.4 }));
-  poner(p, e.cierre - 0.2, barrido(0.5, { desde: 2500, hasta: 500, vol: 0.4 }));
+  poner(p, e.llamado - 0.25, barrido(0.5, { desde: 2500, hasta: 500, vol: 0.4 }));
 
   [e.toque1, e.toque2, e.toque3, e.enviar, e.toqueServicio, e.toqueHora, e.toqueEnviarCita, e.toqueConfirmar]
     .forEach((t) => poner(p, t, toque(0.9)));
@@ -188,7 +188,6 @@ function efectos(tiempos) {
   poner(ambiente, e.llegaCita, aviso(0.65));
   poner(p, e.confirmada, burbuja(1.55, 0.7), 1, 0.2);
 
-  [e.lista1, e.lista2, e.lista3, e.extra].forEach((t, i) => poner(p, t, burbuja(1 + i * 0.1, 0.5)));
 
   poner(ambiente, e.llamado + 0.05, dinDon(1.1));
 
