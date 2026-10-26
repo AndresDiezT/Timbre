@@ -14,7 +14,7 @@
           "tipo": "estrella",
           "destacado": true,
           "paraQuien": "Restaurantes, panaderías, tiendas de ropa y ferreterías",
-          "precio": 390000,
+          "precio": 450000,
           "mensual": 59000,
           "entrega": "Listo en 5 días hábiles",
           "resumen": "Sus clientes arman el pedido desde el celular y a usted le llega completo al WhatsApp, con el total. Sin comisiones.",
@@ -35,7 +35,7 @@
           "tipo": "estrella",
           "destacado": true,
           "paraQuien": "Barberías, talleres, gimnasios y técnicos",
-          "precio": 390000,
+          "precio": 450000,
           "mensual": 59000,
           "entrega": "Listo en 5 días hábiles",
           "resumen": "Sus clientes eligen servicio, día y hora, y la solicitud le llega lista para confirmar con un toque.",
@@ -107,8 +107,7 @@
       "cambioAdicional": 15000,
       "pago": "Instalación: 50% al empezar y 50% al entregar, por Bre-B o transferencia. La mensualidad se paga por adelantado cada mes.",
       "modalidad": "Configuración en persona o a distancia, con capacitación gratuita.",
-      "garantia": "El saldo lo paga cuando lo vea funcionando.",
-      "comisionAsesoras": "Sugerida: 20% de la instalación y $10.000 por cada uno de los primeros 3 meses de mensualidad que pague el cliente."
+      "garantia": "El saldo lo paga cuando lo vea funcionando."
     },
     "en": {
       "id": "en",

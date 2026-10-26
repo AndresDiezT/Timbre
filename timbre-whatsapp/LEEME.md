@@ -76,10 +76,10 @@ Se usan escribiendo «/» en el chat.
 ```
 Estos son nuestros planes:
 
-Pedidos · $390.000 de instalación + $59.000 al mes
+Pedidos · $450.000 de instalación + $59.000 al mes
 Para restaurantes, panaderías, tiendas y ferreterías. Una página de su negocio con catálogo y carrito: el cliente arma su pedido y a usted le llega completo al WhatsApp, con el total. Sin comisiones.
 
-Reservas · $390.000 de instalación + $59.000 al mes
+Reservas · $450.000 de instalación + $59.000 al mes
 Para barberías, talleres, gimnasios y técnicos. El cliente elige servicio, día y hora, y la solicitud le llega lista para confirmar. Recordatorios con un toque.
 
 Los dos incluyen WhatsApp Business completo, su negocio en Google Maps, códigos QR y capacitación gratuita. Listos en 5 días hábiles. La mensualidad es sin permanencia.
@@ -135,8 +135,8 @@ Herramientas para la empresa → Catálogo → Agregar artículo. Un artículo p
 
 | Imagen | Nombre | Precio | Descripción |
 |---|---|---|---|
-| `catalogo/co/01-pedidos.png` | Pedidos | $390.000 | Instalación + $59.000 al mes, sin permanencia. Página con catálogo y carrito: el pedido llega completo al WhatsApp, sin comisiones. Incluye WhatsApp Business, Google Maps, QR y capacitación. Listo en 5 días hábiles. |
-| `catalogo/co/02-reservas.png` | Reservas | $390.000 | Instalación + $59.000 al mes, sin permanencia. El cliente elige servicio, día y hora; la solicitud llega lista para confirmar. Recordatorios con un toque. Incluye WhatsApp Business, Google Maps, QR y capacitación. |
+| `catalogo/co/01-pedidos.png` | Pedidos | $450.000 | Instalación + $59.000 al mes, sin permanencia. Página con catálogo y carrito: el pedido llega completo al WhatsApp, sin comisiones. Incluye WhatsApp Business, Google Maps, QR y capacitación. Listo en 5 días hábiles. |
+| `catalogo/co/02-reservas.png` | Reservas | $450.000 | Instalación + $59.000 al mes, sin permanencia. El cliente elige servicio, día y hora; la solicitud llega lista para confirmar. Recordatorios con un toque. Incluye WhatsApp Business, Google Maps, QR y capacitación. |
 | `catalogo/co/03-asistente.png` | Asistente con IA | $790.000 | Instalación + $149.000 al mes. Todo lo de Pedidos o Reservas, más un asistente virtual que responde con la información del negocio. |
 | `catalogo/co/04-medida.png` | Desarrollo a la medida | (sin precio) | Tiendas en línea, pedidos e inventario, conexión entre programas. Diagnóstico sin costo. |
 | `catalogo/co/05-arranque.png` | Arranque | $200.000 | Pago único. WhatsApp Business completo, su negocio en Google Maps, QR y capacitación. Listo en 3 días hábiles. |

@@ -1,6 +1,6 @@
 # Estudio · Nueva oferta de Timbre
 
-Octubre de 2026 · **Aprobada y aplicada** en el sitio y el kit, con un cambio: Puerto Rico y EE. UU. en español quedan desactivados (el inglés sigue igual). Los precios son hipótesis para validar con las asesoras, no datos de mercado.
+Octubre de 2026 · **Aprobada y aplicada** en el sitio y el kit, con dos cambios: Puerto Rico y EE. UU. en español quedan desactivados (el inglés sigue igual), y Pedidos y Reservas salen con **$450.000 de precio de lista**, con margen para negociar según la guía de vendedoras. Los precios son hipótesis para validar con las asesoras, no datos de mercado.
 
 ## 1. Conclusión
 
@@ -8,7 +8,7 @@ Octubre de 2026 · **Aprobada y aplicada** en el sitio y el kit, con un cambio: 
 - **Producto estrella:** que el cliente del negocio **arme su pedido o pida su cita desde una página del negocio y le llegue completo y ordenado al WhatsApp**, sin comisiones y sin instalar apps. Dos versiones del mismo producto:
   - **Timbre Pedidos**, para restaurantes, panaderías, tiendas de ropa y ferreterías.
   - **Timbre Reservas**, para barberías, talleres, gimnasios y técnicos.
-  - Precio: **$390.000 de instalación (incluye el Arranque) + $59.000 al mes**.
+  - Precio de lista: **$450.000 de instalación (incluye el Arranque) + $59.000 al mes**.
 - **Premium:** **Timbre Asistente**, un asistente con IA que responde por WhatsApp con la información del negocio. **$790.000 + $149.000 al mes.**
 - **El negocio está en la mensualidad.** 40 clientes pagando $59.000 suman $2.360.000 al mes, más que un salario mínimo de 2026 ($1.750.905).
 
@@ -45,8 +45,8 @@ Lo que sí le duele al dueño, y por lo que pagaría más:
 | Producto | Para quién | Qué incluye | Instalación | Mensual |
 |---|---|---|---|---|
 | **Arranque** | Cualquier negocio | WhatsApp Business completo, su negocio en Google Maps, QR y capacitación gratuita. | $200.000 | — |
-| **Pedidos** (estrella) | Restaurantes, panaderías, ropa, ferreterías | Arranque + página del negocio con catálogo y carrito. El cliente elige productos y cantidades, domicilio o recoger, dirección y medio de pago, y el pedido le llega al dueño completo al WhatsApp, con el total. | $390.000 | $59.000 |
-| **Reservas** (estrella) | Barberías, talleres, gimnasios, técnicos | Arranque + página de reservas. El cliente elige servicio, día y hora (solo las horas en que el negocio abre) y la solicitud llega lista para confirmar con una respuesta rápida. Incluye una lista diaria para enviar los recordatorios con un toque. | $390.000 | $59.000 |
+| **Pedidos** (estrella) | Restaurantes, panaderías, ropa, ferreterías | Arranque + página del negocio con catálogo y carrito. El cliente elige productos y cantidades, domicilio o recoger, dirección y medio de pago, y el pedido le llega al dueño completo al WhatsApp, con el total. | $450.000 | $59.000 |
+| **Reservas** (estrella) | Barberías, talleres, gimnasios, técnicos | Arranque + página de reservas. El cliente elige servicio, día y hora (solo las horas en que el negocio abre) y la solicitud llega lista para confirmar con una respuesta rápida. Incluye una lista diaria para enviar los recordatorios con un toque. | $450.000 | $59.000 |
 | **Asistente** (premium) | Negocios con muchos mensajes | Pedidos o Reservas + asistente con IA que responde por WhatsApp solo con la información del negocio, registra cada conversación y avisa al dueño cuando alguien pide una persona. | $790.000 | $149.000 + lo que cobre Meta después de 1.000 mensajes al mes |
 | **A la medida** | — | Diagnóstico sin costo. | Se cotiza | — |
 
@@ -69,7 +69,7 @@ Sin cambios: Starter 250, Pro 400 y Care 100 al mes. Ahí sí hay automatizació
 | Tiempo de Andres por cliente | Arranque: 2 a 3 horas. Pedidos o Reservas: 4 a 6 horas, con el generador ampliado. |
 | Costos de terceros de Pedidos y Reservas | Prácticamente cero: la página se aloja gratis en Netlify (en la cuenta del cliente) y no usa la API de WhatsApp. El dominio propio es opcional y lo paga el cliente. |
 | Costos del Asistente | IA por uso (bajo con un modelo pequeño), un servidor de automatización por cliente y los mensajes de Meta después de 1.000 al mes. **Hay que medirlos con el primer cliente antes de fijar el precio final.** |
-| Comisión sugerida para asesoras | 20% de la instalación (Arranque $40.000; Pedidos o Reservas $78.000) y $10.000 por cada uno de los primeros 3 meses que el cliente pague la mensualidad. Así les conviene vender mensualidad y no solo la instalación. |
+| Comisión de asesoras | Se define en la guía de vendedoras (no se publica aquí). Conviene que una parte dependa de que el cliente siga pagando la mensualidad. |
 | Ingreso recurrente | 20 clientes: $1.180.000 al mes · 40 clientes: $2.360.000 · 80 clientes: $4.720.000. |
 
 ## 6. Qué hay que construir (tomaría unos 2 a 3 días)
@@ -83,7 +83,7 @@ Sin cambios: Starter 250, Pro 400 y Care 100 al mes. Ahí sí hay automatizació
 
 1. **Semana 1:** construir Pedidos y Reservas y actualizar las demos.
 2. **Semanas 2 y 3:** las asesoras ofrecen Pedidos o Reservas como producto principal y el Arranque solo si el dueño no quiere más. Cada visita se anota en una hoja: gremio, qué se mostró, precio ofrecido, si dijo «lo quiero», si compró y por qué no.
-3. **Prueba de precio:** una asesora ofrece $390.000 y otra $450.000. Se queda el que deje más ventas con mensualidad.
+3. **Precio:** se ofrece siempre el de lista ($450.000). Cada descuento que se dé se anota en la hoja, con el motivo, para saber cuánto se está cediendo en la práctica.
 4. **Decisión:** al final de la semana 3, con los datos de la hoja.
 
 ## 8. Riesgos

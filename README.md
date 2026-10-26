@@ -12,8 +12,8 @@ Contacto: Andres Diez · WhatsApp [+57 314 331 9442](https://wa.me/573143319442)
 
 | Plan | Instalación | Mensual | Qué es |
 |---|---|---|---|
-| **Pedidos** | $390.000 | $59.000 | Página con catálogo y carrito: el pedido llega completo al WhatsApp, sin comisiones. |
-| **Reservas** | $390.000 | $59.000 | Página de reservas: servicio, día y hora llegan listos para confirmar; recordatorios con un toque. |
+| **Pedidos** | $450.000 | $59.000 | Página con catálogo y carrito: el pedido llega completo al WhatsApp, sin comisiones. |
+| **Reservas** | $450.000 | $59.000 | Página de reservas: servicio, día y hora llegan listos para confirmar; recordatorios con un toque. |
 | **Asistente** | $790.000 | $149.000 | Pedidos o Reservas + asistente con IA en WhatsApp. |
 | **Arranque** | $200.000 | — | Solo lo básico: WhatsApp Business, Google Maps y QR. Va como opción discreta. |
 
