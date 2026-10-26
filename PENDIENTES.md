@@ -16,11 +16,12 @@ Datos que faltan o decisiones por confirmar. En los archivos aparecen como `[AS�
 | `[HORARIO DE ATENCIÓN DE TIMBRE]` | `timbre-whatsapp/LEEME.md` | Horario en que Andres atiende el WhatsApp de Timbre. |
 | `[ENLACE VIDEO]` | `timbre-whatsapp/LEEME.md`, `config/marca.json` | Grabar con `video/grabar.md` y subir (YouTube no listado o similar). |
 
-## GitHub Pages
+## Publicación
 
 - [x] Repositorio público (no contiene datos de clientes: `negocios/privado/` está ignorado).
-- [ ] Activar Pages: *Settings → Pages → Source: GitHub Actions*. Con eso, cada push a `main` publica el sitio con `.github/workflows/pages.yml`.
-- [ ] Confirmar la URL final y actualizar `config/marca.json → sitio.url` y la tabla del README.
+- [ ] **Netlify (recomendado mientras GitHub Actions esté bloqueado por facturación):** app.netlify.com → *Add new site → Import an existing project → GitHub* → elegir `AndresDiezT/Timbre` → *Deploy*. La configuración ya está en `netlify.toml`. Luego, en *Site configuration → Change site name*, poner por ejemplo `timbre` para quedar en `timbre.netlify.app`.
+- [ ] GitHub Pages (alternativa): resolver la facturación de la cuenta y activar *Settings → Pages → Source: GitHub Actions*.
+- [ ] Confirmar la URL final y actualizar `config/marca.json → sitio.url`, `timbre-whatsapp/LEEME.md` y el portafolio de `upwork/` (hoy apuntan a `andresdiezt.github.io/Timbre`).
 - [ ] Opcional: dominio propio (por ejemplo `timbre.co`), configurado en *Settings → Pages → Custom domain*.
 
 ## WhatsApp de Timbre
