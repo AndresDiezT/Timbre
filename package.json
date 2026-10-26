@@ -1,0 +1,11 @@
+{
+  "name": "timbre",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Demo, plantillas y kit de entrega de Timbre.",
+  "scripts": {
+    "validar": "node scripts/validar.js",
+    "servir": "python3 -m http.server 8080"
+  },
+  "license": "UNLICENSED"
+}

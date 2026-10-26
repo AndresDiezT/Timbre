@@ -1,0 +1,69 @@
+{
+  "id": "cleaning",
+  "idioma": "en",
+  "gremio": "House cleaning",
+  "gremioCorto": "Cleaning",
+  "nombre": "Tidy Wren Cleaning",
+  "ficticio": true,
+  "acento": "#2B5FA8",
+  "moneda": "USD",
+  "horario": {
+    "lun": ["08:00", "18:00"], "mar": ["08:00", "18:00"], "mie": ["08:00", "18:00"],
+    "jue": ["08:00", "18:00"], "vie": ["08:00", "18:00"], "sab": ["09:00", "14:00"], "dom": null
+  },
+  "horarioTexto": "Monday to Friday 8 AM to 6 PM, Saturday 9 AM to 2 PM. Closed Sunday.",
+  "ubicacion": { "direccion": "Serving the metro area", "barrio": "Office: 100 Example Ave, Suite 2", "ciudad": "Austin, TX", "referencia": "Fictional business" },
+  "catalogo": [
+    { "nombre": "Standard clean", "descripcion": "Kitchen, bathrooms, dusting, floors. 2 bed / 1 bath.", "precio": 140 },
+    { "nombre": "Deep clean", "descripcion": "Baseboards, inside appliances, detailed bathrooms.", "precio": 260 },
+    { "nombre": "Move-out clean", "descripcion": "Empty home, inside cabinets and appliances.", "precio": 320 },
+    { "nombre": "Recurring biweekly", "descripcion": "Standard clean every two weeks, per visit.", "precio": 120 },
+    { "nombre": "Inside oven", "descripcion": "Add-on.", "precio": 35 },
+    { "nombre": "Inside fridge", "descripcion": "Add-on.", "precio": 35 },
+    { "nombre": "Interior windows", "descripcion": "Add-on, up to 10 windows.", "precio": 50 }
+  ],
+  "faq": [
+    { "pregunta": "How much does a cleaning cost?", "respuesta": "A standard clean for a 2 bed / 1 bath starts at $140. Deep cleans start at $260. We confirm the exact price before booking." },
+    { "pregunta": "Do I need to be home?", "respuesta": "No. Many clients leave a key or a door code. Your home is always locked when we leave." },
+    { "pregunta": "Do you bring supplies?", "respuesta": "Yes, we bring all supplies and equipment. Tell us if you prefer we use your products." },
+    { "pregunta": "Are you insured?", "respuesta": "Yes, we are licensed and insured." },
+    { "pregunta": "How soon can you come?", "respuesta": "Usually within 2 to 4 business days. Same-week spots open up often." },
+    { "pregunta": "What if I'm not happy?", "respuesta": "Tell us within 24 hours and we'll come back to fix it at no cost." },
+    { "pregunta": "How do I pay?", "respuesta": "Card, Zelle, or bank transfer after the cleaning." },
+    { "pregunta": "Can I cancel or reschedule?", "respuesta": "Yes, free of charge with 24 hours' notice." }
+  ],
+  "mensajes": {
+    "bienvenida": "Hi! Thanks for reaching out to {negocio}. We got your message and will reply shortly. Tell us your ZIP code, home size, and the type of cleaning you need.",
+    "fueraDeHorario": "Hi! Thanks for reaching out to {negocio}. We're closed right now. Our hours are {horario}. Leave your ZIP code, home size, and the date you need, and we'll get back to you first thing.",
+    "respuestasRapidas": [
+      { "atajo": "prices", "texto": "Standard clean from $140, deep clean from $260, move-out from $320. We confirm the exact price before booking." },
+      { "atajo": "book", "texto": "Happy to get you on the calendar. What day and time work best for you?" },
+      { "atajo": "insured", "texto": "Yes, we're licensed and insured, and we bring all supplies." },
+      { "atajo": "thanks", "texto": "Thanks for choosing us! If you were happy, a quick Google review helps us a lot." }
+    ]
+  },
+  "etiquetas": ["New lead", "Quoted", "Booked", "Recurring", "Paid", "Review requested"],
+  "maps": {
+    "categoriaPrincipal": "House cleaning service",
+    "categoriasAdicionales": ["Cleaning service", "Move-out cleaning service", "Janitorial service"],
+    "descripcion": "Local, insured house cleaning team serving the Austin metro area. Standard, deep, recurring, and move-out cleans with all supplies included. Not happy? We come back within 24 hours at no cost. Request a quote online and get a reply right away."
+  },
+  "conversacion": [
+    { "cliente": "Hi, how much for a deep clean? 3 bed 2 bath.", "responde": "catalogo" },
+    { "cliente": "What are your hours?", "responde": "horario" },
+    { "cliente": "Are you insured?", "responde": "faq:3" },
+    { "cliente": "Can someone call me?", "responde": "persona" }
+  ],
+  "clientesDemo": ["Maria G.", "Josh T.", "Priya K.", "Dan W."],
+  "automatizacion": {
+    "formulario": { "nombre": "Maria Gonzalez", "telefono": "(512) 555-0142", "correo": "maria@example.com", "servicio": "Deep clean", "codigoPostal": "78704", "mensaje": "3 bed / 2 bath. Need it before Saturday if possible." },
+    "servicios": ["Standard clean", "Deep clean", "Move-out clean", "Recurring cleaning"],
+    "textoInmediato": "Hi {cliente}, this is {negocio}. Thanks for your {servicio} request! We got it and we'll call you within the hour. Want to grab a time now? Just reply with the best day for you. Reply STOP to opt out.",
+    "correoInmediato": { "asunto": "We got your request, {cliente}", "cuerpo": "Hi {cliente}, thanks for contacting {negocio}. We received your {servicio} request for ZIP {codigoPostal} and we'll be in touch within the hour. If you'd like to talk sooner, just reply to this email or text us." },
+    "alertaDueno": "New lead: {cliente} · {servicio} · ZIP {codigoPostal} · {telefono}",
+    "llamadaPerdida": "Hi, this is {negocio}. Sorry we missed your call! How can we help? Reply here and we'll get right back to you.",
+    "seguimiento1": "Hi {cliente}, just checking in from {negocio}. We still have openings this week for your {servicio}. Want us to save you a spot?",
+    "seguimiento2": "Hi {cliente}, last check-in from {negocio}. If now isn't a good time, no problem. Reply anytime and we'll help you out.",
+    "resena": "Thanks for choosing {negocio}, {cliente}! If you were happy with the cleaning, would you leave us a quick review? It really helps a small business: {enlaceResena}"
+  }
+}

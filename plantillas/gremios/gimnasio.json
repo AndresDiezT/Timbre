@@ -1,0 +1,61 @@
+{
+  "id": "gimnasio",
+  "idioma": "es",
+  "gremio": "Gimnasio",
+  "gremioCorto": "Gimnasio",
+  "nombre": "Gimnasio Fuerza Viva",
+  "ficticio": true,
+  "acento": "#2F7A4F",
+  "moneda": "COP",
+  "horario": {
+    "lun": ["05:00", "22:00"], "mar": ["05:00", "22:00"], "mie": ["05:00", "22:00"],
+    "jue": ["05:00", "22:00"], "vie": ["05:00", "21:00"], "sab": ["07:00", "16:00"], "dom": ["08:00", "13:00"]
+  },
+  "horarioTexto": "lunes a jueves de 5:00 a. m. a 10:00 p. m.; viernes hasta las 9:00 p. m.; sábados de 7:00 a. m. a 4:00 p. m. y domingos de 8:00 a. m. a 1:00 p. m.",
+  "ubicacion": { "direccion": "Calle 30 # 45-12, segundo piso", "barrio": "Barrio El Prado", "ciudad": "Barranquilla", "referencia": "Encima del supermercado" },
+  "catalogo": [
+    { "nombre": "Mensualidad", "descripcion": "Acceso libre a máquinas y clases grupales.", "precio": 95000, "precioUSD": 35 },
+    { "nombre": "Trimestre", "descripcion": "Tres meses con valoración física incluida.", "precio": 255000, "precioUSD": 95 },
+    { "nombre": "Día de prueba", "descripcion": "Una visita con acompañamiento del entrenador.", "precio": 0, "precioUSD": 0 },
+    { "nombre": "Tiquetera 10 entradas", "descripcion": "Válida por 60 días.", "precio": 70000, "precioUSD": 28 },
+    { "nombre": "Entrenamiento personalizado", "descripcion": "Paquete de 8 sesiones.", "precio": 280000, "precioUSD": 120 },
+    { "nombre": "Plan pareja", "descripcion": "Mensualidad para dos personas.", "precio": 170000, "precioUSD": 65 },
+    { "nombre": "Valoración física", "descripcion": "Peso, medidas y plan de entrenamiento.", "precio": 30000, "precioUSD": 15 }
+  ],
+  "faq": [
+    { "pregunta": "¿Cuánto vale la mensualidad?", "respuesta": "La mensualidad vale $95.000 e incluye máquinas y clases grupales. El trimestre sale en $255.000." },
+    { "pregunta": "¿Puedo ir a probar?", "respuesta": "Sí, el primer día es gratis y lo acompaña un entrenador. Solo traiga ropa cómoda y su documento." },
+    { "pregunta": "¿Qué clases tienen?", "respuesta": "Funcional, rumba, spinning y abdomen. Los horarios de las clases están en el estado de WhatsApp." },
+    { "pregunta": "¿Hay entrenadores?", "respuesta": "Sí, siempre hay un entrenador en sala para guiarlo, sin costo adicional." },
+    { "pregunta": "¿Tienen parqueadero?", "respuesta": "Sí, parqueadero para motos y bicicletas. Para carros, el del supermercado de abajo." },
+    { "pregunta": "¿Qué medios de pago reciben?", "respuesta": "Efectivo, Nequi, Daviplata, Bre-B y tarjeta." },
+    { "pregunta": "¿Puedo congelar el plan?", "respuesta": "El trimestre se puede congelar hasta 15 días avisando con anticipación." },
+    { "pregunta": "¿Hay que pagar inscripción?", "respuesta": "No cobramos inscripción." }
+  ],
+  "mensajes": {
+    "bienvenida": "Hola, gracias por escribir a {negocio}. En un momento le atendemos. Aquí están los planes con precios. Si quiere venir a probar, el primer día es gratis: díganos qué día le queda bien.",
+    "fueraDeHorario": "Hola, gracias por escribir a {negocio}. En este momento estamos cerrados. Nuestro horario es {horario}. Le respondemos apenas abramos. Mientras tanto, mire los planes con precios; el primer día de prueba es gratis.",
+    "respuestasRapidas": [
+      { "atajo": "planes", "texto": "Mensualidad $95.000 · Trimestre $255.000 · Tiquetera 10 entradas $70.000. Sin inscripción." },
+      { "atajo": "prueba", "texto": "El primer día es gratis con acompañamiento. ¿Qué día y a qué hora le gustaría venir?" },
+      { "atajo": "clases", "texto": "Tenemos funcional, rumba, spinning y abdomen. Los horarios están en nuestro estado de WhatsApp." },
+      { "atajo": "pago", "texto": "Recibimos efectivo, Nequi, Daviplata, Bre-B y tarjeta." },
+      { "atajo": "renovar", "texto": "Su plan vence pronto. ¿Se lo renovamos? Puede pagar por aquí o en recepción." },
+      { "atajo": "gracias", "texto": "Gracias por entrenar con nosotros. Si le gusta el gimnasio, nos ayuda mucho con una reseña en Google." }
+    ]
+  },
+  "etiquetas": ["Nuevo cliente", "Día de prueba", "Inscrito", "Por renovar", "Pagó", "Personalizado"],
+  "maps": {
+    "categoriaPrincipal": "Gimnasio",
+    "categoriasAdicionales": ["Centro de entrenamiento funcional", "Entrenador personal", "Clases de spinning"],
+    "descripcion": "Gimnasio de barrio en El Prado con máquinas, clases grupales de funcional, rumba y spinning, y entrenador en sala sin costo adicional. Abrimos desde las 5:00 a. m. y el primer día de prueba es gratis. Escríbanos por WhatsApp para conocer los planes."
+  },
+  "conversacion": [
+    { "cliente": "Hola, ¿cuánto vale la mensualidad? ¿Puedo ir a probar mañana a las 5?", "responde": "catalogo" },
+    { "cliente": "¿Qué horario tienen?", "responde": "horario" },
+    { "cliente": "¿El día de prueba es gratis?", "responde": "faq:1" },
+    { "cliente": "¿Dónde quedan?", "responde": "ubicacion" },
+    { "cliente": "Quiero hablar con un entrenador.", "responde": "persona" }
+  ],
+  "clientesDemo": ["Kelly M.", "Brayan T.", "Daniela F.", "Iván S."]
+}

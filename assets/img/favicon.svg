@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Timbre">
+  <circle cx="32" cy="32" r="30" fill="#FFC933" stroke="#16202A" stroke-width="3"/>
+  <path d="M32 14c-1.7 0-3 1.3-3 3v1.2c-6 1.4-9.5 6.6-9.5 12.8v7.5L16 43v2h32v-2l-3.5-4.5V31c0-6.2-3.5-11.4-9.5-12.8V17c0-1.7-1.3-3-3-3z" fill="#16202A"/>
+  <path d="M27 47.5a5 5 0 0 0 10 0z" fill="#16202A"/>
+</svg>

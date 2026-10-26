@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Timbre Simulator</title>
+  <meta name="description" content="Timbre demo: every web form lead and missed call gets a text back in under a minute.">
+  <meta name="theme-color" content="#FFC933">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/timbre.css">
+  <link rel="stylesheet" href="../assets/css/demo.css">
+  <link rel="stylesheet" href="../assets/css/leads.css">
+</head>
+<body class="demo">
+  <a class="saltar" href="#escenario">Skip to simulator</a>
+  <header class="barra demo__barra">
+    <div class="contenedor barra__fila">
+      <a class="logo" href="../en/" data-propagar aria-label="Timbre, home"><img class="logo__campana" src="../assets/img/campana.svg" alt="" width="38" height="38">Timbre</a>
+      <span class="pildora demo__sello">Timbre demo</span>
+      <div class="barra__acciones">
+        <button class="icono-boton" type="button" data-tema aria-label="Toggle light and dark mode">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="contenedor demo__controles" aria-label="Simulator controls">
+      <div class="controles controles--reproduccion">
+        <div class="campo campo--linea">
+          <label for="d-gremio">Trade</label>
+          <select id="d-gremio"></select>
+        </div>
+        <fieldset class="segmentado">
+          <legend class="solo-lector">Format</legend>
+          <button type="button" class="boton boton--chico" data-formato="libre" aria-pressed="true">Screen</button>
+          <button type="button" class="boton boton--chico" data-formato="169" aria-pressed="false">16:9</button>
+          <button type="button" class="boton boton--chico" data-formato="916" aria-pressed="false">9:16</button>
+        </fieldset>
+        <button type="button" class="boton boton--chico boton--primario" id="d-play">Pause</button>
+        <button type="button" class="boton boton--chico" id="d-reiniciar">Restart</button>
+        <div class="campo campo--linea">
+          <label for="d-velocidad">Speed</label>
+          <select id="d-velocidad">
+            <option value="0.6">Slow</option>
+            <option value="1" selected>Normal</option>
+            <option value="1.5">Fast</option>
+            <option value="2">Faster</option>
+          </select>
+        </div>
+        <button type="button" class="boton boton--chico boton-sonido" aria-pressed="false"><span class="off">Sound off</span><span class="on">Sound on</span></button>
+        <button type="button" class="boton boton--chico" id="d-grabar">Recording mode</button>
+      </div>
+    </section>
+
+    <section class="demo__lienzo" id="lienzo" aria-label="Simulator">
+      <div class="escenario escenario--leads" id="escenario" data-formato="libre" data-paso="form" tabindex="-1">
+        <div class="escenario__marca">
+          <img src="../assets/img/campana.svg" alt="" width="44" height="44">
+          <div>
+            <p class="escenario__titulo">Timbre</p>
+            <p class="escenario__lema">No lead goes unanswered</p>
+          </div>
+        </div>
+        <p class="escenario__subtitulo" id="subtitulo" aria-live="polite"></p>
+        <div id="leads-demo"></div>
+        <div class="escenario__cierre" id="cierre" hidden>
+          <img src="../assets/img/campana.svg" alt="" width="96" height="96">
+          <p class="escenario__cierre-frase">No lead goes unanswered</p>
+          <p class="escenario__cierre-dato">Timbre · WhatsApp +57 314 331 9442</p>
+          <p class="pildora">Timbre demo · fictional business</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contenedor demo__pie">
+      <p class="aviso-demo">Simulated in your browser. No texts or emails are sent.</p>
+      <div class="botones">
+        <a class="boton boton--primario" id="d-loquiero" href="https://wa.me/573143319442" target="_blank" rel="noopener">I want this for my business</a>
+        <a class="boton" href="../en/#plans" data-propagar>See plans and pricing</a>
+      </div>
+    </section>
+  </main>
+
+  <button type="button" class="salir-grabacion boton boton--chico" id="d-salir" hidden>Exit recording mode (Esc)</button>
+
+  <script src="../assets/js/timbre.js" data-raiz="../"></script>
+  <script src="../assets/js/telefono.js"></script>
+  <script src="../assets/js/leads.js"></script>
+  <script src="../assets/js/demo-en.js"></script>
+</body>
+</html>

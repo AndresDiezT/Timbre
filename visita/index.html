@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Visita Timbre</title>
+  <meta name="description" content="Herramienta de visita de Timbre: arme en segundos una demostración con el nombre del negocio.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#FFC933">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/timbre.css">
+  <link rel="stylesheet" href="../assets/css/visita.css">
+</head>
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+  <header class="barra">
+    <div class="contenedor barra__fila">
+      <a class="logo" href="../" data-propagar aria-label="Timbre, inicio"><img class="logo__campana" src="../assets/img/campana.svg" alt="" width="38" height="38">Timbre</a>
+      <span class="pildora pildora--hueca">Visita</span>
+      <div class="barra__acciones">
+        <button class="icono-boton" type="button" data-tema aria-label="Cambiar entre modo claro y oscuro">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido" class="contenedor visita">
+    <div class="visita__intro">
+      <h1>Demostración con su nombre</h1>
+      <p class="entradilla">Escriba el nombre del negocio, elija el gremio y muéstrele al dueño cómo respondería su propio WhatsApp.</p>
+    </div>
+
+    <div class="visita__fila">
+      <div class="visita__pasos">
+        <form class="tarjeta paso" id="form-visita" novalidate>
+          <h2 class="paso__titulo"><span class="paso__num">1</span> El negocio</h2>
+          <div class="campo">
+            <label for="v-nombre">Nombre del negocio</label>
+            <input id="v-nombre" type="text" maxlength="40" placeholder="Ej.: Panadería Doña Rosa" autocomplete="off" autocapitalize="words" enterkeyhint="done">
+          </div>
+          <div class="campo">
+            <label for="v-gremio">Gremio</label>
+            <select id="v-gremio"></select>
+          </div>
+          <div class="rejilla rejilla--2 visita__dos">
+            <div class="campo">
+              <label for="v-asesora">Asesora</label>
+              <select id="v-asesora"><option value="">Sin código</option></select>
+            </div>
+            <div class="campo">
+              <label for="v-mercado">País</label>
+              <select id="v-mercado">
+                <option value="co">Colombia</option>
+                <option value="usd">PR y EE. UU.</option>
+              </select>
+            </div>
+          </div>
+          <p class="pequeno suave">Todo ocurre en este celular: no se guarda ningún dato. Para dejar su código fijo, guarde esta página con <b>?asesora=SU CÓDIGO</b> al final.</p>
+        </form>
+
+        <section class="tarjeta paso" aria-labelledby="t-mostrar">
+          <h2 class="paso__titulo" id="t-mostrar"><span class="paso__num">2</span> Muéstresela</h2>
+          <div class="qr" id="qr"></div>
+          <p class="pequeno suave qr__ayuda">Que el dueño escanee el código con la cámara de su celular. Se abre la demostración con el nombre de su negocio.</p>
+          <div class="botones">
+            <a class="boton boton--tinta" id="v-abrir" href="../demo/" target="_blank" rel="noopener">Abrir en pantalla completa</a>
+            <button type="button" class="boton" id="v-copiar" data-copiado="Enlace copiado">Copiar enlace</button>
+            <button type="button" class="boton" id="v-compartir" hidden>Compartir</button>
+          </div>
+        </section>
+
+        <section class="tarjeta tarjeta--amarilla paso" aria-labelledby="t-cierre">
+          <h2 class="paso__titulo" id="t-cierre"><span class="paso__num">3</span> Cierre</h2>
+          <p>Si le gustó, este botón abre WhatsApp con Timbre y el mensaje ya escrito, con el nombre del negocio y su código de asesora.</p>
+          <a class="boton boton--tinta boton--bloque visita__loquiero" id="v-loquiero" href="https://wa.me/573143319442" target="_blank" rel="noopener">Lo quiero</a>
+          <p class="pequeno visita__mensaje" id="v-mensaje"></p>
+        </section>
+      </div>
+
+      <div class="visita__vista" aria-label="Vista previa">
+        <p class="pildora">Vista previa en vivo</p>
+        <div id="telefono-visita"></div>
+        <button type="button" class="boton boton--chico" id="v-repetir">Repetir la conversación</button>
+        <button type="button" class="boton boton--chico boton-sonido" aria-pressed="false"><span class="off">Sonido apagado</span><span class="on">Sonido encendido</span></button>
+      </div>
+    </div>
+  </main>
+
+  <script src="../assets/vendor/qrcode.js"></script>
+  <script src="../assets/js/timbre.js" data-raiz="../"></script>
+  <script src="../assets/js/telefono.js"></script>
+  <script src="../assets/js/visita.js"></script>
+</body>
+</html>

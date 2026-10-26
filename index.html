@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Timbre · Nadie se queda sin respuesta</title>
+  <meta name="description" content="Dejamos el WhatsApp y su negocio en Google Maps listos para responder solos, a cualquier hora. Configuración, catálogo, mensajes automáticos y capacitación gratuita.">
+  <meta property="og:title" content="Timbre · Nadie se queda sin respuesta">
+  <meta property="og:description" content="Su WhatsApp y su negocio en Google Maps, listos para responder solos.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#FFC933">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/timbre.css">
+  <link rel="stylesheet" href="assets/css/inicio.css">
+</head>
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <header class="barra">
+    <div class="contenedor barra__fila">
+      <a class="logo" href="./" data-propagar aria-label="Timbre, inicio">
+        <img class="logo__campana" src="assets/img/campana.svg" alt="" width="38" height="38">Timbre
+      </a>
+      <nav class="barra__nav" aria-label="Principal">
+        <a href="#demo">Demostración</a>
+        <a href="#gremios">Gremios</a>
+        <a href="#calculadora">Calculadora</a>
+        <a href="#planes">Planes</a>
+        <a href="#preguntas">Preguntas</a>
+      </nav>
+      <div class="barra__acciones">
+        <label class="solo-lector" for="mercado">País y moneda</label>
+        <select id="mercado" class="selector">
+          <option value="co">Colombia</option>
+          <option value="usd">PR y EE. UU.</option>
+          <option value="en">English</option>
+        </select>
+        <button class="icono-boton" type="button" data-tema aria-label="Cambiar entre modo claro y oscuro">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <!-- Encabezado con demostración en vivo -->
+    <section class="portada" id="demo" aria-labelledby="titulo-portada">
+      <div class="contenedor portada__fila">
+        <div class="portada__texto">
+          <span class="pildora">WhatsApp + Google Maps</span>
+          <h1 id="titulo-portada">Nadie se queda <span class="subrayado">sin respuesta</span></h1>
+          <p class="entradilla">Dejamos el WhatsApp y su negocio en Google Maps listos para responder solos, de día y de noche. Usted atiende cuando pueda: su cliente ya recibió respuesta.</p>
+          <div class="botones">
+            <a class="boton boton--primario js-whatsapp" href="https://wa.me/573143319442">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-5 4v-4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>
+              Escribir por WhatsApp
+            </a>
+            <a class="boton" href="#planes">Ver planes y precios</a>
+          </div>
+          <ul class="portada__puntos">
+            <li>Entrega en 5 días hábiles</li>
+            <li>Capacitación gratuita</li>
+            <li>El saldo lo paga cuando lo vea funcionando</li>
+          </ul>
+        </div>
+
+        <div class="portada__demo">
+          <div id="telefono-portada"></div>
+        </div>
+
+        <div class="portada__control">
+          <div class="reloj-control tarjeta">
+            <div class="reloj-control__cabeza">
+              <label for="hora-dia" class="etiqueta-campo">Mueva la hora del día</label>
+              <output id="hora-salida" for="hora-dia" class="reloj-control__hora">9:47 p. m.</output>
+            </div>
+            <input id="hora-dia" type="range" min="0" max="1439" step="1" value="1307" aria-describedby="hora-estado">
+            <div class="reloj-control__marcas" aria-hidden="true"><span>12 a. m.</span><span>6 a. m.</span><span>12 m.</span><span>6 p. m.</span><span>11 p. m.</span></div>
+            <p id="hora-estado" class="reloj-control__estado" aria-live="polite"></p>
+            <div class="botones">
+              <button type="button" class="boton boton--chico" data-hora="180">Probar a las 3:00 a. m.</button>
+              <button type="button" class="boton boton--chico boton-sonido" aria-pressed="false">
+                <span class="off">Sonido apagado</span><span class="on">Sonido encendido</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Antes y después -->
+    <section class="seccion seccion--alterna" aria-labelledby="titulo-antes">
+      <div class="contenedor">
+        <div class="seccion__cabeza">
+          <span class="pildora">Antes y después</span>
+          <h2 id="titulo-antes">Un mensaje a las 9:47 p. m.</h2>
+          <p class="entradilla">El mismo cliente, la misma pregunta. Lo único que cambia es si alguien le contesta a tiempo.</p>
+        </div>
+        <div class="rejilla rejilla--2">
+          <article class="tarjeta comparacion comparacion--antes">
+            <span class="pildora pildora--hueca">Así está hoy</span>
+            <div class="chat-mini" id="chat-antes"></div>
+            <p class="comparacion__pie"><strong>11 horas sin respuesta.</strong> Para cuando contesta, el cliente ya resolvió en otro lado.</p>
+          </article>
+          <article class="tarjeta comparacion comparacion--despues">
+            <span class="pildora">Así queda con Timbre</span>
+            <div class="chat-mini" id="chat-despues"></div>
+            <p class="comparacion__pie"><strong>Respuesta en el mismo minuto,</strong> con el catálogo y el horario. Usted retoma la conversación cuando abre.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Qué incluye -->
+    <section class="seccion" aria-labelledby="titulo-incluye">
+      <div class="contenedor">
+        <div class="seccion__cabeza">
+          <span class="pildora">Qué hacemos</span>
+          <h2 id="titulo-incluye">Lo dejamos listo, usted solo atiende</h2>
+        </div>
+        <div class="rejilla rejilla--4">
+          <article class="tarjeta servicio">
+            <span class="servicio__num">01</span>
+            <h3>WhatsApp Business completo</h3>
+            <p>Perfil, catálogo con fotos y precios, bienvenida, mensaje fuera de horario, respuestas rápidas y etiquetas para organizar a sus clientes.</p>
+          </article>
+          <article class="tarjeta servicio">
+            <span class="servicio__num">02</span>
+            <h3>Su negocio en Google Maps</h3>
+            <p>Que lo encuentren cuando buscan cerca: con horario, fotos, dirección y un botón para escribirle por WhatsApp.</p>
+          </article>
+          <article class="tarjeta servicio">
+            <span class="servicio__num">03</span>
+            <h3>Códigos QR</h3>
+            <p>Un QR para la vitrina y para Instagram que abre su WhatsApp con el mensaje ya escrito. En el plan Pro, otro para pedir reseñas.</p>
+          </article>
+          <article class="tarjeta servicio">
+            <span class="servicio__num">04</span>
+            <h3>Automatizaciones a la medida</h3>
+            <p>Citas y reservas, tiendas en línea, pedidos e inventario y asistentes virtuales con IA. Se cotiza tras un diagnóstico sin costo.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Galería de gremios -->
+    <section class="seccion seccion--alterna" id="gremios" aria-labelledby="titulo-gremios">
+      <div class="contenedor galeria">
+        <div class="galeria__lista">
+          <div class="seccion__cabeza">
+            <span class="pildora">Galería de gremios</span>
+            <h2 id="titulo-gremios">Así respondería su negocio</h2>
+            <p class="entradilla">Toque su gremio y el celular cambia al momento. Todos son negocios ficticios de demostración.</p>
+          </div>
+          <div class="gremios" id="lista-gremios" role="group" aria-label="Elegir gremio"></div>
+          <p class="pequeno suave">¿No ve su gremio? Igual lo configuramos: estos son solo ejemplos.</p>
+        </div>
+        <div class="galeria__telefono">
+          <div id="telefono-galeria"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Calculadora -->
+    <section class="seccion" id="calculadora" aria-labelledby="titulo-calculadora">
+      <div class="contenedor calculadora">
+        <div class="seccion__cabeza">
+          <span class="pildora">Calculadora</span>
+          <h2 id="titulo-calculadora">¿Cuántos clientes se le pueden estar escapando?</h2>
+          <p class="entradilla">Ponga sus propios números. Nadie más los ve: el cálculo se hace en su celular.</p>
+        </div>
+        <div class="calculadora__fila">
+          <form class="tarjeta calculadora__form" id="form-calculadora" novalidate>
+            <div class="campo">
+              <label for="c-mensajes">¿Cuántos mensajes le llegan al día?</label>
+              <input id="c-mensajes" type="number" inputmode="numeric" min="1" max="2000" value="30">
+            </div>
+            <div class="campo">
+              <label for="c-sin">¿Cuántos no alcanza a responder a tiempo?</label>
+              <input id="c-sin" type="number" inputmode="numeric" min="0" max="2000" value="6">
+              <span class="ayuda">Los que contesta tarde, de noche o nunca.</span>
+            </div>
+            <div class="campo">
+              <label for="c-valor">¿Cuánto deja en promedio un cliente? <span class="js-moneda-calc">(COP)</span></label>
+              <input id="c-valor" type="number" inputmode="numeric" min="0" step="1000" value="40000">
+            </div>
+            <div class="campo">
+              <label for="c-cierre">De cada 10 que preguntan, ¿cuántos terminan comprando?</label>
+              <input id="c-cierre" type="range" min="1" max="10" value="3" aria-describedby="c-cierre-salida">
+              <output id="c-cierre-salida" class="ayuda">3 de cada 10</output>
+            </div>
+          </form>
+          <div class="tarjeta tarjeta--amarilla calculadora__resultado" aria-live="polite">
+            <span class="pildora pildora--tinta">Estimación mensual con sus números</span>
+            <p class="calculadora__grande"><span id="r-personas">180</span> <span class="calculadora__unidad">personas al mes se quedan esperando respuesta</span></p>
+            <p class="calculadora__medio">Si de cada 10 compran <b id="r-cierre">3</b>, son unos <b id="r-clientes">54</b> clientes, que equivalen a <b id="r-valor">$2.160.000</b> al mes.</p>
+            <p class="pequeno calculadora__nota">Es una estimación hecha solo con los datos que usted escribió (30 días al mes). No es una promesa de ventas: muestra lo que hoy se queda sin atender.</p>
+            <a class="boton boton--tinta js-whatsapp" href="https://wa.me/573143319442">Quiero que nadie se quede sin respuesta</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Planes -->
+    <section class="seccion seccion--alterna" id="planes" aria-labelledby="titulo-planes">
+      <div class="contenedor">
+        <div class="seccion__cabeza">
+          <span class="pildora" id="planes-mercado">Colombia · COP</span>
+          <h2 id="titulo-planes">Planes y precios</h2>
+          <p class="entradilla">Pago único, sin mensualidad obligatoria. <span id="planes-modalidad"></span></p>
+        </div>
+        <div class="planes" id="lista-planes"></div>
+        <div class="rejilla rejilla--2 planes__extra">
+          <div class="tarjeta">
+            <h3>Cómo se paga</h3>
+            <p id="planes-pago"></p>
+          </div>
+          <div class="tarjeta tarjeta--amarilla garantia">
+            <img src="assets/img/campana.svg" alt="" width="56" height="56">
+            <div>
+              <h3>Garantía</h3>
+              <p id="planes-garantia">El saldo lo paga cuando lo vea funcionando.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cómo funciona -->
+    <section class="seccion" aria-labelledby="titulo-pasos">
+      <div class="contenedor">
+        <div class="seccion__cabeza">
+          <span class="pildora">Cómo funciona</span>
+          <h2 id="titulo-pasos">Tres pasos y queda listo</h2>
+        </div>
+        <ol class="pasos">
+          <li class="tarjeta">
+            <span class="pasos__num">1</span>
+            <h3>Nos escribe</h3>
+            <p>Nos cuenta de su negocio y nos envía fotos, precios y horario. Si necesita algo a la medida, el diagnóstico no tiene costo.</p>
+          </li>
+          <li class="tarjeta">
+            <span class="pasos__num">2</span>
+            <h3>Lo configuramos</h3>
+            <p>Con el 50% empezamos. En 5 días hábiles dejamos su WhatsApp y su negocio en Google Maps listos, junto con usted y en su celular.</p>
+          </li>
+          <li class="tarjeta">
+            <span class="pasos__num">3</span>
+            <h3>Lo ve funcionando</h3>
+            <p>Le enseñamos a manejarlo con la capacitación gratuita y paga el saldo cuando compruebe que responde solo.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Prueba social: oculta hasta que existan testimonios reales en config/marca.json -->
+    <section class="seccion seccion--alterna" id="testimonios" aria-labelledby="titulo-testimonios" hidden>
+      <div class="contenedor">
+        <div class="seccion__cabeza">
+          <span class="pildora">Clientes</span>
+          <h2 id="titulo-testimonios">Lo que dicen los dueños</h2>
+        </div>
+        <div class="rejilla rejilla--3" id="lista-testimonios"></div>
+      </div>
+    </section>
+
+    <!-- Preguntas frecuentes -->
+    <section class="seccion" id="preguntas" aria-labelledby="titulo-preguntas">
+      <div class="contenedor preguntas">
+        <div class="seccion__cabeza">
+          <span class="pildora">Preguntas frecuentes</span>
+          <h2 id="titulo-preguntas">Lo que nos preguntan los dueños</h2>
+        </div>
+        <div class="preguntas__lista" id="lista-preguntas"></div>
+      </div>
+    </section>
+
+    <!-- Cierre -->
+    <section class="seccion cierre" aria-labelledby="titulo-cierre">
+      <div class="contenedor">
+        <div class="tarjeta tarjeta--amarilla cierre__caja">
+          <div>
+            <h2 id="titulo-cierre">Toque el timbre</h2>
+            <p>Escríbanos y le mostramos cómo respondería el WhatsApp de su negocio, con su nombre. Este número le responde al instante: así funcionaría el suyo.</p>
+          </div>
+          <a class="boton boton--tinta js-whatsapp" href="https://wa.me/573143319442">Escribir al +57 314 331 9442</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor pie__fila">
+      <div>
+        <a class="logo" href="./" data-propagar><img class="logo__campana" src="assets/img/campana.svg" alt="" width="38" height="38">Timbre</a>
+        <p class="suave">Nadie se queda sin respuesta. WhatsApp, Google Maps, automatizaciones y desarrollos a la medida para negocios pequeños.</p>
+        <p class="pequeno suave">Los negocios que aparecen en las demostraciones son ficticios. Timbre no está afiliado a WhatsApp, Meta ni Google; sus nombres se usan solo para describir el servicio.</p>
+      </div>
+      <div>
+        <h3>Contacto</h3>
+        <ul>
+          <li>Andres Diez</li>
+          <li><a class="js-whatsapp" href="https://wa.me/573143319442">WhatsApp +57 314 331 9442</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Más</h3>
+        <ul>
+          <li><a href="demo/" data-propagar>Simulador completo</a></li>
+          <li><a href="en/" data-propagar>English (US)</a></li>
+          <li><a href="privacidad.html">Política de privacidad</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <a class="flotante js-whatsapp" href="https://wa.me/573143319442" aria-label="Escribir a Timbre por WhatsApp">
+    <span class="flotante__icono"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-5 4v-4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg></span>
+    <span class="flotante__texto">WhatsApp</span>
+  </a>
+
+  <script src="assets/js/timbre.js" data-raiz="./"></script>
+  <script src="assets/js/telefono.js"></script>
+  <script src="assets/js/inicio.js"></script>
+</body>
+</html>

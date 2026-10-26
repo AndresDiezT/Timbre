@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Timbre · No lead goes unanswered</title>
+  <meta name="description" content="Speed-to-lead automations for home service businesses: every web form lead and missed call gets a text back in under a minute, logged in your sheet, with an alert to you.">
+  <meta property="og:title" content="Timbre · No lead goes unanswered">
+  <meta property="og:description" content="Every lead gets a text back in under a minute. Built on your own accounts.">
+  <meta name="theme-color" content="#FFC933">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/timbre.css">
+  <link rel="stylesheet" href="../assets/css/inicio.css">
+  <link rel="stylesheet" href="../assets/css/leads.css">
+</head>
+<body>
+  <a class="saltar" href="#content">Skip to content</a>
+  <header class="barra">
+    <div class="contenedor barra__fila">
+      <a class="logo" href="./" data-propagar aria-label="Timbre, home"><img class="logo__campana" src="../assets/img/campana.svg" alt="" width="38" height="38">Timbre</a>
+      <nav class="barra__nav" aria-label="Main">
+        <a href="#demo">Demo</a>
+        <a href="#how">How it works</a>
+        <a href="#plans">Plans</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="barra__acciones">
+        <label class="solo-lector" for="market">Country and language</label>
+        <select id="market" class="selector">
+          <option value="co">Colombia (ES)</option>
+          <option value="usd">PR y EE. UU. (ES)</option>
+          <option value="en" selected>English</option>
+        </select>
+        <button class="icono-boton" type="button" data-tema aria-label="Toggle light and dark mode">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="content">
+    <section class="portada" aria-labelledby="hero-title">
+      <div class="contenedor">
+        <div class="portada__texto en-hero">
+          <span class="pildora">For home service businesses</span>
+          <h1 id="hero-title">No lead goes <span class="subrayado">unanswered</span></h1>
+          <p class="entradilla">When someone fills out your website form or calls while you're on a job, they get a text back in under a minute. You get an alert, every lead is logged in your sheet, and nobody slips through the cracks.</p>
+          <div class="botones">
+            <a class="boton boton--primario js-whatsapp" href="https://wa.me/573143319442">Book a free discovery call</a>
+            <a class="boton" href="#demo">Watch the demo</a>
+          </div>
+          <ul class="portada__puntos">
+            <li>Runs on your own accounts</li>
+            <li>One-time setup, no lock-in</li>
+            <li>Pay the balance once you see it working</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion seccion--alterna" id="demo" aria-labelledby="demo-title">
+      <div class="contenedor">
+        <div class="seccion__cabeza">
+          <span class="pildora">Live demo · fictional business</span>
+          <h2 id="demo-title">Try it: submit the form</h2>
+          <p class="entradilla">Hit “Get my quote” and watch the clock. Or press play to see the whole flow, including the Pro features.</p>
+        </div>
+        <div class="leads-controles">
+          <div class="campo campo--linea">
+            <label for="trade" class="etiqueta-campo">Trade</label>
+            <select id="trade" class="selector"></select>
+          </div>
+          <button type="button" class="boton boton--chico boton--tinta" id="play">Play the full demo</button>
+          <button type="button" class="boton boton--chico" id="reset">Reset</button>
+          <button type="button" class="boton boton--chico boton-sonido" aria-pressed="false"><span class="off">Sound off</span><span class="on">Sound on</span></button>
+        </div>
+        <p class="escenario__subtitulo" id="caption" aria-live="polite"></p>
+        <div id="leads-demo"></div>
+        <div class="leads-pro" role="group" aria-label="Pro features">
+          <span class="pildora">Pro</span>
+          <button type="button" class="boton boton--chico" data-pro="llamadaPerdida" disabled>Simulate a missed call</button>
+          <button type="button" class="boton boton--chico" data-pro="seguimientos" disabled>Skip to day 2: follow-up</button>
+          <button type="button" class="boton boton--chico" data-pro="resena" disabled>Mark job paid: review request</button>
+        </div>
+        <p class="pequeno suave">Simulated in your browser. No texts or emails are sent. <a href="../demo/en.html" data-propagar>Open the full-screen simulator</a> for 16:9 and 9:16 recordings.</p>
+      </div>
+    </section>
+
+    <section class="seccion" id="how" aria-labelledby="how-title">
+      <div class="contenedor">
+        <div class="seccion__cabeza">
+          <span class="pildora">How it works</span>
+          <h2 id="how-title">Three steps, then it runs</h2>
+        </div>
+        <ol class="pasos">
+          <li class="tarjeta"><span class="pasos__num">1</span><h3>Free discovery call</h3><p>We look at your website form, your phone setup and where you keep leads today. You get a clear quote.</p></li>
+          <li class="tarjeta"><span class="pasos__num">2</span><h3>We connect it</h3><p>50% to start. We wire your form, texting, email and Google Sheet or CRM together, on accounts you own.</p></li>
+          <li class="tarjeta"><span class="pasos__num">3</span><h3>See it working</h3><p>We test it live with you. You pay the balance once every lead gets its reply.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="seccion seccion--alterna" id="plans" aria-labelledby="plans-title">
+      <div class="contenedor">
+        <div class="seccion__cabeza">
+          <span class="pildora">United States · USD</span>
+          <h2 id="plans-title">Plans and pricing</h2>
+          <p class="entradilla" id="plans-mode"></p>
+        </div>
+        <div class="planes" id="plans-list"></div>
+        <div class="rejilla rejilla--2 planes__extra">
+          <div class="tarjeta"><h3>Payment</h3><p id="plans-pay"></p></div>
+          <div class="tarjeta tarjeta--amarilla garantia">
+            <img src="../assets/img/campana.svg" alt="" width="56" height="56">
+            <div><h3>Guarantee</h3><p id="plans-guarantee"></p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion" id="faq" aria-labelledby="faq-title">
+      <div class="contenedor preguntas">
+        <div class="seccion__cabeza">
+          <span class="pildora">FAQ</span>
+          <h2 id="faq-title">Questions owners ask</h2>
+        </div>
+        <div class="preguntas__lista" id="faq-list"></div>
+      </div>
+    </section>
+
+    <section class="seccion cierre" aria-labelledby="cta-title">
+      <div class="contenedor">
+        <div class="tarjeta tarjeta--amarilla cierre__caja">
+          <div>
+            <h2 id="cta-title">Ring the bell</h2>
+            <p>Tell us how leads reach you today. We'll map the fastest way to answer every one of them, on a free call.</p>
+          </div>
+          <a class="boton boton--tinta js-whatsapp" href="https://wa.me/573143319442">Message us on WhatsApp</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor pie__fila">
+      <div>
+        <a class="logo" href="./" data-propagar><img class="logo__campana" src="../assets/img/campana.svg" alt="" width="38" height="38">Timbre</a>
+        <p class="suave">No lead goes unanswered. Speed-to-lead automations and custom builds for small businesses.</p>
+        <p class="pequeno suave">Businesses shown in demos are fictional. Timbre is not affiliated with Google, Meta or any texting provider. We never do AI cold calls or mass texting.</p>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <ul><li>Andres Diez</li><li><a class="js-whatsapp" href="https://wa.me/573143319442">WhatsApp +57 314 331 9442</a></li></ul>
+      </div>
+      <div>
+        <h3>More</h3>
+        <ul>
+          <li><a href="../demo/en.html" data-propagar>Full-screen simulator</a></li>
+          <li><a href="../" data-propagar>Español</a></li>
+          <li><a href="privacy.html">Privacy policy</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <a class="flotante js-whatsapp" href="https://wa.me/573143319442" aria-label="Message Timbre on WhatsApp">
+    <span class="flotante__icono"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-5 4v-4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg></span>
+    <span class="flotante__texto">Message us</span>
+  </a>
+
+  <script src="../assets/js/timbre.js" data-raiz="../"></script>
+  <script src="../assets/js/telefono.js"></script>
+  <script src="../assets/js/leads.js"></script>
+  <script src="../assets/js/en.js"></script>
+</body>
+</html>

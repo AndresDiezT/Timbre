@@ -1,0 +1,52 @@
+# Publica el sitio de Timbre en GitHub Pages en cada push a main.
+# Todas las rutas del sitio son relativas, así que funciona en
+# https://<usuario>.github.io/<repositorio>/ sin configuración extra.
+name: Publicar en GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.despliegue.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Validar los JSON
+        run: node scripts/validar.js
+
+      - name: Armar la carpeta del sitio
+        run: |
+          mkdir -p _site
+          rsync -a ./ _site/ \
+            --exclude '.git' --exclude '.github' --exclude '_site' \
+            --exclude 'node_modules' --exclude 'negocios/privado' \
+            --exclude 'entregas' --exclude '*.md'
+          touch _site/.nojekyll
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: despliegue
+        uses: actions/deploy-pages@v4

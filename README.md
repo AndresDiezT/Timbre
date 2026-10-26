@@ -1,63 +1,120 @@
 # Timbre
 
-**Automatizaciones para negocios que atienden clientes por WhatsApp.**
+**Nadie se queda sin respuesta.**
 
-Timbre instala y mantiene automatizaciones que responden mensajes, toman pedidos y hacen seguimiento a clientes, para que el negocio no pierda ventas por contestar tarde.
+Timbre deja el WhatsApp y la presencia en Google Maps de negocios pequeños listos para responder solos, y hace automatizaciones y desarrollos a la medida. Este repositorio tiene la demo que vende, el sistema de plantillas para no empezar de cero con cada cliente y el kit de entrega.
 
-No es un software que el cliente tenga que aprender a usar: es un **servicio llave en mano**. Nosotros lo configuramos, lo dejamos funcionando y lo mantenemos.
+Contacto: Andres Diez · WhatsApp [+57 314 331 9442](https://wa.me/573143319442)
 
 ---
 
-## ¿Qué problema resuelve?
+## Páginas y sus URL en GitHub Pages
 
-Muchos negocios pequeños venden por WhatsApp, pero:
+El sitio se publica solo con `.github/workflows/pages.yml` en cada push a `main`. Todas las rutas son relativas.
 
-- Responden tarde (o no responden) fuera de horario.
-- Repiten las mismas respuestas todo el día: precios, horarios, ubicación, métodos de pago.
-- Pierden clientes interesados porque nadie les hace seguimiento.
+Base: `https://andresdiezt.github.io/Timbre/` (confirmar cuando Pages esté activo; ver PENDIENTES.md).
 
-Timbre automatiza esas tareas repetitivas y deja al equipo libre para cerrar ventas.
+| Página | URL | Para qué sirve |
+|---|---|---|
+| Principal | `/` · `/?m=co` · `/?m=usd` | Demo que vende: celular en vivo, hora del día, antes y después, gremios, calculadora, planes y preguntas. |
+| Simulador | `/demo/` | Celular grande + panel del dueño. Modo interactivo y automático, formatos 16:9 y 9:16 para grabar. |
+| Visita | `/visita/?asesora=SOFIA` | Herramienta de las asesoras: demo con el nombre del negocio, enlace, QR y botón «Lo quiero». |
+| English | `/en/` | Landing para servicios a domicilio en EE. UU. con la demo de respuesta en menos de 60 s. |
+| Simulador EN | `/demo/en.html` | Simulador en inglés con modo automático y formatos 16:9 y 9:16. |
+| Privacidad | `/privacidad.html` · `/en/privacy.html` | Plantillas legales (revisar con un abogado). |
 
-## ¿Qué incluye?
+### Parámetros de URL
 
-- **Respuestas automáticas** a preguntas frecuentes, 24/7.
-- **Menús y flujos de conversación** para guiar al cliente hasta la compra o la cita.
-- **Captura de datos** del cliente (nombre, pedido, dirección) de forma ordenada.
-- **Seguimiento** a clientes que preguntaron y no compraron.
-- **Ajustes y soporte** continuo mientras el plan esté activo.
+| Parámetro | Dónde | Valores | Efecto |
+|---|---|---|---|
+| `m` | todas | `co`, `usd`, `en` | Mercado: precios en COP o USD; `en` lleva a la versión en inglés. |
+| `asesora` | todas | `SOFIA`, `YARIMAR` | Agrega «Vengo de parte de [nombre] (código CODIGO)» a cada mensaje de WhatsApp y se conserva en los enlaces internos. |
+| `gremio` | demo, visita, demo/en | `barberia`, `restaurante`, `panaderia`, `taller`, `ropa`, `ferreteria`, `gimnasio`, `hogar` · `cleaning`, `hvac`, `plumbing` | Negocio que aparece en el celular. |
+| `nombre` | demo, visita | texto | Nombre del negocio del dueño en el chat. |
+| `color` | demo | `RRGGBB` (sin #) | Color de acento del negocio. |
+| `modo` | demo | `auto`, `interactivo` | Modo del simulador. |
+| `formato` | demo, demo/en | `libre`, `169`, `916` | Formato para grabar video horizontal o vertical. |
+| `velocidad` | demo, demo/en | `0.6` a `2` | Velocidad del modo automático. |
+| `grabar` | demo, demo/en | `1` | Abre directo en modo grabación (sin controles; Esc para salir). |
 
-## Modelo de servicio
+Ejemplo: `/demo/?gremio=panaderia&nombre=Panadería%20Doña%20Rosa&asesora=SOFIA&formato=916&grabar=1`
 
-Timbre se vende por planes con dos componentes:
+---
 
-| Componente | Qué cubre |
-|---|---|
-| **Instalación** (pago único) | Diagnóstico del negocio, diseño de los flujos, configuración y pruebas. |
-| **Mensualidad** | Mantenimiento, ajustes, soporte y mejoras continuas. |
-
-> Los precios y el detalle de cada plan están en definición.
-
-## Cómo trabajamos
-
-1. **Diagnóstico** — conversamos con el negocio para entender qué preguntan sus clientes y cómo venden.
-2. **Diseño** — armamos los flujos de conversación y los mensajes.
-3. **Instalación** — configuramos la automatización en el WhatsApp Business del cliente.
-4. **Pruebas** — validamos todo antes de activarlo con clientes reales.
-5. **Acompañamiento** — medimos, ajustamos y mejoramos cada mes.
-
-## Estado del proyecto
-
-🚧 **En construcción.** Actualmente en fase de pruebas con WhatsApp Business.
-
-## Estructura del repositorio
-
-> Se irá completando a medida que el proyecto crezca.
+## Índice del repositorio
 
 ```
 timbre/
-└── README.md
+├── index.html                 Página principal (es)
+├── demo/index.html            Simulador (es)
+├── demo/en.html               Simulador (en)
+├── visita/index.html          Herramienta de visita para asesoras
+├── en/index.html              Landing en inglés (servicios a domicilio)
+├── privacidad.html            Política de datos (plantilla, Ley 1581)
+├── en/privacy.html            Privacy policy (template)
+├── config/
+│   ├── marca.json             Marca, contacto, asesoras, mensajes de WhatsApp, testimonios
+│   └── planes.json            Planes y precios de los 3 mercados (co, usd, en)
+├── plantillas/gremios/        Un JSON por gremio + indice.json
+├── negocios/                  Ejemplos ficticios de clientes (Fase 2)
+│   └── privado/               Clientes reales: en .gitignore, nunca se publica
+├── assets/
+│   ├── css/                   timbre.css (sistema visual) + estilos por página
+│   ├── js/                    timbre.js (núcleo), telefono.js (chat), leads.js (demo EN) y uno por página
+│   ├── img/                   campanita y favicon
+│   └── vendor/qrcode.js       Generador de QR (MIT, Kazuhiko Arase)
+├── scripts/validar.js         Valida todos los JSON y la estructura de gremios y negocios
+├── .github/workflows/pages.yml
+├── README.md
+└── PENDIENTES.md              Datos que faltan, marcados como [ASÍ]
 ```
 
-## Contacto
+### Cambiar precios, textos o asesoras sin tocar código
 
-**Andrés Diez** — fundador
+- **Precios y planes**: `config/planes.json`. Cada mercado tiene sus planes, forma de pago, garantía y texto del botón.
+- **Asesoras**: `config/marca.json` → `asesoras`. Agregar `{ "codigo": "NUEVA", "nombre": "Nombre" }` y el código ya funciona en `?asesora=NUEVA`.
+- **Testimonios**: `config/marca.json` → `testimonios`. La sección está oculta mientras la lista esté vacía. Solo testimonios reales, con permiso: `{ "texto": "...", "nombre": "...", "negocio": "..." }`.
+- **Gremios**: copiar un JSON de `plantillas/gremios/`, cambiarlo y agregar su id a `plantillas/gremios/indice.json`.
+
+Después de cualquier cambio: `node scripts/validar.js`.
+
+---
+
+## Verlo en su computador
+
+Las páginas cargan los JSON con `fetch`, así que hay que abrirlas desde un servidor (no con doble clic):
+
+```bash
+python3 -m http.server 8080
+# abrir http://localhost:8080
+```
+
+---
+
+## Cómo crear un cliente nuevo en 5 pasos
+
+> El generador `scripts/generar.js` llega en la Fase 2. Mientras tanto, los pasos 1 a 3 ya sirven para preparar el JSON.
+
+1. **Copie el gremio** más parecido: `cp plantillas/gremios/barberia.json negocios/privado/barberia-juanito.json`. Los clientes reales siempre van en `negocios/privado/`.
+2. **Cambie los datos**: nombre, color, horario, catálogo y precios, preguntas frecuentes, mensajes, y agregue el bloque `negocio` (dirección, teléfono, redes, medios de pago, políticas) como en `negocios/ejemplo-*.json`.
+3. **Valide**: `node scripts/validar.js negocios/privado/barberia-juanito.json` (o sin argumento para todo el repositorio).
+4. **Genere la entrega**: `node scripts/generar.js negocios/privado/barberia-juanito.json` crea `entregas/barberia-juanito/` con textos para WhatsApp Business y Google Maps, imágenes del catálogo, códigos QR, página web y lista de verificación.
+5. **Entregue**: siga `entregas/<negocio>/lista-de-verificacion.md` con el dueño y cobre el saldo cuando lo vea funcionando.
+
+---
+
+## Reglas del proyecto
+
+- HTML, CSS y JavaScript puros, sin frameworks ni backend. Node solo para scripts de construcción.
+- Mobile-first (390 px) y elegante a 1280 px, modo claro y oscuro, contraste AA, foco visible.
+- Toda demostración dice «Demostración de Timbre» y usa negocios ficticios. Chat y tarjetas genéricos, sin logos ni imitación de WhatsApp, Meta o Google.
+- Nada de testimonios, cifras de resultados ni logos inventados. Nunca prometemos más ventas.
+- Todo formulario lleva la autorización de datos (Ley 1581). Nada de llamadas salientes con IA, SMS masivos ni datos de salud.
+- Clientes reales solo en `negocios/privado/` (ignorado por git).
+
+## Estado por fases
+
+- [x] **Fase 1 — La demo que vende**: página principal, simulador, visita, versión en inglés, privacidad y publicación en GitHub Pages.
+- [ ] Fase 2 — Kit de entrega con plantillas.
+- [ ] Fase 3 — Automatizaciones reales (n8n y Make).
+- [ ] Fase 4 — Ventas y entrega.
