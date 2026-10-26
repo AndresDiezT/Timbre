@@ -4,6 +4,9 @@ entregas/*
 !entregas/ejemplo-*/
 !entregas/LEEME.md
 
+# Videos de prueba de los ganchos 2 a 5 (se sacan con node scripts/video.js --gancho N)
+video/salida/*-gancho-*
+
 # Dependencias y temporales
 node_modules/
 _site/

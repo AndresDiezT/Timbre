@@ -38,6 +38,6 @@
     "url": "https://timbre-demo.netlify.app/",
     "nota": "Sitio publicado en Netlify. Cambiar si se usa un dominio propio."
   },
-  "video": "[ENLACE VIDEO]",
+  "video": "https://timbre-demo.netlify.app/video/",
   "testimonios": []
 }

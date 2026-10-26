@@ -1,5 +1,7 @@
 # Cómo grabar los videos con el simulador
 
+> **Ya hay un reel listo** (9:16, 37 segundos, sin voz): `video/salida/timbre-reel.mp4`, con su guía de publicación en `video/reel/LEEME.md`. Esta guía es para grabar videos con voz usando el simulador.
+
 El simulador tiene un **modo grabación** que oculta los controles y centra el escenario en un formato fijo. No hace falta editar capturas: se graba la pantalla tal cual.
 
 ## URL listas
@@ -29,7 +31,7 @@ El simulador tiene un **modo grabación** que oculta los controles y centra el e
 7. **Voz:** grábela aparte siguiendo el guion (`guion-colombia.md` o `guion-upwork-en.md`) y móntela sobre las tomas en CapCut, DaVinci Resolve o el editor que use.
 8. **Subtítulos:** importe el archivo `.srt` de `subtitulos/` en el editor y ajuste los tiempos a su voz. En 9:16 súbalos al tercio medio para que no los tapen los botones de Reels o TikTok.
 9. **Exporte:** 16:9 a 1920×1080; 9:16 a 1080×1920; MP4 H.264, 30 fps. Reels y TikTok: menos de 90 segundos.
-10. **Publique el enlace** del video en `config/marca.json → video` y en los textos del WhatsApp de Timbre (`[ENLACE VIDEO]`).
+10. **Publique el enlace** del video en `config/marca.json → video` y en los textos del WhatsApp de Timbre (hoy apuntan a la página del reel, https://timbre-demo.netlify.app/video/).
 
 ## Reglas
 

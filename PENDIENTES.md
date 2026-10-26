@@ -7,14 +7,13 @@ Datos que faltan o decisiones por confirmar. En los archivos aparecen como `[AS�
 | Marcador | Dónde | Qué falta |
 |---|---|---|
 | `[CORREO DE CONTACTO]` | `config/marca.json`, `privacidad.html`, `en/privacy.html` | Correo de Timbre. |
-| `[CIUDAD]` | `config/marca.json`, `privacidad.html` | Ciudad de domicilio de Andres Diez. |
+| `[CIUDAD]` | `config/marca.json`, `privacidad.html`, `video/reel/LEEME.md` | Ciudad de domicilio de Andres Diez (en el reel, para el hashtag de la ciudad). |
 | `[C.C. O NIT]` | `privacidad.html` | Documento o NIT del responsable del tratamiento. |
 | `[FECHA]` / `[DATE]` | `privacidad.html`, `en/privacy.html` | Fecha de entrada en vigencia de la política. |
 | `[LEGAL ENTITY / ADDRESS]` | `en/privacy.html` | Entidad legal y dirección para clientes en EE. UU. |
 | `[REVISAR CON ABOGADO ...]` | `privacidad.html`, `en/privacy.html` | Lista de proveedores, transferencias internacionales y requisitos por estado. **Las dos políticas son plantillas: revisarlas con un abogado antes de publicarlas como definitivas.** |
 | `[REVIEW-LINK]` | `assets/js/leads.js` (demo EN) | Es un ejemplo ficticio; no necesita cambio. |
 | `[HORARIO DE ATENCIÓN DE TIMBRE]` | `timbre-whatsapp/LEEME.md` | Horario en que Andres atiende el WhatsApp de Timbre. |
-| `[ENLACE VIDEO]` | `timbre-whatsapp/LEEME.md`, `config/marca.json` | Grabar con `video/grabar.md` y subir (YouTube no listado o similar). |
 
 ## Publicación
 
@@ -23,6 +22,12 @@ Datos que faltan o decisiones por confirmar. En los archivos aparecen como `[AS�
 - [ ] GitHub Pages queda como alternativa manual (el workflow ya no corre en cada push). Para usarlo: resolver la facturación de GitHub, activar *Settings → Pages → Source: GitHub Actions* y ejecutar el workflow a mano.
 - [x] Dirección actualizada en `config/marca.json`, `timbre-whatsapp/LEEME.md`, `upwork/` y README.
 - [ ] Opcional: dominio propio (por ejemplo `timbre.co`), configurado en *Settings → Pages → Custom domain*.
+
+## Video
+
+- [x] Reel 9:16 de 37 segundos en `video/salida/`, con página para compartir en https://timbre-demo.netlify.app/video/ (ya enlazada en los textos del WhatsApp de Timbre). Cómo publicarlo y probar los 5 ganchos: `video/reel/LEEME.md`.
+- [ ] Publicarlo en Instagram, TikTok y Estados de WhatsApp (de Andres y de las asesoras), y anotar qué gancho trae más mensajes.
+- [ ] Opcional: video con voz grabando el simulador (`video/grabar.md`).
 
 ## WhatsApp de Timbre
 
