@@ -40,8 +40,7 @@
       toqueConfirmar: s('citas', 3) - 0.3,
       confirmada: s('citas', 3),
       llamado: L.llamado.inicio - 0.1,
-      numero: L.llamado.fin - 0.4,
-      nota: L.llamado.fin + 0.3
+      numero: L.llamado.fin - 0.4
     };
     return e;
   };

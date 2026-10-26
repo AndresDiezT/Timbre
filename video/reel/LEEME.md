@@ -25,7 +25,7 @@ Página para compartir: **https://timbre-demo.netlify.app/video/** (el video, el
 | 22–27 | «¿Trabaja con citas? Sus clientes eligen servicio, día y hora, y usted confirma con un toque.» | Barbería: reserva y confirmación con una respuesta rápida. |
 | 28–32 | «¿Quiere esto en su negocio?» | La misma pregunta y WhatsApp 314 331 9442. |
 
-Todo lo que muestra el video lo hace el servicio. No promete más ventas ni muestra cifras de resultados, y los negocios son ficticios («Demostración»).
+Todo lo que muestra el video lo hace el servicio. No promete más ventas ni muestra cifras de resultados. Los negocios que aparecen (Asadero El Fogón, Barbería Don Fígaro) son ejemplos inventados: no los presente como clientes reales.
 
 **A propósito, el video no dice precios, ni el nombre «Timbre», ni promete plazos o tareas**: muestra lo que hace el servicio y deja el número. Precios y condiciones se dan en la conversación.
 
@@ -33,7 +33,7 @@ Todo lo que muestra el video lo hace el servicio. No promete más ventas ni mues
 
 - Es una **voz generada con IA**: Supertonic 3, de Supertone (voz «M5», la número 10 del muestrario), a velocidad 1,1. Se genera en el computador, sin servicios pagos ni claves.
 - Licencia del modelo: OpenRAIL-M, que permite el uso comercial del audio con reglas de uso responsable (por ejemplo, no hacerse pasar por una persona real).
-- Al final del video dice «Voz generada con IA». Al publicar, active también la etiqueta de contenido con IA que ofrecen Instagram y TikTok.
+- El video no lleva avisos en pantalla. Si al subirlo la app pregunta si tiene contenido generado con IA (TikTok lo pide cuando hay audio o imagen realista hecha con IA), márquelo: es una casilla de la app y no pone ningún texto sobre el video.
 
 ## Cómo publicarlo
 
@@ -46,8 +46,6 @@ Para restaurantes, panaderías, tiendas, barberías y talleres.
 
 Pruebe un pedido usted mismo: timbre-demo.netlify.app
 O escríbanos al WhatsApp 314 331 9442
-
-Demostración con negocios ficticios. Voz generada con IA.
 
 #negociospequeños #emprendedorescolombia #[CIUDAD]
 ```

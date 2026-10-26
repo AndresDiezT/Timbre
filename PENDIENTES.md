@@ -26,7 +26,7 @@ Datos que faltan o decisiones por confirmar. En los archivos aparecen como `[AS�
 ## Video
 
 - [x] Reel 9:16 de 32 segundos con voz (generada con IA, sin servicios pagos), estilo oscuro, sin precios, sin el nombre de la marca y sin prometer plazos, en `video/salida/` (con música y sin música), con página para compartir en https://timbre-demo.netlify.app/video/ (ya enlazada en los textos del WhatsApp de Timbre). Cómo publicarlo y cambiarlo: `video/reel/LEEME.md`.
-- [ ] Publicarlo en Instagram, TikTok y Estados de WhatsApp (de Andres y de las asesoras), con la etiqueta de contenido con IA activada, y anotar cuántos escriben por el video.
+- [ ] Publicarlo en Instagram, TikTok y Estados de WhatsApp (de Andres y de las asesoras) (si la app pregunta por contenido generado con IA, marcarlo), y anotar cuántos escriben por el video.
 - [ ] Opcional: probar otro comienzo cambiando la primera línea de `video/reel/guion.json`.
 
 ## WhatsApp de Timbre
