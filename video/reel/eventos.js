@@ -39,15 +39,15 @@
       llegaCita: s('citas', 2),
       toqueConfirmar: s('citas', 3) - 0.3,
       confirmada: s('citas', 3),
-      precio: L.precio.inicio - 0.15,
-      mensual: s('precio', 1),
-      lista1: s('precio', 1) + 0.9,
-      lista2: s('precio', 1) + 1.4,
-      saldo: s('precio', 3),
+      cierre: L.cierre.inicio - 0.15,
+      lista1: s('cierre', 0) + 0.2,
+      lista2: s('cierre', 1),
+      lista3: s('cierre', 2),
+      extra: s('cierre', 2) + 0.8,
       llamado: L.llamado.inicio - 0.1,
-      numero: s('llamado', 1),
-      web: s('llamado', 2),
-      nota: s('llamado', 2) + 0.9
+      numero: s('llamado', 0) + 0.25,
+      muestra: s('llamado', 1),
+      nota: s('llamado', 1) + 1.0
     };
     return e;
   };

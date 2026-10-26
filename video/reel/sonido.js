@@ -143,10 +143,6 @@ function burbuja(tono = 1, vol = 1) {
   return crear(0.12, (t) => Math.sin(2 * Math.PI * (420 + 520 * Math.exp(-t * 45)) * tono * t) * Math.min(1, t / 0.002) * Math.exp(-t * 32) * 0.45 * vol);
 }
 
-function tic(vol = 1) {
-  return filtro(crear(0.03, (t) => ruido() * Math.exp(-t * 260)), 3200, { q: 0.25 }).map((v) => v * 0.9 * vol);
-}
-
 function barrido(seg = 0.5, { desde = 500, hasta = 4000, vol = 1 } = {}) {
   return filtro(crear(seg, () => ruido()), (t) => desde * Math.pow(hasta / desde, t / seg), { q: 1.1 })
     .map((v, i) => v * Math.pow(Math.sin(Math.PI * Math.min(1, (i / SR) / seg)), 2) * 0.55 * vol);
@@ -179,7 +175,7 @@ function efectos(tiempos) {
   /* Giros del teléfono y entradas o salidas */
   [e.problema - 0.25, e.giroTel, e.citas, e.giroCita].forEach((t) => poner(p, t, barrido(0.45, { desde: 900, hasta: 3500, vol: 0.35 })));
   poner(p, e.pedido - 0.2, barrido(0.5, { desde: 500, hasta: 2500, vol: 0.4 }));
-  poner(p, e.precio - 0.2, barrido(0.5, { desde: 2500, hasta: 500, vol: 0.4 }));
+  poner(p, e.cierre - 0.2, barrido(0.5, { desde: 2500, hasta: 500, vol: 0.4 }));
 
   [e.toque1, e.toque2, e.toque3, e.enviar, e.toqueServicio, e.toqueHora, e.toqueEnviarCita, e.toqueConfirmar]
     .forEach((t) => poner(p, t, toque(0.9)));
@@ -192,8 +188,7 @@ function efectos(tiempos) {
   poner(ambiente, e.llegaCita, aviso(0.65));
   poner(p, e.confirmada, burbuja(1.55, 0.7), 1, 0.2);
 
-  for (let k = 0; k < 12; k++) poner(p, e.precio + 0.1 + 1.0 * Math.pow(k / 12, 0.7), tic(0.35));
-  [e.mensual, e.lista1, e.lista2, e.saldo].forEach((t, i) => poner(p, t, burbuja(1 + i * 0.1, 0.5)));
+  [e.lista1, e.lista2, e.lista3, e.extra].forEach((t, i) => poner(p, t, burbuja(1 + i * 0.1, 0.5)));
 
   poner(ambiente, e.llamado + 0.05, dinDon(1.1));
 

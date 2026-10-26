@@ -21,9 +21,7 @@
     .abs { position: absolute; will-change: transform, opacity; }
 
     #luz { left: -210px; top: 380px; width: 1500px; height: 1500px; border-radius: 50%; background: radial-gradient(closest-side, rgba(255, 201, 51, .26), rgba(255, 201, 51, .08) 55%, rgba(255, 201, 51, 0)); }
-    #marca { left: 60px; top: 104px; display: flex; align-items: center; gap: 16px; font-family: "Anton"; font-size: 50px; text-transform: uppercase; letter-spacing: .02em; }
-    #marca i { width: 62px; height: 62px; border-radius: 50%; background: var(--amarillo); display: grid; place-items: center; }
-    #demo { right: 60px; top: 126px; font-size: 24px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgba(255, 255, 255, .55); }
+    #demo { left: 0; right: 0; text-align: center; top: 126px; font-size: 24px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgba(255, 255, 255, .55); }
 
     /* Subtítulos */
     #subs { left: 50px; right: 50px; top: 248px; height: 260px; display: flex; align-items: center; justify-content: center; text-align: center; }
@@ -105,41 +103,37 @@
     .campana { width: 260px; height: 260px; border-radius: 50%; background: var(--amarillo); display: grid; place-items: center; box-shadow: 0 0 0 10px rgba(255, 201, 51, .15); }
     .campana svg { width: 150px; height: 150px; transform-origin: 50% 12%; }
     .onda { position: absolute; inset: 0; border-radius: 50%; border: 8px solid var(--amarillo); opacity: 0; }
-    #g-campana { left: 410px; top: 820px; }
-    #g-marca { left: 0; right: 0; top: 1130px; text-align: center; font-family: "Anton"; font-size: 150px; text-transform: uppercase; letter-spacing: .02em; }
+    #g-campana { left: 380px; top: 860px; width: 320px; height: 320px; }
+    #g-campana svg { width: 180px; height: 180px; }
 
     /* Sello */
     #sello { left: 0; right: 0; margin: 0 auto; width: max-content; top: 1040px; background: var(--amarillo); color: var(--tinta); border-radius: 30px; padding: 22px 54px 26px; text-align: center; box-shadow: 0 30px 70px rgba(0, 0, 0, .45); }
     #sello b { display: block; font-family: "Anton"; font-weight: 400; font-size: 120px; line-height: 1; text-transform: uppercase; }
     #sello span { font-size: 40px; font-weight: 800; }
 
-    /* Precio */
+    /* Cierre: lo que incluye el servicio */
     .centro { left: 0; right: 0; text-align: center; }
     .pildora { display: inline-block; background: var(--amarillo); color: var(--tinta); border-radius: 999px; padding: 12px 36px; font-weight: 900; font-size: 40px; letter-spacing: .05em; text-transform: uppercase; }
-    #p-precio { top: 560px; font-family: "Anton"; font-size: 250px; line-height: 1; color: var(--amarillo); }
-    #p-inst { top: 830px; font-size: 52px; font-weight: 800; }
-    #p-mes { top: 950px; font-family: "Anton"; font-size: 120px; line-height: 1; }
-    #p-mes small { font-family: "Figtree"; font-size: 52px; font-weight: 800; }
-    .lista { left: 150px; right: 120px; display: flex; gap: 24px; align-items: center; font-size: 44px; font-weight: 800; }
-    .lista i { flex: none; width: 54px; height: 54px; border-radius: 14px; background: var(--amarillo); display: grid; place-items: center; }
-    #p-saldo { left: 90px; right: 90px; top: 1380px; border: 5px solid var(--amarillo); border-radius: 30px; padding: 26px 30px; text-align: center; font-size: 48px; font-weight: 900; line-height: 1.15; text-transform: uppercase; }
-    #p-saldo em { font-style: normal; color: var(--amarillo); }
+    #k-titulo { top: 380px; font-family: "Anton"; font-size: 150px; line-height: .95; text-transform: uppercase; }
+    #k-titulo em { font-style: normal; color: var(--amarillo); }
+    .lista { left: 120px; right: 80px; display: flex; gap: 28px; align-items: center; font-size: 58px; font-weight: 900; line-height: 1.1; }
+    .lista i { flex: none; width: 72px; height: 72px; border-radius: 18px; background: var(--amarillo); display: grid; place-items: center; }
+    #k-extra { top: 1330px; }
+    #k-extra span { font-size: 38px; }
 
     /* Llamado */
     #f-campana { left: 410px; top: 420px; }
-    #f-titulo { top: 760px; font-family: "Anton"; font-size: 180px; line-height: .95; text-transform: uppercase; }
+    #f-titulo { top: 740px; font-family: "Anton"; font-size: 150px; line-height: .95; text-transform: uppercase; }
     #f-titulo em { font-style: normal; color: var(--amarillo); }
-    #f-numero { top: 1130px; }
+    #f-numero { top: 1100px; }
     #f-numero .pildora { font-size: 60px; padding: 18px 48px; letter-spacing: .02em; }
-    #f-web { top: 1290px; font-size: 44px; font-weight: 700; line-height: 1.3; color: rgba(255, 255, 255, .92); }
-    #f-web b { color: #fff; font-weight: 900; }
+    #f-web { top: 1260px; font-size: 46px; font-weight: 700; line-height: 1.3; color: rgba(255, 255, 255, .92); }
     #f-nota { top: 1460px; font-size: 26px; font-weight: 700; color: rgba(255, 255, 255, .55); }
   </style>
 </head>
 <body>
 <div id="escena">
   <div id="luz" class="abs"></div>
-  <div id="marca" class="abs"><i><svg viewBox="16 13 32 38" width="34" height="34"><path fill="#16202A" d="M32 14c-1.7 0-3 1.3-3 3v1.2c-6 1.4-9.5 6.6-9.5 12.8v7.5L16 43v2h32v-2l-3.5-4.5V31c0-6.2-3.5-11.4-9.5-12.8V17c0-1.7-1.3-3-3-3z"/><path fill="#16202A" d="M27 47.5a5 5 0 0 0 10 0z"/></svg></i>Timbre</div>
   <p id="demo" class="abs">Demostración</p>
 
   <div id="tel-caja" class="abs">
@@ -160,7 +154,7 @@
           </div>
         </div>
 
-        <!-- Chat sin Timbre: preguntas sin respuesta -->
+        <!-- Chat sin el servicio: preguntas sin respuesta -->
         <div id="s-chat1" class="pant chat">
           <div class="estado"><span>10:58</span><span>●●●</span></div>
           <div class="chat-cab"><span class="avatar">L</span><div><b>Laura</b><small>Cliente</small></div></div>
@@ -186,7 +180,7 @@
           </div>
         </div>
 
-        <!-- Chat con Timbre: llega el pedido y responde solo -->
+        <!-- Chat con el servicio: llega el pedido y responde solo -->
         <div id="s-chat2" class="pant chat">
           <div class="estado"><span>10:58</span><span>●●●</span></div>
           <div class="chat-cab"><span class="avatar">L</span><div><b>Laura</b><small>Cliente</small></div></div>
@@ -239,24 +233,21 @@
 
   <!-- Giro -->
   <div id="g-campana" class="abs campana"><span class="onda"></span><span class="onda"></span><span class="onda"></span><svg viewBox="16 13 32 38"><path fill="#16202A" d="M32 14c-1.7 0-3 1.3-3 3v1.2c-6 1.4-9.5 6.6-9.5 12.8v7.5L16 43v2h32v-2l-3.5-4.5V31c0-6.2-3.5-11.4-9.5-12.8V17c0-1.7-1.3-3-3-3z"/><path fill="#16202A" d="M27 47.5a5 5 0 0 0 10 0z"/></svg></div>
-  <p id="g-marca" class="abs">Timbre</p>
 
-  <div id="sello" class="abs"><b>Sin comisiones</b><span>$0 por pedido</span></div>
+  <div id="sello" class="abs"><b>Sin comisiones</b><span>por pedido</span></div>
 
-  <!-- Precio -->
-  <p id="p-plan" class="abs centro" style="top:440px"><span class="pildora">Pedidos o Reservas</span></p>
-  <p id="p-precio" class="abs centro">$450.000</p>
-  <p id="p-inst" class="abs centro">de instalación</p>
-  <p id="p-mes" class="abs centro">+ $59.000 <small>al mes</small></p>
-  <p id="p-l1" class="abs lista" style="top:1130px"><i><svg viewBox="0 0 24 24" width="34" height="34"><path fill="none" stroke="#16202A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/></svg></i>Listo en 5 días hábiles</p>
-  <p id="p-l2" class="abs lista" style="top:1220px"><i><svg viewBox="0 0 24 24" width="34" height="34"><path fill="none" stroke="#16202A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/></svg></i>Sin comisiones · sin permanencia</p>
-  <p id="p-saldo" class="abs">El saldo lo paga <em>cuando lo vea funcionando</em></p>
+  <!-- Cierre -->
+  <p id="k-titulo" class="abs centro">Se lo dejamos<br><em>funcionando</em></p>
+  <p id="k-l1" class="abs lista" style="top:800px"><i><svg viewBox="0 0 24 24" width="46" height="46"><path fill="none" stroke="#16202A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/></svg></i>Listo en 5 días hábiles</p>
+  <p id="k-l2" class="abs lista" style="top:960px"><i><svg viewBox="0 0 24 24" width="46" height="46"><path fill="none" stroke="#16202A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/></svg></i>En su propio WhatsApp</p>
+  <p id="k-l3" class="abs lista" style="top:1120px"><i><svg viewBox="0 0 24 24" width="46" height="46"><path fill="none" stroke="#16202A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/></svg></i>Capacitación gratuita</p>
+  <p id="k-extra" class="abs centro"><span class="pildora">Sin comisiones · sin apps que instalar</span></p>
 
   <!-- Llamado -->
   <div id="f-campana" class="abs campana"><span class="onda"></span><span class="onda"></span><span class="onda"></span><svg viewBox="16 13 32 38"><path fill="#16202A" d="M32 14c-1.7 0-3 1.3-3 3v1.2c-6 1.4-9.5 6.6-9.5 12.8v7.5L16 43v2h32v-2l-3.5-4.5V31c0-6.2-3.5-11.4-9.5-12.8V17c0-1.7-1.3-3-3-3z"/><path fill="#16202A" d="M27 47.5a5 5 0 0 0 10 0z"/></svg></div>
-  <p id="f-titulo" class="abs centro">Toque<br>el <em>timbre</em></p>
+  <p id="f-titulo" class="abs centro">¿Lo quiere en<br><em>su negocio?</em></p>
   <p id="f-numero" class="abs centro"><span class="pildora">WhatsApp 314 331 9442</span></p>
-  <p id="f-web" class="abs centro">Pruebe un pedido en<br><b>timbre-demo.netlify.app</b></p>
+  <p id="f-web" class="abs centro">Escríbanos y le mostramos<br>cómo quedaría</p>
   <p id="f-nota" class="abs centro">Demostración con negocios ficticios · Voz generada con IA</p>
 
   <div id="subs" class="abs"></div>
@@ -312,7 +303,7 @@
 
   let EV = null, SUB_ACTUAL = null, TAPS = [];
   const SUBS = [];
-  const SIN_SUBTITULOS = ['precio', 'llamado'];
+  const SIN_SUBTITULOS = ['cierre', 'llamado'];
 
   function prepararSubtitulos(tiempos) {
     tiempos.lineas.forEach((l) => {
@@ -399,10 +390,10 @@
     const luzFinal = 1 - prog(t, ev.duracion - 0.6, ev.duracion);
     poner('luz', { o: (0.9 - 0.75 * apagada + 0.5 * destello) * luzFinal, s: 1 + 0.25 * destello + 0.03 * Math.sin(t * 1.3) });
 
-    /* Teléfono: presente salvo en el giro, en el precio y en el llamado. */
+    /* Teléfono: presente salvo en el giro, en el cierre y en el llamado. */
     const sale1 = E.inOut(prog(t, ev.giro - 0.1, ev.giro + 0.35));
     const entra2 = E.out(prog(t, ev.pedido - 0.15, ev.pedido + 0.4));
-    const sale2 = E.inOut(prog(t, ev.precio - 0.15, ev.precio + 0.3));
+    const sale2 = E.inOut(prog(t, ev.cierre - 0.15, ev.cierre + 0.3));
     let ty, visible;
     if (t < ev.pedido - 0.15) { ty = sale1 * 1300; visible = 1 - sale1; }
     else { ty = (1 - entra2) * 1300 + sale2 * 1300; visible = entra2 * (1 - sale2); }
@@ -431,7 +422,6 @@
     const gfin = prog(t, ev.pedido - 0.35, ev.pedido);
     poner('g-campana', { o: t >= ev.giro && t < ev.pedido ? clamp(gk) * (1 - gfin) : 0, s: 0.4 + 0.6 * gk });
     campana('g-campana', t, ev.timbre);
-    ventana('g-marca', t, ev.timbre + 0.3, ev.pedido, { escala: true });
 
     /* 4. Pedido en la página del negocio */
     $('t-c1').textContent = t >= ev.toque1 ? 1 : 0;
@@ -462,17 +452,13 @@
     aparece('c3-ok', t, ev.confirmada, { escala: 0.75 });
     toques(t);
 
-    /* 8. Precio */
+    /* 8. Cierre: lo que incluye */
     const fin8 = ev.llamado;
-    ventana('p-plan', t, ev.precio, fin8, { dy: 30 });
-    const pk = E.out(prog(t, ev.precio + 0.1, ev.precio + 1.1));
-    poner('p-precio', { o: t >= ev.precio + 0.1 && t < fin8 ? Math.min(1, pk * 3) * (1 - prog(t, fin8 - 0.3, fin8)) : 0, s: 0.92 + 0.08 * pk });
-    $('p-precio').textContent = pesos(Math.round(450000 * pk / 1000) * 1000);
-    ventana('p-inst', t, ev.precio + 0.4, fin8, { dy: 30 });
-    ventana('p-mes', t, ev.mensual, fin8, { escala: true });
-    ventana('p-l1', t, ev.lista1, fin8, { dy: 30 });
-    ventana('p-l2', t, ev.lista2, fin8, { dy: 30 });
-    ventana('p-saldo', t, ev.saldo, fin8, { escala: true });
+    ventana('k-titulo', t, ev.cierre, fin8, { escala: true });
+    ventana('k-l1', t, ev.lista1, fin8, { dy: 40 });
+    ventana('k-l2', t, ev.lista2, fin8, { dy: 40 });
+    ventana('k-l3', t, ev.lista3, fin8, { dy: 40 });
+    ventana('k-extra', t, ev.extra, fin8, { escala: true });
 
     /* 9. Llamado */
     const fk = E.back(prog(t, ev.llamado, ev.llamado + 0.4));
@@ -480,7 +466,7 @@
     campana('f-campana', t, ev.llamado + 0.05);
     ventana('f-titulo', t, ev.llamado + 0.15, ev.duracion + 1, { escala: true });
     ventana('f-numero', t, ev.numero, ev.duracion + 1, { escala: true });
-    ventana('f-web', t, ev.web, ev.duracion + 1, { dy: 30 });
+    ventana('f-web', t, ev.muestra, ev.duracion + 1, { dy: 30 });
     ventana('f-nota', t, ev.nota, ev.duracion + 1, { dy: 20 });
 
     pintarSubtitulo(t);
