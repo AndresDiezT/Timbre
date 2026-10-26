@@ -1,0 +1,380 @@
+{
+  "name": "Timbre E1 · Formulario → Sheets → correo al cliente → alerta al dueño",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## E1 · Formulario → Sheets → correo → alerta\nCambie los datos en el nodo **Datos del negocio**.\nCredenciales: Google Sheets y Gmail del negocio.\nGuía: automatizaciones/n8n/e1-formulario-sheets-correo.md",
+        "width": 460,
+        "height": 180,
+        "color": 6
+      },
+      "id": "8cc7cbed-b8ae-4f63-a135-e20c9b026486",
+      "name": "Nota  E1  Formulario",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -80,
+        -220
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "timbre-e1-formulario",
+        "responseMode": "responseNode",
+        "options": {
+          "allowedOrigins": "*"
+        }
+      },
+      "id": "1089205d-5636-4a58-bf85-733642fe193e",
+      "name": "Formulario",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "cfa3a13f-5a67-4ee9-bfb3-d9d8991a39ec"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f294c488-78f8-43c5-82dd-f817201538f4",
+              "name": "negocio",
+              "value": "[NOMBRE DEL NEGOCIO]",
+              "type": "string"
+            },
+            {
+              "id": "8939395a-af07-4d37-86fd-429d18b8eefd",
+              "name": "correoDueno",
+              "value": "[CORREO DEL DUEÑO]",
+              "type": "string"
+            },
+            {
+              "id": "7e92e011-80f3-4905-ae19-aac8694f52e6",
+              "name": "hojaUrl",
+              "value": "[URL DE LA HOJA DE GOOGLE]",
+              "type": "string"
+            },
+            {
+              "id": "819a9ffe-6027-4ad0-9d85-34a3049eb894",
+              "name": "firma",
+              "value": "Equipo de [NOMBRE DEL NEGOCIO]",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "d5c33c45-4553-4c1e-9e1e-f3332e59cea7",
+      "name": "Datos del negocio",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        220,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Valida el formulario y deja los datos limpios.\nconst d = $input.item.json.body || $input.item.json;\nconst si = (v) => v === true || v === 'true' || v === 'on' || v === 'si' || v === 'sí';\nif (!si(d.autorizacion)) {\n  throw new Error('El formulario llegó sin la autorización de datos (Ley 1581). No se guarda nada.');\n}\nconst limpio = (v, max = 500) => String(v || '').trim().slice(0, max);\nconst telefono = limpio(d.telefono, 30).replace(/[^\\d+]/g, '');\nreturn {\n  json: {\n    ...$('Datos del negocio').item.json,\n    fecha: new Date().toISOString(),\n    nombre: limpio(d.nombre, 80),\n    primerNombre: limpio(d.nombre, 80).split(' ')[0],\n    telefono,\n    correo: limpio(d.correo, 120).toLowerCase(),\n    servicio: limpio(d.servicio, 80),\n    mensaje: limpio(d.mensaje, 1000),\n    autorizacion: 'Sí (' + new Date().toISOString().slice(0, 10) + ')',\n    origen: limpio(d.origen || 'Formulario web', 60)\n  }\n};"
+      },
+      "id": "bfe4aaa6-499b-4811-9069-5f9c29f167c3",
+      "name": "Validar y limpiar",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        440,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "[ID DE LA HOJA DE GOOGLE]",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Leads",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Fecha": "={{ $json.fecha }}",
+            "Nombre": "={{ $json.nombre }}",
+            "Teléfono": "={{ $json.telefono }}",
+            "Correo": "={{ $json.correo }}",
+            "Servicio": "={{ $json.servicio }}",
+            "Mensaje": "={{ $json.mensaje }}",
+            "Autorización": "={{ $json.autorizacion }}",
+            "Origen": "={{ $json.origen }}",
+            "Estado": "Nuevo"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Fecha",
+              "displayName": "Fecha",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Nombre",
+              "displayName": "Nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Teléfono",
+              "displayName": "Teléfono",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Correo",
+              "displayName": "Correo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Servicio",
+              "displayName": "Servicio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Mensaje",
+              "displayName": "Mensaje",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Autorización",
+              "displayName": "Autorización",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Origen",
+              "displayName": "Origen",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Estado",
+              "displayName": "Estado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "4bea1013-193f-4b6f-9b6b-3927e30f7919",
+      "name": "Guardar en la hoja",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        660,
+        0
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "",
+          "name": "Google Sheets del negocio"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('Validar y limpiar').item.json.correo }}",
+        "subject": "=Recibimos su mensaje, {{ $('Validar y limpiar').item.json.primerNombre }}",
+        "emailType": "text",
+        "message": "=Hola, {{ $('Validar y limpiar').item.json.primerNombre }}:\n\nGracias por escribir a {{ $('Validar y limpiar').item.json.negocio }}. Recibimos su solicitud{{ $('Validar y limpiar').item.json.servicio ? ' de ' + $('Validar y limpiar').item.json.servicio : '' }} y le respondemos muy pronto.\n\nSi prefiere, también puede escribirnos por WhatsApp.\n\n{{ $('Validar y limpiar').item.json.firma }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "id": "1c9c96f2-3f8d-4f07-a50b-bca65906e473",
+      "name": "Correo al cliente",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        880,
+        0
+      ],
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "",
+          "name": "Gmail del negocio"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('Validar y limpiar').item.json.correoDueno }}",
+        "subject": "=Nuevo cliente: {{ $('Validar y limpiar').item.json.nombre }}",
+        "emailType": "text",
+        "message": "=Llegó un formulario nuevo.\n\nNombre: {{ $('Validar y limpiar').item.json.nombre }}\nTeléfono: {{ $('Validar y limpiar').item.json.telefono }}\nCorreo: {{ $('Validar y limpiar').item.json.correo }}\nServicio: {{ $('Validar y limpiar').item.json.servicio }}\nMensaje: {{ $('Validar y limpiar').item.json.mensaje }}\n\nYa le enviamos un correo de confirmación. Ver la hoja: {{ $('Validar y limpiar').item.json.hojaUrl }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "id": "f9afd7b3-ec68-4fc3-950f-301bcbd40816",
+      "name": "Alerta al dueño",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        1100,
+        0
+      ],
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "",
+          "name": "Gmail del negocio"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={ \"ok\": true }",
+        "options": {}
+      },
+      "id": "d31886f5-7bb9-4219-8e03-80fdb27f13e0",
+      "name": "Responder al formulario",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1320,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Formulario": {
+      "main": [
+        [
+          {
+            "node": "Datos del negocio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Datos del negocio": {
+      "main": [
+        [
+          {
+            "node": "Validar y limpiar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validar y limpiar": {
+      "main": [
+        [
+          {
+            "node": "Guardar en la hoja",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Guardar en la hoja": {
+      "main": [
+        [
+          {
+            "node": "Correo al cliente",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Correo al cliente": {
+      "main": [
+        [
+          {
+            "node": "Alerta al dueño",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Alerta al dueño": {
+      "main": [
+        [
+          {
+            "node": "Responder al formulario",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "America/Bogota",
+    "saveManualExecutions": true
+  },
+  "meta": {
+    "templateCredsSetupCompleted": false,
+    "timbre": "E1"
+  },
+  "tags": []
+}

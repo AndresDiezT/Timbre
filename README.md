@@ -68,6 +68,12 @@ timbre/
 ├── entregas/                  Salida del generador (solo se versionan las de ejemplo)
 ├── timbre-whatsapp/           Textos e imágenes de catálogo del WhatsApp de Timbre
 ├── video/                     Guiones, subtítulos .srt y cómo grabar
+├── automatizaciones/
+│   ├── n8n/                   E1–E5: workflows JSON importables + guía nodo por nodo y credenciales
+│   ├── make/guia-e1-e3.md     E1–E3 en Make, módulo por módulo, con créditos estimados (100 leads/mes)
+│   ├── plantillas-whatsapp.md Plantillas para aprobación de Meta (es/en), categoría y variables
+│   ├── hojas-de-calculo.md    Columnas de cada hoja de Google
+│   └── formulario-ejemplo.html Formulario de prueba con autorización de datos
 ├── assets/
 │   ├── css/                   timbre.css (sistema visual) + estilos por página
 │   ├── js/                    timbre.js (núcleo), telefono.js (chat), leads.js (demo EN), kit.js (textos de entrega) y uno por página
@@ -139,5 +145,5 @@ Scripts:
 
 - [x] **Fase 1 — La demo que vende**: página principal, simulador, visita, versión en inglés, privacidad y publicación en GitHub Pages.
 - [x] **Fase 2 — Kit de entrega con plantillas**: generador, 2 clientes de ejemplo, página Pro en 3 estilos, constructor, WhatsApp de Timbre y guiones de video.
-- [ ] Fase 3 — Automatizaciones reales (n8n y Make).
+- [x] **Fase 3 — Automatizaciones reales**: 5 workflows de n8n, guía de Make con créditos y plantillas de WhatsApp para Meta.
 - [ ] Fase 4 — Ventas y entrega.

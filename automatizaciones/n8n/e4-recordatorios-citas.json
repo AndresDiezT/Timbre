@@ -1,0 +1,333 @@
+{
+  "name": "Timbre E4 · Recordatorios de citas 24 h y 2 h antes",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## E4 · Recordatorios de citas\nCada 15 minutos revisa la hoja **Citas** y envía la plantilla de 24 h o de 2 h.\nGuía: automatizaciones/n8n/e4-recordatorios-citas.md",
+        "width": 460,
+        "height": 170,
+        "color": 6
+      },
+      "id": "537dec8d-82b6-490d-a2e9-f4e537323f58",
+      "name": "Nota  E4  Recordator",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -80,
+        -220
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 15
+            }
+          ]
+        }
+      },
+      "id": "2fc23397-ef1b-4892-8bd6-c346cbd62205",
+      "name": "Cada 15 minutos",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b61abc9e-fdaa-48ad-b1df-31d3019ff8fb",
+              "name": "negocio",
+              "value": "[NOMBRE DEL NEGOCIO]",
+              "type": "string"
+            },
+            {
+              "id": "7092f792-ccd2-409d-9242-8fc91098c48c",
+              "name": "correoDueno",
+              "value": "[CORREO DEL DUEÑO]",
+              "type": "string"
+            },
+            {
+              "id": "589c179b-6562-440b-a165-8832364cec35",
+              "name": "hojaUrl",
+              "value": "[URL DE LA HOJA DE GOOGLE]",
+              "type": "string"
+            },
+            {
+              "id": "34a41cb8-d8ea-45e3-a9ec-bb4183196bd4",
+              "name": "whatsappPhoneNumberId",
+              "value": "[PHONE NUMBER ID DE META]",
+              "type": "string"
+            },
+            {
+              "id": "46415272-8989-4d99-883a-65911182b7ab",
+              "name": "plantilla24",
+              "value": "recordatorio_cita_24h",
+              "type": "string"
+            },
+            {
+              "id": "66af56b6-19ca-4d66-a493-98aaf949cad2",
+              "name": "plantilla2",
+              "value": "recordatorio_cita_2h",
+              "type": "string"
+            },
+            {
+              "id": "67319bad-6398-48f9-9bea-ace49cb868d1",
+              "name": "idiomaPlantilla",
+              "value": "es",
+              "type": "string"
+            },
+            {
+              "id": "a6852ecf-5696-44ef-8c71-8207ab596df0",
+              "name": "indicativoPais",
+              "value": "57",
+              "type": "string"
+            },
+            {
+              "id": "38370e8a-7632-4547-a9a2-165b1b0fd93b",
+              "name": "zonaHoraria",
+              "value": "America/Bogota",
+              "type": "string"
+            },
+            {
+              "id": "9880f41f-6c96-487c-9ac2-1dd2436e4c26",
+              "name": "desfaseUTC",
+              "value": "-05:00",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "3eb2a17c-697d-4e2a-9600-14e932a8fa89",
+      "name": "Datos del negocio",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        220,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "[ID DE LA HOJA DE GOOGLE]",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Citas",
+          "mode": "name"
+        },
+        "options": {},
+        "operation": "read"
+      },
+      "id": "d54d442e-a0b8-4430-bb4f-9f4a69de9354",
+      "name": "Leer citas",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        440,
+        0
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "",
+          "name": "Google Sheets del negocio"
+        }
+      },
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "// Busca citas a las que les toca recordatorio ahora (24 h o 2 h antes).\n// La hoja \"Citas\" tiene: ID, Cliente, Teléfono, Fecha (AAAA-MM-DD), Hora (HH:MM), Servicio, Estado, Recordatorio24, Recordatorio2.\n// Se ejecuta cada 15 minutos; la ventana evita enviar dos veces.\nconst n = $('Datos del negocio').first().json;\nconst zona = n.desfaseUTC || '-05:00';\nconst ahora = Date.now();\nconst salida = [];\nfor (const item of $input.all()) {\n  const c = item.json;\n  if (!c.ID || !c['Teléfono'] || !c.Fecha || !c.Hora) continue;\n  if (String(c.Estado || '').toLowerCase().includes('cancel')) continue;\n  const cita = new Date(c.Fecha + 'T' + c.Hora + ':00' + zona).getTime();\n  const faltan = (cita - ahora) / 3600000;\n  let tipo = null;\n  if (!c.Recordatorio24 && faltan <= 24 && faltan > 2.5) tipo = '24';\n  else if (!c.Recordatorio2 && faltan <= 2 && faltan > 0) tipo = '2';\n  if (!tipo) continue;\n  let telefono = String(c['Teléfono']).replace(/\\D/g, '');\n  if (telefono.length === 10) telefono = String(n.indicativoPais || '57') + telefono;\n  salida.push({ json: {\n    id: String(c.ID), tipo, telefono,\n    cliente: String(c.Cliente || '').split(' ')[0],\n    servicio: c.Servicio || 'su cita',\n    fechaTexto: new Date(cita).toLocaleDateString('es-CO', { weekday: 'long', day: 'numeric', month: 'long', timeZone: n.zonaHoraria }),\n    horaTexto: new Date(cita).toLocaleTimeString('es-CO', { hour: 'numeric', minute: '2-digit', timeZone: n.zonaHoraria }),\n    plantilla: tipo === '24' ? n.plantilla24 : n.plantilla2,\n    negocio: n.negocio\n  } });\n}\nreturn salida;"
+      },
+      "id": "a7e570f1-0e4e-4ff6-aba4-c1e211dfb5e0",
+      "name": "¿A quién recordar?",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        660,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.facebook.com/v21.0/{{ $('Datos del negocio').item.json.whatsappPhoneNumberId }}/messages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"to\": \"{{ $json.telefono }}\",\n  \"type\": \"template\",\n  \"template\": {\n    \"name\": {{ JSON.stringify($json.plantilla) }},\n    \"language\": { \"code\": \"{{ $('Datos del negocio').first().json.idiomaPlantilla }}\" },\n    \"components\": [{ \"type\": \"body\", \"parameters\": [{ \"type\": \"text\", \"text\": {{ JSON.stringify($json.cliente) }} }, { \"type\": \"text\", \"text\": {{ JSON.stringify($json.servicio) }} }, { \"type\": \"text\", \"text\": {{ JSON.stringify($json.fechaTexto) }} }, { \"type\": \"text\", \"text\": {{ JSON.stringify($json.horaTexto) }} }, { \"type\": \"text\", \"text\": {{ JSON.stringify($json.negocio) }} }] }]\n  }\n}",
+        "options": {}
+      },
+      "id": "6cc1dbe6-1f3f-4a8e-8f31-5e24ffec4799",
+      "name": "WhatsApp: recordatorio",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        880,
+        0
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "",
+          "name": "WhatsApp Cloud API (token)"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "[ID DE LA HOJA DE GOOGLE]",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Citas",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "ID": "={{ $('¿A quién recordar?').item.json.id }}",
+            "Recordatorio24": "={{ $('¿A quién recordar?').item.json.tipo === '24' ? 'Enviado ' + $now.toFormat('yyyy-MM-dd HH:mm') : undefined }}",
+            "Recordatorio2": "={{ $('¿A quién recordar?').item.json.tipo === '2' ? 'Enviado ' + $now.toFormat('yyyy-MM-dd HH:mm') : undefined }}"
+          },
+          "matchingColumns": [
+            "ID"
+          ],
+          "schema": [
+            {
+              "id": "ID",
+              "displayName": "ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Recordatorio24",
+              "displayName": "Recordatorio24",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Recordatorio2",
+              "displayName": "Recordatorio2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ace6f2f3-7eff-4801-babd-ff266d4765cc",
+      "name": "Marcar como enviado",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        1100,
+        0
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "",
+          "name": "Google Sheets del negocio"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Cada 15 minutos": {
+      "main": [
+        [
+          {
+            "node": "Datos del negocio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Datos del negocio": {
+      "main": [
+        [
+          {
+            "node": "Leer citas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Leer citas": {
+      "main": [
+        [
+          {
+            "node": "¿A quién recordar?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "¿A quién recordar?": {
+      "main": [
+        [
+          {
+            "node": "WhatsApp: recordatorio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WhatsApp: recordatorio": {
+      "main": [
+        [
+          {
+            "node": "Marcar como enviado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "America/Bogota",
+    "saveManualExecutions": true
+  },
+  "meta": {
+    "templateCredsSetupCompleted": false,
+    "timbre": "E4"
+  },
+  "tags": []
+}

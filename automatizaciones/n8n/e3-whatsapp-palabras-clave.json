@@ -1,0 +1,526 @@
+{
+  "name": "Timbre E3 · Mensaje de WhatsApp → palabra clave (IA opcional) → registro → alerta",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## E3 · Respuestas por palabra clave\nResponde dentro de la ventana de 24 h que abre el cliente al escribir.\nLa IA viene **desactivada**: actívela solo si el cliente la contrata (tiene costo por uso).\nGuía: automatizaciones/n8n/e3-whatsapp-palabras-clave.md",
+        "width": 520,
+        "height": 200,
+        "color": 6
+      },
+      "id": "e28a5835-ec32-43c1-b792-0c581a09879c",
+      "name": "Nota  E3  Respuestas",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -80,
+        -260
+      ]
+    },
+    {
+      "parameters": {
+        "updates": [
+          "messages"
+        ]
+      },
+      "id": "8a9d4445-2811-4985-8710-f6f3cf8810ea",
+      "name": "Mensaje entrante",
+      "type": "n8n-nodes-base.whatsAppTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "credentials": {
+        "whatsAppTriggerApi": {
+          "id": "",
+          "name": "WhatsApp (app de Meta)"
+        }
+      },
+      "webhookId": "52103862-d140-4cf6-b2c0-ce3509dcb9b7"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9771a8b0-2ff2-4072-9082-dd33abfe5c0f",
+              "name": "negocio",
+              "value": "[NOMBRE DEL NEGOCIO]",
+              "type": "string"
+            },
+            {
+              "id": "8afe6432-075d-4f38-8374-88ec9d187a00",
+              "name": "correoDueno",
+              "value": "[CORREO DEL DUEÑO]",
+              "type": "string"
+            },
+            {
+              "id": "64141dce-1130-4870-ba28-b104c4d67328",
+              "name": "hojaUrl",
+              "value": "[URL DE LA HOJA DE GOOGLE]",
+              "type": "string"
+            },
+            {
+              "id": "46f6b6a8-55fe-4e8f-933c-cd9ed6df123d",
+              "name": "whatsappPhoneNumberId",
+              "value": "[PHONE NUMBER ID DE META]",
+              "type": "string"
+            },
+            {
+              "id": "f540f2f6-4a20-4c86-8fc5-97bcab21cd9e",
+              "name": "horario",
+              "value": "[HORARIO EN TEXTO]",
+              "type": "string"
+            },
+            {
+              "id": "a724e48c-8e6b-4451-8da2-9265fa8c31e7",
+              "name": "direccion",
+              "value": "[DIRECCIÓN]",
+              "type": "string"
+            },
+            {
+              "id": "f4d81465-33be-4db0-953e-ecabea299d5a",
+              "name": "enlaceMaps",
+              "value": "[ENLACE DE GOOGLE MAPS]",
+              "type": "string"
+            },
+            {
+              "id": "892351da-3a02-4bbb-a37c-c964163537ac",
+              "name": "enlaceCatalogo",
+              "value": "[ENLACE DEL CATÁLOGO O DE LA PÁGINA]",
+              "type": "string"
+            },
+            {
+              "id": "58b15281-788c-4783-995a-2aadd241f2d0",
+              "name": "mediosPago",
+              "value": "[MEDIOS DE PAGO]",
+              "type": "string"
+            },
+            {
+              "id": "21a0013c-da2c-4c63-b293-944711b9b7c5",
+              "name": "respuestaPorDefecto",
+              "value": "Gracias por escribir. Ya recibimos su mensaje y le respondemos en un momento.",
+              "type": "string"
+            },
+            {
+              "id": "000d13a0-294e-4a2d-9708-ee5953a4327f",
+              "name": "usarIA",
+              "value": "no",
+              "type": "string"
+            },
+            {
+              "id": "6d2a66a5-5ddf-4e60-beab-f5664d52a7fd",
+              "name": "infoParaIA",
+              "value": "[RESUMEN DEL NEGOCIO: SERVICIOS, PRECIOS, HORARIO, DIRECCIÓN, POLÍTICAS]",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "d6d20509-6c65-4b2e-ba06-f038de4ff2a7",
+      "name": "Datos del negocio",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        220,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "// Saca los mensajes de lo que manda Meta. Ignora avisos de estado (entregado, leído).\nconst salida = [];\nfor (const item of $input.all()) {\n  const j = item.json;\n  const valor = j.messages ? j : (j.body && j.body.entry ? j.body.entry[0].changes[0].value : j);\n  const contacto = (valor.contacts || [])[0] || {};\n  for (const m of valor.messages || []) {\n    let texto = '';\n    if (m.type === 'text') texto = m.text.body;\n    else if (m.type === 'button') texto = m.button.text;\n    else if (m.type === 'interactive') texto = (m.interactive.button_reply || m.interactive.list_reply || {}).title || '';\n    else texto = '[' + m.type + ']';\n    salida.push({ json: { de: m.from, nombre: (contacto.profile || {}).name || '', texto, tipo: m.type, idMensaje: m.id, fecha: new Date(Number(m.timestamp) * 1000).toISOString() } });\n  }\n}\nreturn salida;"
+      },
+      "id": "9f26a5d7-cf29-454e-bfd0-59c34cc96fb2",
+      "name": "Leer mensaje",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        440,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Respuestas por palabra clave. Edite las listas y los textos para cada negocio.\n// La primera regla que coincide gana. Sin tildes ni mayúsculas para comparar.\nconst n = $('Datos del negocio').first().json;\nconst normal = (s) => String(s || '').toLowerCase().normalize('NFD').replace(/[\\u0300-\\u036f]/g, '');\nconst texto = normal($input.item.json.texto);\nconst reglas = [\n  { clave: 'persona', palabras: ['persona', 'asesor', 'humano', 'hablar con', 'llamar', 'llamen', 'urgente', 'queja'],\n    respuesta: 'Con gusto. Ya le avisé al equipo de ' + n.negocio + ' y le escriben por aquí en cuanto estén disponibles.' },\n  { clave: 'precios', palabras: ['precio', 'cuanto', 'vale', 'cuesta', 'valor', 'tarifa', 'catalogo', 'menu'],\n    respuesta: 'Aquí puede ver todos los precios: ' + n.enlaceCatalogo + ' ¿Le ayudo con algo en especial?' },\n  { clave: 'horario', palabras: ['horario', 'hora', 'abren', 'cierran', 'abierto', 'domingo', 'festivo'],\n    respuesta: 'Nuestro horario es ' + n.horario + '.' },\n  { clave: 'ubicacion', palabras: ['donde', 'direccion', 'ubicacion', 'quedan', 'llegar', 'mapa'],\n    respuesta: 'Estamos en ' + n.direccion + '. Así llega: ' + n.enlaceMaps },\n  { clave: 'pago', palabras: ['pago', 'pagar', 'nequi', 'daviplata', 'bre-b', 'breb', 'transferencia', 'tarjeta', 'efectivo'],\n    respuesta: 'Recibimos ' + n.mediosPago + '.' }\n];\nconst regla = reglas.find((r) => r.palabras.some((p) => texto.includes(p)));\nreturn { json: { ...$input.item.json,\n  coincidio: !!regla,\n  categoria: regla ? regla.clave : 'otro',\n  pidePersona: !!regla && regla.clave === 'persona',\n  respuesta: regla ? regla.respuesta : n.respuestaPorDefecto,\n  usarIA: n.usarIA === 'si' && !regla } };"
+      },
+      "id": "a7c7e5c0-0d2c-49cd-9556-e879a607f0ea",
+      "name": "Respuesta por palabra clave",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        660,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.anthropic.com/v1/messages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "anthropic-version",
+              "value": "2023-06-01"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"claude-haiku-5-5\",\n  \"max_tokens\": 300,\n  \"system\": {{ JSON.stringify('Eres el asistente de WhatsApp de ' + $('Datos del negocio').first().json.negocio + '. Responde en español, con trato de usted, en máximo 3 frases. Usa SOLO esta información del negocio: ' + $('Datos del negocio').first().json.infoParaIA + ' Si no sabes algo, di que una persona del equipo le responde pronto. Nunca inventes precios, horarios ni promociones. No pidas datos personales sensibles.') }},\n  \"messages\": [{ \"role\": \"user\", \"content\": {{ JSON.stringify($json.texto) }} }]\n}",
+        "options": {}
+      },
+      "id": "6bb813f5-9ae4-49ff-add3-16129f0c1d46",
+      "name": "IA opcional (Claude)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        880,
+        0
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "",
+          "name": "Anthropic (x-api-key)"
+        }
+      },
+      "disabled": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Usa la respuesta de la IA solo si estaba activada y devolvió texto.\nconst base = $('Respuesta por palabra clave').item.json;\nconst ia = $input.item.json;\nlet texto = base.respuesta;\nlet fuente = base.coincidio ? 'palabra clave' : 'respuesta por defecto';\nif (base.usarIA && ia && Array.isArray(ia.content) && ia.content[0] && ia.content[0].text) {\n  texto = ia.content[0].text.trim().slice(0, 900);\n  fuente = 'IA';\n}\nreturn { json: { ...base, texto, fuente } };"
+      },
+      "id": "69d8b87d-6ecd-42db-979c-72e6a1ac1322",
+      "name": "Elegir texto",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1100,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.facebook.com/v21.0/{{ $('Datos del negocio').item.json.whatsappPhoneNumberId }}/messages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"to\": \"{{ $json.de }}\",\n  \"type\": \"text\",\n  \"text\": { \"body\": {{ JSON.stringify($json.texto) }} }\n}",
+        "options": {}
+      },
+      "id": "3571d40e-0a44-4734-9f0c-71b056efa642",
+      "name": "Responder por WhatsApp",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1320,
+        0
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "",
+          "name": "WhatsApp Cloud API (token)"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "[ID DE LA HOJA DE GOOGLE]",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Conversaciones",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Fecha": "={{ $('Elegir texto').item.json.fecha }}",
+            "Nombre": "={{ $('Elegir texto').item.json.nombre }}",
+            "Teléfono": "={{ $('Elegir texto').item.json.de }}",
+            "Mensaje": "={{ $('Leer mensaje').item.json.texto }}",
+            "Categoría": "={{ $('Elegir texto').item.json.categoria }}",
+            "Respuesta": "={{ $('Elegir texto').item.json.texto }}",
+            "Fuente": "={{ $('Elegir texto').item.json.fuente }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Fecha",
+              "displayName": "Fecha",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Nombre",
+              "displayName": "Nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Teléfono",
+              "displayName": "Teléfono",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Mensaje",
+              "displayName": "Mensaje",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Categoría",
+              "displayName": "Categoría",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Respuesta",
+              "displayName": "Respuesta",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Fuente",
+              "displayName": "Fuente",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "1052353c-0f1c-418d-89f0-5ea4fcdece41",
+      "name": "Registrar conversación",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        1540,
+        0
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "",
+          "name": "Google Sheets del negocio"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "1486a473-d19a-4412-a8ac-f6b84d621403",
+              "leftValue": "={{ $('Elegir texto').item.json.pidePersona }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "8bcb29df-7243-4685-9bb7-494f5d6fd223",
+      "name": "¿Pide una persona?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        1760,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('Datos del negocio').first().json.correoDueno }}",
+        "subject": "=Un cliente pide hablar con una persona: {{ $('Elegir texto').item.json.nombre || $('Elegir texto').item.json.de }}",
+        "emailType": "text",
+        "message": "=Escribió: \"{{ $('Leer mensaje').item.json.texto }}\"\n\nResponda desde WhatsApp al +{{ $('Elegir texto').item.json.de }} lo antes posible.\n\nVer la hoja: {{ $('Datos del negocio').first().json.hojaUrl }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "id": "e50bba30-395a-40e8-8891-1f34dbd7e607",
+      "name": "Alerta: pide una persona",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        1980,
+        -80
+      ],
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "",
+          "name": "Gmail del negocio"
+        }
+      },
+      "onError": "continueRegularOutput"
+    }
+  ],
+  "connections": {
+    "Mensaje entrante": {
+      "main": [
+        [
+          {
+            "node": "Datos del negocio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Datos del negocio": {
+      "main": [
+        [
+          {
+            "node": "Leer mensaje",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Leer mensaje": {
+      "main": [
+        [
+          {
+            "node": "Respuesta por palabra clave",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Respuesta por palabra clave": {
+      "main": [
+        [
+          {
+            "node": "IA opcional (Claude)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IA opcional (Claude)": {
+      "main": [
+        [
+          {
+            "node": "Elegir texto",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Elegir texto": {
+      "main": [
+        [
+          {
+            "node": "Responder por WhatsApp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Responder por WhatsApp": {
+      "main": [
+        [
+          {
+            "node": "Registrar conversación",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Registrar conversación": {
+      "main": [
+        [
+          {
+            "node": "¿Pide una persona?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "¿Pide una persona?": {
+      "main": [
+        [
+          {
+            "node": "Alerta: pide una persona",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "America/Bogota",
+    "saveManualExecutions": true
+  },
+  "meta": {
+    "templateCredsSetupCompleted": false,
+    "timbre": "E3"
+  },
+  "tags": []
+}

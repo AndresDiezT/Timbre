@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Formulario de prueba Timbre</title>
+  <meta name="robots" content="noindex">
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 520px; margin: 32px auto; padding: 0 16px; color: #16202A; background: #FFFDF5; }
+    h1 { font-size: 1.6rem; }
+    label { display: block; font-weight: 700; margin-top: 12px; }
+    input, textarea { width: 100%; box-sizing: border-box; min-height: 44px; padding: 8px 12px; border: 2px solid #16202A; border-radius: 10px; font: inherit; }
+    .casilla { display: flex; gap: 10px; font-weight: 400; font-size: .9rem; }
+    .casilla input { width: 22px; min-height: 22px; flex: none; }
+    button { margin-top: 16px; min-height: 48px; padding: 10px 20px; border: 2px solid #16202A; border-radius: 12px; background: #FFC933; font: inherit; font-weight: 800; cursor: pointer; }
+    :focus-visible { outline: 3px solid #FFC933; outline-offset: 2px; box-shadow: 0 0 0 5px #16202A; }
+    .estado { font-weight: 700; margin-top: 12px; }
+    code { background: #F5F0E1; padding: 2px 6px; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <h1>Formulario de prueba (E1 / E2)</h1>
+  <p>Pegue la URL del webhook de n8n o Make y envíe. Sirve también como base para el formulario real de un cliente.</p>
+  <form id="f" novalidate>
+    <label for="url">URL del webhook</label>
+    <input id="url" type="url" placeholder="https://su-n8n.example/webhook/timbre-e1-formulario" required>
+    <label for="nombre">Nombre</label>
+    <input id="nombre" name="nombre" autocomplete="name" required>
+    <label for="telefono">Teléfono (WhatsApp)</label>
+    <input id="telefono" name="telefono" type="tel" autocomplete="tel">
+    <label for="correo">Correo</label>
+    <input id="correo" name="correo" type="email" autocomplete="email">
+    <label for="servicio">¿Qué servicio le interesa?</label>
+    <input id="servicio" name="servicio">
+    <label for="mensaje">Mensaje</label>
+    <textarea id="mensaje" name="mensaje" rows="3"></textarea>
+    <label class="casilla"><input type="checkbox" id="autorizacion" name="autorizacion" required>
+      <span>Autorizo a [NOMBRE DEL NEGOCIO] a tratar mis datos personales para responder esta solicitud y contactarme por WhatsApp o correo, según la Ley 1581 de 2012 y su política de privacidad. Puedo consultar, corregir o pedir que borren mis datos cuando quiera.</span></label>
+    <button type="submit">Enviar</button>
+    <p class="estado" id="estado" role="status"></p>
+  </form>
+  <p>Campos que recibe el webhook: <code>nombre</code>, <code>telefono</code>, <code>correo</code>, <code>servicio</code>, <code>mensaje</code>, <code>autorizacion</code>, <code>origen</code>.</p>
+  <script>
+    document.getElementById('f').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      var estado = document.getElementById('estado');
+      var f = e.target;
+      if (!f.autorizacion.checked) { estado.textContent = 'Marque la autorización de datos para enviar.'; f.autorizacion.focus(); return; }
+      if (!f.nombre.value.trim()) { estado.textContent = 'Escriba su nombre.'; f.nombre.focus(); return; }
+      estado.textContent = 'Enviando…';
+      try {
+        var r = await fetch(document.getElementById('url').value, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ nombre: f.nombre.value, telefono: f.telefono.value, correo: f.correo.value, servicio: f.servicio.value, mensaje: f.mensaje.value, autorizacion: true, origen: 'Formulario de prueba' })
+        });
+        estado.textContent = r.ok ? 'Enviado. Revise la hoja, el correo y el WhatsApp.' : 'El webhook respondió con error ' + r.status + '.';
+      } catch (err) {
+        estado.textContent = 'No se pudo enviar: ' + err.message;
+      }
+    });
+  </script>
+</body>
+</html>

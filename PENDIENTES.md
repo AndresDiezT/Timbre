@@ -34,6 +34,14 @@ Datos que faltan o decisiones por confirmar. En los archivos aparecen como `[AS�
 - [ ] La verificación del negocio en Google Maps la hace Google y puede tardar varios días: no depende de Timbre. Avisarle al dueño.
 - [ ] El formulario de la página Pro no usa servidor: abre WhatsApp con el mensaje ya escrito y exige la autorización de datos. Si un cliente quiere recibir los formularios por correo o en una hoja, eso es la automatización E1 (Fase 3).
 
+## Automatizaciones
+
+- [ ] **Probar cada workflow en una instancia real de n8n** antes del primer cliente: se armaron con la estructura de nodos actual (Webhook v2, Code v2, Google Sheets v4.5, Gmail v2.1, HTTP Request v4.2, If v2), pero no se ejecutaron contra cuentas reales. Si n8n marca un nodo, ábralo y vuelva a elegir la operación.
+- [ ] Confirmar la tabla de precios vigente de WhatsApp Business Platform. Los textos dicen, según su indicación, que desde el 1 de octubre de 2026 cada número tiene 1.000 mensajes de servicio gratis al mes y las plantillas se pagan.
+- [ ] Confirmar planes y créditos vigentes de Make y de n8n Cloud antes de cotizar.
+- [ ] Coexistencia app + API de WhatsApp: verificar con cada cliente si su número la permite.
+- [ ] Marcadores de los workflows (`[ID DE LA HOJA DE GOOGLE]`, `[PHONE NUMBER ID DE META]`, `[CORREO DEL DUEÑO]`, etc.) se llenan por cliente en el nodo **Datos del negocio**.
+
 ## Contenido
 
 - [ ] Testimonios reales con permiso escrito del dueño → `config/marca.json → testimonios`. Mientras esté vacío, la sección queda oculta.
