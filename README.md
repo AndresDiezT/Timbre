@@ -10,9 +10,12 @@ Contacto: Andres Diez · WhatsApp [+57 314 331 9442](https://wa.me/573143319442)
 
 ## Páginas y sus URL en GitHub Pages
 
-El sitio se publica solo con `.github/workflows/pages.yml` en cada push a `main`. Todas las rutas son relativas.
+Todas las rutas son relativas, así que el sitio funciona en cualquier dirección. Hay dos formas de publicarlo; las dos usan `scripts/armar-sitio.js`, que arma `_site/` sin documentos internos ni datos de clientes reales (solo las entregas de ejemplo):
 
-Base: `https://andresdiezt.github.io/Timbre/` (confirmar cuando Pages esté activo; ver PENDIENTES.md).
+- **Netlify** (`netlify.toml`): en app.netlify.com → *Add new site → Import an existing project → GitHub → AndresDiezT/Timbre*. Netlify lee la configuración solo; no hay que llenar nada. Publica de nuevo en cada push a `main`.
+- **GitHub Pages** (`.github/workflows/pages.yml`): *Settings → Pages → Source: GitHub Actions*. Requiere que GitHub Actions esté habilitado en la cuenta.
+
+Base: `https://[SITIO].netlify.app/` o `https://andresdiezt.github.io/Timbre/` (las rutas de abajo se suman a la base).
 
 | Página | URL | Para qué sirve |
 |---|---|---|

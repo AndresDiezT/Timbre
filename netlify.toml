@@ -1,0 +1,23 @@
+# Publicación en Netlify: conecte el repositorio y Netlify usa esta configuración.
+# No necesita GitHub Actions. Cada push a main publica de nuevo.
+[build]
+  command = "node scripts/validar.js && node scripts/armar-sitio.js"
+  publish = "_site"
+
+[build.environment]
+  NODE_VERSION = "20"
+  # El sitio no usa dependencias de npm (solo los scripts de imágenes las usan).
+  NPM_FLAGS = "--omit=optional --ignore-scripts"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"
+
+# Los JSON de configuración siempre frescos, para que un cambio de precio se vea al instante.
+[[headers]]
+  for = "/config/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"

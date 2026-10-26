@@ -34,16 +34,9 @@ jobs:
         run: node scripts/validar.js
 
       - name: Armar la carpeta del sitio
-        run: |
-          mkdir -p _site
-          # Se publican las entregas de ejemplo (ficticias) como portafolio;
-          # nunca negocios/privado ni entregas de clientes reales.
-          rsync -a ./ _site/ \
-            --exclude '.git' --exclude '.github' --exclude '_site' \
-            --exclude 'node_modules' --exclude 'negocios/privado' \
-            --include 'entregas/' --include 'entregas/ejemplo-*/***' --exclude 'entregas/*' \
-            --exclude '*.md'
-          touch _site/.nojekyll
+        # Publica las entregas de ejemplo (ficticias); nunca negocios/privado
+        # ni entregas de clientes reales.
+        run: node scripts/armar-sitio.js
 
       - uses: actions/configure-pages@v5
 
