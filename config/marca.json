@@ -22,8 +22,10 @@
     "ciudad": "[CIUDAD]"
   },
   "asesoras": [
-    { "codigo": "T101", "nombre": "Sofía", "alias": ["SOFIA"] },
-    { "codigo": "T102", "nombre": "Yarimar", "alias": ["YARIMAR"] }
+    { "codigo": "T101", "nombre": "Sofía", "alias": ["SOFIA"] }
+  ],
+  "asesorasInactivas": [
+    { "codigo": "T102", "nombre": "Yarimar", "alias": ["YARIMAR"], "nota": "Inactiva por ahora. Para reactivarla, muévala a asesoras." }
   ],
   "mensajesWhatsapp": {
     "co": "Hola, vi la demostración de Timbre y quiero saber más.",

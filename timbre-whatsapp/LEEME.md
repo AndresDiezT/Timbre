@@ -124,10 +124,9 @@ Demo
 Cotizó
 Pagó
 Asesora T101
-Asesora T102
 ```
 
-Cuando alguien escriba un código de asesora (o llegue con el mensaje «Vengo de parte de…»), póngale la etiqueta de ese código para saber de dónde llegó. T101 es Sofía y T102 es Yarimar; la lista está en `config/marca.json`.
+Cuando alguien escriba un código de asesora (o llegue con el mensaje «Vengo de parte de…»), póngale la etiqueta de ese código para saber de dónde llegó. T101 es Sofía; la lista está en `config/marca.json`.
 
 ## 6. Catálogo
 

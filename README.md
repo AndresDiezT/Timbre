@@ -48,7 +48,7 @@ Todas las rutas son relativas, así que el sitio funciona en cualquier direcció
 | Parámetro | Dónde | Valores | Efecto |
 |---|---|---|---|
 | `m` | todas | `en` | `en` lleva a la versión en inglés. Puerto Rico y EE. UU. en español están desactivados. |
-| `asesora` | todas | `T101`, `T102` | Agrega «Vengo de parte de [nombre] (código CODIGO)» a cada mensaje de WhatsApp y se conserva en los enlaces internos. |
+| `asesora` | todas | `T101` | Agrega «Vengo de parte de [nombre] (código CODIGO)» a cada mensaje de WhatsApp y se conserva en los enlaces internos. |
 | `gremio` | demo, visita, demo/en | `barberia`, `restaurante`, `panaderia`, `taller`, `ropa`, `ferreteria`, `gimnasio`, `hogar` · `cleaning`, `hvac`, `plumbing` | Negocio que aparece en el celular. |
 | `nombre` | demo, visita | texto | Nombre del negocio del dueño en el chat. |
 | `color` | demo | `RRGGBB` (sin #) | Color de acento del negocio. |
