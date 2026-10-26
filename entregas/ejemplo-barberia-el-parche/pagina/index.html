@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Barbería El Parche</title>
+  <meta name="description" content="Barbería en Laureles con cortes clásicos y modernos, arreglo de barba con toalla caliente, cejas y cortes para niños. Trabajamos con cita para que no esper">
+  <meta property="og:title" content="Barbería El Parche">
+  <meta property="og:description" content="Barbería en Laureles con cortes clásicos y modernos, arreglo de barba con toalla caliente, cejas y cortes para niños. Trabajamos con cita para que no esper">
+  <meta name="theme-color" content="#0F4C81">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+/* Página del negocio — estructura común a los tres estilos.
+   Cada estilo define las variables y los detalles visuales. */
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--fondo); color: var(--texto); font-family: var(--t-texto); font-size: 1.0625rem; line-height: 1.6; overflow-x: clip; }
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-underline-offset: 3px; }
+h1, h2, h3 { font-family: var(--t-titulo); line-height: 1.08; margin: 0 0 .5em; }
+h1 { font-size: clamp(2.4rem, 9vw, 4.2rem); }
+h2 { font-size: clamp(1.8rem, 6vw, 2.6rem); }
+h3 { font-size: 1.15rem; }
+p { margin: 0 0 1em; }
+:focus-visible { outline: 3px solid var(--foco, #FFC933); outline-offset: 2px; }
+.saltar { position: absolute; left: 12px; top: -60px; background: var(--texto); color: var(--fondo); padding: 8px 12px; z-index: 50; }
+.saltar:focus { top: 12px; }
+.oculto { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.envoltura { width: min(100% - 32px, 1120px); margin-inline: auto; }
+.estrecha { width: min(100% - 32px, 760px); }
+.seccion { padding: clamp(48px, 9vw, 88px) 0; }
+.seccion--suave { background: var(--fondo-2); }
+.dos { display: grid; gap: 40px; }
+@media (min-width: 860px) { .dos { grid-template-columns: 1fr 1fr; gap: 56px; } }
+
+.boton { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 10px 20px; font: inherit; font-weight: 700; text-decoration: none; cursor: pointer; border: 2px solid transparent; border-radius: var(--radio-boton); }
+.boton--acento { background: var(--acento); color: var(--sobre-acento); border-color: var(--acento); }
+.boton--borde { background: transparent; color: var(--texto); border-color: var(--texto); }
+.botones { display: flex; flex-wrap: wrap; gap: 12px; margin: 24px 0 12px; }
+
+.cab { position: sticky; top: 0; z-index: 20; background: var(--fondo); border-bottom: var(--borde-fino); }
+.cab__fila { display: flex; align-items: center; gap: 16px; min-height: 64px; }
+.marca { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 800; min-width: 0; }
+.marca__logo { width: 40px; height: 40px; flex: none; display: grid; place-items: center; background: var(--acento); color: var(--sobre-acento); border-radius: var(--radio-logo); font-family: var(--t-titulo); font-size: 1rem; }
+.marca__nombre { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cab__nav { display: none; gap: 20px; margin-left: auto; font-weight: 600; }
+.cab__nav a { text-decoration: none; }
+.cab__wa { margin-left: auto; min-height: 40px; padding: 6px 16px; }
+@media (min-width: 820px) { .cab__nav { display: flex; } .cab__wa { margin-left: 8px; } }
+
+.portada { padding: clamp(40px, 8vw, 96px) 0; }
+.portada__fila { display: grid; gap: 32px; align-items: center; }
+@media (min-width: 900px) { .portada__fila { grid-template-columns: 1.3fr .7fr; } }
+.portada__texto { font-size: 1.15rem; color: var(--suave); max-width: 58ch; }
+.portada__arte { display: none; aspect-ratio: 1; place-items: center; background: var(--acento); color: var(--sobre-acento); font-family: var(--t-titulo); font-size: clamp(4rem, 10vw, 8rem); }
+@media (min-width: 900px) { .portada__arte { display: grid; } }
+.etiqueta { display: inline-block; font-weight: 700; font-size: .85rem; letter-spacing: .04em; text-transform: uppercase; margin-bottom: 14px; }
+.estado { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: .95rem; margin: 6px 0 0; }
+.estado::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: currentColor; }
+.estado--abierto { color: #1E7A46; }
+.estado--cerrado { color: #9B2C1F; }
+
+.catalogo { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); }
+.producto { display: flex; flex-direction: column; background: var(--tarjeta); border: var(--borde-tarjeta); border-radius: var(--radio); overflow: hidden; }
+.producto__foto { aspect-ratio: 4 / 3; display: grid; place-items: center; background: var(--acento); color: var(--sobre-acento); font-family: var(--t-titulo); font-size: 2.4rem; }
+.producto__foto img { width: 100%; height: 100%; object-fit: cover; }
+.producto__cuerpo { padding: 16px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.producto__cuerpo h3 { margin: 0; }
+.producto__cuerpo p { margin: 0; color: var(--suave); font-size: .95rem; }
+.producto__pie { margin-top: auto; padding-top: 10px; display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+.producto__precio { font-weight: 800; font-size: 1.15rem; }
+.enlace-pedir { font-weight: 700; font-size: .92rem; }
+
+.horario { width: 100%; border-collapse: collapse; }
+.horario th, .horario td { padding: 10px 6px; border-bottom: var(--borde-fino); text-align: left; }
+.horario td { text-align: right; font-weight: 700; }
+.horario th { font-weight: 500; }
+.horario tr.hoy { background: color-mix(in srgb, var(--acento) 14%, transparent); }
+.direccion { font-size: 1.1rem; }
+.pastillas { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.pastillas li { border: var(--borde-fino); border-radius: 999px; padding: 4px 12px; font-size: .9rem; font-weight: 600; }
+#ubicacion h3 { margin-top: 28px; }
+
+.preguntas details { border-bottom: var(--borde-fino); }
+.preguntas summary { cursor: pointer; padding: 16px 0; font-weight: 700; }
+.preguntas details p { color: var(--suave); }
+
+.formulario { display: grid; gap: 6px; max-width: 520px; }
+.formulario label { font-weight: 700; font-size: .95rem; margin-top: 8px; }
+.formulario input, .formulario textarea { font: inherit; color: inherit; width: 100%; min-height: 48px; padding: 10px 14px; background: var(--tarjeta); border: var(--borde-campo); border-radius: var(--radio-campo); }
+.formulario .casilla { display: flex; gap: 10px; font-weight: 400; font-size: .88rem; line-height: 1.45; margin: 12px 0 8px; }
+.formulario .casilla input { width: 22px; height: 22px; min-height: 0; flex: none; margin-top: 2px; accent-color: var(--acento); }
+.formulario .boton { justify-self: start; margin-top: 8px; }
+.error { color: #9B2C1F; font-weight: 700; margin: 0; }
+.resenas__qr { width: 200px; padding: 10px; background: #fff; border: var(--borde-tarjeta); border-radius: var(--radio); margin: 8px 0 16px; }
+
+.pie { padding: 40px 0 110px; border-top: var(--borde-fino); font-size: .95rem; }
+.pie__fila { display: grid; gap: 24px; }
+@media (min-width: 820px) { .pie__fila { grid-template-columns: repeat(3, 1fr); } }
+.pie p { margin: 0 0 6px; }
+.pie ul { margin: 0; padding-left: 1.1em; }
+.pie__nombre, .pie__titulo { font-weight: 800; font-family: var(--t-titulo); font-size: 1.15rem; }
+.pie__privacidad { color: var(--suave); font-size: .88rem; }
+.pie__hecha { color: var(--suave); font-size: .8rem; margin-top: 10px !important; }
+
+.flotante { position: fixed; right: 16px; bottom: 16px; z-index: 30; width: 58px; height: 58px; display: grid; place-items: center; border-radius: 50%; background: var(--acento); color: var(--sobre-acento); border: 2px solid var(--sobre-acento); box-shadow: 0 6px 18px rgba(0, 0, 0, .18); }
+.flotante svg { width: 26px; height: 26px; }
+
+/* Estilo moderno: bloques de color, bordes gruesos, Space Grotesk. */
+.estilo-moderno {
+  --fondo: #F7F7F2; --fondo-2: #ECECE4; --tarjeta: #FFFFFF; --texto: #111418; --suave: #3F4650;
+  --t-titulo: "Space Grotesk", system-ui, sans-serif; --t-texto: "Space Grotesk", system-ui, sans-serif;
+  --radio: 0; --radio-boton: 0; --radio-logo: 0; --radio-campo: 0;
+  --borde-fino: 2px solid #111418; --borde-tarjeta: 2px solid #111418; --borde-campo: 2px solid #111418;
+  --foco: #111418;
+}
+.estilo-moderno h1, .estilo-moderno h2 { font-weight: 700; text-transform: uppercase; letter-spacing: -.03em; }
+.estilo-moderno .portada { background: var(--acento); color: var(--sobre-acento); border-bottom: 2px solid #111418; }
+.estilo-moderno .portada .portada__texto { color: inherit; opacity: .92; }
+.estilo-moderno .portada .boton--acento { background: var(--sobre-acento); color: var(--acento); border-color: var(--sobre-acento); }
+.estilo-moderno .portada .boton--borde { background: transparent; color: var(--sobre-acento); border-color: var(--sobre-acento); }
+.estilo-moderno .portada .estado { background: #fff; padding: 4px 10px; border: 2px solid #111418; }
+.estilo-moderno .portada__arte { background: var(--sobre-acento); color: var(--acento); border: 2px solid #111418; box-shadow: 10px 10px 0 #111418; }
+.estilo-moderno .etiqueta { border: 2px solid currentColor; padding: 2px 10px; }
+.estilo-moderno .producto { box-shadow: 6px 6px 0 #111418; }
+.estilo-moderno .producto__foto { border-bottom: 2px solid #111418; }
+.estilo-moderno .boton { box-shadow: 4px 4px 0 #111418; }
+.estilo-moderno .boton--borde { background: #fff; }
+
+</style>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Barbería El Parche","description":"Barbería en Laureles con cortes clásicos y modernos, arreglo de barba con toalla caliente, cejas y cortes para niños. Trabajamos con cita para que no espere, y también por orden de llegada. Escríbanos por WhatsApp para apartar su turno y ver los precios.","telephone":"+57 300 000 0000","email":"barberiaelparche@example.com","url":"https://barberiaelparche.example","address":{"@type":"PostalAddress","streetAddress":"Carrera 70 # 44-21, local 102","addressLocality":"Medellín"}}</script>
+</head>
+<body class="estilo-moderno" style="--acento:#0F4C81;--sobre-acento:#FFFFFF">
+  <a class="saltar" href="#principal">Saltar al contenido</a>
+  <header class="cab">
+    <div class="envoltura cab__fila">
+      <a class="marca" href="#principal"><span class="marca__logo" aria-hidden="true">BP</span><span class="marca__nombre">Barbería El Parche</span></a>
+      <nav class="cab__nav" aria-label="Principal">
+        <a href="#catalogo">Catálogo</a><a href="#horario">Horario</a><a href="#contacto">Contacto</a>
+      </nav>
+      <a class="boton boton--acento cab__wa" href="https://wa.me/573000000000" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </header>
+
+  <main id="principal">
+    <section class="portada">
+      <div class="envoltura portada__fila">
+        <div>
+          <p class="etiqueta">Barbería y peluquería · Laureles, Medellín</p>
+          <h1>Barbería El Parche</h1>
+          <p class="portada__texto">Barbería en Laureles con cortes clásicos y modernos, arreglo de barba con toalla caliente, cejas y cortes para niños. Trabajamos con cita para que no espere, y también por orden de llegada. Escríbanos por WhatsApp para apartar su turno y ver los precios.</p>
+          <div class="botones">
+            <a class="boton boton--acento" href="https://wa.me/573000000000" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+            <a class="boton boton--borde" href="#catalogo">Ver catálogo</a>
+          </div>
+          <p class="estado" id="estado" hidden></p>
+        </div>
+        <div class="portada__arte" aria-hidden="true"><span>BP</span></div>
+      </div>
+    </section>
+
+    <section class="seccion" id="catalogo" aria-labelledby="t-catalogo">
+      <div class="envoltura">
+        <h2 id="t-catalogo">Catálogo</h2>
+        <div class="catalogo">
+        <article class="producto">
+          <div class="producto__foto" aria-hidden="true"><span>CC</span></div>
+          <div class="producto__cuerpo">
+            <h3>Corte clásico</h3>
+            <p>Corte a tijera o máquina, lavado y peinado.</p>
+            <div class="producto__pie">
+              <span class="producto__precio">$25.000</span>
+              <a class="enlace-pedir" href="https://wa.me/573000000000?text=Hola%2C%20me%20interesa%20Corte%20cl%C3%A1sico." target="_blank" rel="noopener">Pedir por WhatsApp<span class="oculto"> Corte clásico</span></a>
+            </div>
+          </div>
+        </article>
+        <article class="producto">
+          <div class="producto__foto" aria-hidden="true"><span>CB</span></div>
+          <div class="producto__cuerpo">
+            <h3>Corte y barba</h3>
+            <p>Corte completo más arreglo de barba con toalla caliente.</p>
+            <div class="producto__pie">
+              <span class="producto__precio">$38.000</span>
+              <a class="enlace-pedir" href="https://wa.me/573000000000?text=Hola%2C%20me%20interesa%20Corte%20y%20barba." target="_blank" rel="noopener">Pedir por WhatsApp<span class="oculto"> Corte y barba</span></a>
+            </div>
+          </div>
+        </article>
+        <article class="producto">
+          <div class="producto__foto" aria-hidden="true"><span>AB</span></div>
+          <div class="producto__cuerpo">
+            <h3>Arreglo de barba</h3>
+            <p>Perfilado, rebajado y aceite para barba.</p>
+            <div class="producto__pie">
+              <span class="producto__precio">$18.000</span>
+              <a class="enlace-pedir" href="https://wa.me/573000000000?text=Hola%2C%20me%20interesa%20Arreglo%20de%20barba." target="_blank" rel="noopener">Pedir por WhatsApp<span class="oculto"> Arreglo de barba</span></a>
+            </div>
+          </div>
+        </article>
+        <article class="producto">
+          <div class="producto__foto" aria-hidden="true"><span>CI</span></div>
+          <div class="producto__cuerpo">
+            <h3>Corte infantil</h3>
+            <p>Para niños hasta 12 años.</p>
+            <div class="producto__pie">
+              <span class="producto__precio">$20.000</span>
+              <a class="enlace-pedir" href="https://wa.me/573000000000?text=Hola%2C%20me%20interesa%20Corte%20infantil." target="_blank" rel="noopener">Pedir por WhatsApp<span class="oculto"> Corte infantil</span></a>
+            </div>
+          </div>
+        </article>
+        <article class="producto">
+          <div class="producto__foto" aria-hidden="true"><span>CC</span></div>
+          <div class="producto__cuerpo">
+            <h3>Cejas con navaja</h3>
+            <p>Perfilado de cejas.</p>
+            <div class="producto__pie">
+              <span class="producto__precio">$8.000</span>
+              <a class="enlace-pedir" href="https://wa.me/573000000000?text=Hola%2C%20me%20interesa%20Cejas%20con%20navaja." target="_blank" rel="noopener">Pedir por WhatsApp<span class="oculto"> Cejas con navaja</span></a>
+            </div>
+          </div>
+        </article>
+        <article class="producto">
+          <div class="producto__foto" aria-hidden="true"><span>MN</span></div>
+          <div class="producto__cuerpo">
+            <h3>Mascarilla negra</h3>
+            <p>Limpieza facial de puntos negros, 20 minutos.</p>
+            <div class="producto__pie">
+              <span class="producto__precio">$15.000</span>
+              <a class="enlace-pedir" href="https://wa.me/573000000000?text=Hola%2C%20me%20interesa%20Mascarilla%20negra." target="_blank" rel="noopener">Pedir por WhatsApp<span class="oculto"> Mascarilla negra</span></a>
+            </div>
+          </div>
+        </article>
+        <article class="producto">
+          <div class="producto__foto" aria-hidden="true"><span>TP</span></div>
+          <div class="producto__cuerpo">
+            <h3>Tinte para barba</h3>
+            <p>Cubre canas, color natural.</p>
+            <div class="producto__pie">
+              <span class="producto__precio">$30.000</span>
+              <a class="enlace-pedir" href="https://wa.me/573000000000?text=Hola%2C%20me%20interesa%20Tinte%20para%20barba." target="_blank" rel="noopener">Pedir por WhatsApp<span class="oculto"> Tinte para barba</span></a>
+            </div>
+          </div>
+        </article>
+        <article class="producto">
+          <div class="producto__foto" aria-hidden="true"><span>PN</span></div>
+          <div class="producto__cuerpo">
+            <h3>Plan novio</h3>
+            <p>Corte, barba, cejas y mascarilla el día del matrimonio.</p>
+            <div class="producto__pie">
+              <span class="producto__precio">$70.000</span>
+              <a class="enlace-pedir" href="https://wa.me/573000000000?text=Hola%2C%20me%20interesa%20Plan%20novio." target="_blank" rel="noopener">Pedir por WhatsApp<span class="oculto"> Plan novio</span></a>
+            </div>
+          </div>
+        </article></div>
+      </div>
+    </section>
+
+    <section class="seccion seccion--suave" id="horario" aria-labelledby="t-horario">
+      <div class="envoltura dos">
+        <div>
+          <h2 id="t-horario">Horario</h2>
+          <table class="horario"><tbody><tr data-dias="lun mar mie jue"><th scope="row">Lunes a jueves</th><td>9 a. m. a 8 p. m.</td></tr><tr data-dias="vie"><th scope="row">Viernes</th><td>9 a. m. a 9 p. m.</td></tr><tr data-dias="sab"><th scope="row">Sábado</th><td>8 a. m. a 9 p. m.</td></tr><tr data-dias="dom"><th scope="row">Domingo</th><td>10 a. m. a 3 p. m.</td></tr></tbody></table>
+        </div>
+        <div id="ubicacion">
+          <h2>Ubicación</h2>
+          <p class="direccion"><strong>Carrera 70 # 44-21, local 102, Laureles, Medellín</strong><br>Al frente de la panadería de la esquina</p>
+          <a class="boton boton--borde" href="https://www.google.com/maps/search/?api=1&amp;query=Barber%C3%ADa%20El%20Parche%2C%20Carrera%2070%20%23%2044-21%2C%20local%20102%2C%20Laureles%2C%20Medell%C3%ADn" target="_blank" rel="noopener">Abrir en Google Maps</a>
+          <h3>Medios de pago</h3><ul class="pastillas"><li>Efectivo</li><li>Nequi</li><li>Daviplata</li><li>Bre-B</li><li>Tarjeta</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion" aria-labelledby="t-preguntas">
+      <div class="envoltura estrecha">
+        <h2 id="t-preguntas">Preguntas frecuentes</h2>
+        <div class="preguntas"><details><summary>¿Hay que pedir cita?</summary><p>No es obligatorio, pero con cita no espera. Escríbanos el día y la hora que le sirve y se la apartamos.</p></details><details><summary>¿Cuánto vale el corte?</summary><p>El corte clásico vale $25.000 y corte con barba $38.000. Todos los precios están en el catálogo.</p></details><details><summary>¿Atienden los domingos?</summary><p>Sí, los domingos de 10:00 a. m. a 3:00 p. m.</p></details><details><summary>¿Qué medios de pago reciben?</summary><p>Efectivo, Nequi, Daviplata, Bre-B y tarjeta.</p></details><details><summary>¿Cuánto se demora un corte?</summary><p>Unos 40 minutos el corte y una hora corte con barba.</p></details><details><summary>¿Cortan a niños?</summary><p>Sí, con paciencia y buen trato. El corte infantil vale $20.000.</p></details></div>
+      </div>
+    </section>
+
+    <section class="seccion seccion--suave" id="contacto" aria-labelledby="t-contacto">
+      <div class="envoltura dos">
+        <div>
+          <h2 id="t-contacto">Escríbanos</h2>
+          <p>Déjenos su mensaje y le respondemos por WhatsApp.</p>
+          <form class="formulario" id="formulario" novalidate>
+            <label for="f-nombre">Su nombre</label>
+            <input id="f-nombre" name="nombre" autocomplete="name" required>
+            <label for="f-telefono">Su teléfono</label>
+            <input id="f-telefono" name="telefono" type="tel" autocomplete="tel">
+            <label for="f-mensaje">¿En qué le podemos ayudar?</label>
+            <textarea id="f-mensaje" name="mensaje" rows="3"></textarea>
+            <label class="casilla"><input type="checkbox" id="f-autorizo" name="autorizo" required> <span>Autorizo a Barbería El Parche a usar mis datos solo para responder esta solicitud, según la Ley 1581 de 2012. Puedo pedir que los borren cuando quiera.</span></label>
+            <p class="error" id="f-error" role="alert" hidden></p>
+            <button class="boton boton--acento" type="submit">Enviar por WhatsApp</button>
+          </form>
+        </div>
+        <div class="resenas">
+          <h2>¿Ya nos visitó?</h2>
+          <p>Su opinión nos ayuda mucho. Escanee el código o toque el botón para dejarnos una reseña en Google.</p>
+          <div class="resenas__qr" role="img" aria-label="Código QR para dejar una reseña en Google"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 41 41" width="100%" height="100%" shape-rendering="crispEdges"><rect width="41" height="41" fill="#FFFFFF"/><path d="M4 4h1v1h-1zM5 4h1v1h-1zM6 4h1v1h-1zM7 4h1v1h-1zM8 4h1v1h-1zM9 4h1v1h-1zM10 4h1v1h-1zM14 4h1v1h-1zM17 4h1v1h-1zM18 4h1v1h-1zM19 4h1v1h-1zM22 4h1v1h-1zM23 4h1v1h-1zM25 4h1v1h-1zM26 4h1v1h-1zM27 4h1v1h-1zM30 4h1v1h-1zM31 4h1v1h-1zM32 4h1v1h-1zM33 4h1v1h-1zM34 4h1v1h-1zM35 4h1v1h-1zM36 4h1v1h-1zM4 5h1v1h-1zM10 5h1v1h-1zM14 5h1v1h-1zM15 5h1v1h-1zM17 5h1v1h-1zM18 5h1v1h-1zM19 5h1v1h-1zM20 5h1v1h-1zM25 5h1v1h-1zM26 5h1v1h-1zM27 5h1v1h-1zM30 5h1v1h-1zM36 5h1v1h-1zM4 6h1v1h-1zM6 6h1v1h-1zM7 6h1v1h-1zM8 6h1v1h-1zM10 6h1v1h-1zM16 6h1v1h-1zM17 6h1v1h-1zM19 6h1v1h-1zM21 6h1v1h-1zM22 6h1v1h-1zM23 6h1v1h-1zM27 6h1v1h-1zM28 6h1v1h-1zM30 6h1v1h-1zM32 6h1v1h-1zM33 6h1v1h-1zM34 6h1v1h-1zM36 6h1v1h-1zM4 7h1v1h-1zM6 7h1v1h-1zM7 7h1v1h-1zM8 7h1v1h-1zM10 7h1v1h-1zM13 7h1v1h-1zM14 7h1v1h-1zM16 7h1v1h-1zM17 7h1v1h-1zM18 7h1v1h-1zM19 7h1v1h-1zM20 7h1v1h-1zM22 7h1v1h-1zM23 7h1v1h-1zM24 7h1v1h-1zM26 7h1v1h-1zM27 7h1v1h-1zM30 7h1v1h-1zM32 7h1v1h-1zM33 7h1v1h-1zM34 7h1v1h-1zM36 7h1v1h-1zM4 8h1v1h-1zM6 8h1v1h-1zM7 8h1v1h-1zM8 8h1v1h-1zM10 8h1v1h-1zM15 8h1v1h-1zM18 8h1v1h-1zM22 8h1v1h-1zM25 8h1v1h-1zM27 8h1v1h-1zM30 8h1v1h-1zM32 8h1v1h-1zM33 8h1v1h-1zM34 8h1v1h-1zM36 8h1v1h-1zM4 9h1v1h-1zM10 9h1v1h-1zM12 9h1v1h-1zM13 9h1v1h-1zM17 9h1v1h-1zM18 9h1v1h-1zM19 9h1v1h-1zM20 9h1v1h-1zM22 9h1v1h-1zM23 9h1v1h-1zM25 9h1v1h-1zM26 9h1v1h-1zM30 9h1v1h-1zM36 9h1v1h-1zM4 10h1v1h-1zM5 10h1v1h-1zM6 10h1v1h-1zM7 10h1v1h-1zM8 10h1v1h-1zM9 10h1v1h-1zM10 10h1v1h-1zM12 10h1v1h-1zM14 10h1v1h-1zM16 10h1v1h-1zM18 10h1v1h-1zM20 10h1v1h-1zM22 10h1v1h-1zM24 10h1v1h-1zM26 10h1v1h-1zM28 10h1v1h-1zM30 10h1v1h-1zM31 10h1v1h-1zM32 10h1v1h-1zM33 10h1v1h-1zM34 10h1v1h-1zM35 10h1v1h-1zM36 10h1v1h-1zM13 11h1v1h-1zM15 11h1v1h-1zM16 11h1v1h-1zM18 11h1v1h-1zM19 11h1v1h-1zM20 11h1v1h-1zM21 11h1v1h-1zM22 11h1v1h-1zM25 11h1v1h-1zM26 11h1v1h-1zM4 12h1v1h-1zM7 12h1v1h-1zM9 12h1v1h-1zM10 12h1v1h-1zM12 12h1v1h-1zM13 12h1v1h-1zM14 12h1v1h-1zM17 12h1v1h-1zM18 12h1v1h-1zM20 12h1v1h-1zM24 12h1v1h-1zM25 12h1v1h-1zM27 12h1v1h-1zM29 12h1v1h-1zM31 12h1v1h-1zM4 13h1v1h-1zM12 13h1v1h-1zM16 13h1v1h-1zM17 13h1v1h-1zM20 13h1v1h-1zM21 13h1v1h-1zM22 13h1v1h-1zM24 13h1v1h-1zM25 13h1v1h-1zM28 13h1v1h-1zM29 13h1v1h-1zM30 13h1v1h-1zM31 13h1v1h-1zM35 13h1v1h-1zM36 13h1v1h-1zM4 14h1v1h-1zM8 14h1v1h-1zM10 14h1v1h-1zM11 14h1v1h-1zM13 14h1v1h-1zM16 14h1v1h-1zM17 14h1v1h-1zM18 14h1v1h-1zM20 14h1v1h-1zM21 14h1v1h-1zM22 14h1v1h-1zM23 14h1v1h-1zM29 14h1v1h-1zM30 14h1v1h-1zM31 14h1v1h-1zM32 14h1v1h-1zM34 14h1v1h-1zM36 14h1v1h-1zM6 15h1v1h-1zM9 15h1v1h-1zM11 15h1v1h-1zM12 15h1v1h-1zM15 15h1v1h-1zM17 15h1v1h-1zM19 15h1v1h-1zM20 15h1v1h-1zM22 15h1v1h-1zM25 15h1v1h-1zM26 15h1v1h-1zM28 15h1v1h-1zM29 15h1v1h-1zM32 15h1v1h-1zM33 15h1v1h-1zM36 15h1v1h-1zM5 16h1v1h-1zM6 16h1v1h-1zM8 16h1v1h-1zM9 16h1v1h-1zM10 16h1v1h-1zM11 16h1v1h-1zM12 16h1v1h-1zM14 16h1v1h-1zM16 16h1v1h-1zM18 16h1v1h-1zM19 16h1v1h-1zM20 16h1v1h-1zM21 16h1v1h-1zM23 16h1v1h-1zM24 16h1v1h-1zM25 16h1v1h-1zM26 16h1v1h-1zM27 16h1v1h-1zM29 16h1v1h-1zM30 16h1v1h-1zM33 16h1v1h-1zM4 17h1v1h-1zM8 17h1v1h-1zM11 17h1v1h-1zM15 17h1v1h-1zM17 17h1v1h-1zM18 17h1v1h-1zM19 17h1v1h-1zM21 17h1v1h-1zM23 17h1v1h-1zM24 17h1v1h-1zM25 17h1v1h-1zM26 17h1v1h-1zM28 17h1v1h-1zM30 17h1v1h-1zM32 17h1v1h-1zM33 17h1v1h-1zM35 17h1v1h-1zM36 17h1v1h-1zM5 18h1v1h-1zM6 18h1v1h-1zM7 18h1v1h-1zM8 18h1v1h-1zM9 18h1v1h-1zM10 18h1v1h-1zM11 18h1v1h-1zM13 18h1v1h-1zM15 18h1v1h-1zM16 18h1v1h-1zM17 18h1v1h-1zM18 18h1v1h-1zM19 18h1v1h-1zM20 18h1v1h-1zM22 18h1v1h-1zM27 18h1v1h-1zM29 18h1v1h-1zM30 18h1v1h-1zM31 18h1v1h-1zM35 18h1v1h-1zM4 19h1v1h-1zM5 19h1v1h-1zM9 19h1v1h-1zM15 19h1v1h-1zM20 19h1v1h-1zM21 19h1v1h-1zM22 19h1v1h-1zM23 19h1v1h-1zM25 19h1v1h-1zM26 19h1v1h-1zM27 19h1v1h-1zM28 19h1v1h-1zM30 19h1v1h-1zM32 19h1v1h-1zM35 19h1v1h-1zM4 20h1v1h-1zM5 20h1v1h-1zM8 20h1v1h-1zM9 20h1v1h-1zM10 20h1v1h-1zM12 20h1v1h-1zM14 20h1v1h-1zM16 20h1v1h-1zM17 20h1v1h-1zM19 20h1v1h-1zM21 20h1v1h-1zM23 20h1v1h-1zM24 20h1v1h-1zM25 20h1v1h-1zM28 20h1v1h-1zM30 20h1v1h-1zM32 20h1v1h-1zM35 20h1v1h-1zM5 21h1v1h-1zM6 21h1v1h-1zM13 21h1v1h-1zM14 21h1v1h-1zM15 21h1v1h-1zM16 21h1v1h-1zM17 21h1v1h-1zM18 21h1v1h-1zM21 21h1v1h-1zM24 21h1v1h-1zM27 21h1v1h-1zM28 21h1v1h-1zM29 21h1v1h-1zM31 21h1v1h-1zM33 21h1v1h-1zM35 21h1v1h-1zM4 22h1v1h-1zM7 22h1v1h-1zM10 22h1v1h-1zM12 22h1v1h-1zM14 22h1v1h-1zM16 22h1v1h-1zM18 22h1v1h-1zM22 22h1v1h-1zM30 22h1v1h-1zM34 22h1v1h-1zM35 22h1v1h-1zM36 22h1v1h-1zM4 23h1v1h-1zM11 23h1v1h-1zM12 23h1v1h-1zM15 23h1v1h-1zM16 23h1v1h-1zM17 23h1v1h-1zM20 23h1v1h-1zM21 23h1v1h-1zM24 23h1v1h-1zM25 23h1v1h-1zM27 23h1v1h-1zM29 23h1v1h-1zM31 23h1v1h-1zM7 24h1v1h-1zM10 24h1v1h-1zM11 24h1v1h-1zM13 24h1v1h-1zM14 24h1v1h-1zM16 24h1v1h-1zM23 24h1v1h-1zM24 24h1v1h-1zM25 24h1v1h-1zM27 24h1v1h-1zM28 24h1v1h-1zM29 24h1v1h-1zM35 24h1v1h-1zM5 25h1v1h-1zM9 25h1v1h-1zM17 25h1v1h-1zM19 25h1v1h-1zM21 25h1v1h-1zM24 25h1v1h-1zM28 25h1v1h-1zM30 25h1v1h-1zM31 25h1v1h-1zM33 25h1v1h-1zM34 25h1v1h-1zM35 25h1v1h-1zM36 25h1v1h-1zM4 26h1v1h-1zM5 26h1v1h-1zM8 26h1v1h-1zM9 26h1v1h-1zM10 26h1v1h-1zM11 26h1v1h-1zM13 26h1v1h-1zM14 26h1v1h-1zM15 26h1v1h-1zM20 26h1v1h-1zM23 26h1v1h-1zM25 26h1v1h-1zM26 26h1v1h-1zM28 26h1v1h-1zM30 26h1v1h-1zM31 26h1v1h-1zM32 26h1v1h-1zM33 26h1v1h-1zM34 26h1v1h-1zM36 26h1v1h-1zM5 27h1v1h-1zM6 27h1v1h-1zM13 27h1v1h-1zM15 27h1v1h-1zM17 27h1v1h-1zM18 27h1v1h-1zM19 27h1v1h-1zM22 27h1v1h-1zM23 27h1v1h-1zM25 27h1v1h-1zM27 27h1v1h-1zM30 27h1v1h-1zM31 27h1v1h-1zM33 27h1v1h-1zM35 27h1v1h-1zM36 27h1v1h-1zM4 28h1v1h-1zM8 28h1v1h-1zM10 28h1v1h-1zM11 28h1v1h-1zM12 28h1v1h-1zM13 28h1v1h-1zM15 28h1v1h-1zM18 28h1v1h-1zM21 28h1v1h-1zM23 28h1v1h-1zM24 28h1v1h-1zM25 28h1v1h-1zM28 28h1v1h-1zM29 28h1v1h-1zM30 28h1v1h-1zM31 28h1v1h-1zM32 28h1v1h-1zM12 29h1v1h-1zM14 29h1v1h-1zM15 29h1v1h-1zM16 29h1v1h-1zM17 29h1v1h-1zM18 29h1v1h-1zM21 29h1v1h-1zM23 29h1v1h-1zM24 29h1v1h-1zM25 29h1v1h-1zM26 29h1v1h-1zM27 29h1v1h-1zM28 29h1v1h-1zM32 29h1v1h-1zM33 29h1v1h-1zM35 29h1v1h-1zM36 29h1v1h-1zM4 30h1v1h-1zM5 30h1v1h-1zM6 30h1v1h-1zM7 30h1v1h-1zM8 30h1v1h-1zM9 30h1v1h-1zM10 30h1v1h-1zM13 30h1v1h-1zM16 30h1v1h-1zM17 30h1v1h-1zM21 30h1v1h-1zM24 30h1v1h-1zM28 30h1v1h-1zM30 30h1v1h-1zM32 30h1v1h-1zM33 30h1v1h-1zM34 30h1v1h-1zM35 30h1v1h-1zM4 31h1v1h-1zM10 31h1v1h-1zM12 31h1v1h-1zM13 31h1v1h-1zM15 31h1v1h-1zM17 31h1v1h-1zM18 31h1v1h-1zM19 31h1v1h-1zM21 31h1v1h-1zM22 31h1v1h-1zM24 31h1v1h-1zM25 31h1v1h-1zM26 31h1v1h-1zM28 31h1v1h-1zM32 31h1v1h-1zM36 31h1v1h-1zM4 32h1v1h-1zM6 32h1v1h-1zM7 32h1v1h-1zM8 32h1v1h-1zM10 32h1v1h-1zM13 32h1v1h-1zM14 32h1v1h-1zM15 32h1v1h-1zM22 32h1v1h-1zM24 32h1v1h-1zM25 32h1v1h-1zM26 32h1v1h-1zM28 32h1v1h-1zM29 32h1v1h-1zM30 32h1v1h-1zM31 32h1v1h-1zM32 32h1v1h-1zM33 32h1v1h-1zM35 32h1v1h-1zM36 32h1v1h-1zM4 33h1v1h-1zM6 33h1v1h-1zM7 33h1v1h-1zM8 33h1v1h-1zM10 33h1v1h-1zM12 33h1v1h-1zM13 33h1v1h-1zM15 33h1v1h-1zM17 33h1v1h-1zM18 33h1v1h-1zM19 33h1v1h-1zM20 33h1v1h-1zM21 33h1v1h-1zM24 33h1v1h-1zM25 33h1v1h-1zM30 33h1v1h-1zM32 33h1v1h-1zM4 34h1v1h-1zM6 34h1v1h-1zM7 34h1v1h-1zM8 34h1v1h-1zM10 34h1v1h-1zM13 34h1v1h-1zM14 34h1v1h-1zM17 34h1v1h-1zM18 34h1v1h-1zM19 34h1v1h-1zM20 34h1v1h-1zM21 34h1v1h-1zM24 34h1v1h-1zM25 34h1v1h-1zM26 34h1v1h-1zM29 34h1v1h-1zM32 34h1v1h-1zM33 34h1v1h-1zM34 34h1v1h-1zM36 34h1v1h-1zM4 35h1v1h-1zM10 35h1v1h-1zM15 35h1v1h-1zM16 35h1v1h-1zM17 35h1v1h-1zM21 35h1v1h-1zM24 35h1v1h-1zM25 35h1v1h-1zM27 35h1v1h-1zM28 35h1v1h-1zM4 36h1v1h-1zM5 36h1v1h-1zM6 36h1v1h-1zM7 36h1v1h-1zM8 36h1v1h-1zM9 36h1v1h-1zM10 36h1v1h-1zM12 36h1v1h-1zM13 36h1v1h-1zM19 36h1v1h-1zM20 36h1v1h-1zM23 36h1v1h-1zM25 36h1v1h-1zM28 36h1v1h-1zM30 36h1v1h-1zM32 36h1v1h-1zM35 36h1v1h-1z" fill="#16202A"/></svg>
+</div>
+          <a class="boton boton--borde" href="https://example.com/resenas-ficticias/barberia-el-parche" target="_blank" rel="noopener">Dejar una reseña</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="envoltura pie__fila">
+      <div>
+        <p class="pie__nombre">Barbería El Parche</p>
+        <p>Carrera 70 # 44-21, local 102, Laureles, Medellín</p>
+        <p>+57 300 000 0000</p>
+        <p>instagram: @barberiaelparche.ejemplo</p>
+      </div>
+      <div><p class="pie__titulo">Políticas</p><ul><li>Si llega más de 15 minutos tarde, su turno pasa al siguiente cliente.</li><li>Para cancelar o mover una cita, avise con dos horas de anticipación.</li></ul></div>
+      <div><p class="pie__privacidad">Privacidad: los datos que nos envía se usan solo para responderle. Para consultarlos o borrarlos, escríbanos.</p><p class="pie__hecha">Página hecha con Timbre</p></div>
+    </div>
+  </footer>
+
+  <a class="flotante" href="https://wa.me/573000000000" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-5 4v-4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>
+  </a>
+
+  <script>
+  (function () {
+    var horario = {"lun":["09:00","20:00"],"mar":["09:00","20:00"],"mie":["09:00","20:00"],"jue":["09:00","20:00"],"vie":["09:00","21:00"],"sab":["08:00","21:00"],"dom":["10:00","15:00"]};
+    var dias = ['dom', 'lun', 'mar', 'mie', 'jue', 'vie', 'sab'];
+    var ahora = new Date(), hoy = dias[ahora.getDay()], r = horario[hoy];
+    var min = ahora.getHours() * 60 + ahora.getMinutes();
+    var aMin = function (t) { var p = t.split(':'); return +p[0] * 60 + +p[1]; };
+    var fila = document.querySelector('tr[data-dias~="' + hoy + '"]');
+    if (fila) fila.className = 'hoy';
+    var estado = document.getElementById('estado');
+    var abierto = r && min >= aMin(r[0]) && min < aMin(r[1]);
+    estado.textContent = (abierto ? "Abierto ahora" : "Cerrado ahora") + (fila ? ' · Hoy: ' + fila.cells[1].textContent : '');
+    estado.className = 'estado ' + (abierto ? 'estado--abierto' : 'estado--cerrado');
+    estado.hidden = false;
+
+    var form = document.getElementById('formulario');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var error = document.getElementById('f-error');
+      var nombre = form.nombre.value.trim();
+      if (!nombre) { error.textContent = "Escriba su nombre."; error.hidden = false; form.nombre.focus(); return; }
+      if (!form.autorizo.checked) { error.textContent = "Para enviar, marque la autorización de datos."; error.hidden = false; form.autorizo.focus(); return; }
+      error.hidden = true;
+      var texto = "Hola, soy" + ' ' + nombre + '. ' + form.mensaje.value.trim() + (form.telefono.value.trim() ? ' ' + "Mi teléfono:" + ' ' + form.telefono.value.trim() : '');
+      window.open('https://wa.me/573000000000?text=' + encodeURIComponent(texto), '_blank', 'noopener');
+    });
+  })();
+  </script>
+</body>
+</html>

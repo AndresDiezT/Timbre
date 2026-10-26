@@ -1,0 +1,9 @@
+numero,nombre,precio,precio_texto,descripcion,codigo
+1,"Corte clásico",25000,"$25.000","Corte a tijera o máquina, lavado y peinado.",BARBER-01
+2,"Corte y barba",38000,"$38.000","Corte completo más arreglo de barba con toalla caliente.",BARBER-02
+3,"Arreglo de barba",18000,"$18.000","Perfilado, rebajado y aceite para barba.",BARBER-03
+4,"Corte infantil",20000,"$20.000","Para niños hasta 12 años.",BARBER-04
+5,"Cejas con navaja",8000,"$8.000","Perfilado de cejas.",BARBER-05
+6,"Mascarilla negra",15000,"$15.000","Limpieza facial de puntos negros, 20 minutos.",BARBER-06
+7,"Tinte para barba",30000,"$30.000","Cubre canas, color natural.",BARBER-07
+8,"Plan novio",70000,"$70.000","Corte, barba, cejas y mascarilla el día del matrimonio.",BARBER-08

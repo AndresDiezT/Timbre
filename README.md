@@ -21,6 +21,9 @@ Base: `https://andresdiezt.github.io/Timbre/` (confirmar cuando Pages esté acti
 | Visita | `/visita/?asesora=SOFIA` | Herramienta de las asesoras: demo con el nombre del negocio, enlace, QR y botón «Lo quiero». |
 | English | `/en/` | Landing para servicios a domicilio en EE. UU. con la demo de respuesta en menos de 60 s. |
 | Simulador EN | `/demo/en.html` | Simulador en inglés con modo automático y formatos 16:9 y 9:16. |
+| Constructor | `/constructor/` | Para Andres: formulario por pasos, vista previa en vivo (chat, página y QR), copiar cada texto y descargar el JSON del cliente. |
+| Ejemplo Pro (moderno) | `/entregas/ejemplo-barberia-el-parche/pagina/` | Página web generada para la barbería ficticia. |
+| Ejemplo Pro (cálido) | `/entregas/ejemplo-reposteria-dulce-coqui/pagina/` | Página web generada para la repostería ficticia de Puerto Rico. |
 | Privacidad | `/privacidad.html` · `/en/privacy.html` | Plantillas legales (revisar con un abogado). |
 
 ### Parámetros de URL
@@ -56,14 +59,26 @@ timbre/
 │   ├── marca.json             Marca, contacto, asesoras, mensajes de WhatsApp, testimonios
 │   └── planes.json            Planes y precios de los 3 mercados (co, usd, en)
 ├── plantillas/gremios/        Un JSON por gremio + indice.json
-├── negocios/                  Ejemplos ficticios de clientes (Fase 2)
+├── constructor/index.html     Generador en el navegador (para Andres)
+├── plantillas/pagina-negocio/ Página web del plan Pro: pagina.js + estilos (sobrio, calido, moderno)
+├── negocios/
+│   ├── ejemplo-barberia-el-parche.json        Cliente ficticio · Colombia · Pro · estilo moderno
+│   ├── ejemplo-reposteria-dulce-coqui.json    Cliente ficticio · Puerto Rico · Pro · estilo cálido
 │   └── privado/               Clientes reales: en .gitignore, nunca se publica
+├── entregas/                  Salida del generador (solo se versionan las de ejemplo)
+├── timbre-whatsapp/           Textos e imágenes de catálogo del WhatsApp de Timbre
+├── video/                     Guiones, subtítulos .srt y cómo grabar
 ├── assets/
 │   ├── css/                   timbre.css (sistema visual) + estilos por página
-│   ├── js/                    timbre.js (núcleo), telefono.js (chat), leads.js (demo EN) y uno por página
+│   ├── js/                    timbre.js (núcleo), telefono.js (chat), leads.js (demo EN), kit.js (textos de entrega) y uno por página
 │   ├── img/                   campanita y favicon
 │   └── vendor/qrcode.js       Generador de QR (MIT, Kazuhiko Arase)
-├── scripts/validar.js         Valida todos los JSON y la estructura de gremios y negocios
+├── scripts/
+│   ├── validar.js             Valida todos los JSON (o uno solo) y la estructura de gremios y negocios
+│   ├── generar.js             Crea la entrega completa de un cliente
+│   ├── catalogo-timbre.js     Imágenes de los planes para el catálogo del WhatsApp de Timbre
+│   ├── lib/imagenes.js        PNG y QR con resvg
+│   └── fuentes/               Anton y Figtree (OFL) para dibujar las imágenes
 ├── .github/workflows/pages.yml
 ├── README.md
 └── PENDIENTES.md              Datos que faltan, marcados como [ASÍ]
@@ -85,18 +100,26 @@ Después de cualquier cambio: `node scripts/validar.js`.
 Las páginas cargan los JSON con `fetch`, así que hay que abrirlas desde un servidor (no con doble clic):
 
 ```bash
+npm install          # solo para los scripts de imágenes (resvg)
 python3 -m http.server 8080
 # abrir http://localhost:8080
 ```
+
+Scripts:
+
+| Comando | Qué hace |
+|---|---|
+| `npm run validar` | Valida todos los JSON. `node scripts/validar.js archivo.json` valida uno. |
+| `npm run generar -- negocios/privado/cliente.json` | Genera la entrega de un cliente. Opciones: `--estilo sobrio\|calido\|moderno`, `--pagina` (forzar página aunque sea Esencial). |
+| `npm run ejemplos` | Regenera las dos entregas de ejemplo. |
+| `npm run catalogo-timbre` | Regenera las imágenes de los planes desde `config/planes.json`. |
 
 ---
 
 ## Cómo crear un cliente nuevo en 5 pasos
 
-> El generador `scripts/generar.js` llega en la Fase 2. Mientras tanto, los pasos 1 a 3 ya sirven para preparar el JSON.
-
-1. **Copie el gremio** más parecido: `cp plantillas/gremios/barberia.json negocios/privado/barberia-juanito.json`. Los clientes reales siempre van en `negocios/privado/`.
-2. **Cambie los datos**: nombre, color, horario, catálogo y precios, preguntas frecuentes, mensajes, y agregue el bloque `negocio` (dirección, teléfono, redes, medios de pago, políticas) como en `negocios/ejemplo-*.json`.
+1. **Arme el JSON** en el constructor (`/constructor/`): elija el gremio, llene los pasos y descargue el archivo. O copie un ejemplo: `cp negocios/ejemplo-barberia-el-parche.json negocios/privado/barberia-juanito.json`. Los clientes reales siempre van en `negocios/privado/`.
+2. **Revise los datos**: nombre, color, horario, catálogo y precios, preguntas, mensajes y el bloque `negocio` (dirección, WhatsApp, redes, medios de pago, políticas, plan, estilo de página y enlace de reseñas). Si tiene fotos, agregue `"imagen": "fotos/corte.jpg"` a cada producto (ruta relativa al JSON).
 3. **Valide**: `node scripts/validar.js negocios/privado/barberia-juanito.json` (o sin argumento para todo el repositorio).
 4. **Genere la entrega**: `node scripts/generar.js negocios/privado/barberia-juanito.json` crea `entregas/barberia-juanito/` con textos para WhatsApp Business y Google Maps, imágenes del catálogo, códigos QR, página web y lista de verificación.
 5. **Entregue**: siga `entregas/<negocio>/lista-de-verificacion.md` con el dueño y cobre el saldo cuando lo vea funcionando.
@@ -115,6 +138,6 @@ python3 -m http.server 8080
 ## Estado por fases
 
 - [x] **Fase 1 — La demo que vende**: página principal, simulador, visita, versión en inglés, privacidad y publicación en GitHub Pages.
-- [ ] Fase 2 — Kit de entrega con plantillas.
+- [x] **Fase 2 — Kit de entrega con plantillas**: generador, 2 clientes de ejemplo, página Pro en 3 estilos, constructor, WhatsApp de Timbre y guiones de video.
 - [ ] Fase 3 — Automatizaciones reales (n8n y Make).
 - [ ] Fase 4 — Ventas y entrega.

@@ -84,6 +84,30 @@
     });
   }
 
+  /* ---------- Perfil en el mapa (ilustración genérica) ---------- */
+  function pintarMapa(g) {
+    const u = g.ubicacion || {};
+    const ahora = new Date();
+    const dia = T.DIAS[ahora.getDay()];
+    const min = ahora.getHours() * 60 + ahora.getMinutes();
+    const abierto = T.abierto(g, dia, min);
+    const fila = T.horarioFilas(g, 'es').find((f) => f.dias.includes(dia));
+    const caja = $('#perfil-mapa');
+    caja.style.setProperty('--acento', g.acento);
+    caja.innerHTML = `
+      <div class="perfil-mapa__mapa" aria-hidden="true"><span class="perfil-mapa__pin"></span></div>
+      <div class="perfil-mapa__cuerpo">
+        <p class="pildora pildora--hueca" style="justify-self:start">Demostración de Timbre</p>
+        <p class="perfil-mapa__nombre">${T.esc(g.nombre)}</p>
+        <p class="perfil-mapa__cat">${T.esc(g.maps.categoriaPrincipal)} · ${T.esc(u.barrio || '')}</p>
+        <p class="perfil-mapa__estado"><b class="${abierto ? '' : 'cerrado'}">${abierto ? 'Abierto' : 'Cerrado'}</b> · Hoy: ${T.esc(fila ? fila.texto : '')}</p>
+        <p class="perfil-mapa__dir">${T.esc([u.direccion, u.ciudad].filter(Boolean).join(', '))}</p>
+        <div class="perfil-mapa__acciones" aria-hidden="true">
+          <span>Cómo llegar</span><span class="destacado">WhatsApp</span><span>Llamar</span>
+        </div>
+      </div>`;
+  }
+
   /* ---------- Galería de gremios ---------- */
   const telGaleria = new TimbreTelefono($('#telefono-galeria'), { negocio: gremios[0], idioma: 'es' });
   let gremioActual = gremios[0];
@@ -98,6 +122,7 @@
     gremioActual = g;
     lista.querySelectorAll('.gremio').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.gremio === g.id)));
     telGaleria.setNegocio(g);
+    pintarMapa(g);
     telGaleria.o.moneda = monedaActual();
     telGaleria.ejecutar(TimbreTelefono.guionLlegada(g, { minutos: 21 * 60 + 47, moneda: monedaActual() }));
   }
@@ -214,5 +239,6 @@
   if (mercado === 'usd') calc.valor.value = 25;
   calcular();
   pintarComparacion();
+  pintarMapa(negocioPortada);
   actualizarHora(true);
 })();

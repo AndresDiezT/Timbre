@@ -1,0 +1,234 @@
+{
+  "id": "panaderia",
+  "idioma": "es",
+  "gremio": "Panadería y pastelería",
+  "gremioCorto": "Panadería",
+  "nombre": "Repostería Dulce Coquí",
+  "ficticio": true,
+  "acento": "#B5446E",
+  "moneda": "USD",
+  "horario": {
+    "lun": null,
+    "mar": [
+      "08:00",
+      "18:00"
+    ],
+    "mie": [
+      "08:00",
+      "18:00"
+    ],
+    "jue": [
+      "08:00",
+      "18:00"
+    ],
+    "vie": [
+      "08:00",
+      "19:00"
+    ],
+    "sab": [
+      "08:00",
+      "19:00"
+    ],
+    "dom": [
+      "09:00",
+      "14:00"
+    ]
+  },
+  "horarioTexto": "martes a jueves de 8:00 a. m. a 6:00 p. m.; viernes y sábado hasta las 7:00 p. m.; domingo de 9:00 a. m. a 2:00 p. m. Lunes cerrado.",
+  "ubicacion": {
+    "direccion": "Calle Ejemplo 123, local 4",
+    "barrio": "Santurce",
+    "ciudad": "San Juan, PR",
+    "referencia": "Al lado de la farmacia"
+  },
+  "catalogo": [
+    {
+      "nombre": "Bizcocho de cumpleaños (1/2 plancha)",
+      "descripcion": "Vainilla, chocolate o guayaba. Decorado con nombre. 20 porciones.",
+      "precio": 45
+    },
+    {
+      "nombre": "Bizcocho de cumpleaños (plancha)",
+      "descripcion": "Para 40 porciones. Decoración a elección.",
+      "precio": 80
+    },
+    {
+      "nombre": "Flan de queso",
+      "descripcion": "Molde entero, 10 porciones.",
+      "precio": 22
+    },
+    {
+      "nombre": "Tembleque",
+      "descripcion": "Postre de coco, molde de 8 porciones.",
+      "precio": 18
+    },
+    {
+      "nombre": "Quesitos x 6",
+      "descripcion": "Hojaldre con queso crema, recién horneados.",
+      "precio": 9
+    },
+    {
+      "nombre": "Mallorcas x 4",
+      "descripcion": "Con mantequilla y azúcar en polvo.",
+      "precio": 8
+    },
+    {
+      "nombre": "Cupcakes x 12",
+      "descripcion": "Decorados con el tema que quiera.",
+      "precio": 30
+    },
+    {
+      "nombre": "Bandeja de dulces para eventos",
+      "descripcion": "50 piezas surtidas: quesitos, besitos de coco y brownies.",
+      "precio": 65
+    }
+  ],
+  "faq": [
+    {
+      "pregunta": "¿Con cuánto tiempo encargo un bizcocho?",
+      "respuesta": "Con tres días de anticipación. Para bizcochos de varios pisos, con dos semanas."
+    },
+    {
+      "pregunta": "¿Cuánto cuesta un bizcocho de cumpleaños?",
+      "respuesta": "La media plancha cuesta US$45 y la plancha US$80, con nombre y decoración sencilla."
+    },
+    {
+      "pregunta": "¿Hacen entregas?",
+      "respuesta": "Sí, en San Juan, Carolina y Guaynabo, desde US$10 según la zona."
+    },
+    {
+      "pregunta": "¿Cómo se paga el encargo?",
+      "respuesta": "Con el 50% al encargar por ATH Móvil o tarjeta, y el resto al recoger."
+    },
+    {
+      "pregunta": "¿Tienen opciones sin azúcar?",
+      "respuesta": "Sí, bizcocho de zanahoria endulzado con stevia, por encargo."
+    },
+    {
+      "pregunta": "¿A qué hora salen los quesitos calientes?",
+      "respuesta": "A las 8:00 a. m. y a las 3:00 p. m."
+    },
+    {
+      "pregunta": "¿Hacen bandejas para oficinas?",
+      "respuesta": "Sí, con un día de anticipación. Pida la lista de bandejas por aquí."
+    },
+    {
+      "pregunta": "¿Puedo enviar una foto del bizcocho que quiero?",
+      "respuesta": "Claro, envíenos la foto y le decimos el precio y si tenemos espacio para su fecha."
+    }
+  ],
+  "mensajes": {
+    "bienvenida": "Hola, gracias por escribir a {negocio}. En un momento le atendemos. Aquí puede ver tortas, panes y desayunos sorpresa con precios. Para encargos, díganos la fecha, el sabor y para cuántas personas.",
+    "fueraDeHorario": "Hola, gracias por escribir a {negocio}. En este momento estamos cerrados. Nuestro horario es {horario}. Le respondemos a primera hora. Mientras tanto, aquí está el catálogo; si es un encargo, déjenos la fecha, el sabor y para cuántas personas.",
+    "respuestasRapidas": [
+      {
+        "atajo": "bizcochos",
+        "texto": "Media plancha US$45 · Plancha US$80. Sabores: vainilla, chocolate y guayaba. Encargos con tres días de anticipación."
+      },
+      {
+        "atajo": "encargo",
+        "texto": "Para separar su encargo necesitamos: fecha, sabor, número de porciones y el nombre que lleva. Se separa con el 50%."
+      },
+      {
+        "atajo": "pago",
+        "texto": "Puede pagar por ATH Móvil, tarjeta o en efectivo al recoger."
+      },
+      {
+        "atajo": "entrega",
+        "texto": "Entregamos en San Juan, Carolina y Guaynabo desde US$10. ¿A qué zona sería?"
+      },
+      {
+        "atajo": "listo",
+        "texto": "Su pedido ya está listo para recoger. ¡Lo esperamos!"
+      },
+      {
+        "atajo": "gracias",
+        "texto": "Gracias por su compra. Si le gustó, nos ayuda muchísimo con una reseña en Google."
+      }
+    ]
+  },
+  "etiquetas": [
+    "Cliente nuevo",
+    "Encargo",
+    "Abonó 50%",
+    "Pagó",
+    "Entrega",
+    "Evento"
+  ],
+  "maps": {
+    "categoriaPrincipal": "Repostería",
+    "categoriasAdicionales": [
+      "Pastelería",
+      "Panadería",
+      "Tienda de postres"
+    ],
+    "descripcion": "Repostería familiar en Santurce. Bizcochos de cumpleaños decorados, flanes, tembleques, quesitos y mallorcas recién horneadas, y bandejas de dulces para eventos y oficinas. Encargue por WhatsApp y vea el catálogo con precios."
+  },
+  "conversacion": [
+    {
+      "cliente": "Hola, ¿me pueden hacer una torta para el sábado? Para unas 15 personas.",
+      "responde": "catalogo"
+    },
+    {
+      "cliente": "¿Con cuánto tiempo tengo que encargarla?",
+      "responde": "faq:0"
+    },
+    {
+      "cliente": "¿A qué hora abren?",
+      "responde": "horario"
+    },
+    {
+      "cliente": "¿Cómo pago?",
+      "responde": "faq:3"
+    },
+    {
+      "cliente": "¿Puedo hablar con alguien para mandarle una foto?",
+      "responde": "persona"
+    }
+  ],
+  "clientesDemo": [
+    "Yesenia R.",
+    "Luis M.",
+    "Carmen D.",
+    "José A."
+  ],
+  "negocio": {
+    "dueno": "Wanda Colón (ficticio)",
+    "mercado": "usd",
+    "plan": "pro",
+    "estiloPagina": "calido",
+    "direccion": "Calle Ejemplo 123, local 4",
+    "barrio": "Santurce",
+    "ciudad": "San Juan, PR",
+    "pais": "Puerto Rico",
+    "telefono": "+1 787 555 0123",
+    "whatsapp": "17875550123",
+    "correo": "dulcecoqui@example.com",
+    "sitioWeb": "https://dulcecoqui.example",
+    "redes": {
+      "instagram": "@dulcecoqui.ejemplo",
+      "facebook": "Repostería Dulce Coquí (ejemplo)",
+      "tiktok": ""
+    },
+    "mediosPago": [
+      "ATH Móvil",
+      "Tarjeta",
+      "Efectivo"
+    ],
+    "politicas": {
+      "encargos": "Los encargos se separan con el 50% y no son reembolsables a menos de 48 horas de la entrega.",
+      "entregas": "Las entregas se coordinan con un día de anticipación."
+    },
+    "atributos": [
+      "Acepta tarjetas de crédito",
+      "Pagos móviles",
+      "Entrega a domicilio",
+      "Para llevar"
+    ],
+    "enlaceMaps": "",
+    "enlaceResenas": "https://example.com/resenas-ficticias/dulce-coqui",
+    "mensajeQR": "Hola, vi su código QR y quiero hacer un encargo.",
+    "descripcionWhatsapp": "",
+    "info": "Bizcochos y dulces por encargo. Respondemos al instante."
+  }
+}

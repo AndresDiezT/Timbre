@@ -12,8 +12,9 @@ Datos que faltan o decisiones por confirmar. En los archivos aparecen como `[AS�
 | `[FECHA]` / `[DATE]` | `privacidad.html`, `en/privacy.html` | Fecha de entrada en vigencia de la política. |
 | `[LEGAL ENTITY / ADDRESS]` | `en/privacy.html` | Entidad legal y dirección para clientes en EE. UU. |
 | `[REVISAR CON ABOGADO ...]` | `privacidad.html`, `en/privacy.html` | Lista de proveedores, transferencias internacionales y requisitos por estado. **Las dos políticas son plantillas: revisarlas con un abogado antes de publicarlas como definitivas.** |
-| `[ENLACE VIDEO]` | `config/marca.json` | Enlace al video de demostración (se graba con el simulador, Fase 2). |
 | `[REVIEW-LINK]` | `assets/js/leads.js` (demo EN) | Es un ejemplo ficticio; no necesita cambio. |
+| `[HORARIO DE ATENCIÓN DE TIMBRE]` | `timbre-whatsapp/LEEME.md` | Horario en que Andres atiende el WhatsApp de Timbre. |
+| `[ENLACE VIDEO]` | `timbre-whatsapp/LEEME.md`, `config/marca.json` | Grabar con `video/grabar.md` y subir (YouTube no listado o similar). |
 
 ## GitHub Pages
 
@@ -24,7 +25,14 @@ Datos que faltan o decisiones por confirmar. En los archivos aparecen como `[AS�
 
 ## WhatsApp de Timbre
 
-- [ ] La página principal dice «Este número le responde al instante». Configurar la bienvenida y el mensaje fuera de horario en el WhatsApp Business de +57 314 331 9442 (los textos llegan en la Fase 2, carpeta `timbre-whatsapp/`).
+- [ ] La página principal dice «Este número le responde al instante». Configurar en el WhatsApp Business de +57 314 331 9442 la bienvenida, el mensaje fuera de horario, las respuestas rápidas, las etiquetas y el catálogo de `timbre-whatsapp/LEEME.md`.
+
+## Kit de entrega
+
+- [ ] Los ejemplos usan números ficticios (`+57 300 000 0000`, `+1 787 555 0123`) y enlaces de reseñas de `example.com`. En clientes reales, el generador avisa si falta el enlace de reseñas y no crea ese QR.
+- [ ] La categoría del perfil de WhatsApp Business se elige de una lista cerrada en la app: el generador pone el nombre del gremio como guía; escoja la más parecida.
+- [ ] La verificación del negocio en Google Maps la hace Google y puede tardar varios días: no depende de Timbre. Avisarle al dueño.
+- [ ] El formulario de la página Pro no usa servidor: abre WhatsApp con el mensaje ya escrito y exige la autorización de datos. Si un cliente quiere recibir los formularios por correo o en una hoja, eso es la automatización E1 (Fase 3).
 
 ## Contenido
 

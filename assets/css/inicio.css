@@ -126,3 +126,30 @@
 .cierre__caja { display: grid; gap: 20px; align-items: center; padding: clamp(24px, 6vw, 48px); }
 @media (min-width: 900px) { .cierre__caja { grid-template-columns: 1.4fr auto; } }
 .cierre__caja p { margin: 0; font-size: 1.15rem; max-width: 52ch; }
+
+/* Perfil en el mapa (ilustración genérica) */
+.mapa-seccion { display: grid; gap: 32px; align-items: center; }
+@media (min-width: 900px) { .mapa-seccion { grid-template-columns: 1fr 420px; gap: 56px; } }
+.perfil-mapa { padding: 0; overflow: hidden; width: min(100%, 420px); justify-self: center; box-shadow: 8px 8px 0 var(--amarillo); }
+.perfil-mapa__mapa {
+  height: 150px; position: relative; border-bottom: var(--linea) solid var(--borde);
+  background-color: #E9E3D2;
+  background-image:
+    linear-gradient(90deg, transparent 47%, #fff 47% 53%, transparent 53%),
+    linear-gradient(0deg, transparent 36%, #fff 36% 42%, transparent 42%),
+    linear-gradient(118deg, transparent 62%, #fff 62% 66%, transparent 66%),
+    linear-gradient(0deg, transparent 76%, #CFE3C4 76% 92%, transparent 92%);
+}
+:root[data-theme="dark"] .perfil-mapa__mapa { filter: brightness(.82); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .perfil-mapa__mapa { filter: brightness(.82); } }
+.perfil-mapa__pin { position: absolute; left: 50%; top: 42%; width: 34px; height: 34px; transform: translate(-50%, -70%) rotate(-45deg); border-radius: 50% 50% 50% 0; background: var(--acento, #9A5B13); border: 3px solid var(--tinta); }
+.perfil-mapa__cuerpo { padding: 18px 20px 20px; display: grid; gap: 6px; }
+.perfil-mapa__nombre { font-weight: 800; font-size: 1.3rem; margin: 0; line-height: 1.2; }
+.perfil-mapa__cat { margin: 0; color: var(--suave); font-size: .95rem; }
+.perfil-mapa__estado { margin: 0; font-weight: 700; font-size: .95rem; }
+.perfil-mapa__estado b { color: var(--ok); }
+.perfil-mapa__estado b.cerrado { color: var(--alerta); }
+.perfil-mapa__dir { margin: 0; font-size: .92rem; }
+.perfil-mapa__acciones { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 10px; }
+.perfil-mapa__acciones span { display: grid; place-items: center; gap: 4px; min-height: 58px; border: var(--linea) solid var(--borde); border-radius: 12px; font-size: .8rem; font-weight: 800; text-align: center; padding: 6px; }
+.perfil-mapa__acciones span.destacado { background: var(--amarillo); color: var(--tinta); border-color: var(--tinta); }

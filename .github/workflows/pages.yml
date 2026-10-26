@@ -36,10 +36,13 @@ jobs:
       - name: Armar la carpeta del sitio
         run: |
           mkdir -p _site
+          # Se publican las entregas de ejemplo (ficticias) como portafolio;
+          # nunca negocios/privado ni entregas de clientes reales.
           rsync -a ./ _site/ \
             --exclude '.git' --exclude '.github' --exclude '_site' \
             --exclude 'node_modules' --exclude 'negocios/privado' \
-            --exclude 'entregas' --exclude '*.md'
+            --include 'entregas/' --include 'entregas/ejemplo-*/***' --exclude 'entregas/*' \
+            --exclude '*.md'
           touch _site/.nojekyll
 
       - uses: actions/configure-pages@v5

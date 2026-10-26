@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // Valida todos los JSON del repositorio y la estructura de gremios y negocios.
-// Uso: node scripts/validar.js
+// Uso: node scripts/validar.js                  (todo el repositorio)
+//      node scripts/validar.js negocios/privado/cliente.json   (un solo archivo)
 'use strict';
 const fs = require('fs');
 const path = require('path');
@@ -59,6 +60,21 @@ function validarGremio(ruta, g) {
     const m = /^faq:(\d+)$/.exec(c.responde || '');
     if (m) r(g.faq && g.faq[+m[1]], `conversacion[${i}] apunta a una pregunta que no existe`);
   });
+}
+
+const soloUno = process.argv[2];
+if (soloUno) {
+  const ruta = path.resolve(soloUno);
+  const n = leer(ruta);
+  if (n) {
+    validarGremio(ruta, n);
+    const esCliente = ruta.includes(`${path.sep}negocios${path.sep}`);
+    if (esCliente && !n.negocio) errores.push(`${rel(ruta)}: falta el bloque "negocio".`);
+    if (n.negocio) exigir(n.negocio.whatsapp, ruta, 'falta negocio.whatsapp');
+  }
+  if (errores.length) { console.error('Problemas:\n- ' + errores.join('\n- ')); process.exit(1); }
+  console.log(`${soloUno}: en orden.`);
+  process.exit(0);
 }
 
 recorrer(RAIZ);
