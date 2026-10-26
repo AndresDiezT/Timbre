@@ -21,11 +21,11 @@ Duración sugerida: 30 a 45 minutos. Escuche más de lo que habla. Al final, no 
 
 Marque lo que aplica:
 
-- [ ] Citas y reservas
-- [ ] Tienda en línea
-- [ ] Pedidos e inventario
-- [ ] Asistente virtual con IA
-- [ ] Conectar programas que ya usa
+- [ ] Página web, tienda en línea o catálogo
+- [ ] App o sistema web (inventario, pedidos, citas, clientes, cotizaciones)
+- [ ] Asistente virtual con IA o chatbot
+- [ ] Automatización o conexión entre programas que ya usa
+- [ ] Reportes o tableros con sus datos
 - [ ] Otro: [DESCRIBIR]
 
 Detalle: [QUÉ DEBE PASAR, PASO A PASO, DESDE QUE LLEGA EL CLIENTE HASTA QUE TERMINA]

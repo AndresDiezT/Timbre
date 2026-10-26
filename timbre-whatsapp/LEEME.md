@@ -110,9 +110,9 @@ Nuestra garantía: el saldo lo paga cuando lo vea funcionando. Si algo no queda 
 **/diagnostico**
 
 ```
-Para desarrollos a la medida (citas y reservas, tienda en línea, pedidos e inventario, asistentes virtuales con IA o conectar los programas que ya usa) hacemos primero un diagnóstico sin costo.
+Si su negocio necesita algo que no está en los planes, también lo hacemos: páginas web y tiendas en línea, apps y sistemas para inventario, pedidos, citas o clientes, asistentes virtuales con IA, reportes con sus datos y automatizaciones que conectan los programas que ya usa.
 
-Es una llamada corta: usted nos cuenta cómo trabaja hoy y qué le quita más tiempo, y le enviamos una propuesta con precio. ¿Qué día y a qué hora le queda bien?
+Empezamos con un diagnóstico sin costo: una llamada corta en la que nos cuenta su idea o lo que le quita más tiempo, y le enviamos una propuesta con precio y tiempos, por etapas. ¿Qué día y a qué hora le queda bien?
 ```
 
 
@@ -138,7 +138,7 @@ Herramientas para la empresa → Catálogo → Agregar artículo. Un artículo p
 | `catalogo/co/01-pedidos.png` | Pedidos | $450.000 | Instalación + $59.000 al mes, sin permanencia. Página con catálogo y carrito: el pedido llega completo al WhatsApp, sin comisiones. Incluye WhatsApp Business, Google Maps, QR y capacitación. Listo en 5 días hábiles. |
 | `catalogo/co/02-reservas.png` | Reservas | $450.000 | Instalación + $59.000 al mes, sin permanencia. El cliente elige servicio, día y hora; la solicitud llega lista para confirmar. Recordatorios con un toque. Incluye WhatsApp Business, Google Maps, QR y capacitación. |
 | `catalogo/co/03-asistente.png` | Asistente con IA | $790.000 | Instalación + $149.000 al mes. Todo lo de Pedidos o Reservas, más un asistente virtual que responde con la información del negocio. |
-| `catalogo/co/04-medida.png` | Desarrollo a la medida | (sin precio) | Tiendas en línea, pedidos e inventario, conexión entre programas. Diagnóstico sin costo. |
+| `catalogo/co/04-medida.png` | Desarrollo a la medida | (sin precio) | Páginas web y tiendas en línea, apps y sistemas (inventario, pedidos, citas, clientes), asistentes con IA, reportes y automatizaciones entre los programas que ya usa. Diagnóstico sin costo y propuesta por etapas. |
 | `catalogo/co/05-arranque.png` | Arranque | $200.000 | Pago único. WhatsApp Business completo, su negocio en Google Maps, QR y capacitación. Listo en 3 días hábiles. |
 
 Las imágenes salen de `config/planes.json`. Si cambia un precio, regenérelas con:

@@ -19,7 +19,7 @@ What I set up:
 • Missed-call text-back, two polite follow-ups and a review request after the job
 • WhatsApp Business (app or Cloud API) with catalog, away messages and quick replies
 • Google Business Profile cleanup so customers find you and can message you
-• Custom builds: booking flows, order tracking, AI assistants that only answer from your own information
+• Custom builds: websites and online stores, web apps and internal tools, AI assistants that only answer from your own information, dashboards
 
 How I work:
 • Everything runs on accounts you own. I never ask for passwords; we set it up together on a screen share.
