@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simulador Timbre</title>
+  <meta name="description" content="Demostración de Timbre: así respondería el WhatsApp de su negocio, a cualquier hora.">
+  <meta name="theme-color" content="#FFC933">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/timbre.css">
+  <link rel="stylesheet" href="../assets/css/demo.css">
+</head>
+<body class="demo">
+  <a class="saltar" href="#escenario">Saltar al simulador</a>
+
+  <header class="barra demo__barra">
+    <div class="contenedor barra__fila">
+      <a class="logo" href="../" data-propagar aria-label="Timbre, inicio"><img class="logo__campana" src="../assets/img/campana.svg" alt="" width="38" height="38">Timbre</a>
+      <span class="pildora demo__sello">Demostración de Timbre</span>
+      <div class="barra__acciones">
+        <button class="icono-boton" type="button" data-tema aria-label="Cambiar entre modo claro y oscuro">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="contenedor demo__controles" aria-label="Controles del simulador">
+      <div class="controles">
+        <div class="campo">
+          <label for="d-gremio">Gremio</label>
+          <select id="d-gremio"></select>
+        </div>
+        <div class="campo">
+          <label for="d-nombre">Nombre del negocio</label>
+          <input id="d-nombre" type="text" maxlength="40" placeholder="Ej.: Barbería Don Fígaro" autocomplete="off">
+        </div>
+        <fieldset class="segmentado">
+          <legend class="etiqueta-campo">Modo</legend>
+          <button type="button" class="boton boton--chico" data-modo="interactivo" aria-pressed="false">Interactivo</button>
+          <button type="button" class="boton boton--chico" data-modo="auto" aria-pressed="true">Automático</button>
+        </fieldset>
+        <fieldset class="segmentado">
+          <legend class="etiqueta-campo">Formato</legend>
+          <button type="button" class="boton boton--chico" data-formato="libre" aria-pressed="true">Pantalla</button>
+          <button type="button" class="boton boton--chico" data-formato="169" aria-pressed="false">16:9</button>
+          <button type="button" class="boton boton--chico" data-formato="916" aria-pressed="false">9:16</button>
+        </fieldset>
+      </div>
+      <div class="controles controles--reproduccion" id="controles-auto">
+        <button type="button" class="boton boton--chico boton--primario" id="d-play">Pausar</button>
+        <button type="button" class="boton boton--chico" id="d-reiniciar">Empezar de nuevo</button>
+        <div class="campo campo--linea">
+          <label for="d-velocidad">Velocidad</label>
+          <select id="d-velocidad">
+            <option value="0.6">Lenta</option>
+            <option value="1" selected>Normal</option>
+            <option value="1.5">Rápida</option>
+            <option value="2">Muy rápida</option>
+          </select>
+        </div>
+        <button type="button" class="boton boton--chico boton-sonido" aria-pressed="false"><span class="off">Sonido apagado</span><span class="on">Sonido encendido</span></button>
+        <button type="button" class="boton boton--chico" id="d-grabar">Modo grabación</button>
+      </div>
+    </section>
+
+    <section class="demo__lienzo" id="lienzo" aria-label="Simulador">
+      <div class="escenario" id="escenario" data-formato="libre" tabindex="-1">
+        <div class="escenario__marca">
+          <img src="../assets/img/campana.svg" alt="" width="44" height="44">
+          <div>
+            <p class="escenario__titulo">Timbre</p>
+            <p class="escenario__lema">Nadie se queda sin respuesta</p>
+          </div>
+        </div>
+        <div class="escenario__telefono"><div id="telefono-demo"></div></div>
+        <aside class="panel tarjeta" aria-label="Panel del dueño">
+          <header class="panel__cabeza">
+            <span id="panel-campana"></span>
+            <div>
+              <h2 class="panel__titulo">Panel del dueño</h2>
+              <p class="panel__sub" id="panel-sub">Cada contacto queda organizado</p>
+            </div>
+          </header>
+          <div class="panel__alertas" id="panel-alertas" aria-live="polite"></div>
+          <ul class="panel__lista" id="panel-lista"></ul>
+          <p class="panel__vacio" id="panel-vacio">Aún no hay mensajes.</p>
+        </aside>
+        <p class="escenario__subtitulo" id="subtitulo" aria-live="polite"></p>
+        <div class="escenario__cierre" id="cierre" hidden>
+          <img src="../assets/img/campana.svg" alt="" width="96" height="96">
+          <p class="escenario__cierre-frase">Nadie se queda sin respuesta</p>
+          <p class="escenario__cierre-dato">Timbre · WhatsApp +57 314 331 9442</p>
+          <p class="pildora">Demostración de Timbre</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="contenedor demo__pie">
+      <p class="aviso-demo" id="nota-modo"></p>
+      <div class="botones">
+        <a class="boton boton--primario" id="d-loquiero" href="https://wa.me/573143319442" target="_blank" rel="noopener">Lo quiero para mi negocio</a>
+        <a class="boton" href="../#planes" data-propagar>Ver planes y precios</a>
+      </div>
+    </section>
+  </main>
+
+  <button type="button" class="salir-grabacion boton boton--chico" id="d-salir" hidden>Salir del modo grabación (Esc)</button>
+
+  <script src="../assets/js/timbre.js" data-raiz="../"></script>
+  <script src="../assets/js/telefono.js"></script>
+  <script src="../assets/js/demo.js"></script>
+</body>
+</html>

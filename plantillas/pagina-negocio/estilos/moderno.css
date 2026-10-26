@@ -1,0 +1,20 @@
+/* Estilo moderno: bloques de color, bordes gruesos, Space Grotesk. */
+.estilo-moderno {
+  --fondo: #F7F7F2; --fondo-2: #ECECE4; --tarjeta: #FFFFFF; --texto: #111418; --suave: #3F4650;
+  --t-titulo: "Space Grotesk", system-ui, sans-serif; --t-texto: "Space Grotesk", system-ui, sans-serif;
+  --radio: 0; --radio-boton: 0; --radio-logo: 0; --radio-campo: 0;
+  --borde-fino: 2px solid #111418; --borde-tarjeta: 2px solid #111418; --borde-campo: 2px solid #111418;
+  --foco: #111418;
+}
+.estilo-moderno h1, .estilo-moderno h2 { font-weight: 700; text-transform: uppercase; letter-spacing: -.03em; }
+.estilo-moderno .portada { background: var(--acento); color: var(--sobre-acento); border-bottom: 2px solid #111418; }
+.estilo-moderno .portada .portada__texto { color: inherit; opacity: .92; }
+.estilo-moderno .portada .boton--acento { background: var(--sobre-acento); color: var(--acento); border-color: var(--sobre-acento); }
+.estilo-moderno .portada .boton--borde { background: transparent; color: var(--sobre-acento); border-color: var(--sobre-acento); }
+.estilo-moderno .portada .estado { background: #fff; padding: 4px 10px; border: 2px solid #111418; }
+.estilo-moderno .portada__arte { background: var(--sobre-acento); color: var(--acento); border: 2px solid #111418; box-shadow: 10px 10px 0 #111418; }
+.estilo-moderno .etiqueta { border: 2px solid currentColor; padding: 2px 10px; }
+.estilo-moderno .producto { box-shadow: 6px 6px 0 #111418; }
+.estilo-moderno .producto__foto { border-bottom: 2px solid #111418; }
+.estilo-moderno .boton { box-shadow: 4px 4px 0 #111418; }
+.estilo-moderno .boton--borde { background: #fff; }

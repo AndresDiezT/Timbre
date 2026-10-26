@@ -1,0 +1,69 @@
+{
+  "id": "hvac",
+  "idioma": "en",
+  "gremio": "Heating and air (HVAC)",
+  "gremioCorto": "HVAC",
+  "nombre": "Northpine Heating & Air",
+  "ficticio": true,
+  "acento": "#B42318",
+  "moneda": "USD",
+  "horario": {
+    "lun": ["07:00", "19:00"], "mar": ["07:00", "19:00"], "mie": ["07:00", "19:00"],
+    "jue": ["07:00", "19:00"], "vie": ["07:00", "19:00"], "sab": ["08:00", "16:00"], "dom": null
+  },
+  "horarioTexto": "Monday to Friday 7 AM to 7 PM, Saturday 8 AM to 4 PM. Emergency service available.",
+  "ubicacion": { "direccion": "Serving the metro area", "barrio": "Office: 200 Example Blvd", "ciudad": "Phoenix, AZ", "referencia": "Fictional business" },
+  "catalogo": [
+    { "nombre": "Diagnostic visit", "descripcion": "Waived if you approve the repair.", "precio": 89 },
+    { "nombre": "AC tune-up", "descripcion": "Clean coils, check refrigerant, test controls.", "precio": 129 },
+    { "nombre": "Furnace tune-up", "descripcion": "Safety check, burners, filter.", "precio": 119 },
+    { "nombre": "Capacitor replacement", "descripcion": "Parts and labor, most units.", "precio": 225 },
+    { "nombre": "Thermostat install", "descripcion": "Smart thermostat, labor only.", "precio": 150 },
+    { "nombre": "Maintenance plan", "descripcion": "Two tune-ups a year and priority service, per year.", "precio": 199 },
+    { "nombre": "Duct cleaning", "descripcion": "Whole home, up to 12 vents.", "precio": 399 }
+  ],
+  "faq": [
+    { "pregunta": "How much is a service call?", "respuesta": "Our diagnostic visit is $89 and it's waived if you approve the repair." },
+    { "pregunta": "Do you offer emergency service?", "respuesta": "Yes. Reply EMERGENCY with your address and we'll call you right back." },
+    { "pregunta": "How soon can you come out?", "respuesta": "Most calls are same day or next day." },
+    { "pregunta": "Do you give quotes before work?", "respuesta": "Always. No work starts until you approve the price." },
+    { "pregunta": "Are you licensed and insured?", "respuesta": "Yes, fully licensed and insured." },
+    { "pregunta": "Do you offer financing?", "respuesta": "Yes, on new system installs, subject to approval." },
+    { "pregunta": "What brands do you service?", "respuesta": "All major brands of AC units, heat pumps, and furnaces." },
+    { "pregunta": "Is there a warranty?", "respuesta": "Yes, one year on labor for repairs, plus the manufacturer's parts warranty." }
+  ],
+  "mensajes": {
+    "bienvenida": "Hi! Thanks for reaching out to {negocio}. We got your message and will reply shortly. Tell us your ZIP code and what's going on with your system.",
+    "fueraDeHorario": "Hi! Thanks for reaching out to {negocio}. We're closed right now. Our hours are {horario}. Leave your ZIP code and what's happening with your system, and we'll call you first thing. For emergencies, reply EMERGENCY.",
+    "respuestasRapidas": [
+      { "atajo": "visit", "texto": "Our diagnostic visit is $89 and it's waived if you approve the repair. What day works for you?" },
+      { "atajo": "tuneup", "texto": "AC tune-up is $129 and furnace tune-up is $119. Want to book one?" },
+      { "atajo": "onmyway", "texto": "Your technician is on the way and should arrive in about 30 minutes." },
+      { "atajo": "thanks", "texto": "Thanks for choosing us! If you were happy, a quick Google review helps us a lot." }
+    ]
+  },
+  "etiquetas": ["New lead", "Emergency", "Quoted", "Booked", "Paid", "Review requested"],
+  "maps": {
+    "categoriaPrincipal": "HVAC contractor",
+    "categoriasAdicionales": ["Air conditioning repair service", "Furnace repair service", "Heating contractor"],
+    "descripcion": "Licensed and insured heating and air team serving the Phoenix metro area. AC and furnace repair, tune-ups, thermostats, and maintenance plans. Upfront quotes before any work and same-day or next-day service. Request service online and get a reply right away."
+  },
+  "conversacion": [
+    { "cliente": "My AC is blowing warm air. Can someone come today?", "responde": "catalogo" },
+    { "cliente": "How much is the service call?", "responde": "faq:0" },
+    { "cliente": "What are your hours?", "responde": "horario" },
+    { "cliente": "I need to talk to someone.", "responde": "persona" }
+  ],
+  "clientesDemo": ["Kevin R.", "Linda S.", "Marcus B.", "Ana P."],
+  "automatizacion": {
+    "formulario": { "nombre": "Kevin Reyes", "telefono": "(602) 555-0177", "correo": "kevin@example.com", "servicio": "AC repair", "codigoPostal": "85016", "mensaje": "AC is blowing warm air since this morning." },
+    "servicios": ["AC repair", "Furnace repair", "Tune-up", "New system quote"],
+    "textoInmediato": "Hi {cliente}, this is {negocio}. We got your {servicio} request and a technician will call you within 15 minutes. If it's an emergency, reply EMERGENCY. Reply STOP to opt out.",
+    "correoInmediato": { "asunto": "Your {servicio} request is in, {cliente}", "cuerpo": "Hi {cliente}, thanks for contacting {negocio}. We received your {servicio} request for ZIP {codigoPostal}. A technician will call you shortly. Reply to this email if you need anything else." },
+    "alertaDueno": "New lead: {cliente} · {servicio} · ZIP {codigoPostal} · {telefono}",
+    "llamadaPerdida": "Hi, this is {negocio}. Sorry we missed your call! Is your heating or AC acting up? Reply here and we'll get right back to you.",
+    "seguimiento1": "Hi {cliente}, checking in from {negocio}. We still have a spot today for your {servicio}. Want us to send a technician?",
+    "seguimiento2": "Hi {cliente}, last check-in from {negocio}. If you already got it handled, great. Reply anytime if you need us.",
+    "resena": "Thanks for choosing {negocio}, {cliente}! If you were happy with the service, would you leave us a quick review? {enlaceResena}"
+  }
+}

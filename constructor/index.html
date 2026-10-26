@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Constructor Timbre</title>
+  <meta name="description" content="Constructor de entregas de Timbre: arme el JSON de un cliente, vea la vista previa y copie cada texto.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#FFC933">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/timbre.css">
+  <link rel="stylesheet" href="../assets/css/constructor.css">
+</head>
+<body>
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+  <header class="barra">
+    <div class="contenedor barra__fila">
+      <a class="logo" href="../" aria-label="Timbre, inicio"><img class="logo__campana" src="../assets/img/campana.svg" alt="" width="38" height="38">Timbre</a>
+      <span class="pildora pildora--hueca">Constructor</span>
+      <div class="barra__acciones">
+        <button class="icono-boton" type="button" data-tema aria-label="Cambiar entre modo claro y oscuro">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido" class="contenedor constructor">
+    <div class="constructor__cabeza">
+      <h1>Nuevo cliente</h1>
+      <p class="suave">Todo ocurre en este navegador. El borrador se guarda solo aquí; descargue el JSON y guárdelo en <code>negocios/privado/</code>.</p>
+    </div>
+
+    <ol class="pasos-nav" id="pasos-nav" aria-label="Pasos"></ol>
+
+    <div class="constructor__fila">
+      <form class="constructor__form" id="form" novalidate>
+
+        <fieldset class="paso tarjeta" data-paso="0">
+          <legend><span class="paso__n">1</span> Punto de partida</legend>
+          <div class="campo">
+            <label for="c-gremio">Gremio de base</label>
+            <select id="c-gremio"></select>
+            <span class="ayuda">Carga textos, catálogo y preguntas del gremio. Luego los cambia.</span>
+          </div>
+          <div class="botones">
+            <button type="button" class="boton boton--chico" id="c-cargar-gremio">Empezar desde este gremio</button>
+            <label class="boton boton--chico" for="c-subir">Abrir un JSON de cliente</label>
+            <input type="file" id="c-subir" accept="application/json,.json" class="solo-lector">
+          </div>
+          <p class="pequeno suave" id="c-origen"></p>
+        </fieldset>
+
+        <fieldset class="paso tarjeta" data-paso="1" hidden>
+          <legend><span class="paso__n">2</span> El negocio</legend>
+          <div class="rejilla rejilla--2 g12">
+            <div class="campo"><label for="f-nombre">Nombre del negocio</label><input id="f-nombre" data-campo="nombre" maxlength="60"></div>
+            <div class="campo"><label for="f-acento">Color de acento</label><input id="f-acento" type="color" data-campo="acento"></div>
+            <div class="campo"><label for="f-direccion">Dirección</label><input id="f-direccion" data-campo="negocio.direccion"></div>
+            <div class="campo"><label for="f-barrio">Barrio</label><input id="f-barrio" data-campo="negocio.barrio"></div>
+            <div class="campo"><label for="f-ciudad">Ciudad</label><input id="f-ciudad" data-campo="negocio.ciudad"></div>
+            <div class="campo"><label for="f-referencia">Referencia</label><input id="f-referencia" data-campo="ubicacion.referencia" placeholder="Ej.: frente al parque"></div>
+            <div class="campo"><label for="f-telefono">Teléfono (como se muestra)</label><input id="f-telefono" data-campo="negocio.telefono" inputmode="tel" placeholder="+57 300 000 0000"></div>
+            <div class="campo"><label for="f-whatsapp">WhatsApp (solo números, con indicativo)</label><input id="f-whatsapp" data-campo="negocio.whatsapp" inputmode="numeric" placeholder="573000000000"></div>
+            <div class="campo"><label for="f-correo">Correo</label><input id="f-correo" data-campo="negocio.correo" type="email"></div>
+            <div class="campo"><label for="f-sitio">Sitio web</label><input id="f-sitio" data-campo="negocio.sitioWeb" type="url"></div>
+            <div class="campo"><label for="f-instagram">Instagram</label><input id="f-instagram" data-campo="negocio.redes.instagram"></div>
+            <div class="campo"><label for="f-facebook">Facebook</label><input id="f-facebook" data-campo="negocio.redes.facebook"></div>
+            <div class="campo"><label for="f-pagos">Medios de pago (separados por coma)</label><input id="f-pagos" data-campo="negocio.mediosPago" data-tipo="lista"></div>
+            <div class="campo"><label for="f-info">Info de WhatsApp (máx. 139)</label><input id="f-info" data-campo="negocio.info" maxlength="139"></div>
+            <div class="campo">
+              <label for="f-plan">Plan</label>
+              <select id="f-plan" data-campo="negocio.plan"><option value="esencial">Esencial</option><option value="pro">Pro</option></select>
+            </div>
+            <div class="campo">
+              <label for="f-estilo">Estilo de la página (Pro)</label>
+              <select id="f-estilo" data-campo="negocio.estiloPagina"><option value="sobrio">Sobrio</option><option value="calido">Cálido</option><option value="moderno">Moderno</option></select>
+            </div>
+            <div class="campo">
+              <label for="f-moneda">Moneda</label>
+              <select id="f-moneda" data-campo="moneda"><option value="COP">COP</option><option value="USD">USD</option></select>
+            </div>
+            <div class="campo"><label for="f-resenas">Enlace para pedir reseñas en Google</label><input id="f-resenas" data-campo="negocio.enlaceResenas" type="url" placeholder="https://g.page/r/…/review"></div>
+          </div>
+        </fieldset>
+
+        <fieldset class="paso tarjeta" data-paso="2" hidden>
+          <legend><span class="paso__n">3</span> Horario</legend>
+          <div id="editor-horario" class="horario-editor"></div>
+          <div class="campo">
+            <label for="f-horario-texto">Horario en texto (va en los mensajes)</label>
+            <textarea id="f-horario-texto" data-campo="horarioTexto" rows="2"></textarea>
+            <button type="button" class="boton boton--chico" id="c-horario-auto">Escribirlo desde la tabla</button>
+          </div>
+        </fieldset>
+
+        <fieldset class="paso tarjeta" data-paso="3" hidden>
+          <legend><span class="paso__n">4</span> Catálogo</legend>
+          <p class="pequeno suave">Entre 6 y 10 productos. El precio va sin puntos ni signos.</p>
+          <div id="editor-catalogo" class="filas"></div>
+          <button type="button" class="boton boton--chico" id="c-agregar-producto">Agregar producto</button>
+        </fieldset>
+
+        <fieldset class="paso tarjeta" data-paso="4" hidden>
+          <legend><span class="paso__n">5</span> Mensajes</legend>
+          <div class="campo"><label for="f-bienvenida">Bienvenida</label><textarea id="f-bienvenida" data-campo="mensajes.bienvenida" rows="4"></textarea><span class="ayuda">Use {negocio} y {horario}. Sin menús numerados: la app no responde sola a opciones.</span></div>
+          <div class="campo"><label for="f-fuera">Fuera de horario</label><textarea id="f-fuera" data-campo="mensajes.fueraDeHorario" rows="4"></textarea></div>
+          <h3 class="subtitulo">Respuestas rápidas</h3>
+          <div id="editor-rapidas" class="filas"></div>
+          <button type="button" class="boton boton--chico" id="c-agregar-rapida">Agregar respuesta rápida</button>
+          <div class="campo"><label for="f-etiquetas">Etiquetas (separadas por coma)</label><input id="f-etiquetas" data-campo="etiquetas" data-tipo="lista"></div>
+          <h3 class="subtitulo">Preguntas frecuentes (8)</h3>
+          <div id="editor-faq" class="filas"></div>
+        </fieldset>
+
+        <fieldset class="paso tarjeta" data-paso="5" hidden>
+          <legend><span class="paso__n">6</span> Google Maps</legend>
+          <div class="campo"><label for="f-cat">Categoría principal</label><input id="f-cat" data-campo="maps.categoriaPrincipal"></div>
+          <div class="campo"><label for="f-cats">Categorías adicionales (separadas por coma)</label><input id="f-cats" data-campo="maps.categoriasAdicionales" data-tipo="lista"></div>
+          <div class="campo"><label for="f-desc">Descripción <span class="contador" data-contador="f-desc" data-max="750"></span></label><textarea id="f-desc" data-campo="maps.descripcion" rows="5" maxlength="750"></textarea></div>
+          <div class="campo"><label for="f-atributos">Atributos (separados por coma)</label><input id="f-atributos" data-campo="negocio.atributos" data-tipo="lista" placeholder="Acepta tarjetas, Pagos móviles"></div>
+        </fieldset>
+
+        <fieldset class="paso tarjeta" data-paso="6" hidden>
+          <legend><span class="paso__n">7</span> Textos listos</legend>
+          <div class="avisos" id="avisos" aria-live="polite"></div>
+          <div id="resultado"></div>
+          <div class="botones">
+            <button type="button" class="boton boton--primario" id="c-descargar">Descargar JSON del cliente</button>
+            <button type="button" class="boton" id="c-copiar-json" data-copiado="JSON copiado">Copiar JSON</button>
+            <button type="button" class="boton" id="c-borrar">Borrar borrador</button>
+          </div>
+          <p class="pequeno suave">Después: <code>node scripts/generar.js negocios/privado/&lt;archivo&gt;.json</code> crea las imágenes, los QR y la página.</p>
+        </fieldset>
+
+        <div class="constructor__nav">
+          <button type="button" class="boton" id="c-anterior">Anterior</button>
+          <button type="button" class="boton boton--tinta" id="c-siguiente">Siguiente</button>
+        </div>
+      </form>
+
+      <aside class="constructor__vista" aria-label="Vista previa">
+        <div class="pestanas" role="tablist" aria-label="Vista previa">
+          <button type="button" role="tab" id="t-chat" aria-controls="v-chat" aria-selected="true">Chat</button>
+          <button type="button" role="tab" id="t-pagina" aria-controls="v-pagina" aria-selected="false" tabindex="-1">Página web</button>
+          <button type="button" role="tab" id="t-qr" aria-controls="v-qr" aria-selected="false" tabindex="-1">QR</button>
+        </div>
+        <div role="tabpanel" id="v-chat" aria-labelledby="t-chat"><div id="telefono-constructor"></div></div>
+        <div role="tabpanel" id="v-pagina" aria-labelledby="t-pagina" hidden><iframe id="marco-pagina" title="Vista previa de la página web" loading="lazy"></iframe></div>
+        <div role="tabpanel" id="v-qr" aria-labelledby="t-qr" hidden>
+          <div class="qr-vista" id="qr-vista"></div>
+          <p class="pequeno suave" id="qr-enlace"></p>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <script src="../assets/vendor/qrcode.js"></script>
+  <script src="../assets/js/timbre.js" data-raiz="../"></script>
+  <script src="../assets/js/telefono.js"></script>
+  <script src="../assets/js/kit.js"></script>
+  <script src="../plantillas/pagina-negocio/pagina.js"></script>
+  <script src="../assets/js/constructor.js"></script>
+</body>
+</html>

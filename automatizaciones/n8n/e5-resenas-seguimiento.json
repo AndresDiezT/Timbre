@@ -1,0 +1,350 @@
+{
+  "name": "Timbre E5 · Reseña tras «Pagó» y seguimiento a cotizaciones (2 y 5 días)",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## E5 · Reseñas y seguimiento\nTodos los días a las 10:00 revisa la hoja **Clientes**.\nLas etiquetas de la app de WhatsApp Business no se pueden leer desde fuera: el estado (Cotizó, Pagó) se marca en la hoja.\nGuía: automatizaciones/n8n/e5-resenas-seguimiento.md",
+        "width": 520,
+        "height": 200,
+        "color": 6
+      },
+      "id": "ba5472c0-6e32-40a6-be25-6e624d177478",
+      "name": "Nota  E5  Reseñas y ",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -80,
+        -240
+      ]
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "days",
+              "daysInterval": 1,
+              "triggerAtHour": 10
+            }
+          ]
+        }
+      },
+      "id": "82e0a942-e3e9-4565-8bc3-9b1ed22ae829",
+      "name": "Todos los días 10:00",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b442704a-377e-479d-9bce-fb522391cf9b",
+              "name": "negocio",
+              "value": "[NOMBRE DEL NEGOCIO]",
+              "type": "string"
+            },
+            {
+              "id": "af43a243-40d8-4ba0-959e-0f89f46fe67f",
+              "name": "correoDueno",
+              "value": "[CORREO DEL DUEÑO]",
+              "type": "string"
+            },
+            {
+              "id": "dc767362-9d1e-47b7-8521-dd3d584f3df7",
+              "name": "hojaUrl",
+              "value": "[URL DE LA HOJA DE GOOGLE]",
+              "type": "string"
+            },
+            {
+              "id": "7ef27741-85d4-43cc-9783-369f1bcc2f16",
+              "name": "whatsappPhoneNumberId",
+              "value": "[PHONE NUMBER ID DE META]",
+              "type": "string"
+            },
+            {
+              "id": "109be0c6-077d-41b7-a92b-4175a1f1c952",
+              "name": "enlaceResenas",
+              "value": "[ENLACE DE RESEÑAS DE GOOGLE]",
+              "type": "string"
+            },
+            {
+              "id": "98eb7c32-824a-4a42-81bc-85d060697a74",
+              "name": "plantillaResena",
+              "value": "solicitud_resena",
+              "type": "string"
+            },
+            {
+              "id": "2061e83e-4507-4332-ae60-7bedafa63226",
+              "name": "plantillaSeguimiento1",
+              "value": "seguimiento_cotizacion_1",
+              "type": "string"
+            },
+            {
+              "id": "f958363f-b638-4750-a290-18d3144ca72e",
+              "name": "plantillaSeguimiento2",
+              "value": "seguimiento_cotizacion_2",
+              "type": "string"
+            },
+            {
+              "id": "1c24ec53-36a5-4d39-bd89-ee1e8b3dfc8a",
+              "name": "idiomaPlantilla",
+              "value": "es",
+              "type": "string"
+            },
+            {
+              "id": "1e4ff56a-eab2-4869-99c8-d1e2012f8bb7",
+              "name": "indicativoPais",
+              "value": "57",
+              "type": "string"
+            },
+            {
+              "id": "3c3f7a20-91f8-4027-9abf-c9eed9abeaa0",
+              "name": "zonaHoraria",
+              "value": "America/Bogota",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "56120195-6414-439e-94ac-635a76b91c3a",
+      "name": "Datos del negocio",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        220,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "read",
+        "documentId": {
+          "__rl": true,
+          "value": "[ID DE LA HOJA DE GOOGLE]",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Clientes",
+          "mode": "name"
+        },
+        "options": {}
+      },
+      "id": "d9622667-1098-4a72-a7c0-9075d1bf7b8a",
+      "name": "Leer clientes",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        440,
+        0
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "",
+          "name": "Google Sheets del negocio"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForAllItems",
+        "jsCode": "// Decide qué mensaje le toca hoy a cada cliente de la hoja \"Clientes\".\n// Columnas: ID, Cliente, Teléfono, Estado (Cotizó / Pagó / ...), FechaCotizacion (AAAA-MM-DD),\n// RespondioCotizacion (Sí si contestó), Seguimiento1, Seguimiento2, ResenaEnviada.\nconst n = $('Datos del negocio').first().json;\nconst hoy = new Date(new Date().toLocaleString('en-US', { timeZone: n.zonaHoraria }));\nhoy.setHours(0, 0, 0, 0);\nconst dias = (f) => Math.round((hoy - new Date(f + 'T00:00:00')) / 86400000);\nconst salida = [];\nfor (const item of $input.all()) {\n  const c = item.json;\n  if (!c.ID || !c['Teléfono']) continue;\n  const estado = String(c.Estado || '').toLowerCase();\n  let accion = null;\n  if (estado.startsWith('pag') && !c.ResenaEnviada) accion = 'resena';\n  else if (estado.startsWith('cotiz') && !/^s/i.test(c.RespondioCotizacion || '') && c.FechaCotizacion) {\n    const d = dias(c.FechaCotizacion);\n    if (d >= 2 && d < 5 && !c.Seguimiento1) accion = 'seguimiento1';\n    else if (d >= 5 && d < 10 && !c.Seguimiento2) accion = 'seguimiento2';\n  }\n  if (!accion) continue;\n  let telefono = String(c['Teléfono']).replace(/\\D/g, '');\n  if (telefono.length === 10) telefono = String(n.indicativoPais || '57') + telefono;\n  const plantillas = { resena: n.plantillaResena, seguimiento1: n.plantillaSeguimiento1, seguimiento2: n.plantillaSeguimiento2 };\n  const variables = accion === 'resena' ? [String(c.Cliente || '').split(' ')[0], n.negocio, n.enlaceResenas] : [String(c.Cliente || '').split(' ')[0], n.negocio];\n  salida.push({ json: { id: String(c.ID), accion, telefono, plantilla: plantillas[accion], variables } });\n}\nreturn salida;"
+      },
+      "id": "4f1d3d51-3d2f-469d-ba28-cfde1ad0b841",
+      "name": "¿Qué enviar hoy?",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        660,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.facebook.com/v21.0/{{ $('Datos del negocio').item.json.whatsappPhoneNumberId }}/messages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"to\": \"{{ $json.telefono }}\",\n  \"type\": \"template\",\n  \"template\": {\n    \"name\": {{ JSON.stringify($json.plantilla) }},\n    \"language\": { \"code\": \"{{ $('Datos del negocio').first().json.idiomaPlantilla }}\" },\n    \"components\": [{ \"type\": \"body\", \"parameters\": {{ JSON.stringify($json.variables.map((t) => ({ type: 'text', text: String(t) }))) }} }]\n  }\n}",
+        "options": {}
+      },
+      "id": "a095192e-bd46-48f5-b2c7-ab715a956fc7",
+      "name": "WhatsApp: plantilla",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        880,
+        0
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "",
+          "name": "WhatsApp Cloud API (token)"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "[ID DE LA HOJA DE GOOGLE]",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Clientes",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "ID": "={{ $('¿Qué enviar hoy?').item.json.id }}",
+            "ResenaEnviada": "={{ $('¿Qué enviar hoy?').item.json.accion === 'resena' ? $now.toFormat('yyyy-MM-dd') : undefined }}",
+            "Seguimiento1": "={{ $('¿Qué enviar hoy?').item.json.accion === 'seguimiento1' ? $now.toFormat('yyyy-MM-dd') : undefined }}",
+            "Seguimiento2": "={{ $('¿Qué enviar hoy?').item.json.accion === 'seguimiento2' ? $now.toFormat('yyyy-MM-dd') : undefined }}"
+          },
+          "matchingColumns": [
+            "ID"
+          ],
+          "schema": [
+            {
+              "id": "ID",
+              "displayName": "ID",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "ResenaEnviada",
+              "displayName": "ResenaEnviada",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Seguimiento1",
+              "displayName": "Seguimiento1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Seguimiento2",
+              "displayName": "Seguimiento2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "7377cb0c-ea6c-45ba-87c2-a4dbac7097de",
+      "name": "Marcar en la hoja",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        1100,
+        0
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "",
+          "name": "Google Sheets del negocio"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Todos los días 10:00": {
+      "main": [
+        [
+          {
+            "node": "Datos del negocio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Datos del negocio": {
+      "main": [
+        [
+          {
+            "node": "Leer clientes",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Leer clientes": {
+      "main": [
+        [
+          {
+            "node": "¿Qué enviar hoy?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "¿Qué enviar hoy?": {
+      "main": [
+        [
+          {
+            "node": "WhatsApp: plantilla",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WhatsApp: plantilla": {
+      "main": [
+        [
+          {
+            "node": "Marcar en la hoja",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "America/Bogota",
+    "saveManualExecutions": true
+  },
+  "meta": {
+    "templateCredsSetupCompleted": false,
+    "timbre": "E5"
+  },
+  "tags": []
+}

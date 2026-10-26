@@ -1,0 +1,69 @@
+{
+  "id": "plumbing",
+  "idioma": "en",
+  "gremio": "Plumbing",
+  "gremioCorto": "Plumbing",
+  "nombre": "Copperline Plumbing",
+  "ficticio": true,
+  "acento": "#1D6A85",
+  "moneda": "USD",
+  "horario": {
+    "lun": ["07:00", "18:00"], "mar": ["07:00", "18:00"], "mie": ["07:00", "18:00"],
+    "jue": ["07:00", "18:00"], "vie": ["07:00", "18:00"], "sab": ["08:00", "14:00"], "dom": null
+  },
+  "horarioTexto": "Monday to Friday 7 AM to 6 PM, Saturday 8 AM to 2 PM. Emergency service available.",
+  "ubicacion": { "direccion": "Serving the metro area", "barrio": "Office: 300 Example St", "ciudad": "Orlando, FL", "referencia": "Fictional business" },
+  "catalogo": [
+    { "nombre": "Service call", "descripcion": "Diagnosis and upfront quote.", "precio": 79 },
+    { "nombre": "Drain cleaning", "descripcion": "Kitchen or bathroom drain.", "precio": 159 },
+    { "nombre": "Toilet repair", "descripcion": "Flapper, fill valve, or running toilet.", "precio": 145 },
+    { "nombre": "Faucet install", "descripcion": "Labor only, standard faucet.", "precio": 165 },
+    { "nombre": "Water heater flush", "descripcion": "Tank flush and safety check.", "precio": 139 },
+    { "nombre": "Garbage disposal install", "descripcion": "Labor only.", "precio": 175 },
+    { "nombre": "Leak detection", "descripcion": "Find hidden leaks before they get worse.", "precio": 249 }
+  ],
+  "faq": [
+    { "pregunta": "How much is a service call?", "respuesta": "Our service call is $79 and includes diagnosis and an upfront quote." },
+    { "pregunta": "Do you do emergencies?", "respuesta": "Yes. Reply EMERGENCY with your address and we'll call you right back." },
+    { "pregunta": "How soon can you come?", "respuesta": "Most jobs are same day or next day." },
+    { "pregunta": "Do you quote before starting?", "respuesta": "Always. No work starts until you approve the price." },
+    { "pregunta": "Are you licensed?", "respuesta": "Yes, licensed and insured." },
+    { "pregunta": "Do you install water heaters?", "respuesta": "Yes, tank and tankless. We'll quote it after a quick visit." },
+    { "pregunta": "How do I pay?", "respuesta": "Card, Zelle, or check when the job is done." },
+    { "pregunta": "Is there a warranty?", "respuesta": "Yes, one year on labor." }
+  ],
+  "mensajes": {
+    "bienvenida": "Hi! Thanks for reaching out to {negocio}. We got your message and will reply shortly. Tell us your ZIP code and what's going on.",
+    "fueraDeHorario": "Hi! Thanks for reaching out to {negocio}. We're closed right now. Our hours are {horario}. Leave your ZIP code and what's happening, and we'll call you first thing. For emergencies, reply EMERGENCY.",
+    "respuestasRapidas": [
+      { "atajo": "visit", "texto": "Our service call is $79 and includes an upfront quote. What day works for you?" },
+      { "atajo": "drain", "texto": "Drain cleaning starts at $159. We can usually come the same day." },
+      { "atajo": "onmyway", "texto": "Your plumber is on the way and should arrive in about 30 minutes." },
+      { "atajo": "thanks", "texto": "Thanks for choosing us! If you were happy, a quick Google review helps us a lot." }
+    ]
+  },
+  "etiquetas": ["New lead", "Emergency", "Quoted", "Booked", "Paid", "Review requested"],
+  "maps": {
+    "categoriaPrincipal": "Plumber",
+    "categoriasAdicionales": ["Drainage service", "Water heater repair service", "Emergency plumber"],
+    "descripcion": "Licensed and insured plumbers serving the Orlando area. Drain cleaning, leaks, toilets, faucets, disposals, and water heaters. Upfront quotes before any work and same-day or next-day service. Request service online and get a reply right away."
+  },
+  "conversacion": [
+    { "cliente": "My kitchen sink is clogged and backing up. Can you come tomorrow?", "responde": "catalogo" },
+    { "cliente": "How much is a service call?", "responde": "faq:0" },
+    { "cliente": "What are your hours?", "responde": "horario" },
+    { "cliente": "Can someone call me?", "responde": "persona" }
+  ],
+  "clientesDemo": ["Rachel M.", "Tom H.", "Luis C.", "Beth A."],
+  "automatizacion": {
+    "formulario": { "nombre": "Rachel Moore", "telefono": "(407) 555-0119", "correo": "rachel@example.com", "servicio": "Drain cleaning", "codigoPostal": "32803", "mensaje": "Kitchen sink is backing up." },
+    "servicios": ["Drain cleaning", "Leak repair", "Water heater", "Toilet repair"],
+    "textoInmediato": "Hi {cliente}, this is {negocio}. We got your {servicio} request and we'll call you within 15 minutes. If water is actively leaking, reply EMERGENCY. Reply STOP to opt out.",
+    "correoInmediato": { "asunto": "Your {servicio} request is in, {cliente}", "cuerpo": "Hi {cliente}, thanks for contacting {negocio}. We received your {servicio} request for ZIP {codigoPostal}. A plumber will call you shortly." },
+    "alertaDueno": "New lead: {cliente} · {servicio} · ZIP {codigoPostal} · {telefono}",
+    "llamadaPerdida": "Hi, this is {negocio}. Sorry we missed your call! What's going on? Reply here and we'll get right back to you.",
+    "seguimiento1": "Hi {cliente}, checking in from {negocio}. We have an opening tomorrow morning for your {servicio}. Want it?",
+    "seguimiento2": "Hi {cliente}, last check-in from {negocio}. Reply anytime if you still need a hand.",
+    "resena": "Thanks for choosing {negocio}, {cliente}! If you were happy with the job, would you leave us a quick review? {enlaceResena}"
+  }
+}

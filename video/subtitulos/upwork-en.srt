@@ -1,0 +1,93 @@
+1
+00:00:00,000 --> 00:00:10,000
+Hi, I'm Andres. I build speed-to-lead automations
+for home service businesses.
+
+2
+00:00:10,000 --> 00:00:17,000
+Someone fills out your website form at 8 PM
+while you're on a job or with your family.
+
+3
+00:00:17,000 --> 00:00:25,000
+If nobody answers for hours, they may
+call the next company on the list.
+
+4
+00:00:25,000 --> 00:00:35,000
+With what I build, that person gets a friendly text back
+in under a minute, from your business number,
+
+5
+00:00:35,000 --> 00:00:45,000
+with their name and the service they asked for.
+And an email with the same details.
+
+6
+00:00:45,000 --> 00:00:52,000
+At the same time the lead is logged
+in your Google Sheet or CRM,
+
+7
+00:00:52,000 --> 00:01:00,000
+and you get an alert on your phone, so you can
+call them back while they're still interested.
+
+8
+00:01:00,000 --> 00:01:10,000
+On the Pro setup, if you miss a call, the caller
+gets a text right away asking how you can help.
+
+9
+00:01:10,000 --> 00:01:20,000
+A missed call doesn't have to be a lost conversation.
+
+10
+00:01:20,000 --> 00:01:30,000
+If a lead goes quiet, two short follow-ups go out on their own.
+
+11
+00:01:30,000 --> 00:01:40,000
+You approve every message before it goes live,
+and every text includes a way to opt out.
+
+12
+00:01:40,000 --> 00:01:55,000
+When the job is done and paid, the customer
+gets a review request with your Google link.
+
+13
+00:01:55,000 --> 00:02:05,000
+Everything runs on accounts you own: your form,
+your texting number, your sheet, your automation tool.
+
+14
+00:02:05,000 --> 00:02:15,000
+I never ask for your passwords; we set it up
+together on a screen share. No mass texting,
+no cold calls, no AI calling your customers.
+
+15
+00:02:15,000 --> 00:02:25,000
+Starter is 250 dollars one-time: instant text and email,
+logging and owner alerts.
+
+16
+00:02:25,000 --> 00:02:32,000
+Pro is 400: adds missed-call text-back,
+follow-ups and review requests.
+
+17
+00:02:32,000 --> 00:02:40,000
+The optional care plan is 100 dollars a month
+for up to five changes.
+
+18
+00:02:40,000 --> 00:02:52,000
+You pay half to start and the balance
+once you see it working.
+
+19
+00:02:52,000 --> 00:03:00,000
+Want something custom? Let's start
+with a free discovery call. Send me a message.

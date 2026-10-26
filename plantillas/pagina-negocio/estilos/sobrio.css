@@ -1,0 +1,13 @@
+/* Estilo sobrio: blanco, líneas finas, tipografía Libre Franklin. */
+.estilo-sobrio {
+  --fondo: #FFFFFF; --fondo-2: #F5F6F7; --tarjeta: #FFFFFF; --texto: #1B1F24; --suave: #4D5560;
+  --t-titulo: "Libre Franklin", system-ui, sans-serif; --t-texto: "Libre Franklin", system-ui, sans-serif;
+  --radio: 6px; --radio-boton: 4px; --radio-logo: 4px; --radio-campo: 4px;
+  --borde-fino: 1px solid #DDE1E5; --borde-tarjeta: 1px solid #DDE1E5; --borde-campo: 1px solid #9AA3AD;
+  --foco: #1B1F24;
+}
+.estilo-sobrio h1, .estilo-sobrio h2 { font-weight: 800; letter-spacing: -.02em; }
+.estilo-sobrio h2::after { content: ""; display: block; width: 48px; height: 4px; background: var(--acento); margin-top: 14px; }
+.estilo-sobrio .etiqueta { color: var(--suave); border-left: 4px solid var(--acento); padding-left: 10px; }
+.estilo-sobrio .portada__arte { border-radius: 6px; font-weight: 800; }
+.estilo-sobrio .producto__foto { font-weight: 800; }

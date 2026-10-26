@@ -1,0 +1,17 @@
+{
+  "name": "timbre",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Demo, plantillas y kit de entrega de Timbre.",
+  "scripts": {
+    "validar": "node scripts/validar.js",
+    "generar": "node scripts/generar.js",
+    "ejemplos": "node scripts/generar.js negocios/ejemplo-barberia-el-parche.json && node scripts/generar.js negocios/ejemplo-reposteria-dulce-coqui.json",
+    "catalogo-timbre": "node scripts/catalogo-timbre.js",
+    "servir": "python3 -m http.server 8080"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@resvg/resvg-js": "^2.6.2"
+  }
+}

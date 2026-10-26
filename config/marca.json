@@ -1,0 +1,41 @@
+{
+  "nombre": "Timbre",
+  "simbolo": "campanita",
+  "idea": "Cada cliente que toca el timbre encuentra respuesta.",
+  "frase": "Nadie se queda sin respuesta",
+  "fraseEn": "No lead goes unanswered",
+  "colores": {
+    "amarillo": "#FFC933",
+    "tinta": "#16202A",
+    "papel": "#FFFDF5"
+  },
+  "tipografias": {
+    "titulos": "Anton",
+    "texto": "Figtree"
+  },
+  "contacto": {
+    "nombre": "Andres Diez",
+    "whatsapp": "+57 314 331 9442",
+    "whatsappDigitos": "573143319442",
+    "enlaceWhatsapp": "https://wa.me/573143319442",
+    "correo": "[CORREO DE CONTACTO]",
+    "ciudad": "[CIUDAD]"
+  },
+  "asesoras": [
+    { "codigo": "SOFIA", "nombre": "Sofía" },
+    { "codigo": "YARIMAR", "nombre": "Yarimar" }
+  ],
+  "mensajesWhatsapp": {
+    "co": "Hola, vi la demostración de Timbre y quiero saber más.",
+    "usd": "Hola, vi la demostración de Timbre y quiero saber más.",
+    "en": "Hi! I saw the Timbre demo and I'd like to learn more.",
+    "asesora": "Vengo de parte de {nombre} (código {codigo}).",
+    "asesoraEn": "I was referred by {nombre} (code {codigo})."
+  },
+  "sitio": {
+    "url": "https://andresdiezt.github.io/Timbre/",
+    "nota": "Cambiar por la URL real de GitHub Pages cuando esté publicada."
+  },
+  "video": "[ENLACE VIDEO]",
+  "testimonios": []
+}

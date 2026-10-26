@@ -1,0 +1,11 @@
+# Clientes reales: NUNCA se publican.
+negocios/privado/
+entregas/*
+!entregas/ejemplo-*/
+!entregas/LEEME.md
+
+# Dependencias y temporales
+node_modules/
+_site/
+.DS_Store
+*.log

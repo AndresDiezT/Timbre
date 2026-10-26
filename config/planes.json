@@ -1,0 +1,220 @@
+{
+  "mercadoPorDefecto": "co",
+  "mercados": {
+    "co": {
+      "id": "co",
+      "etiqueta": "Colombia · COP",
+      "idioma": "es",
+      "moneda": "COP",
+      "locale": "es-CO",
+      "planes": [
+        {
+          "id": "esencial",
+          "nombre": "Esencial",
+          "precio": 600000,
+          "periodo": "unico",
+          "entrega": "Entrega en 5 días hábiles",
+          "incluye": [
+            "WhatsApp Business con perfil completo y catálogo con fotos y precios",
+            "Bienvenida y mensaje fuera de horario",
+            "Respuestas rápidas y etiquetas",
+            "Su negocio en Google Maps con horario, fotos y botón de WhatsApp",
+            "Código QR para vitrina e Instagram",
+            "Capacitación gratuita"
+          ],
+          "boton": "Quiero el Esencial"
+        },
+        {
+          "id": "pro",
+          "nombre": "Pro",
+          "precio": 900000,
+          "periodo": "unico",
+          "entrega": "Entrega en 7 a 10 días hábiles",
+          "destacado": true,
+          "incluye": [
+            "Todo lo del plan Esencial",
+            "Página web sencilla con botón de WhatsApp y formulario",
+            "QR para pedir reseñas en Google"
+          ],
+          "nota": "El dominio (la dirección .com o .co) se paga aparte.",
+          "boton": "Quiero el Pro"
+        },
+        {
+          "id": "mantenimiento",
+          "nombre": "Mantenimiento",
+          "precio": 80000,
+          "periodo": "mes",
+          "entrega": "Mes a mes, sin permanencia",
+          "incluye": [
+            "Hasta 5 cambios pequeños al mes",
+            "Revisión mensual",
+            "Soporte"
+          ],
+          "nota": "Cambio adicional: {cambioAdicional}.",
+          "boton": "Quiero el mantenimiento"
+        },
+        {
+          "id": "medida",
+          "nombre": "Desarrollo a la medida",
+          "precio": null,
+          "periodo": null,
+          "entrega": "Se cotiza tras un diagnóstico sin costo",
+          "incluye": [
+            "Citas y reservas",
+            "Tiendas en línea",
+            "Apps de pedidos e inventario",
+            "Asistentes virtuales con IA",
+            "Conexión entre los programas que ya usa"
+          ],
+          "boton": "Pedir diagnóstico sin costo"
+        }
+      ],
+      "cambioAdicional": 15000,
+      "pago": "50% al empezar y 50% al entregar, por Bre-B o transferencia.",
+      "modalidad": "Configuración en persona o a distancia, con capacitación gratuita.",
+      "garantia": "El saldo lo paga cuando lo vea funcionando."
+    },
+    "usd": {
+      "id": "usd",
+      "etiqueta": "Puerto Rico y EE. UU. · Español · USD",
+      "idioma": "es",
+      "moneda": "USD",
+      "locale": "es-PR",
+      "planes": [
+        {
+          "id": "esencial",
+          "nombre": "Esencial",
+          "precio": 300,
+          "periodo": "unico",
+          "entrega": "Entrega en 5 días hábiles",
+          "incluye": [
+            "WhatsApp Business con perfil completo y catálogo con fotos y precios",
+            "Bienvenida y mensaje fuera de horario",
+            "Respuestas rápidas y etiquetas",
+            "Su negocio en Google Maps con horario, fotos y botón de WhatsApp",
+            "Código QR para vitrina e Instagram",
+            "Capacitación gratuita por videollamada"
+          ],
+          "boton": "Quiero el Esencial"
+        },
+        {
+          "id": "pro",
+          "nombre": "Pro",
+          "precio": 450,
+          "periodo": "unico",
+          "entrega": "Entrega en 7 a 10 días hábiles",
+          "destacado": true,
+          "incluye": [
+            "Todo lo del plan Esencial",
+            "Página web sencilla con botón de WhatsApp y formulario",
+            "QR para pedir reseñas en Google"
+          ],
+          "nota": "El dominio (la dirección .com) se paga aparte.",
+          "boton": "Quiero el Pro"
+        },
+        {
+          "id": "mantenimiento",
+          "nombre": "Mantenimiento",
+          "precio": 40,
+          "periodo": "mes",
+          "entrega": "Mes a mes, sin permanencia",
+          "incluye": [
+            "Hasta 5 cambios pequeños al mes",
+            "Revisión mensual",
+            "Soporte"
+          ],
+          "nota": "Cambio adicional: {cambioAdicional}.",
+          "boton": "Quiero el mantenimiento"
+        },
+        {
+          "id": "medida",
+          "nombre": "Desarrollo a la medida",
+          "precio": null,
+          "periodo": null,
+          "entrega": "Se cotiza tras un diagnóstico sin costo",
+          "incluye": [
+            "Citas y reservas",
+            "Tiendas en línea",
+            "Apps de pedidos e inventario",
+            "Asistentes virtuales con IA",
+            "Conexión entre los programas que ya usa"
+          ],
+          "boton": "Pedir diagnóstico sin costo"
+        }
+      ],
+      "cambioAdicional": 10,
+      "pago": "50% al empezar y 50% al entregar, por transferencia o tarjeta.",
+      "modalidad": "Configuración y capacitación gratuita por videollamada.",
+      "garantia": "El saldo lo paga cuando lo vea funcionando."
+    },
+    "en": {
+      "id": "en",
+      "etiqueta": "United States · English · USD",
+      "idioma": "en",
+      "moneda": "USD",
+      "locale": "en-US",
+      "publico": "Home service businesses",
+      "planes": [
+        {
+          "id": "starter",
+          "nombre": "Starter",
+          "precio": 250,
+          "periodo": "unico",
+          "entrega": "One-time setup",
+          "incluye": [
+            "Instant text and email reply to every web form lead",
+            "Every lead logged in Google Sheets or your CRM",
+            "Instant alert to the owner"
+          ],
+          "boton": "Get Starter"
+        },
+        {
+          "id": "pro",
+          "nombre": "Pro",
+          "precio": 400,
+          "periodo": "unico",
+          "entrega": "One-time setup",
+          "destacado": true,
+          "incluye": [
+            "Everything in Starter",
+            "Automatic text-back to missed calls",
+            "Two follow-ups for leads who go quiet",
+            "Review request after the job is done"
+          ],
+          "boton": "Get Pro"
+        },
+        {
+          "id": "care",
+          "nombre": "Care plan",
+          "precio": 100,
+          "periodo": "mes",
+          "entrega": "Month to month, cancel anytime",
+          "incluye": [
+            "Up to 5 changes a month",
+            "Monthly check-up",
+            "Support"
+          ],
+          "nota": "Extra changes: {cambioAdicional} each.",
+          "boton": "Add the Care plan"
+        },
+        {
+          "id": "custom",
+          "nombre": "Custom builds",
+          "precio": null,
+          "periodo": null,
+          "entrega": "Quoted after a free discovery call",
+          "incluye": [
+            "Booking and scheduling flows",
+            "AI virtual assistants",
+            "Connecting the tools you already use"
+          ],
+          "boton": "Book a free discovery call"
+        }
+      ],
+      "cambioAdicional": 20,
+      "pago": "50% to start, 50% when it's live. Bank transfer or card.",
+      "modalidad": "Set up remotely over video call. Tools run on your own accounts.",
+      "garantia": "You pay the balance once you see it working."
+    }
+  }
+}

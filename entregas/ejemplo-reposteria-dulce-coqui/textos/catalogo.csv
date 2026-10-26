@@ -1,0 +1,9 @@
+numero,nombre,precio,precio_texto,descripcion,codigo
+1,"Bizcocho de cumpleaños (1/2 plancha)",45,"US$45","Vainilla, chocolate o guayaba. Decorado con nombre. 20 porciones.",REPOST-01
+2,"Bizcocho de cumpleaños (plancha)",80,"US$80","Para 40 porciones. Decoración a elección.",REPOST-02
+3,"Flan de queso",22,"US$22","Molde entero, 10 porciones.",REPOST-03
+4,"Tembleque",18,"US$18","Postre de coco, molde de 8 porciones.",REPOST-04
+5,"Quesitos x 6",9,"US$9","Hojaldre con queso crema, recién horneados.",REPOST-05
+6,"Mallorcas x 4",8,"US$8","Con mantequilla y azúcar en polvo.",REPOST-06
+7,"Cupcakes x 12",30,"US$30","Decorados con el tema que quiera.",REPOST-07
+8,"Bandeja de dulces para eventos",65,"US$65","50 piezas surtidas: quesitos, besitos de coco y brownies.",REPOST-08

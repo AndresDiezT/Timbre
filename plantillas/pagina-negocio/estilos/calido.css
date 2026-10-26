@@ -1,0 +1,15 @@
+/* Estilo cálido: crema, esquinas redondas, Fraunces con Nunito Sans. */
+.estilo-calido {
+  --fondo: #FBF4E8; --fondo-2: #F4E7D3; --tarjeta: #FFFDF8; --texto: #2E2118; --suave: #5E4B3C;
+  --t-titulo: "Fraunces", Georgia, serif; --t-texto: "Nunito Sans", system-ui, sans-serif;
+  --radio: 22px; --radio-boton: 999px; --radio-logo: 50%; --radio-campo: 14px;
+  --borde-fino: 1px solid #E3D3BC; --borde-tarjeta: 1px solid #E3D3BC; --borde-campo: 1.5px solid #B9A184;
+  --foco: #2E2118;
+}
+.estilo-calido h1 { font-weight: 700; }
+.estilo-calido h2 { font-weight: 700; }
+.estilo-calido .etiqueta { background: var(--tarjeta); border: 1px solid #E3D3BC; border-radius: 999px; padding: 4px 14px; text-transform: none; letter-spacing: 0; font-size: .95rem; }
+.estilo-calido .portada__arte { border-radius: 50% 50% 46% 54% / 55% 45% 55% 45%; }
+.estilo-calido .producto { box-shadow: 0 8px 22px rgba(94, 75, 60, .08); }
+.estilo-calido .producto__foto { margin: 10px 10px 0; border-radius: 16px; }
+.estilo-calido .cab { background: color-mix(in srgb, var(--fondo) 94%, transparent); backdrop-filter: blur(6px); }

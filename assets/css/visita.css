@@ -1,0 +1,23 @@
+/* Herramienta de visita para las asesoras */
+.visita { padding: 24px 0 64px; }
+.visita__intro h1 { font-size: clamp(2.4rem, 10vw, 4rem); margin-top: 8px; }
+.visita__fila { display: flex; flex-direction: column; gap: 16px; }
+.visita__pasos { display: contents; }
+#form-visita { order: 1; } .visita__vista { order: 2; margin: 8px 0; } .visita__pasos > section { order: 3; }
+@media (min-width: 960px) {
+  .visita__fila { display: grid; grid-template-columns: 1fr 380px; gap: 40px; align-items: start; }
+  .visita__pasos { display: grid; gap: 16px; }
+  .visita__vista { position: sticky; top: 88px; margin: 0; }
+}
+.paso__titulo { display: flex; align-items: center; gap: 12px; font-size: 1.9rem; }
+.paso__num { display: inline-grid; place-items: center; width: 40px; height: 40px; flex: none; border-radius: 50%; background: var(--amarillo); color: var(--tinta); border: 2px solid var(--tinta); font-size: 1.3rem; }
+.tarjeta--amarilla .paso__num { background: var(--tinta); color: var(--amarillo); }
+.visita__dos { gap: 0 12px; }
+.visita__dos .campo { margin-bottom: 8px; }
+.qr { width: min(100%, 240px); margin: 4px auto 8px; border: var(--linea) solid var(--tinta); border-radius: 12px; overflow: hidden; background: #fff; }
+.qr svg { width: 100%; height: auto; }
+.qr__ayuda { text-align: center; max-width: 34ch; margin-inline: auto; }
+.visita__loquiero { min-height: 60px; font-size: 1.25rem; }
+.visita__mensaje { margin: 10px 0 0; color: #3A4552; font-style: italic; }
+.visita__vista { display: grid; justify-items: center; gap: 14px; }
+.visita__vista .telefono { width: min(100% - 24px, 340px); }

@@ -1,0 +1,62 @@
+{
+  "id": "barberia",
+  "idioma": "es",
+  "gremio": "Barbería y peluquería",
+  "gremioCorto": "Barbería",
+  "nombre": "Barbería Don Fígaro",
+  "ficticio": true,
+  "acento": "#1F5FBF",
+  "moneda": "COP",
+  "horario": {
+    "lun": ["09:00", "20:00"], "mar": ["09:00", "20:00"], "mie": ["09:00", "20:00"],
+    "jue": ["09:00", "20:00"], "vie": ["09:00", "21:00"], "sab": ["08:00", "21:00"], "dom": ["10:00", "15:00"]
+  },
+  "horarioTexto": "lunes a jueves de 9:00 a. m. a 8:00 p. m.; viernes de 9:00 a. m. a 9:00 p. m.; sábados de 8:00 a. m. a 9:00 p. m. y domingos de 10:00 a. m. a 3:00 p. m.",
+  "ubicacion": { "direccion": "Calle 48 # 23-15, local 3", "barrio": "Barrio Los Ángeles", "ciudad": "Medellín", "referencia": "Media cuadra arriba del parque" },
+  "catalogo": [
+    { "nombre": "Corte clásico", "descripcion": "Corte a tijera o máquina, lavado y peinado.", "precio": 25000, "precioUSD": 15 },
+    { "nombre": "Corte y barba", "descripcion": "Corte completo más arreglo de barba con toalla caliente.", "precio": 38000, "precioUSD": 22 },
+    { "nombre": "Arreglo de barba", "descripcion": "Perfilado, rebajado y aceite para barba.", "precio": 18000, "precioUSD": 12 },
+    { "nombre": "Corte infantil", "descripcion": "Para niños hasta 12 años.", "precio": 20000, "precioUSD": 12 },
+    { "nombre": "Cejas con navaja", "descripcion": "Perfilado de cejas.", "precio": 8000, "precioUSD": 6 },
+    { "nombre": "Mascarilla negra", "descripcion": "Limpieza facial de puntos negros, 20 minutos.", "precio": 15000, "precioUSD": 10 },
+    { "nombre": "Tinte para barba", "descripcion": "Cubre canas, color natural.", "precio": 30000, "precioUSD": 18 },
+    { "nombre": "Plan novio", "descripcion": "Corte, barba, cejas y mascarilla el día del matrimonio.", "precio": 70000, "precioUSD": 45 }
+  ],
+  "faq": [
+    { "pregunta": "¿Hay que pedir cita?", "respuesta": "No es obligatorio, pero con cita no espera. Escríbanos el día y la hora que le sirve y se la apartamos." },
+    { "pregunta": "¿Cuánto vale el corte?", "respuesta": "El corte clásico vale $25.000 y corte con barba $38.000. Todos los precios están en el catálogo." },
+    { "pregunta": "¿Atienden los domingos?", "respuesta": "Sí, los domingos de 10:00 a. m. a 3:00 p. m." },
+    { "pregunta": "¿Qué medios de pago reciben?", "respuesta": "Efectivo, Nequi, Daviplata, Bre-B y tarjeta." },
+    { "pregunta": "¿Cuánto se demora un corte?", "respuesta": "Unos 40 minutos el corte y una hora corte con barba." },
+    { "pregunta": "¿Cortan a niños?", "respuesta": "Sí, con paciencia y buen trato. El corte infantil vale $20.000." },
+    { "pregunta": "¿Tienen parqueadero?", "respuesta": "No tenemos propio, pero hay parqueadero público a media cuadra." },
+    { "pregunta": "¿Puedo cancelar o mover la cita?", "respuesta": "Claro. Solo avísenos por aquí con al menos dos horas de anticipación." }
+  ],
+  "mensajes": {
+    "bienvenida": "Hola, gracias por escribir a {negocio}. Ya recibimos su mensaje y en un momento le atendemos. Aquí puede ver todos los servicios con precios. Si quiere cita, díganos el día y la hora.",
+    "fueraDeHorario": "Hola, gracias por escribir a {negocio}. En este momento estamos cerrados. Nuestro horario es {horario}. Le respondemos apenas abramos. Mientras tanto, aquí está el catálogo con precios; si quiere cita, déjenos el día y la hora y se la confirmamos.",
+    "respuestasRapidas": [
+      { "atajo": "precios", "texto": "Corte clásico $25.000 · Corte y barba $38.000 · Barba $18.000 · Infantil $20.000. Todos los servicios están en el catálogo." },
+      { "atajo": "cita", "texto": "Con gusto. ¿Qué día y a qué hora le queda bien? Le confirmamos de una vez." },
+      { "atajo": "ubicacion", "texto": "Estamos en la Calle 48 # 23-15, local 3, barrio Los Ángeles, media cuadra arriba del parque." },
+      { "atajo": "pago", "texto": "Recibimos efectivo, Nequi, Daviplata, Bre-B y tarjeta." },
+      { "atajo": "confirmar", "texto": "Listo, su cita quedó confirmada. Si necesita moverla, avísenos con dos horas de anticipación." },
+      { "atajo": "gracias", "texto": "Gracias por venir. Si le gustó el servicio, nos ayuda mucho con una reseña en Google." }
+    ]
+  },
+  "etiquetas": ["Nuevo cliente", "Cita pendiente", "Cita confirmada", "Cliente frecuente", "Pagó", "Pedir reseña"],
+  "maps": {
+    "categoriaPrincipal": "Barbería",
+    "categoriasAdicionales": ["Peluquería", "Peluquería masculina"],
+    "descripcion": "Barbería de barrio con más de diez años cortando en Los Ángeles. Cortes clásicos y modernos, arreglo de barba con toalla caliente, cejas y cortes para niños. Atendemos con cita o por orden de llegada. Escríbanos por WhatsApp para apartar su turno y ver precios."
+  },
+  "conversacion": [
+    { "cliente": "Buenas noches, ¿cuánto vale corte y barba? ¿Mañana tienen turno temprano?", "responde": "catalogo" },
+    { "cliente": "¿A qué hora abren?", "responde": "horario" },
+    { "cliente": "¿Dónde quedan?", "responde": "ubicacion" },
+    { "cliente": "¿Reciben Nequi?", "responde": "faq:3" },
+    { "cliente": "¿Puedo hablar con el barbero?", "responde": "persona" }
+  ],
+  "clientesDemo": ["Julián R.", "Andrés M.", "Camilo P.", "Sebastián L."]
+}

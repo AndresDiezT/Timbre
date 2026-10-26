@@ -1,0 +1,410 @@
+{
+  "name": "Timbre E2 · Formulario → plantilla de WhatsApp → Sheets → alerta",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## E2 · Formulario → plantilla de WhatsApp → Sheets → alerta\nRequiere WhatsApp Cloud API y una plantilla aprobada por Meta (ver automatizaciones/plantillas-whatsapp.md).\nGuía: automatizaciones/n8n/e2-formulario-whatsapp.md",
+        "width": 460,
+        "height": 180,
+        "color": 6
+      },
+      "id": "3e15965a-b823-4baa-84d4-0ef995688148",
+      "name": "Nota  E2  Formulario",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        -80,
+        -220
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "timbre-e2-formulario",
+        "responseMode": "responseNode",
+        "options": {
+          "allowedOrigins": "*"
+        }
+      },
+      "id": "9a03742a-cb85-4d76-bf5a-a657693db401",
+      "name": "Formulario",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "9b7ed950-d648-4aa1-bf23-b40e26cfd42d"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e7d346fd-7d13-4448-a966-0cf743e5e53e",
+              "name": "negocio",
+              "value": "[NOMBRE DEL NEGOCIO]",
+              "type": "string"
+            },
+            {
+              "id": "7ace64fd-fa87-4e17-a2e3-47ec40da503f",
+              "name": "correoDueno",
+              "value": "[CORREO DEL DUEÑO]",
+              "type": "string"
+            },
+            {
+              "id": "5a24992d-7852-4185-b3cb-7b574f117e4a",
+              "name": "hojaUrl",
+              "value": "[URL DE LA HOJA DE GOOGLE]",
+              "type": "string"
+            },
+            {
+              "id": "025e7da8-3450-4f73-9352-5a0ce7215666",
+              "name": "whatsappPhoneNumberId",
+              "value": "[PHONE NUMBER ID DE META]",
+              "type": "string"
+            },
+            {
+              "id": "8aa45d9f-fd54-4dcb-93df-3f1b26ab47f1",
+              "name": "plantilla",
+              "value": "confirmacion_solicitud",
+              "type": "string"
+            },
+            {
+              "id": "500f52a5-e192-46c4-89fa-16bfdb8c38d2",
+              "name": "idiomaPlantilla",
+              "value": "es",
+              "type": "string"
+            },
+            {
+              "id": "b076eb9c-e39f-4c89-9b3c-347b1b889f17",
+              "name": "indicativoPais",
+              "value": "57",
+              "type": "string"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "629fd576-6cf5-4cc9-922d-d35ee4412649",
+      "name": "Datos del negocio",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        220,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "// Valida el formulario y deja los datos limpios.\nconst d = $input.item.json.body || $input.item.json;\nconst si = (v) => v === true || v === 'true' || v === 'on' || v === 'si' || v === 'sí';\nif (!si(d.autorizacion)) {\n  throw new Error('El formulario llegó sin la autorización de datos (Ley 1581). No se guarda nada.');\n}\nconst limpio = (v, max = 500) => String(v || '').trim().slice(0, max);\n// WhatsApp necesita el número con indicativo y sin signos (ej.: 573001234567).\nlet telefono = limpio(d.telefono, 30).replace(/\\D/g, '');\nconst indicativo = String($('Datos del negocio').item.json.indicativoPais || '57');\nif (telefono.length === 10) telefono = indicativo + telefono;\nreturn {\n  json: {\n    ...$('Datos del negocio').item.json,\n    fecha: new Date().toISOString(),\n    nombre: limpio(d.nombre, 80),\n    primerNombre: limpio(d.nombre, 80).split(' ')[0],\n    telefono,\n    correo: limpio(d.correo, 120).toLowerCase(),\n    servicio: limpio(d.servicio, 80),\n    mensaje: limpio(d.mensaje, 1000),\n    autorizacion: 'Sí (' + new Date().toISOString().slice(0, 10) + ')',\n    origen: limpio(d.origen || 'Formulario web', 60)\n  }\n};"
+      },
+      "id": "e459c54a-c589-472b-b4a9-ebc716b9ce48",
+      "name": "Validar y limpiar",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        440,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://graph.facebook.com/v21.0/{{ $('Datos del negocio').item.json.whatsappPhoneNumberId }}/messages",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"messaging_product\": \"whatsapp\",\n  \"to\": \"{{ $json.telefono }}\",\n  \"type\": \"template\",\n  \"template\": {\n    \"name\": {{ JSON.stringify($json.plantilla) }},\n    \"language\": { \"code\": \"{{ $json.idiomaPlantilla }}\" },\n    \"components\": [{ \"type\": \"body\", \"parameters\": [{ \"type\": \"text\", \"text\": {{ JSON.stringify($json.primerNombre) }} }, { \"type\": \"text\", \"text\": {{ JSON.stringify($json.negocio) }} }, { \"type\": \"text\", \"text\": {{ JSON.stringify($json.servicio || 'su solicitud') }} }] }]\n  }\n}",
+        "options": {}
+      },
+      "id": "4954e12e-9867-4766-9f6d-f4a7d8130007",
+      "name": "WhatsApp: confirmación al cliente",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        660,
+        0
+      ],
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "",
+          "name": "WhatsApp Cloud API (token)"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "[ID DE LA HOJA DE GOOGLE]",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Leads",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Fecha": "={{ $('Validar y limpiar').item.json.fecha }}",
+            "Nombre": "={{ $('Validar y limpiar').item.json.nombre }}",
+            "Teléfono": "={{ $('Validar y limpiar').item.json.telefono }}",
+            "Correo": "={{ $('Validar y limpiar').item.json.correo }}",
+            "Servicio": "={{ $('Validar y limpiar').item.json.servicio }}",
+            "Mensaje": "={{ $('Validar y limpiar').item.json.mensaje }}",
+            "Autorización": "={{ $('Validar y limpiar').item.json.autorizacion }}",
+            "Origen": "={{ $('Validar y limpiar').item.json.origen }}",
+            "Estado": "Nuevo",
+            "WhatsApp": "={{ $json.messages ? 'Enviado ' + $json.messages[0].id : 'Error: ' + JSON.stringify($json.error || $json).slice(0, 120) }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Fecha",
+              "displayName": "Fecha",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Nombre",
+              "displayName": "Nombre",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Teléfono",
+              "displayName": "Teléfono",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Correo",
+              "displayName": "Correo",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Servicio",
+              "displayName": "Servicio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Mensaje",
+              "displayName": "Mensaje",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Autorización",
+              "displayName": "Autorización",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Origen",
+              "displayName": "Origen",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Estado",
+              "displayName": "Estado",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "WhatsApp",
+              "displayName": "WhatsApp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "5e869991-0149-4bd8-9a59-2638462bc1ba",
+      "name": "Guardar en la hoja",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        880,
+        0
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "",
+          "name": "Google Sheets del negocio"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('Validar y limpiar').item.json.correoDueno }}",
+        "subject": "=Nuevo cliente: {{ $('Validar y limpiar').item.json.nombre }}",
+        "emailType": "text",
+        "message": "=Llegó un formulario nuevo y ya le enviamos la confirmación por WhatsApp.\n\nNombre: {{ $('Validar y limpiar').item.json.nombre }}\nTeléfono: {{ $('Validar y limpiar').item.json.telefono }}\nServicio: {{ $('Validar y limpiar').item.json.servicio }}\nMensaje: {{ $('Validar y limpiar').item.json.mensaje }}\n\nVer la hoja: {{ $('Validar y limpiar').item.json.hojaUrl }}",
+        "options": {
+          "appendAttribution": false
+        }
+      },
+      "id": "d0c10c4f-ee6a-4f00-a2ea-ea6121170520",
+      "name": "Alerta al dueño",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        1100,
+        0
+      ],
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "",
+          "name": "Gmail del negocio"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={ \"ok\": true }",
+        "options": {}
+      },
+      "id": "d84e8c1b-538f-4885-b6c1-9a922542496e",
+      "name": "Responder al formulario",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1320,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Formulario": {
+      "main": [
+        [
+          {
+            "node": "Datos del negocio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Datos del negocio": {
+      "main": [
+        [
+          {
+            "node": "Validar y limpiar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validar y limpiar": {
+      "main": [
+        [
+          {
+            "node": "WhatsApp: confirmación al cliente",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "WhatsApp: confirmación al cliente": {
+      "main": [
+        [
+          {
+            "node": "Guardar en la hoja",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Guardar en la hoja": {
+      "main": [
+        [
+          {
+            "node": "Alerta al dueño",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Alerta al dueño": {
+      "main": [
+        [
+          {
+            "node": "Responder al formulario",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "America/Bogota",
+    "saveManualExecutions": true
+  },
+  "meta": {
+    "templateCredsSetupCompleted": false,
+    "timbre": "E2"
+  },
+  "tags": []
+}
