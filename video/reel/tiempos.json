@@ -1,0 +1,236 @@
+{
+ "lineas": [
+  {
+   "escena": "gancho",
+   "inicio": 0.25,
+   "fin": 4.138,
+   "subtitulos": [
+    {
+     "texto": "Este pedido llegó",
+     "resalte": "pedido",
+     "inicio": 0.25,
+     "fin": 1.3
+    },
+    {
+     "texto": "casi a las 11 de la noche",
+     "resalte": "11 de la noche",
+     "inicio": 1.3,
+     "fin": 2.84
+    },
+    {
+     "texto": "con el negocio cerrado",
+     "resalte": "cerrado",
+     "inicio": 2.84,
+     "fin": 4.138
+    }
+   ]
+  },
+  {
+   "escena": "problema",
+   "inicio": 4.458,
+   "fin": 7.843,
+   "subtitulos": [
+    {
+     "texto": "Sin Timbre,",
+     "resalte": "",
+     "inicio": 4.458,
+     "fin": 5.068
+    },
+    {
+     "texto": "el cliente pregunta…",
+     "resalte": "",
+     "inicio": 5.068,
+     "fin": 6.493
+    },
+    {
+     "texto": "y nadie le responde",
+     "resalte": "nadie",
+     "inicio": 6.493,
+     "fin": 7.843
+    }
+   ]
+  },
+  {
+   "escena": "giro",
+   "inicio": 8.163,
+   "fin": 10.258,
+   "subtitulos": [
+    {
+     "texto": "Con Timbre,",
+     "resalte": "Timbre",
+     "inicio": 8.163,
+     "fin": 8.633
+    },
+    {
+     "texto": "nadie se queda sin respuesta",
+     "resalte": "sin respuesta",
+     "inicio": 8.633,
+     "fin": 10.258
+    }
+   ]
+  },
+  {
+   "escena": "pedido",
+   "inicio": 10.578,
+   "fin": 16.636,
+   "subtitulos": [
+    {
+     "texto": "Su cliente arma el pedido",
+     "resalte": "arma el pedido",
+     "inicio": 10.578,
+     "fin": 12.038
+    },
+    {
+     "texto": "desde el celular",
+     "resalte": "",
+     "inicio": 12.038,
+     "fin": 13.113
+    },
+    {
+     "texto": "y a usted le llega completo",
+     "resalte": "completo",
+     "inicio": 13.113,
+     "fin": 14.938
+    },
+    {
+     "texto": "a su WhatsApp,",
+     "resalte": "",
+     "inicio": 14.938,
+     "fin": 15.583
+    },
+    {
+     "texto": "con el total",
+     "resalte": "total",
+     "inicio": 15.583,
+     "fin": 16.636
+    }
+   ]
+  },
+  {
+   "escena": "comisiones",
+   "inicio": 16.956,
+   "fin": 18.447,
+   "subtitulos": [
+    {
+     "texto": "Sin comisiones",
+     "resalte": "Sin comisiones",
+     "inicio": 16.956,
+     "fin": 17.806
+    },
+    {
+     "texto": "por pedido",
+     "resalte": "",
+     "inicio": 17.806,
+     "fin": 18.447
+    }
+   ]
+  },
+  {
+   "escena": "automatico",
+   "inicio": 18.767,
+   "fin": 21.662,
+   "subtitulos": [
+    {
+     "texto": "Y si ya cerró,",
+     "resalte": "",
+     "inicio": 18.767,
+     "fin": 19.657
+    },
+    {
+     "texto": "su WhatsApp contesta al instante",
+     "resalte": "al instante",
+     "inicio": 19.657,
+     "fin": 21.662
+    }
+   ]
+  },
+  {
+   "escena": "citas",
+   "inicio": 21.982,
+   "fin": 27.49,
+   "subtitulos": [
+    {
+     "texto": "¿Trabaja con citas?",
+     "resalte": "citas",
+     "inicio": 21.982,
+     "fin": 23.307
+    },
+    {
+     "texto": "Eligen servicio, día y hora",
+     "resalte": "",
+     "inicio": 23.307,
+     "fin": 25.782
+    },
+    {
+     "texto": "y usted confirma",
+     "resalte": "",
+     "inicio": 25.782,
+     "fin": 26.662
+    },
+    {
+     "texto": "con un toque",
+     "resalte": "un toque",
+     "inicio": 26.662,
+     "fin": 27.49
+    }
+   ]
+  },
+  {
+   "escena": "precio",
+   "inicio": 27.81,
+   "fin": 35.173,
+   "subtitulos": [
+    {
+     "texto": "$450.000 de instalación",
+     "resalte": "$450.000",
+     "inicio": 27.81,
+     "fin": 30.56
+    },
+    {
+     "texto": "$59.000 al mes",
+     "resalte": "$59.000",
+     "inicio": 30.56,
+     "fin": 32.545
+    },
+    {
+     "texto": "y el saldo lo paga",
+     "resalte": "",
+     "inicio": 32.545,
+     "fin": 33.62
+    },
+    {
+     "texto": "cuando lo vea funcionando",
+     "resalte": "funcionando",
+     "inicio": 33.62,
+     "fin": 35.173
+    }
+   ]
+  },
+  {
+   "escena": "llamado",
+   "inicio": 35.493,
+   "fin": 39.655,
+   "subtitulos": [
+    {
+     "texto": "Toque el timbre:",
+     "resalte": "el timbre",
+     "inicio": 35.493,
+     "fin": 36.453
+    },
+    {
+     "texto": "escríbanos por WhatsApp",
+     "resalte": "",
+     "inicio": 36.453,
+     "fin": 37.753
+    },
+    {
+     "texto": "y pruebe un pedido usted mismo",
+     "resalte": "pruebe un pedido",
+     "inicio": 37.753,
+     "fin": 39.655
+    }
+   ]
+  }
+ ],
+ "duracion": 42.055
+}

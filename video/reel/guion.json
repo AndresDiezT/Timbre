@@ -1,0 +1,79 @@
+{
+  "_nota": "Guion del reel con voz. Cada subtítulo dice qué se ve («texto») y qué dice la voz («dice»). La voz de cada línea es la unión de sus «dice». Si cambia algo, vuelva a generar la voz: python3 scripts/voz/generar.py",
+  "voz": { "estilo": "M5", "velocidad": 1.1, "pausa": 0.32, "inicio": 0.25, "final": 2.4 },
+  "lineas": [
+    {
+      "escena": "gancho",
+      "subtitulos": [
+        { "texto": "Este pedido llegó", "dice": "Este pedido llegó", "resalte": "pedido" },
+        { "texto": "casi a las 11 de la noche", "dice": "casi a las once de la noche,", "resalte": "11 de la noche" },
+        { "texto": "con el negocio cerrado", "dice": "con el negocio cerrado.", "resalte": "cerrado" }
+      ]
+    },
+    {
+      "escena": "problema",
+      "subtitulos": [
+        { "texto": "Sin Timbre,", "dice": "Sin Timbre," },
+        { "texto": "el cliente pregunta…", "dice": "el cliente pregunta…" },
+        { "texto": "y nadie le responde", "dice": "y nadie le responde.", "resalte": "nadie" }
+      ]
+    },
+    {
+      "escena": "giro",
+      "subtitulos": [
+        { "texto": "Con Timbre,", "dice": "Con Timbre,", "resalte": "Timbre" },
+        { "texto": "nadie se queda sin respuesta", "dice": "nadie se queda sin respuesta.", "resalte": "sin respuesta" }
+      ]
+    },
+    {
+      "escena": "pedido",
+      "subtitulos": [
+        { "texto": "Su cliente arma el pedido", "dice": "Su cliente arma el pedido", "resalte": "arma el pedido" },
+        { "texto": "desde el celular", "dice": "desde el celular," },
+        { "texto": "y a usted le llega completo", "dice": "y a usted le llega completo", "resalte": "completo" },
+        { "texto": "a su WhatsApp,", "dice": "a su WhatsApp," },
+        { "texto": "con el total", "dice": "con el total.", "resalte": "total" }
+      ]
+    },
+    {
+      "escena": "comisiones",
+      "subtitulos": [
+        { "texto": "Sin comisiones", "dice": "Sin comisiones", "resalte": "Sin comisiones" },
+        { "texto": "por pedido", "dice": "por pedido." }
+      ]
+    },
+    {
+      "escena": "automatico",
+      "subtitulos": [
+        { "texto": "Y si ya cerró,", "dice": "Y si ya cerró," },
+        { "texto": "su WhatsApp contesta al instante", "dice": "su WhatsApp contesta al instante.", "resalte": "al instante" }
+      ]
+    },
+    {
+      "escena": "citas",
+      "subtitulos": [
+        { "texto": "¿Trabaja con citas?", "dice": "¿Trabaja con citas?", "resalte": "citas" },
+        { "texto": "Eligen servicio, día y hora", "dice": "Sus clientes eligen servicio, día y hora," },
+        { "texto": "y usted confirma", "dice": "y usted confirma" },
+        { "texto": "con un toque", "dice": "con un toque.", "resalte": "un toque" }
+      ]
+    },
+    {
+      "escena": "precio",
+      "subtitulos": [
+        { "texto": "$450.000 de instalación", "dice": "Cuatrocientos cincuenta mil pesos de instalación,", "resalte": "$450.000" },
+        { "texto": "$59.000 al mes", "dice": "cincuenta y nueve mil al mes,", "resalte": "$59.000" },
+        { "texto": "y el saldo lo paga", "dice": "y el saldo lo paga" },
+        { "texto": "cuando lo vea funcionando", "dice": "cuando lo vea funcionando.", "resalte": "funcionando" }
+      ]
+    },
+    {
+      "escena": "llamado",
+      "subtitulos": [
+        { "texto": "Toque el timbre:", "dice": "Toque el timbre:", "resalte": "el timbre" },
+        { "texto": "escríbanos por WhatsApp", "dice": "escríbanos por WhatsApp" },
+        { "texto": "y pruebe un pedido usted mismo", "dice": "y pruebe un pedido usted mismo.", "resalte": "pruebe un pedido" }
+      ]
+    }
+  ]
+}

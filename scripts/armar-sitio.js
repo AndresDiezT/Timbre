@@ -16,6 +16,8 @@ function publicar(rel) {
   if (EXCLUIR.has(partes[0])) return false;
   if (rel.endsWith('.md')) return false;
   if (partes[0] === 'negocios' && partes[1] === 'privado') return false;
+  if (partes[0] === 'scripts' && partes[1] === 'voz') return false; /* el modelo de voz pesa 145 MB y no hace falta en el sitio */
+  if (partes.includes('__pycache__')) return false;
   if (partes[0] === 'entregas' && partes.length > 1 && !partes[1].startsWith('ejemplo-')) return false;
   return true;
 }

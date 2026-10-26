@@ -84,8 +84,8 @@ timbre/
 │   └── privado/               Clientes reales: en .gitignore, nunca se publica
 ├── entregas/                  Salida del generador (solo se versionan las de ejemplo)
 ├── timbre-whatsapp/           Textos e imágenes de catálogo del WhatsApp de Timbre
-├── video/                     Reel listo (salida/), su animación y sonido (reel/), página para compartir (index.html),
-│                              guiones, subtítulos .srt y cómo grabar con el simulador
+├── video/                     Reel con voz listo (salida/), su guion, voz, animación y sonido (reel/), página para
+│                              compartir (index.html), guiones, subtítulos .srt y cómo grabar con el simulador
 ├── automatizaciones/
 │   ├── n8n/                   E1–E5: workflows JSON importables + guía nodo por nodo y credenciales
 │   ├── make/guia-e1-e3.md     E1–E3 en Make, módulo por módulo, con créditos estimados (100 leads/mes)
@@ -107,6 +107,7 @@ timbre/
 │   ├── generar.js             Crea la entrega completa de un cliente
 │   ├── catalogo-timbre.js     Imágenes de los planes para el catálogo del WhatsApp de Timbre
 │   ├── video.js               Renderiza el reel a MP4 (Playwright + ffmpeg)
+│   ├── voz/                   Voz en off con Supertonic 3 (onnxruntime): arma el modelo y genera voz y tiempos
 │   ├── lib/imagenes.js        PNG y QR con resvg
 │   └── fuentes/               Anton y Figtree (OFL) para dibujar las imágenes
 ├── .github/workflows/pages.yml

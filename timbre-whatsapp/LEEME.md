@@ -48,7 +48,7 @@ Hola, gracias por escribir a Timbre.
 Este mensaje le llegó solo, al instante: así respondería el WhatsApp de su negocio.
 
 Vea los planes y la demostración aquí: https://timbre-demo.netlify.app/
-Video de 37 segundos: https://timbre-demo.netlify.app/video/
+Video de 42 segundos: https://timbre-demo.netlify.app/video/
 
 Si una asesora lo visitó, escriba el código que aparece en su tarjeta. Cuéntenos qué negocio tiene y le respondemos en un momento.
 
@@ -94,7 +94,7 @@ Pruébelo aquí: https://timbre-demo.netlify.app/#probar
 **/video**
 
 ```
-Aquí puede ver en 37 segundos cómo le llegan los pedidos y las reservas a un negocio con Timbre: https://timbre-demo.netlify.app/video/
+Aquí puede ver en 42 segundos cómo le llegan los pedidos y las reservas a un negocio con Timbre: https://timbre-demo.netlify.app/video/
 
 Y aquí puede armar un pedido de prueba usted mismo y ver cómo le llega al negocio: https://timbre-demo.netlify.app/#probar
 ```

@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>Timbre · Reel 9:16</title>
+  <title>Timbre · Reel 9:16 con voz</title>
   <meta name="robots" content="noindex">
   <style>
     /* Fuentes locales (las mismas del generador) para que el video salga igual sin internet. */
@@ -10,240 +10,267 @@
     @font-face { font-family: "Figtree"; font-weight: 400 500; src: url("../../scripts/fuentes/Figtree-Regular.ttf") format("truetype"); }
     @font-face { font-family: "Figtree"; font-weight: 600 700; src: url("../../scripts/fuentes/Figtree-Bold.ttf") format("truetype"); }
     @font-face { font-family: "Figtree"; font-weight: 800 900; src: url("../../scripts/fuentes/Figtree-ExtraBold.ttf") format("truetype"); }
-    /* Reel de Timbre: 1080 × 1920, animación determinista. window.render(t) dibuja el segundo t.
-       Zonas seguras de Reels/TikTok: texto clave entre y=240 y y=1480. */
-    :root { --amarillo: #FFC933; --tinta: #16202A; --papel: #FFFDF5; --gris: #8A939C; --acento: #C2410C; }
+    /* Reel de Timbre con voz: 1080 × 1920, estilo oscuro. window.render(t) dibuja el segundo t.
+       Los tiempos salen de tiempos.json (la voz) a través de eventos.js.
+       Zonas seguras de Reels/TikTok: lo importante entre y=240 y y=1480. */
+    :root { --amarillo: #FFC933; --tinta: #16202A; --fondo: #0E141A; --papel: #FFFDF5; --acento: #C2410C; --azul: #1F5FBF; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--tinta); }
-    body { font-family: "Figtree", sans-serif; color: var(--tinta); }
-    #escena { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: var(--tinta); }
-    .capa { position: absolute; inset: 0; }
+    html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--fondo); }
+    body { font-family: "Figtree", sans-serif; color: #fff; }
+    #escena { position: relative; width: 1080px; height: 1920px; overflow: hidden; background: var(--fondo); }
     .abs { position: absolute; will-change: transform, opacity; }
-    .anton { font-family: "Anton", sans-serif; text-transform: uppercase; letter-spacing: .01em; line-height: .95; }
-    .centro { left: 0; right: 0; text-align: center; }
 
-    /* Fondos */
-    #fondo-papel { background: var(--papel); }
-    #fondo-amarillo { background: var(--amarillo); }
-    #ola { width: 200px; height: 200px; border-radius: 50%; background: var(--amarillo); left: 440px; top: 430px; }
+    #luz { left: -210px; top: 380px; width: 1500px; height: 1500px; border-radius: 50%; background: radial-gradient(closest-side, rgba(255, 201, 51, .26), rgba(255, 201, 51, .08) 55%, rgba(255, 201, 51, 0)); }
+    #marca { left: 60px; top: 104px; display: flex; align-items: center; gap: 16px; font-family: "Anton"; font-size: 50px; text-transform: uppercase; letter-spacing: .02em; }
+    #marca i { width: 62px; height: 62px; border-radius: 50%; background: var(--amarillo); display: grid; place-items: center; }
+    #demo { right: 60px; top: 126px; font-size: 24px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: rgba(255, 255, 255, .55); }
 
-    /* Textos grandes */
-    .titulo { font-size: 112px; padding: 0 70px; }
-    .titulo--claro { color: var(--papel); }
-    .titulo--amarillo { color: var(--amarillo); }
-    .sub { font-size: 46px; font-weight: 700; padding: 0 90px; line-height: 1.2; }
-    .sub--claro { color: #E8E2D0; }
-    .resalte { box-shadow: inset 0 -.32em 0 var(--amarillo); }
-    .pildora { display: inline-block; background: var(--amarillo); border: 6px solid var(--tinta); border-radius: 999px; padding: 10px 40px; font-weight: 800; font-size: 46px; letter-spacing: .04em; text-transform: uppercase; }
-    .sello { font-family: "Anton", sans-serif; font-size: 92px; text-transform: uppercase; background: var(--amarillo); border: 8px solid var(--tinta); border-radius: 26px; padding: 14px 48px; box-shadow: 14px 14px 0 var(--tinta); }
-
-    /* Notificación genérica */
-    .noti { left: 90px; width: 900px; background: #FFFFFF; border-radius: 36px; padding: 30px 36px; display: grid; grid-template-columns: 96px 1fr; gap: 26px; align-items: center; box-shadow: 0 30px 80px rgba(0,0,0,.45); }
-    .noti__icono { width: 96px; height: 96px; border-radius: 26px; background: var(--amarillo); border: 5px solid var(--tinta); display: grid; place-items: center; }
-    .noti__icono svg { width: 60px; height: 60px; }
-    .noti__app { font-size: 30px; font-weight: 700; color: #59636E; }
-    .noti__titulo { font-size: 44px; font-weight: 800; line-height: 1.1; }
-    .noti__texto { font-size: 34px; color: #3A4552; }
-
-    /* Campanita con ondas */
-    .campana { width: 220px; height: 220px; border-radius: 50%; background: var(--amarillo); border: 8px solid var(--tinta); display: grid; place-items: center; }
-    .campana svg { width: 130px; height: 130px; transform-origin: 50% 12%; }
-    .onda { position: absolute; inset: -8px; border-radius: 50%; border: 10px solid var(--amarillo); opacity: 0; }
-
-    /* Burbujas de chat (estilo propio de Timbre) */
-    .burbuja { font-size: 42px; line-height: 1.3; background: #FFFFFF; border: 5px solid var(--tinta); border-radius: 38px; padding: 22px 32px 18px; max-width: 760px; }
-    .burbuja--cliente { background: #F6E3D8; border-bottom-right-radius: 10px; }
-    .burbuja--negocio { border-bottom-left-radius: 10px; }
-    .burbuja__pie { display: flex; justify-content: flex-end; gap: 14px; align-items: center; font-size: 26px; color: #56616D; margin-top: 6px; font-weight: 700; }
-    .chip-auto { background: var(--amarillo); color: var(--tinta); border-radius: 999px; padding: 2px 16px; font-weight: 800; }
-    .espera { font-size: 34px; font-weight: 800; color: #FF8A7A; border: 4px dashed #FF8A7A; border-radius: 999px; padding: 6px 26px; }
+    /* Subtítulos */
+    #subs { left: 50px; right: 50px; top: 248px; height: 260px; display: flex; align-items: center; justify-content: center; text-align: center; }
+    #subs p { font-weight: 900; font-size: 92px; line-height: 1.04; text-transform: uppercase; letter-spacing: -.01em; }
+    #subs span { display: inline-block; white-space: pre; }
+    #subs .si { color: var(--amarillo); }
 
     /* Teléfono */
-    #telefono { left: 150px; top: 760px; width: 780px; height: 1600px; background: var(--tinta); border: 6px solid #3A4757; border-radius: 96px; padding: 22px; box-shadow: 22px 22px 0 var(--amarillo); }
-    .tel__pantalla { width: 100%; height: 100%; border-radius: 76px; overflow: hidden; background: #F1ECDE; position: relative; }
-    .tel__estado { height: 70px; background: var(--acento); color: #fff; display: flex; justify-content: space-between; align-items: center; padding: 18px 56px 0; font-size: 30px; font-weight: 800; }
-    .tel__cabecera { background: var(--acento); color: #fff; display: flex; align-items: center; gap: 22px; padding: 14px 36px 28px; }
-    .tel__avatar { width: 92px; height: 92px; border-radius: 50%; background: #fff; color: var(--acento); display: grid; place-items: center; font-family: "Anton"; font-size: 38px; }
-    .tel__nombre { font-size: 40px; font-weight: 800; }
-    .tel__demo { font-size: 26px; opacity: .9; }
-    .tel__chat { position: relative; padding: 30px 30px; }
-    .tel__chat .abs { left: 30px; right: 30px; }
-    .pedido { background: #F6E3D8; border: 5px solid var(--tinta); border-radius: 36px; border-bottom-right-radius: 10px; padding: 24px 30px 18px; margin-left: 90px; }
-    .pedido__titulo { font-size: 32px; font-weight: 800; margin-bottom: 10px; }
-    .pedido table { width: 100%; border-collapse: collapse; font-size: 34px; }
-    .pedido td { padding: 8px 4px; border-top: 2px solid rgba(22,32,42,.2); }
-    .pedido td:last-child { text-align: right; font-weight: 800; white-space: nowrap; }
-    .pedido tr.total td { border-top: 4px solid var(--tinta); font-weight: 800; font-size: 38px; }
-    .pedido__datos { font-size: 28px; margin-top: 10px; line-height: 1.35; }
-    .escribiendo { display: inline-flex; gap: 12px; background: #fff; border: 5px solid var(--tinta); border-radius: 36px; padding: 26px 32px; }
-    .escribiendo i { width: 18px; height: 18px; border-radius: 50%; background: #6B7580; }
+    #tel-caja { left: 190px; top: 600px; width: 700px; height: 1420px; perspective: 2400px; }
+    #tel { width: 700px; height: 1420px; border-radius: 96px; padding: 20px; background: #0A0E12; box-shadow: -36px 56px 120px rgba(0, 0, 0, .55), inset 0 0 0 3px #2A3540; transform-style: preserve-3d; }
+    .pantalla { width: 660px; height: 1380px; border-radius: 78px; overflow: hidden; background: #EDE8DF; position: relative; color: var(--tinta); }
+    .isla { position: absolute; top: 22px; left: 50%; margin-left: -95px; width: 190px; height: 54px; border-radius: 30px; background: #0A0E12; z-index: 9; }
+    .pant { position: absolute; inset: 0; }
+    .estado { height: 92px; display: flex; justify-content: space-between; align-items: flex-end; padding: 0 58px 12px; font-weight: 800; font-size: 28px; color: #fff; }
+    #oscurecer { position: absolute; inset: 0; background: #000; opacity: 0; z-index: 8; }
 
-    /* Mini página del negocio */
-    .tienda { left: 110px; width: 860px; background: #fff; border: 7px solid var(--tinta); border-radius: 44px; overflow: hidden; box-shadow: 18px 18px 0 var(--amarillo); }
-    .tienda__barra { background: var(--acento); color: #fff; display: flex; align-items: center; gap: 18px; padding: 22px 30px; font-size: 36px; font-weight: 800; }
-    .tienda__logo { width: 62px; height: 62px; border-radius: 14px; background: #fff; color: var(--acento); display: grid; place-items: center; font-family: "Anton"; font-size: 28px; }
-    .tienda__demo { margin-left: auto; font-size: 22px; background: var(--amarillo); color: var(--tinta); border: 3px solid var(--tinta); border-radius: 999px; padding: 2px 14px; text-transform: uppercase; letter-spacing: .04em; }
-    .tienda__cuerpo { padding: 26px 30px 32px; display: grid; gap: 18px; }
-    .item { display: grid; grid-template-columns: 90px 1fr auto; gap: 20px; align-items: center; border: 4px solid var(--tinta); border-radius: 26px; padding: 14px; }
-    .item__foto { width: 90px; height: 90px; border-radius: 18px; background: var(--acento); color: #fff; display: grid; place-items: center; font-family: "Anton"; font-size: 42px; }
-    .item__nombre { font-size: 36px; font-weight: 800; line-height: 1.1; }
-    .item__precio { font-size: 32px; color: #47525E; font-weight: 700; }
-    .cant { display: flex; align-items: center; gap: 16px; font-size: 40px; font-weight: 800; }
-    .cant b { width: 66px; height: 66px; border-radius: 50%; border: 5px solid var(--tinta); display: grid; place-items: center; font-size: 40px; line-height: 1; }
-    .cant b.mas { background: var(--acento); color: #fff; border-color: var(--acento); }
-    .tienda__total { display: flex; justify-content: space-between; align-items: baseline; font-size: 40px; font-weight: 800; padding-top: 6px; }
-    .tienda__total span:last-child { font-family: "Anton"; font-size: 72px; font-weight: 400; }
-    .boton-enviar { background: var(--acento); color: #fff; border: 6px solid var(--tinta); border-radius: 26px; text-align: center; font-size: 40px; font-weight: 800; padding: 26px; }
-    .opciones { display: flex; flex-wrap: wrap; gap: 16px; }
-    .opcion { border: 5px solid var(--tinta); border-radius: 999px; padding: 14px 30px; font-size: 36px; font-weight: 800; background: #fff; }
-    .opcion.sel { background: var(--tinta); color: var(--papel); }
-    .etiqueta { font-size: 30px; font-weight: 800; color: #47525E; text-transform: uppercase; letter-spacing: .05em; }
+    /* Pantalla bloqueada */
+    #s-bloqueo { background: #121A22; color: #fff; }
+    #s-bloqueo .circulo { position: absolute; border-radius: 50%; border: 3px solid rgba(255, 201, 51, .16); }
+    .bl-fecha { position: absolute; top: 150px; left: 0; right: 0; text-align: center; font-size: 36px; font-weight: 700; color: rgba(255, 255, 255, .85); }
+    .bl-hora { position: absolute; top: 196px; left: 0; right: 0; text-align: center; font-size: 210px; font-weight: 400; letter-spacing: -.02em; line-height: 1; }
+    #bl-aviso { left: 30px; right: 30px; top: 470px; background: rgba(255, 255, 255, .94); color: var(--tinta); border-radius: 38px; padding: 26px 28px; display: grid; grid-template-columns: 84px 1fr; gap: 22px; align-items: center; box-shadow: 0 20px 50px rgba(0, 0, 0, .35); }
+    .icono-app { width: 84px; height: 84px; border-radius: 22px; background: var(--amarillo); display: grid; place-items: center; }
+    .av-app { font-size: 24px; font-weight: 700; color: #5B6570; display: flex; justify-content: space-between; }
+    .av-titulo { font-size: 34px; font-weight: 800; line-height: 1.15; }
+    .av-texto { font-size: 27px; color: #3A4552; line-height: 1.25; }
 
-    /* Toque */
-    .toque { width: 110px; height: 110px; border-radius: 50%; border: 8px solid var(--tinta); background: rgba(255, 201, 51, .55); }
+    /* Chat del dueño (estilo propio de Timbre) */
+    .chat { background: #EDE8DF; }
+    .chat .estado, .chat-cab { background: var(--tinta); }
+    .chat-cab { display: flex; align-items: center; gap: 20px; padding: 14px 30px 22px; color: #fff; }
+    .avatar { width: 80px; height: 80px; border-radius: 50%; display: grid; place-items: center; font-family: "Anton"; font-size: 36px; color: var(--tinta); background: #F6D9C8; }
+    .chat-cab b { display: block; font-size: 36px; }
+    .chat-cab small { font-size: 24px; opacity: .75; }
+    .cuerpo { position: absolute; left: 0; right: 0; top: 212px; bottom: 0; padding: 0 26px; }
+    .msj { position: absolute; max-width: 570px; background: #fff; border-radius: 30px; padding: 22px 28px 16px; font-size: 38px; line-height: 1.26; box-shadow: 0 2px 0 rgba(0, 0, 0, .06); }
+    .msj--entra { left: 26px; border-top-left-radius: 8px; }
+    .msj--sale { right: 26px; background: #FFF0C2; border-top-right-radius: 8px; }
+    .msj small { display: flex; justify-content: flex-end; gap: 12px; align-items: center; font-size: 24px; color: #6B747C; margin-top: 6px; font-weight: 700; }
+    .chip-auto { background: var(--tinta); color: var(--amarillo); border-radius: 999px; padding: 2px 14px; font-weight: 800; }
+    .sin-respuesta { left: 0; right: 0; margin: 0 auto; width: max-content; background: #FFE3DD; color: #A1271B; border: 3px solid #E7A096; border-radius: 999px; padding: 10px 28px; font-size: 30px; font-weight: 800; }
+    .tarjeta-pedido { width: 590px; max-width: 590px; }
+    .tp-titulo { font-size: 26px; font-weight: 800; color: #5B6570; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 6px; }
+    .tarjeta-pedido table { width: 100%; border-collapse: collapse; font-size: 34px; }
+    .tarjeta-pedido td { padding: 7px 0; border-top: 2px solid rgba(0, 0, 0, .08); }
+    .tarjeta-pedido td:last-child { text-align: right; font-weight: 800; white-space: nowrap; }
+    .tarjeta-pedido tr.total td { font-size: 42px; font-weight: 800; border-top: 3px solid var(--tinta); }
+    .dato { font-size: 29px; color: #47525E; margin-top: 8px; line-height: 1.3; }
+    .rapidas { left: 26px; right: 26px; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    .rapidas span { width: 100%; font-size: 26px; font-weight: 800; color: #5B6570; text-transform: uppercase; letter-spacing: .05em; }
+    .rapidas b { font-size: 32px; background: #fff; border: 3px solid var(--tinta); border-radius: 999px; padding: 10px 24px; }
 
-    /* Precios */
-    .precio { font-family: "Anton"; font-size: 230px; line-height: 1; }
-    .linea { font-size: 52px; font-weight: 800; }
-    .linea small { display: block; font-size: 38px; font-weight: 700; }
+    /* Página del negocio (lo que ve el cliente) */
+    .web { background: #fff; }
+    .web-cab { display: flex; align-items: center; gap: 18px; padding: 10px 30px 24px; color: #fff; }
+    .web-logo { width: 70px; height: 70px; border-radius: 18px; background: #fff; display: grid; place-items: center; font-family: "Anton"; font-size: 30px; }
+    .web-cab b { font-size: 36px; display: block; }
+    .web-demo { font-size: 20px; font-weight: 800; background: var(--amarillo); color: var(--tinta); border-radius: 999px; padding: 3px 14px; text-transform: uppercase; letter-spacing: .05em; }
+    .web-cuerpo { padding: 30px 30px; display: grid; gap: 20px; }
+    .web-h { font-size: 40px; font-weight: 800; }
+    .item { display: grid; grid-template-columns: 96px 1fr auto; gap: 20px; align-items: center; border: 3px solid #E4DED2; border-radius: 26px; padding: 16px; }
+    .item-foto { width: 96px; height: 96px; border-radius: 20px; display: grid; place-items: center; font-family: "Anton"; font-size: 44px; color: #fff; background: var(--acento); }
+    .item b { font-size: 32px; display: block; line-height: 1.15; }
+    .item small { font-size: 28px; color: #5B6570; font-weight: 700; }
+    .cant { display: flex; align-items: center; gap: 14px; font-size: 36px; font-weight: 800; }
+    .cant i { width: 62px; height: 62px; border-radius: 50%; border: 4px solid var(--tinta); display: grid; place-items: center; font-style: normal; font-size: 36px; line-height: 1; }
+    .cant i.mas { background: var(--acento); border-color: var(--acento); color: #fff; }
+    .web-total { display: flex; justify-content: space-between; align-items: baseline; font-size: 36px; font-weight: 800; border-top: 3px solid var(--tinta); padding-top: 16px; }
+    .web-total span:last-child { font-family: "Anton"; font-weight: 400; font-size: 68px; }
+    .boton { border-radius: 24px; text-align: center; font-size: 36px; font-weight: 800; padding: 26px; color: #fff; }
+    .etiqueta { font-size: 26px; font-weight: 800; color: #5B6570; text-transform: uppercase; letter-spacing: .06em; }
+    .opciones { display: flex; flex-wrap: wrap; gap: 14px; }
+    .opcion { border: 4px solid var(--tinta); border-radius: 999px; padding: 14px 26px; font-size: 32px; font-weight: 800; }
+    .opcion.sel { background: var(--tinta); color: #fff; }
 
-    /* Etiqueta de demostración permanente */
-    #marca-agua { right: 40px; top: 1500px; font-size: 24px; font-weight: 800; color: rgba(255,253,245,.75); letter-spacing: .06em; text-transform: uppercase; }
+    .toque { position: absolute; width: 110px; height: 110px; margin: -55px 0 0 -55px; border-radius: 50%; border: 7px solid var(--amarillo); background: rgba(255, 201, 51, .35); z-index: 7; opacity: 0; }
+
+    /* Giro: la campanita */
+    .campana { width: 260px; height: 260px; border-radius: 50%; background: var(--amarillo); display: grid; place-items: center; box-shadow: 0 0 0 10px rgba(255, 201, 51, .15); }
+    .campana svg { width: 150px; height: 150px; transform-origin: 50% 12%; }
+    .onda { position: absolute; inset: 0; border-radius: 50%; border: 8px solid var(--amarillo); opacity: 0; }
+    #g-campana { left: 410px; top: 820px; }
+    #g-marca { left: 0; right: 0; top: 1130px; text-align: center; font-family: "Anton"; font-size: 150px; text-transform: uppercase; letter-spacing: .02em; }
+
+    /* Sello */
+    #sello { left: 0; right: 0; margin: 0 auto; width: max-content; top: 1040px; background: var(--amarillo); color: var(--tinta); border-radius: 30px; padding: 22px 54px 26px; text-align: center; box-shadow: 0 30px 70px rgba(0, 0, 0, .45); }
+    #sello b { display: block; font-family: "Anton"; font-weight: 400; font-size: 120px; line-height: 1; text-transform: uppercase; }
+    #sello span { font-size: 40px; font-weight: 800; }
+
+    /* Precio */
+    .centro { left: 0; right: 0; text-align: center; }
+    .pildora { display: inline-block; background: var(--amarillo); color: var(--tinta); border-radius: 999px; padding: 12px 36px; font-weight: 900; font-size: 40px; letter-spacing: .05em; text-transform: uppercase; }
+    #p-precio { top: 560px; font-family: "Anton"; font-size: 250px; line-height: 1; color: var(--amarillo); }
+    #p-inst { top: 830px; font-size: 52px; font-weight: 800; }
+    #p-mes { top: 950px; font-family: "Anton"; font-size: 120px; line-height: 1; }
+    #p-mes small { font-family: "Figtree"; font-size: 52px; font-weight: 800; }
+    .lista { left: 150px; right: 120px; display: flex; gap: 24px; align-items: center; font-size: 44px; font-weight: 800; }
+    .lista i { flex: none; width: 54px; height: 54px; border-radius: 14px; background: var(--amarillo); display: grid; place-items: center; }
+    #p-saldo { left: 90px; right: 90px; top: 1380px; border: 5px solid var(--amarillo); border-radius: 30px; padding: 26px 30px; text-align: center; font-size: 48px; font-weight: 900; line-height: 1.15; text-transform: uppercase; }
+    #p-saldo em { font-style: normal; color: var(--amarillo); }
+
+    /* Llamado */
+    #f-campana { left: 410px; top: 420px; }
+    #f-titulo { top: 760px; font-family: "Anton"; font-size: 180px; line-height: .95; text-transform: uppercase; }
+    #f-titulo em { font-style: normal; color: var(--amarillo); }
+    #f-numero { top: 1130px; }
+    #f-numero .pildora { font-size: 60px; padding: 18px 48px; letter-spacing: .02em; }
+    #f-web { top: 1290px; font-size: 44px; font-weight: 700; line-height: 1.3; color: rgba(255, 255, 255, .92); }
+    #f-web b { color: #fff; font-weight: 900; }
+    #f-nota { top: 1460px; font-size: 26px; font-weight: 700; color: rgba(255, 255, 255, .55); }
   </style>
 </head>
 <body>
 <div id="escena">
-  <div id="fondo-papel" class="capa"></div>
-  <div id="fondo-amarillo" class="capa"></div>
-  <div id="ola" class="abs"></div>
+  <div id="luz" class="abs"></div>
+  <div id="marca" class="abs"><i><svg viewBox="16 13 32 38" width="34" height="34"><path fill="#16202A" d="M32 14c-1.7 0-3 1.3-3 3v1.2c-6 1.4-9.5 6.6-9.5 12.8v7.5L16 43v2h32v-2l-3.5-4.5V31c0-6.2-3.5-11.4-9.5-12.8V17c0-1.7-1.3-3-3-3z"/><path fill="#16202A" d="M27 47.5a5 5 0 0 0 10 0z"/></svg></i>Timbre</div>
+  <p id="demo" class="abs">Demostración</p>
 
-  <!-- 1. Gancho -->
-  <div id="g-noti" class="abs noti" style="top:470px">
-    <div class="noti__icono"><svg id="g-noti-campana" style="transform-origin:50% 12%" viewBox="16 13 32 38"><path fill="#16202A" d="M32 14c-1.7 0-3 1.3-3 3v1.2c-6 1.4-9.5 6.6-9.5 12.8v7.5L16 43v2h32v-2l-3.5-4.5V31c0-6.2-3.5-11.4-9.5-12.8V17c0-1.7-1.3-3-3-3z"/><path fill="#16202A" d="M27 47.5a5 5 0 0 0 10 0z"/></svg></div>
-    <div><p class="noti__app" id="g-app">WhatsApp del negocio · 9:47 p. m.</p><p class="noti__titulo" id="g-noti-titulo">Nuevo pedido · Total $90.000</p><p class="noti__texto" id="g-noti-texto">1 × Pollo asado · 2 × Medio pollo · Domicilio</p></div>
-  </div>
-  <p id="g-titulo" class="abs anton titulo titulo--amarillo centro" style="top:800px">Este pedido llegó<br>a las 9:47 p. m.</p>
-  <p id="g-sub" class="abs sub sub--claro centro" style="top:1120px">con el negocio cerrado<br>y sin nadie pendiente del celular</p>
+  <div id="tel-caja" class="abs">
+    <div id="tel">
+      <div class="pantalla" id="pantalla">
+        <div class="isla"></div>
 
-  <!-- 2. Problema -->
-  <p id="p-titulo1" class="abs anton titulo titulo--claro centro" style="top:300px">Su cliente pregunta…</p>
-  <p id="p-titulo2" class="abs anton titulo titulo--amarillo centro" style="top:300px">…y nadie le responde</p>
-  <div id="p-b1" class="abs burbuja burbuja--cliente" style="right:90px;top:620px">¿Siguen abiertos?</div>
-  <div id="p-b2" class="abs burbuja burbuja--cliente" style="right:90px;top:800px">¿Hacen domicilio?</div>
-  <div id="p-b3" class="abs burbuja burbuja--cliente" style="right:90px;top:980px">¿Cuánto vale el pollo entero?</div>
-  <p id="p-espera" class="abs espera" style="left:0;right:0;margin:0 auto;width:max-content;top:1200px">Sin respuesta · <span id="p-horas">0</span> horas</p>
-
-  <!-- 3. Giro: la campanita -->
-  <div id="c-campana" class="abs campana" style="left:430px;top:420px"><span class="onda"></span><span class="onda"></span><span class="onda"></span><svg viewBox="16 13 32 38"><path fill="#16202A" d="M32 14c-1.7 0-3 1.3-3 3v1.2c-6 1.4-9.5 6.6-9.5 12.8v7.5L16 43v2h32v-2l-3.5-4.5V31c0-6.2-3.5-11.4-9.5-12.8V17c0-1.7-1.3-3-3-3z"/><path fill="#16202A" d="M27 47.5a5 5 0 0 0 10 0z"/></svg></div>
-  <p id="c-marca" class="abs anton centro" style="top:700px;font-size:190px">Timbre</p>
-  <p id="c-lema" class="abs anton centro titulo" style="top:930px;font-size:96px"><span class="resalte">Nadie se queda</span><br>sin respuesta</p>
-
-  <!-- 4. Pedido -->
-  <p id="d-titulo1" class="abs anton titulo centro" style="top:260px">Su cliente arma<br>el pedido</p>
-  <div id="d-tienda" class="abs tienda" style="top:560px">
-    <div class="tienda__barra"><span class="tienda__logo">AF</span>Asadero El Fogón<span class="tienda__demo">Demostración</span></div>
-    <div class="tienda__cuerpo">
-      <div class="item"><span class="item__foto">P</span><span><span class="item__nombre">Pollo asado entero</span><br><span class="item__precio">$42.000</span></span><span class="cant"><b>−</b><span id="d-c1">0</span><b class="mas">+</b></span></div>
-      <div class="item"><span class="item__foto">M</span><span><span class="item__nombre">Medio pollo</span><br><span class="item__precio">$24.000</span></span><span class="cant"><b>−</b><span id="d-c2">0</span><b class="mas">+</b></span></div>
-      <div class="item"><span class="item__foto">J</span><span><span class="item__nombre">Jugo natural</span><br><span class="item__precio">$6.000</span></span><span class="cant"><b>−</b><span>0</span><b class="mas">+</b></span></div>
-      <div class="tienda__total"><span>Total</span><span id="d-total">$0</span></div>
-      <div class="boton-enviar" id="d-enviar">Enviar pedido por WhatsApp</div>
-    </div>
-  </div>
-  <div id="toque" class="abs toque"></div>
-  <p id="d-titulo2" class="abs anton titulo centro" style="top:270px;font-size:96px">Y le llega completo,<br><span class="resalte">con el total</span></p>
-  <div id="d-sello" class="abs sello" style="left:0;right:0;margin:0 auto;width:max-content;top:545px">Sin comisiones</div>
-
-  <!-- Teléfono (pedido y respuesta automática) -->
-  <div id="telefono" class="abs">
-    <div class="tel__pantalla">
-      <div class="tel__estado"><span>9:47 p. m.</span><span>●●●●</span></div>
-      <div class="tel__cabecera"><span class="tel__avatar">AF</span><div><p class="tel__nombre">Asadero El Fogón</p><p class="tel__demo">Demostración de Timbre · negocio ficticio</p></div></div>
-      <div class="tel__chat">
-        <div id="t-pedido" class="abs pedido" style="top:30px">
-          <p class="pedido__titulo">Pedido desde la página</p>
-          <table><tr><td>1 × Pollo asado entero</td><td>$42.000</td></tr><tr><td>2 × Medio pollo</td><td>$48.000</td></tr><tr class="total"><td>Total</td><td>$90.000</td></tr></table>
-          <p class="pedido__datos">Entrega: Domicilio · Pago: Nequi<br>A nombre de: Laura</p>
+        <!-- Pantalla bloqueada -->
+        <div id="s-bloqueo" class="pant">
+          <span class="circulo" style="width:900px;height:900px;left:-120px;top:700px"></span>
+          <span class="circulo" style="width:600px;height:600px;left:30px;top:850px"></span>
+          <div class="estado"><span></span><span>●●●</span></div>
+          <p class="bl-fecha">Martes, 28 de octubre</p>
+          <p class="bl-hora">10:58</p>
+          <div id="bl-aviso" class="abs">
+            <span class="icono-app"><svg viewBox="16 13 32 38" width="48" height="48"><path fill="#16202A" d="M32 14c-1.7 0-3 1.3-3 3v1.2c-6 1.4-9.5 6.6-9.5 12.8v7.5L16 43v2h32v-2l-3.5-4.5V31c0-6.2-3.5-11.4-9.5-12.8V17c0-1.7-1.3-3-3-3z"/><path fill="#16202A" d="M27 47.5a5 5 0 0 0 10 0z"/></svg></span>
+            <div><p class="av-app"><span>WhatsApp del negocio</span><span>10:58 p. m.</span></p><p class="av-titulo">Nuevo pedido · $90.000</p><p class="av-texto">1 × Pollo asado entero · 2 × Medio pollo · Domicilio</p></div>
+          </div>
         </div>
-        <div id="t-escribiendo" class="abs" style="top:520px"><span class="escribiendo"><i></i><i></i><i></i></span></div>
-        <div id="t-auto" class="abs burbuja burbuja--negocio" style="top:520px;max-width:620px">Gracias por su pedido. Ya cerramos por hoy: se lo confirmamos mañana a las 11:00 a. m.<div class="burbuja__pie"><span class="chip-auto">Automático</span><span>9:47 p. m.</span></div></div>
+
+        <!-- Chat sin Timbre: preguntas sin respuesta -->
+        <div id="s-chat1" class="pant chat">
+          <div class="estado"><span>10:58</span><span>●●●</span></div>
+          <div class="chat-cab"><span class="avatar">L</span><div><b>Laura</b><small>Cliente</small></div></div>
+          <div class="cuerpo">
+            <div id="c1-m1" class="abs msj msj--entra" style="top:40px">¿Siguen abiertos?<small>10:41 p. m.</small></div>
+            <div id="c1-m2" class="abs msj msj--entra" style="top:210px">¿Hacen domicilio?<small>10:44 p. m.</small></div>
+            <div id="c1-m3" class="abs msj msj--entra" style="top:380px">¿Hola?<small>10:58 p. m.</small></div>
+            <p id="c1-sin" class="abs sin-respuesta" style="top:590px">Sin respuesta</p>
+          </div>
+        </div>
+
+        <!-- Página del negocio: pedido -->
+        <div id="s-tienda" class="pant web">
+          <div class="estado" style="background:var(--acento)"><span>10:58</span><span>●●●</span></div>
+          <div class="web-cab" style="background:var(--acento)"><span class="web-logo" style="color:var(--acento)">AF</span><div><b>Asadero El Fogón</b><span class="web-demo">Demostración</span></div></div>
+          <div class="web-cuerpo">
+            <p class="web-h">Arme su pedido</p>
+            <div class="item"><span class="item-foto">P</span><span><b>Pollo asado entero</b><small>$42.000</small></span><span class="cant"><i>−</i><span id="t-c1">0</span><i class="mas" id="t-mas1">+</i></span></div>
+            <div class="item"><span class="item-foto">M</span><span><b>Medio pollo</b><small>$24.000</small></span><span class="cant"><i>−</i><span id="t-c2">0</span><i class="mas" id="t-mas2">+</i></span></div>
+            <div class="item"><span class="item-foto">J</span><span><b>Jugo natural</b><small>$6.000</small></span><span class="cant"><i>−</i><span>0</span><i class="mas">+</i></span></div>
+            <div class="web-total"><span>Total</span><span id="t-total">$0</span></div>
+            <div class="boton" id="t-enviar" style="background:var(--acento)">Enviar pedido por WhatsApp</div>
+          </div>
+        </div>
+
+        <!-- Chat con Timbre: llega el pedido y responde solo -->
+        <div id="s-chat2" class="pant chat">
+          <div class="estado"><span>10:58</span><span>●●●</span></div>
+          <div class="chat-cab"><span class="avatar">L</span><div><b>Laura</b><small>Cliente</small></div></div>
+          <div class="cuerpo">
+            <div id="c2-pedido" class="abs msj msj--entra tarjeta-pedido" style="top:36px">
+              <p class="tp-titulo">Pedido desde la página</p>
+              <table><tr><td>1 × Pollo asado entero</td><td>$42.000</td></tr><tr><td>2 × Medio pollo</td><td>$48.000</td></tr><tr class="total" id="c2-total"><td>Total</td><td>$90.000</td></tr></table>
+              <p class="dato">Domicilio · Pago: Nequi<br>A nombre de: Laura</p>
+              <small>10:58 p. m.</small>
+            </div>
+            <div id="c2-auto" class="abs msj msj--sale" style="top:520px">Gracias por su pedido. Ya cerramos por hoy: se lo confirmamos mañana a las 11:00 a. m.<small><span class="chip-auto">Automático</span>10:58 p. m.</small></div>
+          </div>
+        </div>
+
+        <!-- Página del negocio: reserva -->
+        <div id="s-reserva" class="pant web">
+          <div class="estado" style="background:var(--azul)"><span>9:15</span><span>●●●</span></div>
+          <div class="web-cab" style="background:var(--azul)"><span class="web-logo" style="color:var(--azul)">BD</span><div><b>Barbería Don Fígaro</b><span class="web-demo">Demostración</span></div></div>
+          <div class="web-cuerpo">
+            <p class="web-h">Pida su cita</p>
+            <p class="etiqueta">Servicio</p>
+            <div class="opciones"><span class="opcion">Corte clásico</span><span class="opcion" id="r-servicio">Corte y barba</span></div>
+            <p class="etiqueta">Día y hora</p>
+            <div class="opciones"><span class="opcion" id="r-hora">Mañana · 10:00 a. m.</span><span class="opcion">Mañana · 3:00 p. m.</span></div>
+            <div class="boton" id="r-enviar" style="background:var(--azul);margin-top:14px">Enviar solicitud</div>
+          </div>
+        </div>
+
+        <!-- Chat de la barbería: confirmar con un toque -->
+        <div id="s-chat3" class="pant chat">
+          <div class="estado"><span>9:16</span><span>●●●</span></div>
+          <div class="chat-cab"><span class="avatar" style="background:#D6E2F6">J</span><div><b>Julián</b><small>Cliente</small></div></div>
+          <div class="cuerpo">
+            <div id="c3-pedido" class="abs msj msj--entra tarjeta-pedido" style="top:36px">
+              <p class="tp-titulo">Solicitud de reserva</p>
+              <p style="font-size:34px;font-weight:800">Corte y barba</p>
+              <p class="dato" style="font-size:30px">Mañana, 10:00 a. m.<br>A nombre de: Julián</p>
+              <small>9:16 a. m.</small>
+            </div>
+            <div id="c3-ok" class="abs msj msj--sale" style="top:470px">Confirmada. ¡Lo esperamos mañana a las 10:00 a. m.!<small>9:16 a. m.</small></div>
+            <div id="c3-rapidas" class="abs rapidas" style="top:300px"><span>Respuestas rápidas</span><b id="c3-confirmar">/confirmar</b><b>/reprogramar</b></div>
+          </div>
+        </div>
+
+        <div id="oscurecer"></div>
+        <div id="toque" class="toque"></div>
       </div>
     </div>
   </div>
-  <p id="a-titulo" class="abs anton titulo centro" style="top:260px">Y le responde<br><span class="resalte">al instante</span></p>
-  <p id="a-sub" class="abs sub centro" style="top:520px">aunque usted ya haya cerrado</p>
 
-  <!-- 6. Reservas -->
-  <p id="r-titulo1" class="abs anton titulo centro" style="top:260px">¿Trabaja<br>con citas?</p>
-  <p id="r-titulo2" class="abs anton titulo centro" style="top:260px">Eligen servicio,<br>día y hora</p>
-  <div id="r-tienda" class="abs tienda" style="top:600px">
-    <div class="tienda__barra" style="background:#1F5FBF"><span class="tienda__logo" style="color:#1F5FBF">BD</span>Barbería Don Fígaro<span class="tienda__demo">Demostración</span></div>
-    <div class="tienda__cuerpo">
-      <p class="etiqueta">Servicio</p>
-      <div class="opciones"><span class="opcion" id="r-o1">Corte clásico</span><span class="opcion" id="r-o2">Corte y barba</span></div>
-      <p class="etiqueta">Día y hora</p>
-      <div class="opciones"><span class="opcion" id="r-o3">Mañana · 10:00 a. m.</span><span class="opcion">Mañana · 3:00 p. m.</span></div>
-      <div class="boton-enviar" id="r-enviar" style="background:#1F5FBF">Enviar solicitud</div>
-    </div>
-  </div>
-  <div id="r-llega" class="abs pedido" style="left:150px;width:780px;top:640px;margin:0;background:#DCE6F7">
-    <p class="pedido__titulo">Solicitud de reserva</p>
-    <p class="pedido__datos" style="font-size:34px">Corte y barba · Mañana, 10:00 a. m.<br>A nombre de: Julián</p>
-  </div>
-  <p id="r-rapida" class="abs centro" style="top:1000px"><span class="opcion" style="background:var(--tinta);color:var(--papel)">Respuesta rápida: /confirmar</span></p>
-  <div id="r-confirma" class="abs burbuja burbuja--negocio" style="left:110px;top:960px">Confirmada. ¡Lo esperamos!<div class="burbuja__pie"><span class="chip-auto" style="background:var(--tinta);color:var(--papel)">/confirmar</span></div></div>
-  <p id="r-titulo3" class="abs anton titulo centro" style="top:260px">Y usted confirma<br><span class="resalte">con un toque</span></p>
+  <!-- Giro -->
+  <div id="g-campana" class="abs campana"><span class="onda"></span><span class="onda"></span><span class="onda"></span><svg viewBox="16 13 32 38"><path fill="#16202A" d="M32 14c-1.7 0-3 1.3-3 3v1.2c-6 1.4-9.5 6.6-9.5 12.8v7.5L16 43v2h32v-2l-3.5-4.5V31c0-6.2-3.5-11.4-9.5-12.8V17c0-1.7-1.3-3-3-3z"/><path fill="#16202A" d="M27 47.5a5 5 0 0 0 10 0z"/></svg></div>
+  <p id="g-marca" class="abs">Timbre</p>
 
-  <!-- 7. Oferta -->
-  <p id="o-plan" class="abs centro" style="top:300px"><span class="pildora">Pedidos o Reservas</span></p>
-  <p id="o-precio" class="abs precio centro" style="top:460px">$0</p>
-  <p id="o-l1" class="abs linea centro" style="top:740px">instalación + $59.000 al mes</p>
-  <p id="o-l2" class="abs linea centro" style="top:880px">Listo en 5 días hábiles</p>
-  <p id="o-l3" class="abs linea centro" style="top:1020px;padding:0 90px">El saldo lo paga<br>cuando lo vea funcionando</p>
-  <p id="o-l4" class="abs linea centro" style="top:1270px;font-size:40px">Sin comisiones · Sin permanencia</p>
+  <div id="sello" class="abs"><b>Sin comisiones</b><span>$0 por pedido</span></div>
 
-  <!-- 8. Llamado -->
-  <div id="f-campana" class="abs campana" style="left:430px;top:330px"><span class="onda"></span><span class="onda"></span><span class="onda"></span><svg viewBox="16 13 32 38"><path fill="#16202A" d="M32 14c-1.7 0-3 1.3-3 3v1.2c-6 1.4-9.5 6.6-9.5 12.8v7.5L16 43v2h32v-2l-3.5-4.5V31c0-6.2-3.5-11.4-9.5-12.8V17c0-1.7-1.3-3-3-3z"/><path fill="#16202A" d="M27 47.5a5 5 0 0 0 10 0z"/></svg></div>
-  <p id="f-titulo" class="abs anton centro" style="top:620px;font-size:150px">Toque<br>el timbre</p>
-  <p id="f-numero" class="abs centro" style="top:960px"><span class="pildora" style="font-size:58px;padding:16px 46px">WhatsApp 314 331 9442</span></p>
-  <p id="f-web" class="abs linea centro" style="top:1130px;font-size:40px">Pruebe un pedido en<br>timbre-demo.netlify.app</p>
-  <p id="f-nota" class="abs centro" style="top:1340px;font-size:28px;font-weight:700;color:#47525E">Demostración con negocios ficticios</p>
+  <!-- Precio -->
+  <p id="p-plan" class="abs centro" style="top:440px"><span class="pildora">Pedidos o Reservas</span></p>
+  <p id="p-precio" class="abs centro">$450.000</p>
+  <p id="p-inst" class="abs centro">de instalación</p>
+  <p id="p-mes" class="abs centro">+ $59.000 <small>al mes</small></p>
+  <p id="p-l1" class="abs lista" style="top:1130px"><i><svg viewBox="0 0 24 24" width="34" height="34"><path fill="none" stroke="#16202A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/></svg></i>Listo en 5 días hábiles</p>
+  <p id="p-l2" class="abs lista" style="top:1220px"><i><svg viewBox="0 0 24 24" width="34" height="34"><path fill="none" stroke="#16202A" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/></svg></i>Sin comisiones · sin permanencia</p>
+  <p id="p-saldo" class="abs">El saldo lo paga <em>cuando lo vea funcionando</em></p>
 
-  <p id="marca-agua" class="abs">Timbre</p>
+  <!-- Llamado -->
+  <div id="f-campana" class="abs campana"><span class="onda"></span><span class="onda"></span><span class="onda"></span><svg viewBox="16 13 32 38"><path fill="#16202A" d="M32 14c-1.7 0-3 1.3-3 3v1.2c-6 1.4-9.5 6.6-9.5 12.8v7.5L16 43v2h32v-2l-3.5-4.5V31c0-6.2-3.5-11.4-9.5-12.8V17c0-1.7-1.3-3-3-3z"/><path fill="#16202A" d="M27 47.5a5 5 0 0 0 10 0z"/></svg></div>
+  <p id="f-titulo" class="abs centro">Toque<br>el <em>timbre</em></p>
+  <p id="f-numero" class="abs centro"><span class="pildora">WhatsApp 314 331 9442</span></p>
+  <p id="f-web" class="abs centro">Pruebe un pedido en<br><b>timbre-demo.netlify.app</b></p>
+  <p id="f-nota" class="abs centro">Demostración con negocios ficticios · Voz generada con IA</p>
+
+  <div id="subs" class="abs"></div>
 </div>
 
+<script src="eventos.js"></script>
 <script>
-  const DURACION = 37.5;
-
-  /* Ganchos para probar (los primeros 3 segundos). ?gancho=2 en la URL o node scripts/video.js --gancho 2.
-     Todos cuentan algo que el producto sí hace. */
-  const GANCHOS = {
-    1: { app: 'WhatsApp del negocio · 9:47 p. m.', aviso: 'Nuevo pedido · Total $90.000', detalle: '1 × Pollo asado · 2 × Medio pollo · Domicilio',
-         titulo: 'Este pedido llegó<br>a las 9:47 p. m.', sub: 'con el negocio cerrado<br>y sin nadie pendiente del celular' },
-    2: { app: 'WhatsApp del negocio · 9:47 p. m.', aviso: 'Nuevo pedido · Total $90.000', detalle: '1 × Pollo asado · 2 × Medio pollo · Domicilio',
-         titulo: 'Pedidos por WhatsApp<br>sin pagar comisión', sub: 'y le llegan completos,<br>con el total', tam: 100 },
-    3: { app: 'WhatsApp del negocio · 4 mensajes', aviso: 'Cliente · 4 audios sin escuchar', detalle: '¿Me manda el menú? · ¿Cuánto es todo?',
-         titulo: '¿Sus pedidos llegan<br>en 4 audios?', tam: 104, sub: 'Mire cómo le pueden llegar:<br>completos y con el total' },
-    4: { app: 'WhatsApp de la barbería · 11:20 p. m.', aviso: 'Solicitud de reserva', detalle: 'Corte y barba · Mañana, 10:00 a. m. · Julián',
-         titulo: 'Esta cita llegó<br>a las 11:20 p. m.', sub: 'lista para confirmar<br>con un toque' },
-    5: { app: 'WhatsApp del negocio · 9:47 p. m.', aviso: 'Cliente nuevo', detalle: '¿Siguen abiertos? Quiero hacer un pedido',
-         titulo: '¿Quién le contesta<br>a este cliente?', tam: 104, sub: 'Son las 9:47 p. m.<br>y usted ya cerró' }
-  };
-  const gancho = GANCHOS[new URLSearchParams(location.search).get('gancho')] || GANCHOS[1];
-  document.getElementById('g-app').textContent = gancho.app;
-  document.getElementById('g-noti-titulo').textContent = gancho.aviso;
-  document.getElementById('g-noti-texto').textContent = gancho.detalle;
-  document.getElementById('g-titulo').innerHTML = gancho.titulo;
-  document.getElementById('g-titulo').style.fontSize = (gancho.tam || 112) + 'px';
-  document.getElementById('g-sub').innerHTML = gancho.sub;
   const $ = (id) => document.getElementById(id);
   const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v));
   const prog = (t, a, b) => clamp((t - a) / (b - a));
   const E = {
     out: (x) => 1 - Math.pow(1 - x, 3),
     inOut: (x) => (x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2),
-    back: (x) => { const c = 1.70158, c3 = c + 1; return 1 + c3 * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); },
-    in: (x) => x * x * x
+    back: (x) => { const c = 1.70158, c3 = c + 1; return 1 + c3 * Math.pow(x - 1, 3) + c * Math.pow(x - 1, 2); }
   };
   const pesos = (v) => '$' + String(Math.round(v)).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 
@@ -253,150 +280,223 @@
     el.style.visibility = o <= 0.001 ? 'hidden' : 'visible';
     el.style.transform = `translate(${x}px, ${y}px) scale(${s}) rotate(${r}deg)`;
   }
-  /* Elemento visible entre a y b: entra subiendo y sale desvaneciéndose. */
-  function ventana(el, t, a, b, { entrada = 0.45, salida = 0.3, dy = 60, escala = false } = {}) {
+  /* Visible entre a y b: entra subiendo (o creciendo) y sale desvaneciéndose. */
+  function ventana(el, t, a, b, { entrada = 0.4, salida = 0.3, dy = 50, escala = false } = {}) {
+    if (t < a || t > b) return poner(el, { o: 0 });
     const pi = E.out(prog(t, a, a + entrada));
     const po = prog(t, b - salida, b);
-    if (t < a || t > b) return poner(el, { o: 0 });
     poner(el, { o: pi * (1 - po), y: (1 - pi) * dy, s: escala ? 0.85 + 0.15 * E.back(prog(t, a, a + entrada)) : 1 });
+  }
+  /* Aparece en a con un pequeño rebote y se queda. */
+  function aparece(el, t, a, { dy = 30, escala = 0.8 } = {}) {
+    if (t < a) return poner(el, { o: 0 });
+    const k = E.back(prog(t, a, a + 0.35));
+    poner(el, { o: clamp(prog(t, a, a + 0.2)), y: (1 - clamp(k)) * dy, s: escala + (1 - escala) * k });
   }
   function campana(id, t, golpe) {
     const el = $(id);
-    const svg = el.querySelector('svg');
     const d = t - golpe;
-    const ang = d >= 0 && d < 1 ? Math.sin(d * 22) * 18 * Math.exp(-d * 4) : 0;
-    svg.style.transform = `rotate(${ang}deg)`;
+    el.querySelector('svg').style.transform = `rotate(${d >= 0 && d < 1.2 ? Math.sin(d * 22) * 18 * Math.exp(-d * 3.5) : 0}deg)`;
     el.querySelectorAll('.onda').forEach((o, i) => {
-      const k = d - i * 0.18;
-      if (k >= 0 && k < 1.1) { o.style.opacity = 0.95 * (1 - k / 1.1); o.style.transform = `scale(${1 + 1.7 * (k / 1.1)})`; }
-      else { o.style.opacity = 0; }
+      const k = d - i * 0.2;
+      if (k >= 0 && k < 1.2) { o.style.opacity = 0.9 * (1 - k / 1.2); o.style.transform = `scale(${1 + 1.9 * (k / 1.2)})`; }
+      else o.style.opacity = 0;
     });
   }
-  function toque(t, a, x, y) {
-    const k = prog(t, a - 0.25, a + 0.35);
-    if (t < a - 0.25 || t > a + 0.35) return false;
-    const s = k < 0.4 ? 1.3 - 0.5 * (k / 0.4) : 0.8 + 0.4 * ((k - 0.4) / 0.6);
-    poner('toque', { o: k < 0.85 ? 1 : (1 - k) / 0.15, x: x - 55, y: y - 55, s });
-    return true;
+  /* Centro de un elemento en coordenadas de la pantalla del teléfono (sin contar el giro 3D). */
+  function centro(el) {
+    let x = el.offsetWidth / 2, y = el.offsetHeight / 2;
+    for (let n = el; n && n.id !== 'pantalla'; n = n.offsetParent) { x += n.offsetLeft; y += n.offsetTop; }
+    return [x, y];
   }
 
-  window.DURACION = DURACION;
+  let EV = null, SUB_ACTUAL = null, TAPS = [];
+  const SUBS = [];
+  const SIN_SUBTITULOS = ['precio', 'llamado'];
+
+  function prepararSubtitulos(tiempos) {
+    tiempos.lineas.forEach((l) => {
+      if (SIN_SUBTITULOS.includes(l.escena)) return;
+      l.subtitulos.forEach((s, i) => {
+        const siguiente = l.subtitulos[i + 1];
+        SUBS.push({ ...s, hasta: siguiente ? siguiente.inicio : l.fin + 0.3 });
+      });
+    });
+  }
+  /* Subtítulo actual, palabra por palabra, con las palabras clave en amarillo. */
+  function pintarSubtitulo(t) {
+    const caja = $('subs');
+    const sub = SUBS.filter((s, i) => (i === 0 || t >= s.inicio - 0.04) && t < s.hasta).pop() || null;
+    if (sub !== SUB_ACTUAL) {
+      SUB_ACTUAL = sub;
+      caja.innerHTML = '';
+      if (!sub) return;
+      const p = document.createElement('p');
+      const r0 = sub.resalte ? sub.texto.toLowerCase().indexOf(sub.resalte.toLowerCase()) : -1;
+      const r1 = r0 + (sub.resalte || '').length;
+      let pos = 0;
+      sub.texto.split(' ').forEach((palabra, i, todas) => {
+        const span = document.createElement('span');
+        span.textContent = palabra + (i < todas.length - 1 ? ' ' : '');
+        if (r0 >= 0 && pos < r1 && pos + palabra.length > r0) span.className = 'si';
+        pos += palabra.length + 1;
+        p.appendChild(span);
+      });
+      caja.appendChild(p);
+    }
+    if (!sub) return;
+    const palabras = caja.querySelectorAll('span');
+    const paso = Math.min(0.11, (sub.hasta - sub.inicio) * 0.5 / palabras.length);
+    const desde = sub === SUBS[0] ? -1 : sub.inicio; /* el primer cuadro ya muestra el gancho completo */
+    palabras.forEach((w, i) => {
+      const k = prog(t, desde + i * paso, desde + i * paso + 0.2);
+      w.style.opacity = k;
+      w.style.transform = `translateY(${(1 - E.out(k)) * 24}px) scale(${0.9 + 0.1 * E.back(k)})`;
+    });
+    caja.style.opacity = 1 - prog(t, sub.hasta - 0.12, sub.hasta);
+  }
+
+  /* Cambios de pantalla: el teléfono gira de canto y vuelve con la otra pantalla. */
+  function pantallas(t) {
+    const cambios = [
+      [EV.problema - 0.25, 's-bloqueo', 's-chat1'],
+      [EV.giroTel, 's-tienda', 's-chat2'],
+      [EV.citas, 's-chat2', 's-reserva'],
+      [EV.giroCita, 's-reserva', 's-chat3']
+    ];
+    let actual = t < EV.pedido - 0.15 ? 's-bloqueo' : 's-tienda';
+    let giro = 0;
+    for (const [a, de, hacia] of cambios) {
+      if (t >= a + 0.25) actual = hacia;
+      else if (t >= a) actual = de;
+      if (t >= a && t < a + 0.5) giro = Math.sin(Math.PI * prog(t, a, a + 0.5)) * 88;
+    }
+    if (t >= EV.pedido - 0.15 && t < EV.giroTel) actual = 's-tienda';
+    ['s-bloqueo', 's-chat1', 's-tienda', 's-chat2', 's-reserva', 's-chat3'].forEach((id) => { $(id).style.visibility = id === actual ? 'visible' : 'hidden'; });
+    return giro;
+  }
+
+  function toques(t) {
+    const activo = TAPS.find(([a]) => t >= a - 0.22 && t < a + 0.35);
+    if (!activo) return poner('toque', { o: 0 });
+    const [a, el] = activo;
+    const [x, y] = centro($(el));
+    const k = prog(t, a - 0.22, a + 0.35);
+    const s = k < 0.4 ? 1.3 - 0.55 * (k / 0.4) : 0.75 + 0.45 * ((k - 0.4) / 0.6);
+    const toque = $('toque');
+    toque.style.left = x + 'px';
+    toque.style.top = y + 'px';
+    toque.style.visibility = 'visible';
+    toque.style.opacity = k < 0.8 ? 1 : (1 - k) / 0.2;
+    toque.style.transform = `scale(${s})`;
+  }
+
   window.render = function (t) {
-    /* Fondos: oscuro (problema) → amarillo que llena con la campanita → papel (solución) → amarillo (oferta) → papel (llamado) → oscuro (vuelve al inicio). */
-    const olaK = E.in(prog(t, 7.0, 7.8));
-    poner('ola', { o: t >= 6.95 && t < 8.6 ? 1 : 0, s: 0.01 + olaK * 24 });
-    poner('fondo-amarillo', { o: (t >= 7.8 && t < 8.3 ? 1 - prog(t, 8.0, 8.3) : 0) + (t >= 27.3 && t < 32.6 ? prog(t, 27.3, 27.6) * (1 - prog(t, 32.3, 32.6)) : 0) });
-    poner('fondo-papel', { o: (t >= 7.8 && t < 37.0) ? (t < 8.0 ? 0 : 1 - prog(t, 36.8, 37.0)) : 0 });
-    const oscuro = t < 7.8 || t >= 36.8;
-    $('marca-agua').style.color = oscuro ? 'rgba(255,253,245,.7)' : 'rgba(22,32,42,.55)';
-    poner('marca-agua', { o: t > 0.2 ? 1 : 0 });
+    const ev = EV;
+    /* Luz detrás del teléfono: se apaga con el problema y se enciende con el timbre. */
+    const apagada = prog(t, ev.nadie - 0.2, ev.nadie + 0.4) * (1 - prog(t, ev.timbre - 0.05, ev.timbre + 0.25));
+    const destello = t >= ev.timbre ? Math.exp(-(t - ev.timbre) * 2.2) : 0;
+    const luzFinal = 1 - prog(t, ev.duracion - 0.6, ev.duracion);
+    poner('luz', { o: (0.9 - 0.75 * apagada + 0.5 * destello) * luzFinal, s: 1 + 0.25 * destello + 0.03 * Math.sin(t * 1.3) });
 
-    /* 1. Gancho (0–2,7 s) y regreso para el bucle (36,8–37,5 s) */
-    const fin = prog(t, 36.9, 37.5);
-    const notiGolpe = t - 0.03;
-    $('g-noti-campana').style.transform = `rotate(${notiGolpe >= 0 && notiGolpe < 1 ? Math.sin(notiGolpe * 22) * 18 * Math.exp(-notiGolpe * 4) : 0}deg)`;
-    if (t < 2.7) {
-      /* El primer cuadro ya muestra la notificación (es el mismo del final, para que el bucle no se note). */
-      poner('g-noti', { o: 1 - prog(t, 2.4, 2.7), s: 1 + 0.05 * Math.sin(Math.PI * prog(t, 0, 0.35)) });
-      ventana('g-titulo', t, 0.2, 2.7, { escala: true, entrada: 0.35 });
-      ventana('g-sub', t, 0.75, 2.7);
-    } else if (t >= 36.9) {
-      poner('g-noti', { o: E.out(fin), y: (1 - E.out(fin)) * -260 });
-      poner('g-titulo', { o: 0 }); poner('g-sub', { o: 0 });
-    } else { ['g-noti', 'g-titulo', 'g-sub'].forEach((id) => poner(id, { o: 0 })); }
+    /* Teléfono: presente salvo en el giro, en el precio y en el llamado. */
+    const sale1 = E.inOut(prog(t, ev.giro - 0.1, ev.giro + 0.35));
+    const entra2 = E.out(prog(t, ev.pedido - 0.15, ev.pedido + 0.4));
+    const sale2 = E.inOut(prog(t, ev.precio - 0.15, ev.precio + 0.3));
+    let ty, visible;
+    if (t < ev.pedido - 0.15) { ty = sale1 * 1300; visible = 1 - sale1; }
+    else { ty = (1 - entra2) * 1300 + sale2 * 1300; visible = entra2 * (1 - sale2); }
+    const giro = pantallas(t);
+    const empuje = 1 + 0.035 * E.inOut(prog(t, 0, ev.problema));
+    const ry = -12 + 3 * Math.sin(t * 0.55) + giro;
+    const rx = 4 + 1.5 * Math.sin(t * 0.4 + 1);
+    $('tel-caja').style.opacity = visible;
+    $('tel-caja').style.visibility = visible <= 0.001 ? 'hidden' : 'visible';
+    $('tel-caja').style.transform = `translateY(${ty}px) scale(${t < ev.pedido ? empuje : 1})`;
+    $('tel').style.transform = `rotateY(${ry}deg) rotateX(${rx}deg) rotateZ(-2deg)`;
 
-    /* 2. Problema (2,7–7,0 s) */
-    ventana('p-titulo1', t, 2.75, 4.9, { dy: 40 });
-    ventana('p-titulo2', t, 4.9, 7.0, { dy: 40, escala: true });
-    ventana('p-b1', t, 3.0, 7.0, { dy: 80 });
-    ventana('p-b2', t, 3.55, 7.0, { dy: 80 });
-    ventana('p-b3', t, 4.1, 7.0, { dy: 80 });
-    ventana('p-espera', t, 4.9, 7.0, { escala: true });
-    $('p-horas').textContent = Math.round(1 + 10 * E.out(prog(t, 4.9, 6.3)));
+    /* 1. Gancho: aviso en la pantalla bloqueada (ya visible en el primer cuadro). */
+    const av = E.back(prog(t, 0, 0.3));
+    poner('bl-aviso', { o: 1, y: (1 - clamp(av)) * -30, s: 0.97 + 0.03 * clamp(av) });
 
-    /* 3. Giro: la campanita (6,6–9,0 s) */
-    const cK = E.back(prog(t, 6.55, 7.0));
-    poner('c-campana', { o: t >= 6.55 && t < 9.0 ? clamp(cK) * (1 - prog(t, 8.7, 9.0)) : 0, s: 0.4 + 0.6 * cK });
-    campana('c-campana', t, 6.9);
-    ventana('c-marca', t, 7.9, 9.0, { escala: true });
-    ventana('c-lema', t, 8.15, 9.0, { dy: 40 });
+    /* 2. Problema: preguntas sin respuesta */
+    aparece('c1-m1', t, ev.msj1);
+    aparece('c1-m2', t, ev.msj2);
+    aparece('c1-m3', t, ev.msj3);
+    aparece('c1-sin', t, ev.nadie + 0.1, { escala: 0.6 });
+    $('oscurecer').style.opacity = 0.35 * prog(t, ev.nadie, ev.nadie + 0.5) * (t < ev.giro + 0.4 ? 1 : 0);
 
-    /* 4. Pedido (9,0–17,4 s) */
-    ventana('d-titulo1', t, 9.0, 13.5, { dy: 40 });
-    const tienda = E.out(prog(t, 9.05, 9.55));
-    const vuelo = E.inOut(prog(t, 12.9, 13.5));
-    if (t >= 9.05 && t < 13.5) poner('d-tienda', { o: tienda * (1 - vuelo), y: (1 - tienda) * 120 + vuelo * 700, s: 1 - 0.55 * vuelo });
-    else poner('d-tienda', { o: 0 });
-    const c1 = t >= 10.25 ? 1 : 0;
-    const c2 = t >= 11.35 ? 2 : t >= 10.85 ? 1 : 0;
-    $('d-c1').textContent = c1; $('d-c2').textContent = c2;
-    /* El total sube de un valor al siguiente con cada toque: 0 → 42.000 → 66.000 → 90.000. */
-    const pasos = [[10.25, 0, 42000], [10.85, 42000, 66000], [11.35, 66000, 90000]];
+    /* 3. Giro: la campanita */
+    const gk = E.back(prog(t, ev.giro, ev.giro + 0.45));
+    const gfin = prog(t, ev.pedido - 0.35, ev.pedido);
+    poner('g-campana', { o: t >= ev.giro && t < ev.pedido ? clamp(gk) * (1 - gfin) : 0, s: 0.4 + 0.6 * gk });
+    campana('g-campana', t, ev.timbre);
+    ventana('g-marca', t, ev.timbre + 0.3, ev.pedido, { escala: true });
+
+    /* 4. Pedido en la página del negocio */
+    $('t-c1').textContent = t >= ev.toque1 ? 1 : 0;
+    $('t-c2').textContent = t >= ev.toque3 ? 2 : t >= ev.toque2 ? 1 : 0;
+    const pasos = [[ev.toque1, 0, 42000], [ev.toque2, 42000, 66000], [ev.toque3, 66000, 90000]];
     const paso = pasos.filter((p) => t >= p[0]).pop();
-    $('d-total').textContent = pesos(paso ? paso[1] + (paso[2] - paso[1]) * E.out(prog(t, paso[0], paso[0] + 0.4)) : 0);
-    let tocando = toque(t, 10.25, 882, 762) || toque(t, 10.85, 882, 906) || toque(t, 11.35, 882, 906) || toque(t, 12.55, 540, 1320);
-    if (!tocando) poner('toque', { o: 0 });
-    $('d-enviar').style.filter = t >= 12.5 && t < 12.8 ? 'brightness(1.25)' : 'none';
+    $('t-total').textContent = pesos(paso ? paso[1] + (paso[2] - paso[1]) * E.out(prog(t, paso[0], paso[0] + 0.35)) : 0);
+    $('t-enviar').style.filter = t >= ev.enviar - 0.05 && t < ev.enviar + 0.25 ? 'brightness(1.3)' : 'none';
+    aparece('c2-pedido', t, ev.llegaPedido, { escala: 0.7 });
+    const brillo = t >= ev.total ? Math.max(0, 1 - (t - ev.total) / 1.2) : 0;
+    $('c2-total').style.background = `rgba(255, 201, 51, ${0.85 * brillo})`;
 
-    /* Teléfono: entra con el pedido, se queda para la respuesta automática y sale */
-    const telIn = E.out(prog(t, 13.1, 13.7));
-    const telOut = E.inOut(prog(t, 21.2, 21.7));
-    poner('telefono', { o: t >= 13.1 && t < 21.7 ? 1 : 0, y: (1 - telIn) * 900 + telOut * 1100 });
-    const pK = E.back(prog(t, 13.75, 14.15));
-    poner('t-pedido', { o: t >= 13.75 ? clamp(pK) : 0, s: 0.7 + 0.3 * pK });
-    ventana('d-titulo2', t, 13.5, 17.4, { dy: 40 });
-    const sK = E.back(prog(t, 15.5, 15.85));
-    poner('d-sello', { o: t >= 15.5 && t < 17.4 ? clamp(sK) * (1 - prog(t, 17.1, 17.4)) : 0, s: 2 - sK, r: -6 });
+    /* 5. Sin comisiones */
+    const sk = E.back(prog(t, ev.comisiones, ev.comisiones + 0.35));
+    const sfin = prog(t, ev.escribiendo - 0.35, ev.escribiendo);
+    poner('sello', { o: t >= ev.comisiones && t < ev.escribiendo ? clamp(sk * 1.5) * (1 - sfin) : 0, s: 1.8 - 0.8 * sk, r: -5 });
 
-    /* 5. Respuesta automática (17,4–21,4 s) */
-    ventana('a-titulo', t, 17.45, 21.3, { dy: 40 });
-    ventana('a-sub', t, 17.8, 21.3, { dy: 30 });
-    poner('t-escribiendo', { o: t >= 17.6 && t < 18.5 ? 1 : 0 });
-    document.querySelectorAll('#t-escribiendo i').forEach((p, i) => { p.style.transform = `translateY(${Math.sin((t * 9) - i * 0.9) * -8}px)`; });
-    const aK = E.out(prog(t, 18.5, 18.9));
-    poner('t-auto', { o: t >= 18.5 ? aK : 0, y: (1 - aK) * 40 });
+    /* 6. Respuesta automática */
+    aparece('c2-auto', t, ev.respuesta, { escala: 0.75 });
 
-    /* 6. Reservas (21,5–27,4 s) */
-    ventana('r-titulo1', t, 21.55, 22.9, { dy: 40, escala: true });
-    ventana('r-titulo2', t, 22.9, 25.4, { dy: 40 });
-    ventana('r-titulo3', t, 25.4, 27.4, { dy: 40 });
-    const rK = E.out(prog(t, 21.7, 22.2));
-    const rOut = prog(t, 27.0, 27.4);
-    const rVuelo = E.inOut(prog(t, 24.55, 25.05));
-    poner('r-tienda', { o: t >= 21.7 && t < 25.05 ? rK * (1 - rVuelo) : 0, y: (1 - rK) * 120 + rVuelo * 700, s: 1 - 0.55 * rVuelo });
-    $('r-o2').classList.toggle('sel', t >= 23.25);
-    $('r-o3').classList.toggle('sel', t >= 23.85);
-    if (!tocando) tocando = toque(t, 23.25, 604, 835) || toque(t, 23.85, 353, 989) || toque(t, 24.4, 540, 1200);
-    if (!tocando) poner('toque', { o: 0 });
-    const llK = E.back(prog(t, 25.0, 25.4));
-    poner('r-llega', { o: t >= 25.0 && t < 27.4 ? clamp(llK) * (1 - rOut) : 0, s: 0.7 + 0.3 * llK });
-    ventana('r-rapida', t, 25.45, 26.3, { dy: 30, salida: 0.2 });
-    if (!tocando) tocando = toque(t, 25.95, 540, 1022);
-    if (!tocando) poner('toque', { o: 0 });
-    const cfK = E.out(prog(t, 26.2, 26.6));
-    poner('r-confirma', { o: t >= 26.2 && t < 27.4 ? cfK * (1 - rOut) : 0, y: (1 - cfK) * 40 });
+    /* 7. Citas */
+    $('r-servicio').classList.toggle('sel', t >= ev.toqueServicio);
+    $('r-hora').classList.toggle('sel', t >= ev.toqueHora);
+    $('r-enviar').style.filter = t >= ev.toqueEnviarCita - 0.05 && t < ev.toqueEnviarCita + 0.25 ? 'brightness(1.3)' : 'none';
+    aparece('c3-pedido', t, ev.llegaCita, { escala: 0.7 });
+    aparece('c3-rapidas', t, ev.llegaCita + 0.3, { dy: 30, escala: 0.9 });
+    $('c3-confirmar').style.background = t >= ev.toqueConfirmar && t < ev.confirmada + 0.3 ? 'var(--amarillo)' : '';
+    aparece('c3-ok', t, ev.confirmada, { escala: 0.75 });
+    toques(t);
 
-    /* 7. Oferta (27,4–32,5 s) */
-    ventana('o-plan', t, 27.55, 32.5, { dy: 40 });
-    const prK = E.out(prog(t, 27.8, 28.8));
-    poner('o-precio', { o: t >= 27.8 && t < 32.5 ? Math.min(1, prK * 2) * (1 - prog(t, 32.2, 32.5)) : 0, s: 0.9 + 0.1 * prK });
-    $('o-precio').textContent = pesos(Math.round(450000 * prK / 1000) * 1000);
-    ventana('o-l1', t, 28.6, 32.5, { dy: 40 });
-    ventana('o-l2', t, 29.4, 32.5, { dy: 40 });
-    ventana('o-l3', t, 30.2, 32.5, { dy: 40 });
-    ventana('o-l4', t, 31.0, 32.5, { dy: 30 });
+    /* 8. Precio */
+    const fin8 = ev.llamado;
+    ventana('p-plan', t, ev.precio, fin8, { dy: 30 });
+    const pk = E.out(prog(t, ev.precio + 0.1, ev.precio + 1.1));
+    poner('p-precio', { o: t >= ev.precio + 0.1 && t < fin8 ? Math.min(1, pk * 3) * (1 - prog(t, fin8 - 0.3, fin8)) : 0, s: 0.92 + 0.08 * pk });
+    $('p-precio').textContent = pesos(Math.round(450000 * pk / 1000) * 1000);
+    ventana('p-inst', t, ev.precio + 0.4, fin8, { dy: 30 });
+    ventana('p-mes', t, ev.mensual, fin8, { escala: true });
+    ventana('p-l1', t, ev.lista1, fin8, { dy: 30 });
+    ventana('p-l2', t, ev.lista2, fin8, { dy: 30 });
+    ventana('p-saldo', t, ev.saldo, fin8, { escala: true });
 
-    /* 8. Llamado (32,5–36,9 s) */
-    const fK = E.back(prog(t, 32.55, 33.0));
-    poner('f-campana', { o: t >= 32.55 && t < 36.9 ? clamp(fK) * (1 - prog(t, 36.6, 36.9)) : 0, s: 0.4 + 0.6 * fK });
-    campana('f-campana', t, 32.95);
-    ventana('f-titulo', t, 32.8, 36.9, { escala: true });
-    ventana('f-numero', t, 33.3, 36.9, { escala: true });
-    ventana('f-web', t, 33.8, 36.9, { dy: 30 });
-    ventana('f-nota', t, 34.2, 36.9, { dy: 20 });
+    /* 9. Llamado */
+    const fk = E.back(prog(t, ev.llamado, ev.llamado + 0.4));
+    poner('f-campana', { o: t >= ev.llamado ? clamp(fk) : 0, s: 0.4 + 0.6 * fk });
+    campana('f-campana', t, ev.llamado + 0.05);
+    ventana('f-titulo', t, ev.llamado + 0.15, ev.duracion + 1, { escala: true });
+    ventana('f-numero', t, ev.numero, ev.duracion + 1, { escala: true });
+    ventana('f-web', t, ev.web, ev.duracion + 1, { dy: 30 });
+    ventana('f-nota', t, ev.nota, ev.duracion + 1, { dy: 20 });
+
+    pintarSubtitulo(t);
   };
-  window.render(0);
-  Promise.all([...document.fonts].map((f) => f.load())).then(() => document.fonts.ready).then(() => { window.render(0); document.body.dataset.listo = '1'; });
+
+  fetch('tiempos.json').then((r) => r.json()).then(async (tiempos) => {
+    EV = window.TimbreEventos(tiempos);
+    window.DURACION = tiempos.duracion;
+    prepararSubtitulos(tiempos);
+    TAPS = [[EV.toque1, 't-mas1'], [EV.toque2, 't-mas2'], [EV.toque3, 't-mas2'], [EV.enviar, 't-enviar'],
+            [EV.toqueServicio, 'r-servicio'], [EV.toqueHora, 'r-hora'], [EV.toqueEnviarCita, 'r-enviar'], [EV.toqueConfirmar, 'c3-confirmar']];
+    await Promise.all([...document.fonts].map((f) => f.load()));
+    await document.fonts.ready;
+    window.render(0);
+    document.body.dataset.listo = '1';
+  });
 </script>
 </body>
 </html>
