@@ -18,8 +18,8 @@ Datos que faltan o decisiones por confirmar. En los archivos aparecen como `[AS�
 
 ## GitHub Pages
 
-- [ ] El repositorio es **privado**: GitHub Pages en repositorios privados requiere un plan de pago (GitHub Pro, Team o Enterprise). Opciones: activar el plan, hacer público el repositorio (no contiene datos de clientes: `negocios/privado/` está ignorado) o publicar el sitio desde un repositorio público aparte.
-- [ ] Activar Pages: *Settings → Pages → Source: GitHub Actions*. Luego hacer merge a `main` para que corra `.github/workflows/pages.yml`.
+- [x] Repositorio público (no contiene datos de clientes: `negocios/privado/` está ignorado).
+- [ ] Activar Pages: *Settings → Pages → Source: GitHub Actions*. Con eso, cada push a `main` publica el sitio con `.github/workflows/pages.yml`.
 - [ ] Confirmar la URL final y actualizar `config/marca.json → sitio.url` y la tabla del README.
 - [ ] Opcional: dominio propio (por ejemplo `timbre.co`), configurado en *Settings → Pages → Custom domain*.
 
