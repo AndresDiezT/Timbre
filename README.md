@@ -80,6 +80,7 @@ timbre/
 ├── entrega/                   Onboarding, diagnóstico, propuesta, cuenta de cobro, acuerdo de datos,
 │                              documento de entrega, registro de mantenimiento e informe mensual
 ├── upwork/                    Perfil, 3 piezas de portafolio y 3 propuestas (< 150 palabras)
+├── estudio/nueva-oferta.md    Propuesta de nueva oferta y precios (para decidir)
 ├── assets/
 │   ├── css/                   timbre.css (sistema visual) + estilos por página
 │   ├── js/                    timbre.js (núcleo), telefono.js (chat), leads.js (demo EN), kit.js (textos de entrega) y uno por página
