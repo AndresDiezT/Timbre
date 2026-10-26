@@ -74,6 +74,9 @@ timbre/
 │   ├── plantillas-whatsapp.md Plantillas para aprobación de Meta (es/en), categoría y variables
 │   ├── hojas-de-calculo.md    Columnas de cada hoja de Google
 │   └── formulario-ejemplo.html Formulario de prueba con autorización de datos
+├── entrega/                   Onboarding, diagnóstico, propuesta, cuenta de cobro, acuerdo de datos,
+│                              documento de entrega, registro de mantenimiento e informe mensual
+├── upwork/                    Perfil, 3 piezas de portafolio y 3 propuestas (< 150 palabras)
 ├── assets/
 │   ├── css/                   timbre.css (sistema visual) + estilos por página
 │   ├── js/                    timbre.js (núcleo), telefono.js (chat), leads.js (demo EN), kit.js (textos de entrega) y uno por página
@@ -128,7 +131,7 @@ Scripts:
 2. **Revise los datos**: nombre, color, horario, catálogo y precios, preguntas, mensajes y el bloque `negocio` (dirección, WhatsApp, redes, medios de pago, políticas, plan, estilo de página y enlace de reseñas). Si tiene fotos, agregue `"imagen": "fotos/corte.jpg"` a cada producto (ruta relativa al JSON).
 3. **Valide**: `node scripts/validar.js negocios/privado/barberia-juanito.json` (o sin argumento para todo el repositorio).
 4. **Genere la entrega**: `node scripts/generar.js negocios/privado/barberia-juanito.json` crea `entregas/barberia-juanito/` con textos para WhatsApp Business y Google Maps, imágenes del catálogo, códigos QR, página web y lista de verificación.
-5. **Entregue**: siga `entregas/<negocio>/lista-de-verificacion.md` con el dueño y cobre el saldo cuando lo vea funcionando.
+5. **Entregue**: siga `entregas/<negocio>/lista-de-verificacion.md` con el dueño, firme `entrega/documento-de-entrega.md` y cobre el saldo con `entrega/cuenta-de-cobro.md` cuando lo vea funcionando.
 
 ---
 
@@ -146,4 +149,4 @@ Scripts:
 - [x] **Fase 1 — La demo que vende**: página principal, simulador, visita, versión en inglés, privacidad y publicación en GitHub Pages.
 - [x] **Fase 2 — Kit de entrega con plantillas**: generador, 2 clientes de ejemplo, página Pro en 3 estilos, constructor, WhatsApp de Timbre y guiones de video.
 - [x] **Fase 3 — Automatizaciones reales**: 5 workflows de n8n, guía de Make con créditos y plantillas de WhatsApp para Meta.
-- [ ] Fase 4 — Ventas y entrega.
+- [x] **Fase 4 — Ventas y entrega**: documentos de `entrega/` y material de `upwork/`.

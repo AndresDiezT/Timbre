@@ -42,6 +42,13 @@ Datos que faltan o decisiones por confirmar. En los archivos aparecen como `[AS�
 - [ ] Coexistencia app + API de WhatsApp: verificar con cada cliente si su número la permite.
 - [ ] Marcadores de los workflows (`[ID DE LA HOJA DE GOOGLE]`, `[PHONE NUMBER ID DE META]`, `[CORREO DEL DUEÑO]`, etc.) se llenan por cliente en el nodo **Datos del negocio**.
 
+## Ventas y entrega
+
+- [ ] `entrega/cuenta-de-cobro.md`: completar cédula, llave Bre-B y cuenta bancaria, y confirmar con un contador la declaración tributaria (IVA, factura electrónica).
+- [ ] `entrega/acuerdo-encargo-datos.md`: plantilla; revisar con un abogado antes del primer cliente con automatizaciones.
+- [ ] `upwork/perfil.md`: definir `[TARIFA POR HORA]` y reemplazar `[URL DE GITHUB PAGES]` en el portafolio cuando el sitio esté publicado.
+- [ ] Capturas y video del portafolio de Upwork (lista de tomas en `upwork/portafolio.md`).
+
 ## Contenido
 
 - [ ] Testimonios reales con permiso escrito del dueño → `config/marca.json → testimonios`. Mientras esté vacío, la sección queda oculta.
